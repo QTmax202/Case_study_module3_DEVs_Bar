@@ -8,12 +8,13 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Date;
 
 public class HospitalDAO {
     private static final MyConnection myConnection = new MyConnection();
 
     public ArrayList<pet_shop> getAllPet_shop() {
-        ArrayList<pet_shop> product_cate = new ArrayList<>();
+        ArrayList<pet_shop> pet_shops = new ArrayList<>();
         try {
             Connection connection = myConnection.getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement("select ps.ps_id, ps.ps_ten, ps.ps_anh, ps.ps_gia , ps.ps_ngay_sinh, ps.ps_mota, ps.ps_trang_thai, gp.gp_ten from pet_shop ps\n" +
@@ -25,16 +26,18 @@ public class HospitalDAO {
                 String anh = resultSet.getString(3);
                 int gia = resultSet.getInt(4);
 //                String ngay_sinh = resultSet.getString(resultSet.getDate(5).format(DateTimeFormatter.ofPattern("dd/MM/yyyy")));
-                String ngay_sinh = resultSet.getString(String.valueOf(resultSet.getDate(5)));
+//                LocalDate ngay_sinh = resultSet.getDate(5).toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+                Date ngay_sinh = resultSet.getDate(5);
                 String mo_ta = resultSet.getString(6);
                 int trang_thai = resultSet.getInt(7);
                 String giong = resultSet.getString(8);
-                product_cate.add(new pet_shop(id, name, anh, gia, ngay_sinh , mo_ta , trang_thai, giong));
+                pet_shops.add(new pet_shop(id, name, anh, gia, ngay_sinh , mo_ta , trang_thai, giong));
             }
 
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
-        return product_cate;
+        return pet_shops;
     }
+
 }

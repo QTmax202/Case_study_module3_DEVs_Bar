@@ -1,19 +1,19 @@
 package controller;
 
+import DAO.HospitalDAO;
 import model.pet_shop;
 import service.HospitalService;
 
-import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import javax.servlet.*;
+import javax.servlet.http.*;
+import javax.servlet.annotation.*;
 import java.io.IOException;
 import java.util.ArrayList;
 
-@WebServlet(name = "HospitalServlet", urlPatterns = "/hospital")
-public class HospitalServlet extends HttpServlet {
+@WebServlet(name = "Hospital_Servlet", value = "/hospital")
+public class Hospital_Servlet extends HttpServlet {
     private static final HospitalService hospitalService = new HospitalService();
+    private static final HospitalDAO hospitalDAO = new HospitalDAO();
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -26,6 +26,8 @@ public class HospitalServlet extends HttpServlet {
     }
 
     private void action(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
+        response.setContentType("text/html;charset=UTF-8");
+        request.setCharacterEncoding("UTF-8");
         String action = request.getParameter("action");
         if (action == null) {
             action = "";
@@ -35,13 +37,15 @@ public class HospitalServlet extends HttpServlet {
             case "shop":
                 break;
             default:
-                display_pet_shop(request, response);
-        }    }
-
-    private void display_pet_shop(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
-        ArrayList<pet_shop> pet_shops = hospitalService.getAllPet_shop();
-        request.setAttribute("pet_shops",pet_shops);
-        request.getRequestDispatcher("").forward(request,response);
+                display_shop(request, response);
+        }
     }
 
+    private void display_shop(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
+        response.setContentType("text/html;charset=UTF-8");
+        ArrayList<pet_shop> pet_shops = hospitalDAO.getAllPet_shop();
+        request.setAttribute("pet_shops",pet_shops);
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher("test.jsp");
+        requestDispatcher.forward(request,response);
+    }
 }

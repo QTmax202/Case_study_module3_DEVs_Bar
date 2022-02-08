@@ -89,23 +89,29 @@
                 </ul>
             </div>
         </div>
+<%--        <c:if test="${requestScope['pet_shops']}.isEmpty()">--%>
+<%--            <p style="color: red">Không có sản phẩn nào</p>--%>
+<%--        </c:if>--%>
         <div class="row product__filter">
-            <div class="col-lg-3 col-md-6 col-sm-6 col-md-6 col-sm-6 mix new-arrivals">
-                <div class="product__item">
-                    <div class="product__item__pic set-bg" data-setbg="https://matpetfamily.com/wp-content/uploads/2022/01/D0015C3F-5BEC-4097-9222-280EE074B2FE.jpeg">>
-                        <ul class="product__hover">
-                            <li><a href="#"><img src="img/icon/heart.png" alt=""> <span>Heart</span></a></li>
-                            <li><a href="#"><img src="img/icon/search.png" alt=""> <span>Detail</span></a></li>
-                        </ul>
-                    </div>
-                    <div class="product__item__text">
-                        <h6>Phốc sóc trắng</h6>
-                        <a href="#" class="add-cart">+ Add To Cart</a>
-                        <hr>
-                        <h5>20.000.000 VND</h5>
+            <c:forEach items="${requestScope['pet_shops']}" var="pet_shop">
+                <div class="col-lg-3 col-md-6 col-sm-6 col-md-6 col-sm-6 mix new-arrivals">
+                    <div class="product__item">
+                        <div class="product__item__pic set-bg" data-setbg="${pet_shop.Ps_anh}">
+                            <ul class="product__hover">
+                                <li><a href="#"><img src="img/icon/heart.png" alt=""> <span>Heart</span></a></li>
+                                <li><a href="#"><img src="img/icon/search.png" alt=""> <span>Detail</span></a></li>
+                            </ul>
+                        </div>
+                        <div class="product__item__text">
+                            <h6>${pet_shop.getPs_ten()}</h6>
+                            <a href="#" class="add-cart">+ Add To Cart</a>
+                            <hr>
+                            <h5>${pet_shop.getPs_gia()} VND</h5>
+                        </div>
                     </div>
                 </div>
-            </div>
+            </c:forEach>
+
         </div>
     </div>
 </section>
@@ -122,9 +128,12 @@
             </div>
         </div>
         <div class="row product__filter">
+
             <div class="col-lg-3 col-md-6 col-sm-6 col-md-6 col-sm-6 mix new-arrivals">
                 <div class="product__item">
-                    <div class="product__item__pic set-bg" data-setbg="https://matpetfamily.com/wp-content/uploads/2022/01/D0015C3F-5BEC-4097-9222-280EE074B2FE.jpeg">>
+                    <div class="product__item__pic set-bg"
+                         data-setbg="https://matpetfamily.com/wp-content/uploads/2022/01/D0015C3F-5BEC-4097-9222-280EE074B2FE.jpeg">
+                        >
                         <ul class="product__hover">
                             <li><a href="#"><img src="img/icon/heart.png" alt=""> <span>Heart</span></a></li>
                             <li><a href="#"><img src="img/icon/search.png" alt=""> <span>Detail</span></a></li>
@@ -156,7 +165,9 @@
         <div class="row product__filter">
             <div class="col-lg-3 col-md-6 col-sm-6 col-md-6 col-sm-6 mix new-arrivals">
                 <div class="product__item">
-                    <div class="product__item__pic set-bg" data-setbg="https://matpetfamily.com/wp-content/uploads/2022/01/D0015C3F-5BEC-4097-9222-280EE074B2FE.jpeg">>
+                    <div class="product__item__pic set-bg"
+                         data-setbg="https://matpetfamily.com/wp-content/uploads/2022/01/D0015C3F-5BEC-4097-9222-280EE074B2FE.jpeg">
+                        >
                         <ul class="product__hover">
                             <li><a href="#"><img src="img/icon/heart.png" alt=""> <span>Heart</span></a></li>
                             <li><a href="#"><img src="img/icon/search.png" alt=""> <span>Detail</span></a></li>
