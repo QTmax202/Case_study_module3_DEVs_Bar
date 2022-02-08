@@ -26,13 +26,12 @@ public class Hospital_Servlet extends HttpServlet {
     }
 
     private void action(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
-        response.setContentType("text/html;charset=UTF-8");
-        request.setCharacterEncoding("UTF-8");
+//        response.setContentType("text/html;charset=UTF-8");
+//        request.setCharacterEncoding("UTF-8");
         String action = request.getParameter("action");
         if (action == null) {
             action = "";
         }
-
         switch (action) {
             case "shop":
                 break;
@@ -45,7 +44,8 @@ public class Hospital_Servlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         ArrayList<pet_shop> pet_shops = hospitalDAO.getAllPet_shop();
         request.setAttribute("pet_shops",pet_shops);
-        RequestDispatcher requestDispatcher = request.getRequestDispatcher("test.jsp");
-        requestDispatcher.forward(request,response);
+//        RequestDispatcher requestDispatcher = request.getRequestDispatcher("index.jsp");
+//        requestDispatcher.forward(request,response);
+        request.getRequestDispatcher("index.jsp").forward(request,response);
     }
 }

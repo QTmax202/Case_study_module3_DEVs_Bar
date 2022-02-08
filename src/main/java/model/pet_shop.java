@@ -10,7 +10,7 @@ public class pet_shop {
     private String ps_ten;
     private String ps_anh;
     private int ps_gia;
-    private Date ps_ngay_sinh;
+    private final Date ps_ngay_sinh;
     private String ps_mo_ta;
     private int ps_trang_thai;
     private String ps_gp_id;

@@ -89,45 +89,33 @@
                 </ul>
             </div>
         </div>
-<%--        <c:if test="${requestScope['pet_shops']}.isEmpty()">--%>
-<%--            <p style="color: red">Không có sản phẩn nào</p>--%>
-<%--        </c:if>--%>
         <div class="row product__filter">
-<<<<<<< HEAD
+<%--            <c:if test="${requestScope['list_pet_shop'].isEmpty()}">--%>
+<%--                <p>ko caocas as da</p>--%>
+<%--            </c:if>--%>
             <c:forEach items="${requestScope['pet_shops']}" var="pet_shop">
                 <div class="col-lg-3 col-md-6 col-sm-6 col-md-6 col-sm-6 mix new-arrivals">
                     <div class="product__item">
-                        <div class="product__item__pic set-bg" data-setbg="${pet_shop.Ps_anh}">
+                        <div class="product__item__pic set-bg"
+                             data-setbg="${pet_shop.getPs_anh()}">
                             <ul class="product__hover">
                                 <li><a href="#"><img src="img/icon/heart.png" alt=""> <span>Heart</span></a></li>
-                                <li><a href="#"><img src="img/icon/search.png" alt=""> <span>Detail</span></a></li>
+                                <li><a href="<c:url value="/hospital?action=search&id=${pet_shop.getPs_id()}"/>"><img
+                                        src="img/icon/search.png" alt=""> <span>Detail</span></a></li>
                             </ul>
                         </div>
                         <div class="product__item__text">
                             <h6>${pet_shop.getPs_ten()}</h6>
-                            <a href="#" class="add-cart">+ Add To Cart</a>
+                            <c:if test="${pet_shop.getPs_trang_thai() != 0 }">
+                                <a href="<c:url value="/hospital?action=addToCart&id=${pet_shop.getPs_id()}"/>"
+                                   class="add-cart">+ Add To Cart</a>
+                            </c:if>
                             <hr>
                             <h5>${pet_shop.getPs_gia()} VND</h5>
                         </div>
-=======
-            <div class="col-lg-3 col-md-6 col-sm-6 col-md-6 col-sm-6 mix new-arrivals">
-                <div class="product__item">
-                    <div class="product__item__pic set-bg" data-setbg="https://matpetfamily.com/wp-content/uploads/2022/01/D0015C3F-5BEC-4097-9222-280EE074B2FE.jpeg">
-                        <ul class="product__hover">
-                            <li><a href="#"><img src="img/icon/heart.png" alt=""> <span>Heart</span></a></li>
-                            <li><a href="shop-details.jsp"><img src="img/icon/search.png" alt=""> <span>Detail</span></a></li>
-                        </ul>
-                    </div>
-                    <div class="product__item__text">
-                        <h6>Phốc sóc trắng</h6>
-                        <a href="#" class="add-cart">+ Add To Cart</a>
-                        <hr>
-                        <h5>20.000.000 VND</h5>
->>>>>>> 60de9aa512608e79f4b6b85de17d5f16a26a146d
                     </div>
                 </div>
             </c:forEach>
-
         </div>
     </div>
 </section>
@@ -147,23 +135,21 @@
 
             <div class="col-lg-3 col-md-6 col-sm-6 col-md-6 col-sm-6 mix new-arrivals">
                 <div class="product__item">
-<<<<<<< HEAD
                     <div class="product__item__pic set-bg"
                          data-setbg="https://matpetfamily.com/wp-content/uploads/2022/01/D0015C3F-5BEC-4097-9222-280EE074B2FE.jpeg">
-                        >
-=======
-                    <div class="product__item__pic set-bg" data-setbg="https://matpetfamily.com/wp-content/uploads/2022/01/D0015C3F-5BEC-4097-9222-280EE074B2FE.jpeg">
->>>>>>> 60de9aa512608e79f4b6b85de17d5f16a26a146d
-                        <ul class="product__hover">
-                            <li><a href="#"><img src="img/icon/heart.png" alt=""> <span>Heart</span></a></li>
-                            <li><a href="#"><img src="img/icon/search.png" alt=""> <span>Detail</span></a></li>
-                        </ul>
-                    </div>
-                    <div class="product__item__text">
-                        <h6>Phốc sóc trắng</h6>
-                        <a href="#" class="add-cart">+ Add To Cart</a>
-                        <hr>
-                        <h5>20.000.000 VND</h5>
+                        <div class="product__item__pic set-bg"
+                             data-setbg="https://matpetfamily.com/wp-content/uploads/2022/01/D0015C3F-5BEC-4097-9222-280EE074B2FE.jpeg">
+                            <ul class="product__hover">
+                                <li><a href="#"><img src="img/icon/heart.png" alt=""> <span>Heart</span></a></li>
+                                <li><a href="#"><img src="img/icon/search.png" alt=""> <span>Detail</span></a></li>
+                            </ul>
+                        </div>
+                        <div class="product__item__text">
+                            <h6>Phốc sóc trắng</h6>
+                            <a href="#" class="add-cart">+ Add To Cart</a>
+                            <hr>
+                            <h5>20.000.000 VND</h5>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -185,23 +171,21 @@
         <div class="row product__filter">
             <div class="col-lg-3 col-md-6 col-sm-6 col-md-6 col-sm-6 mix new-arrivals">
                 <div class="product__item">
-<<<<<<< HEAD
                     <div class="product__item__pic set-bg"
                          data-setbg="https://matpetfamily.com/wp-content/uploads/2022/01/D0015C3F-5BEC-4097-9222-280EE074B2FE.jpeg">
-                        >
-=======
-                    <div class="product__item__pic set-bg" data-setbg="https://matpetfamily.com/wp-content/uploads/2022/01/D0015C3F-5BEC-4097-9222-280EE074B2FE.jpeg">
->>>>>>> 60de9aa512608e79f4b6b85de17d5f16a26a146d
-                        <ul class="product__hover">
-                            <li><a href="#"><img src="img/icon/heart.png" alt=""> <span>Heart</span></a></li>
-                            <li><a href="#"><img src="img/index/search.png" alt=""> <span>Detail</span></a></li>
-                        </ul>
-                    </div>
-                    <div class="product__item__text">
-                        <h6>Phốc sóc trắng</h6>
-                        <a href="#" class="add-cart">+ Add To Cart</a>
-                        <hr>
-                        <h5>20.000.000 VND</h5>
+                        <div class="product__item__pic set-bg"
+                             data-setbg="https://matpetfamily.com/wp-content/uploads/2022/01/D0015C3F-5BEC-4097-9222-280EE074B2FE.jpeg">
+                            <ul class="product__hover">
+                                <li><a href="#"><img src="img/icon/heart.png" alt=""> <span>Heart</span></a></li>
+                                <li><a href="#"><img src="img/index/search.png" alt=""> <span>Detail</span></a></li>
+                            </ul>
+                        </div>
+                        <div class="product__item__text">
+                            <h6>Phốc sóc trắng</h6>
+                            <a href="#" class="add-cart">+ Add To Cart</a>
+                            <hr>
+                            <h5>20.000.000 VND</h5>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -209,54 +193,6 @@
     </div>
 </section>
 <!-- Dịch Vụ End -->
-
-<!-- Categories Section Begin -->
-<%--<section class="categories spad">--%>
-<%--    <div class="container">--%>
-<%--        <div class="row">--%>
-<%--            <div class="col-lg-3">--%>
-<%--                <div class="categories__text">--%>
-<%--                    <h2>Clothings Hot <br/> <span>Shoe Collection</span> <br/> Accessories</h2>--%>
-<%--                </div>--%>
-<%--            </div>--%>
-<%--            <div class="col-lg-4">--%>
-<%--                <div class="categories__hot__deal">--%>
-<%--                    <img src="img/product-sale.png" alt="">--%>
-<%--                    <div class="hot__deal__sticker">--%>
-<%--                        <span>Sale Of</span>--%>
-<%--                        <h5>$29.99</h5>--%>
-<%--                    </div>--%>
-<%--                </div>--%>
-<%--            </div>--%>
-<%--            <div class="col-lg-4 offset-lg-1">--%>
-<%--                <div class="categories__deal__countdown">--%>
-<%--                    <span>Deal Of The Week</span>--%>
-<%--                    <h2>Multi-pocket Chest Bag Black</h2>--%>
-<%--                    <div class="categories__deal__countdown__timer" id="countdown">--%>
-<%--                        <div class="cd-item">--%>
-<%--                            <span>3</span>--%>
-<%--                            <p>Days</p>--%>
-<%--                        </div>--%>
-<%--                        <div class="cd-item">--%>
-<%--                            <span>1</span>--%>
-<%--                            <p>Hours</p>--%>
-<%--                        </div>--%>
-<%--                        <div class="cd-item">--%>
-<%--                            <span>50</span>--%>
-<%--                            <p>Minutes</p>--%>
-<%--                        </div>--%>
-<%--                        <div class="cd-item">--%>
-<%--                            <span>18</span>--%>
-<%--                            <p>Seconds</p>--%>
-<%--                        </div>--%>
-<%--                    </div>--%>
-<%--                    <a href="#" class="primary-btn">Shop now</a>--%>
-<%--                </div>--%>
-<%--            </div>--%>
-<%--        </div>--%>
-<%--    </div>--%>
-<%--</section>--%>
-<!-- Categories Section End -->
 
 <jsp:include page="_Footer.jsp"></jsp:include>
 </body>

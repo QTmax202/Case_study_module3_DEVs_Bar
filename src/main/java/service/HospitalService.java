@@ -14,8 +14,7 @@ public class HospitalService {
 
     public static void main(String[] args) {
         ArrayList<pet_shop> pet_shops = hospitalDAO.getAllPet_shop();
-        for (pet_shop ps:
-                pet_shops) {
+        for (pet_shop ps: pet_shops) {
             System.out.println(ps);
         }
     }
