@@ -64,7 +64,7 @@
             <form action="#">
                 <div class="row">
                     <div class="col-lg-8 col-md-6">
-                        <h6 class="checkout__title">Thêm Thú Cưng</h6>
+                        <h6 class="checkout__title">Sửa Thông Tin Thú Cưng</h6>
                         <div class="row">
                             <div class="col-lg-3">
                                 <div class="checkout__input">
@@ -123,7 +123,7 @@
             <form action="#">
                 <div class="row">
                     <div class="col-lg-8 col-md-6">
-                        <h6 class="checkout__title">Thêm Phụ Kiện</h6>
+                        <h6 class="checkout__title">Sửa Thông Tin Phụ Kiện</h6>
                         <div class="row">
                             <div class="col-lg-3">
                                 <div class="checkout__input">
@@ -181,7 +181,7 @@
             <form action="#">
                 <div class="row">
                     <div class="col-lg-8 col-md-6">
-                        <h6 class="checkout__title">Thêm Dịch Vụ</h6>
+                        <h6 class="checkout__title">Sửa Thông Tin Dịch Vụ</h6>
                         <div class="row">
                             <div class="col-lg-3">
                                 <div class="checkout__input">

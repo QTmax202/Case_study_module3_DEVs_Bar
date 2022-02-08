@@ -15,8 +15,8 @@
     </div>
     <div class="offcanvas__nav__option">
         <a href="#" class="search-switch"><img src="img/icon/search.png" alt=""></a>
-        <a href="#"><img src="img/icon/heart.png" alt=""></a>
-        <a href="#"><img src="img/icon/cart.png" alt=""></a>
+<%--        <a href="#"><img src="img/icon/heart.png" alt=""></a>--%>
+        <a href="shopping-cart.jsp"><img src="img/icon/cart.png" alt=""></a>
     </div>
     <div id="mobile-menu-wrap"></div>
     <div class="offcanvas__text">
@@ -38,8 +38,8 @@
                 <div class="col-lg-6 col-md-5">
                     <div class="header__top__right">
                         <div class="header__top__links">
-                            <a href="#">Sign in</a>
-                            <a href="#">FAQs</a>
+                            <a href="sign-in.jsp">Sign in</a>
+<%--                            <a href="sign-in.jsp">Đăng xuất</a>--%>
                         </div>
                     </div>
                 </div>
@@ -59,7 +59,7 @@
                         <li class="active"><a href="index.jsp">Home</a></li>
                         <li><a href="shop.jsp">Shop</a></li>
                         <li><a href="shop-details.jsp">Shop Details</a></li>
-                        <li><a href="shopping-cart.jsp">Shopping Cart</a></li>
+<%--                        <li><a href="shopping-cart.jsp">Shopping Cart</a></li>--%>
                         <li><a href="create.jsp">Create</a></li>
                         <li><a href="edit.jsp">Edit</a></li>
                         <li><a href="blog-details.jsp">Blog Details</a></li>
@@ -70,7 +70,7 @@
             <div class="col-lg-3 col-md-3">
                 <div class="header__nav__option">
                     <a href="#" class="search-switch"><img src="img/icon/search.png" alt=""></a>
-                    <a href="#"><img src="img/icon/cart.png" alt=""></a>
+                    <a href="shopping-cart.jsp"><img src="img/icon/cart.png" alt=""></a>
                 </div>
             </div>
         </div>
