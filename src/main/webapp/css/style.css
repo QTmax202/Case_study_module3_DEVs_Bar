@@ -3849,3 +3849,11 @@ ol {
 		height: 250px;
 	}
 }
+
+.img-detail {
+	display: block;
+}
+
+.imgs-detail {
+	margin: auto;
+}

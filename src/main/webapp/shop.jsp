@@ -144,7 +144,7 @@
                                 <ul class="product__hover">
                                     <li><a href="#"><img src="img/icon/heart.png" alt=""> <span>Heart</span></a></li>
                                     <%--                            <li><a href="#"><img src="img/icon/compare.png" alt=""> <span>Compare</span></a></li>--%>
-                                    <li><a href="#"><img src="img/icon/search.png" alt=""> <span>Detail</span></a></li>
+                                    <li><a href="#"><img src="img/index/search.png" alt=""> <span>Detail</span></a></li>
                                 </ul>
                             </div>
                             <div class="product__item__text">
