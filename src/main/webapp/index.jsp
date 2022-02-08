@@ -92,10 +92,10 @@
         <div class="row product__filter">
             <div class="col-lg-3 col-md-6 col-sm-6 col-md-6 col-sm-6 mix new-arrivals">
                 <div class="product__item">
-                    <div class="product__item__pic set-bg" data-setbg="https://matpetfamily.com/wp-content/uploads/2022/01/D0015C3F-5BEC-4097-9222-280EE074B2FE.jpeg">>
+                    <div class="product__item__pic set-bg" data-setbg="https://matpetfamily.com/wp-content/uploads/2022/01/D0015C3F-5BEC-4097-9222-280EE074B2FE.jpeg">
                         <ul class="product__hover">
                             <li><a href="#"><img src="img/icon/heart.png" alt=""> <span>Heart</span></a></li>
-                            <li><a href="#"><img src="img/index/search.png" alt=""> <span>Detail</span></a></li>
+                            <li><a href="shop-details.jsp"><img src="img/icon/search.png" alt=""> <span>Detail</span></a></li>
                         </ul>
                     </div>
                     <div class="product__item__text">
@@ -124,10 +124,10 @@
         <div class="row product__filter">
             <div class="col-lg-3 col-md-6 col-sm-6 col-md-6 col-sm-6 mix new-arrivals">
                 <div class="product__item">
-                    <div class="product__item__pic set-bg" data-setbg="https://matpetfamily.com/wp-content/uploads/2022/01/D0015C3F-5BEC-4097-9222-280EE074B2FE.jpeg">>
+                    <div class="product__item__pic set-bg" data-setbg="https://matpetfamily.com/wp-content/uploads/2022/01/D0015C3F-5BEC-4097-9222-280EE074B2FE.jpeg">
                         <ul class="product__hover">
                             <li><a href="#"><img src="img/icon/heart.png" alt=""> <span>Heart</span></a></li>
-                            <li><a href="#"><img src="img/index/search.png" alt=""> <span>Detail</span></a></li>
+                            <li><a href="#"><img src="img/icon/search.png" alt=""> <span>Detail</span></a></li>
                         </ul>
                     </div>
                     <div class="product__item__text">
@@ -156,7 +156,7 @@
         <div class="row product__filter">
             <div class="col-lg-3 col-md-6 col-sm-6 col-md-6 col-sm-6 mix new-arrivals">
                 <div class="product__item">
-                    <div class="product__item__pic set-bg" data-setbg="https://matpetfamily.com/wp-content/uploads/2022/01/D0015C3F-5BEC-4097-9222-280EE074B2FE.jpeg">>
+                    <div class="product__item__pic set-bg" data-setbg="https://matpetfamily.com/wp-content/uploads/2022/01/D0015C3F-5BEC-4097-9222-280EE074B2FE.jpeg">
                         <ul class="product__hover">
                             <li><a href="#"><img src="img/icon/heart.png" alt=""> <span>Heart</span></a></li>
                             <li><a href="#"><img src="img/index/search.png" alt=""> <span>Detail</span></a></li>
