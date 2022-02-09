@@ -1,7 +1,6 @@
 package model;
 
 import java.time.LocalDate;
-import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 import java.util.Date;
 
@@ -25,6 +24,10 @@ public class Pet_shop {
         this.ps_trang_thai = ps_trang_thai;
         this.ps_gp_id = ps_gp_id;
     }
+<<<<<<< HEAD
+=======
+
+>>>>>>> f9521365b682bb9ca414d53fadb664ff8886ba42
     public Pet_shop(String ps_ten, String ps_anh, int ps_gia, Date ps_ngay_sinh, String ps_mo_ta, int ps_trang_thai, String ps_gp_id) {
         this.ps_ten = ps_ten;
         this.ps_anh = ps_anh;
@@ -71,9 +74,9 @@ public class Pet_shop {
         return ps_ngay_sinh;
     }
 
-//    public void setPs_ngay_sinh(String ps_ngay_sinh) {
-//        this.ps_ngay_sinh = LocalDate.parse(ps_ngay_sinh, DateTimeFormatter.ofPattern("dd/MM/yyyy"));
-//    }
+    public void setPs_ngay_sinh(Date ps_ngay_sinh) {
+        this.ps_ngay_sinh = ps_ngay_sinh;
+    }
 
     public String getPs_mo_ta() {
         return ps_mo_ta;
