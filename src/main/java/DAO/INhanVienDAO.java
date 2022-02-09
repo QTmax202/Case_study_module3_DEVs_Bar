@@ -2,10 +2,11 @@ package DAO;
 
 import model.Nhan_vien;
 
-import java.util.List;
+import java.sql.SQLException;
+import java.util.ArrayList;
 
 public interface INhanVienDAO {
-    List<Nhan_vien> getAllNhanVien();
-
-    void updateNhanVien(Nhan_vien nhanVien, int id);
+    void insertNhanVien(Nhan_vien nhanVien) throws SQLException;
+    ArrayList<Nhan_vien> selectAllNhanViens();
+    boolean updateNhanVien(Nhan_vien nhanVien) throws SQLException;
 }

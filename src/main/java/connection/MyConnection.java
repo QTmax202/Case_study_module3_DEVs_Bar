@@ -8,7 +8,7 @@ public class MyConnection {
     // các tham số để kết nối databases
     private String URL = "jdbc:mysql://localhost:3306/quan_ly_pet_shop?useSSL=false";
     private String userName = "root";
-    private String passWord = "M@cb@c202";
+    private String passWord = "12345678";
 
     public Connection getConnection() {
         Connection connection = null;

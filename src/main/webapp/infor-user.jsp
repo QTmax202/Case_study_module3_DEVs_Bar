@@ -61,7 +61,7 @@
     <div class="container">
         <div class="checkout__form">
 
-            <form action="#">
+            <form action="${pageContext.request.contextPath}/khachHang?action=creatPost">
                 <div class="row">
                     <div class="col-lg-8 col-md-6">
                         <h6 class="checkout__title">Cập Nhật Thông Tin Khách Hàng</h6>
@@ -69,14 +69,16 @@
                             <div class="col-lg-9">
                                 <div class="checkout__input">
                                     <p>Họ & Tên<span>*</span></p>
-                                    <input type="text" name="">
+                                    <label>
+                                        <input type="text" name="kh_name">
+                                    </label>
                                 </div>
                             </div>
                             <div class="col-lg-3">
                                 <div class="checkout__input">
                                     <p>Giới Tính<span>*</span></p>
                                     <label>
-                                        <select name="">
+                                        <select name="kh_gioi_tinh">
                                             <option value="">Nam</option>
                                             <option value="">Nữ</option>
                                             <option value="">Khác</option>
@@ -87,19 +89,19 @@
                         </div>
                         <div class="checkout__input">
                             <p>Nhập Đường Dẫn Ảnh<span>*</span></p>
-                            <input type="text" name="">
+                            <input type="text" name="kh_anh">
                         </div>
                         <div class="row">
                             <div class="col-lg-6">
                                 <div class="checkout__input">
                                     <p>Ngày Sinh<span>*</span></p>
-                                    <input type="date"  name="">
+                                    <input type="date"  name="kh_ngay_sinh">
                                 </div>
                             </div>
                             <div class="col-lg-6">
                                 <div class="checkout__input">
                                     <p>Địa Chỉ<span>*</span></p>
-                                    <input type="text" placeholder="VND" name="">
+                                    <input type="text" placeholder="VND" name="kh_dia_chi">
                                 </div>
                             </div>
                         </div>
@@ -107,13 +109,13 @@
                             <div class="col-lg-6">
                                 <div class="checkout__input">
                                     <p>Email<span>*</span></p>
-                                    <input type="text"  name="">
+                                    <input type="text"  name="kh_email">
                                 </div>
                             </div>
                             <div class="col-lg-6">
                                 <div class="checkout__input">
                                     <p>Số Điện Thoại<span>*</span></p>
-                                    <input type="text" placeholder="VND" name="">
+                                    <input type="text" placeholder="VND" name="kh_phone_number">
                                 </div>
                             </div>
                         </div>

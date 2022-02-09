@@ -1,8 +1,9 @@
 package controller;
 
-import DAO.NhanVienDAO;
+import DAO.KhachHangDAO;
 
-import model.Nhan_vien;
+import model.Khach_hang;
+
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -16,9 +17,9 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-@WebServlet(name = "NhanVienServlet", urlPatterns = "/nhanVien")
-public class NhanVienServlet extends HttpServlet {
-    private static final NhanVienDAO nhanVienDAO = new NhanVienDAO();
+@WebServlet(name = "KhachHangServlet", urlPatterns = "/khachHang")
+public class KhachHangServlet extends HttpServlet {
+    private static final KhachHangDAO khachHangDAO = new KhachHangDAO();
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -53,18 +54,16 @@ public class NhanVienServlet extends HttpServlet {
         requestDispatcher.forward(request, response);
     }
     private void createPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException, ParseException {
-        String nv_id = request.getParameter("nv_id");
-        String nv_anh = request.getParameter("nv_anh");
-        String nv_ten = request.getParameter("nv_ten");
-        String nv_gioi_tinh = request.getParameter("nv_gioi_tinh");
-        String nv_email = request.getParameter("nv_email");
-        String nv_phone_number = request.getParameter("nv_phone_number");
-        Date nv_ngay_sinh = new SimpleDateFormat("yyyy-MM-dd").parse(request.getParameter("nv_ngay_sinh"));
-        String nv_dia_chi = request.getParameter("nv_dia_chi");
-        String nv_ca_id = request.getParameter("nv_ca_id");
-        Nhan_vien nhanVien = new Nhan_vien(nv_id, nv_anh, nv_ten, nv_gioi_tinh, nv_email, nv_phone_number, nv_ngay_sinh, nv_dia_chi, nv_ca_id);
-        nhanVienDAO.insertNhanVien(nhanVien);
+        String kh_id = request.getParameter("kh_id");
+        String kh_anh = request.getParameter("kh_anh");
+        String kh_ten = request.getParameter("kh_ten");
+        String kh_gioi_tinh = request.getParameter("kh_gioi_tinh");
+        String kh_email = request.getParameter("kh_email");
+        String kh_phone_number = request.getParameter("kh_phone_number");
+        Date kh_ngay_sinh = new SimpleDateFormat("yyyy-MM-dd").parse(request.getParameter("kh_ngay_sinh"));
+        String kh_dia_chi = request.getParameter("kh_dia_chi");
+        Khach_hang khachHang = new Khach_hang(kh_id, kh_anh, kh_ten, kh_gioi_tinh, kh_email, kh_phone_number, kh_ngay_sinh, kh_dia_chi);
+        khachHangDAO.insertKhachHang(khachHang);
         RequestDispatcher requestDispatcher = request.getRequestDispatcher("info-user.jsp");
         requestDispatcher.forward(request, response);
-    }
-}
+    }}
