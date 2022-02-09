@@ -10,12 +10,11 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ShopDAOIpm implements ShopDAO{
+public class ShopDAOIpm {
     private static final MyConnection myConnection = new MyConnection();
 
     private static final String SELECT_ALL_PET = "SELECT * FROM giong_pet;";
 
-    @Override
     public List<Giong_pet> categoryPet() {
         List<Giong_pet> giong_pets = new ArrayList<>();
         try {

@@ -129,27 +129,29 @@
             </div>
         </div>
         <div class="row product__filter">
-
-            <div class="col-lg-3 col-md-6 col-sm-6 col-md-6 col-sm-6 mix new-arrivals">
-                <div class="product__item">
-                    <div class="product__item__pic set-bg"
-                         data-setbg="https://matpetfamily.com/wp-content/uploads/2022/01/D0015C3F-5BEC-4097-9222-280EE074B2FE.jpeg">
+            <c:forEach items="${requestScope['phu_kiens']}" var="phu_kien">
+                <div class="col-lg-3 col-md-6 col-sm-6 col-md-6 col-sm-6 mix new-arrivals">
+                    <div class="product__item">
                         <div class="product__item__pic set-bg"
-                             data-setbg="https://matpetfamily.com/wp-content/uploads/2022/01/D0015C3F-5BEC-4097-9222-280EE074B2FE.jpeg">
+                             data-setbg="${phu_kien.getPk_anh()}">
                             <ul class="product__hover">
                                 <li><a href="#"><img src="img/icon/heart.png" alt=""> <span>Heart</span></a></li>
-                                <li><a href="#"><img src="img/icon/search.png" alt=""> <span>Detail</span></a></li>
+                                <li><a href="<c:url value="/hospital?action=search&id=${phu_kien.getPk_id()}"/>"><img
+                                        src="img/icon/search.png" alt=""> <span>Detail</span></a></li>
                             </ul>
                         </div>
                         <div class="product__item__text">
-                            <h6>Phốc sóc trắng</h6>
-                            <a href="#" class="add-cart">+ Add To Cart</a>
+                            <h6>${phu_kien.getPk_ten()}</h6>
+                            <c:if test="${phu_kien.getPk_so_luong() != 0 }">
+                                <a href="<c:url value="/hospital?action=addToCart&id=${phu_kien.getPk_id()}"/>"
+                                   class="add-cart">+ Add To Cart</a>
+                            </c:if>
                             <hr>
-                            <h5>20.000.000 VND</h5>
+                            <h5>${phu_kien.getPk_gia()} VND</h5>
                         </div>
                     </div>
                 </div>
-            </div>
+            </c:forEach>
         </div>
     </div>
 </section>
@@ -166,26 +168,29 @@
             </div>
         </div>
         <div class="row product__filter">
-            <div class="col-lg-3 col-md-6 col-sm-6 col-md-6 col-sm-6 mix new-arrivals">
-                <div class="product__item">
-                    <div class="product__item__pic set-bg"
-                         data-setbg="https://matpetfamily.com/wp-content/uploads/2022/01/D0015C3F-5BEC-4097-9222-280EE074B2FE.jpeg">
+            <c:forEach items="${requestScope['dich_vus']}" var="dich_vu">
+                <div class="col-lg-3 col-md-6 col-sm-6 col-md-6 col-sm-6 mix new-arrivals">
+                    <div class="product__item">
                         <div class="product__item__pic set-bg"
-                             data-setbg="https://matpetfamily.com/wp-content/uploads/2022/01/D0015C3F-5BEC-4097-9222-280EE074B2FE.jpeg">
+                             data-setbg="${dich_vu.getCtdv_anh()}">
                             <ul class="product__hover">
                                 <li><a href="#"><img src="img/icon/heart.png" alt=""> <span>Heart</span></a></li>
-                                <li><a href="#"><img src="img/index/search.png" alt=""> <span>Detail</span></a></li>
+                                <li><a href="<c:url value="/hospital?action=search&id=${dich_vu.getCtdv_id()}"/>"><img
+                                        src="img/icon/search.png" alt=""> <span>Detail</span></a></li>
                             </ul>
                         </div>
                         <div class="product__item__text">
-                            <h6>Phốc sóc trắng</h6>
-                            <a href="#" class="add-cart">+ Add To Cart</a>
+                            <h6>${dich_vu.getCtdv_ten()}</h6>
+                            <c:if test="${dich_vu.getCtdv_trang_thai() != 0 }">
+                                <a href="<c:url value="/hospital?action=addToCart&id=${dich_vu.getCtdv_id()}"/>"
+                                   class="add-cart">+ Add To Cart</a>
+                            </c:if>
                             <hr>
-                            <h5>20.000.000 VND</h5>
+                            <h5>${dich_vu.getCtdv_gia()} VND</h5>
                         </div>
                     </div>
                 </div>
-            </div>
+            </c:forEach>
         </div>
     </div>
 </section>
