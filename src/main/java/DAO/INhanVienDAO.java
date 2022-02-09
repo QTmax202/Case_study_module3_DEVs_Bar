@@ -2,10 +2,10 @@ package DAO;
 
 import model.Nhan_vien;
 
-import java.util.ArrayList;
+import java.util.List;
 
 public interface INhanVienDAO {
-    ArrayList<Nhan_vien> getALlNhanVien();
+    List<Nhan_vien> getAllNhanVien();
 
     void updateNhanVien(Nhan_vien nhanVien, int id);
 }
