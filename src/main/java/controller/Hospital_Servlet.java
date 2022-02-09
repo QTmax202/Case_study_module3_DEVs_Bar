@@ -34,7 +34,11 @@ public class Hospital_Servlet extends HttpServlet {
         }
 
         switch (action) {
-            case "shop":
+            case "search_pet_shop":
+                search_pet_shop(request, response);
+                break;
+            case "search_phu_kien":
+                search_phu_kien(request, response);
                 break;
             case "home":
                 display_pet_shop(request, response);
@@ -42,6 +46,24 @@ public class Hospital_Servlet extends HttpServlet {
             default:
                 display_pet_shop(request, response);
         }    }
+
+    private void search_phu_kien(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
+        String id = request.getParameter("pk_id");
+        Phu_kien phu_kien = hospitalService.getPhu_Kien(id);
+        ArrayList<Phu_kien> phu_kiens = hospitalService.getLimit4Phu_Kien(id);
+        request.setAttribute("phu_kien",phu_kien);
+        request.setAttribute("phu_kiens", phu_kiens);
+        request.getRequestDispatcher("shop-details.jsp").forward(request,response);
+    }
+
+    private void search_pet_shop(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
+        int id = Integer.parseInt(request.getParameter("ps_id"));
+        Pet_shop pet_shop = hospitalService.getPet_Shop(id);
+        ArrayList<Pet_shop> pet_shops = hospitalService.getLimit4Pet_Shop(id);
+        request.setAttribute("pet_shop", pet_shop);
+        request.setAttribute("pet_shops", pet_shops);
+        request.getRequestDispatcher("shop-details.jsp").forward(request,response);
+    }
 
     private void display_pet_shop(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
         ArrayList<Pet_shop> Pet_shops = hospitalService.getLimit8Pet_Shop();

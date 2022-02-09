@@ -52,13 +52,13 @@
         <div class="row">
             <div class="col-lg-3 col-md-3">
                 <div class="header__logo">
-                    <a href="<c:url value="/hospital?action=home"/>"><img src="img/logo.png" alt=""></a>
+                    <a href="<c:url value="/hospital"/>"><img src="img/logo.png" alt=""></a>
                 </div>
             </div>
             <div class="col-lg-6 col-md-6">
                 <nav class="header__menu mobile-menu">
                     <ul>
-                        <li class="active"><a href="<c:url value="/hospital?action=home"/>">Home</a></li>
+                        <li class="active"><a href="<c:url value="/hospital"/>">Home</a></li>
                         <li><a href="<c:url value="/shop"/>">Shop</a>
                             <ul class="dropdown">
                                 <li><a href="./shop.jsp">Thú Cưng</a></li>

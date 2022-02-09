@@ -21,6 +21,7 @@ public class HospitalDAO {
             Connection connection = myConnection.getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement("select ps.ps_id, ps.ps_ten, ps.ps_anh, ps.ps_gia , ps.ps_ngay_sinh, ps.ps_mota, ps.ps_trang_thai, gp.gp_ten from pet_shop ps\n" +
                     "join giong_pet gp on ps.ps_gp_id = gp.gp_id\n"+
+                    "where ps.ps_trang_thai != 0\n"+
                     "limit 8;");
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()){
@@ -49,6 +50,7 @@ public class HospitalDAO {
             Connection connection = myConnection.getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement("select pk.pk_id, pk.pk_ten, pk.pk_anh, pk.pk_gia, pk.pk_so_luong, pk.pk_mo_ta, lpk.lpk_ten from phu_kien pk\n" +
                     "join loai_phu_kien lpk on lpk.lpk_id = pk.pk_lpk_id\n" +
+                    "where pk.pk_so_luong != 0\n"+
                     "limit 8;");
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()){
@@ -75,6 +77,7 @@ public class HospitalDAO {
             PreparedStatement preparedStatement = connection.prepareStatement("select ctdv.ctdv_id, ctdv.ctdv_anh, ctdv.ctdv_ten, ctdv.ctdv_gia, ctdv.ctdv_mo_ta, ctdv.ctdv_trang_thai, dv.dv_ten\n" +
                     "from chi_tiet_dv ctdv\n" +
                     "join dich_vu dv on dv.dv_id = ctdv.ctdv_dv_id\n" +
+                    "where ctdv.ctdv_trang_thai != 0\n"+
                     "limit 8; ");
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()){
@@ -92,6 +95,55 @@ public class HospitalDAO {
             System.out.println(e.getMessage());
         }
         return dich_vus;
+    }
+
+    public ArrayList<Pet_shop> getAllPet_Shop() {
+        ArrayList<Pet_shop> pet_shops = new ArrayList<>();
+        try {
+            Connection connection = myConnection.getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement("select ps.ps_id, ps.ps_ten, ps.ps_anh, ps.ps_gia , ps.ps_ngay_sinh, gp.gp_mo_ta, ps.ps_mota,  ps.ps_trang_thai, ps.ps_gp_id from pet_shop ps\n" +
+                    "join giong_pet gp on ps.ps_gp_id = gp.gp_id;");
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()){
+                int id = resultSet.getInt(1);
+                String name = resultSet.getString(2);
+                String anh = resultSet.getString(3);
+                int gia = resultSet.getInt(4);
+                Date ngay_sinh = resultSet.getDate(5);
+                String mo_ta = resultSet.getString(6) + " " +resultSet.getString(7);
+                int trang_thai = resultSet.getInt(8);
+                String giong = resultSet.getString(9);
+                pet_shops.add(new Pet_shop(id, name, anh, gia, ngay_sinh , mo_ta , trang_thai, giong));
+            }
+
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        return pet_shops;
+    }
+
+    public ArrayList<Phu_kien> getAllPhu_Kien() {
+        ArrayList<Phu_kien> phu_kiens = new ArrayList<>();
+        try {
+            Connection connection = myConnection.getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement("select pk.pk_id, pk.pk_ten, pk.pk_anh, pk.pk_gia, pk.pk_so_luong, pk.pk_mo_ta, pk.pk_lpk_id from phu_kien pk\n" +
+                    "join loai_phu_kien lpk on lpk.lpk_id = pk.pk_lpk_id");
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()){
+                String id = resultSet.getString(1);
+                String name = resultSet.getString(2);
+                String anh = resultSet.getString(3);
+                int gia = resultSet.getInt(4);
+                int so_luong = resultSet.getInt(5);
+                String mo_ta = resultSet.getString(6);
+                String loai_phu_kien = resultSet.getString(7);
+                phu_kiens.add(new Phu_kien(id, name, anh, gia, so_luong , mo_ta , loai_phu_kien));
+            }
+
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        return phu_kiens;
     }
 
 }

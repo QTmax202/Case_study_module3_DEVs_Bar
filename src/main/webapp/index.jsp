@@ -48,7 +48,7 @@
                     </div>
                     <div class="banner__item__text">
                         <h2>Thú Cưng</h2>
-                        <a href="shop.jsp">Shop now</a>
+                        <a href="<c:url value="/shop"/>">Shop now</a>
                     </div>
                 </div>
             </div>
@@ -59,7 +59,7 @@
                     </div>
                     <div class="banner__item__text">
                         <h2>Phụ Kiện</h2>
-                        <a href="shop.jsp">Shop now</a>
+                        <a href="<c:url value="/shop"/>">Shop now</a>
                     </div>
                 </div>
             </div>
@@ -70,7 +70,7 @@
                     </div>
                     <div class="banner__item__text">
                         <h2>Dịch Vụ</h2>
-                        <a href="shop.jsp">Shop now</a>
+                        <a href="<c:url value="/shop"/>">Shop now</a>
                     </div>
                 </div>
             </div>
@@ -97,16 +97,14 @@
                              data-setbg="${pet_shop.getPs_anh()}">
                             <ul class="product__hover">
                                 <li><a href="#"><img src="img/icon/heart.png" alt=""> <span>Heart</span></a></li>
-                                <li><a href="<c:url value="/hospital?action=search&id=${pet_shop.getPs_id()}"/>"><img
+                                <li><a href="<c:url value="/hospital?action=search_pet_shop&ps_id=${pet_shop.getPs_id()}"/>"><img
                                         src="img/icon/search.png" alt=""> <span>Detail</span></a></li>
                             </ul>
                         </div>
                         <div class="product__item__text">
                             <h6>${pet_shop.getPs_ten()}</h6>
-                            <c:if test="${pet_shop.getPs_trang_thai() != 0 }">
-                                <a href="<c:url value="/hospital?action=addToCart&id=${pet_shop.getPs_id()}"/>"
-                                   class="add-cart">+ Add To Cart</a>
-                            </c:if>
+                            <a href="<c:url value="/hospital?action=addToCart&id=${pet_shop.getPs_id()}"/>"
+                               class="add-cart">+ Add To Cart</a>
                             <hr>
                             <h5>${pet_shop.getPs_gia()} VND</h5>
                         </div>
@@ -136,16 +134,14 @@
                              data-setbg="${phu_kien.getPk_anh()}">
                             <ul class="product__hover">
                                 <li><a href="#"><img src="img/icon/heart.png" alt=""> <span>Heart</span></a></li>
-                                <li><a href="<c:url value="/hospital?action=search&id=${phu_kien.getPk_id()}"/>"><img
+                                <li><a href="<c:url value="/hospital?action=search_phu_kien&pk_id=${phu_kien.getPk_id()}"/>"><img
                                         src="img/icon/search.png" alt=""> <span>Detail</span></a></li>
                             </ul>
                         </div>
                         <div class="product__item__text">
                             <h6>${phu_kien.getPk_ten()}</h6>
-                            <c:if test="${phu_kien.getPk_so_luong() != 0 }">
-                                <a href="<c:url value="/hospital?action=addToCart&id=${phu_kien.getPk_id()}"/>"
-                                   class="add-cart">+ Add To Cart</a>
-                            </c:if>
+                            <a href="<c:url value="/hospital?action=addToCart&id=${phu_kien.getPk_id()}"/>"
+                               class="add-cart">+ Add To Cart</a>
                             <hr>
                             <h5>${phu_kien.getPk_gia()} VND</h5>
                         </div>
@@ -181,10 +177,8 @@
                         </div>
                         <div class="product__item__text">
                             <h6>${dich_vu.getCtdv_ten()}</h6>
-                            <c:if test="${dich_vu.getCtdv_trang_thai() != 0 }">
-                                <a href="<c:url value="/hospital?action=addToCart&id=${dich_vu.getCtdv_id()}"/>"
-                                   class="add-cart">+ Add To Cart</a>
-                            </c:if>
+                            <a href="<c:url value="/hospital?action=addToCart&id=${dich_vu.getCtdv_id()}"/>"
+                               class="add-cart">+ Add To Cart</a>
                             <hr>
                             <h5>${dich_vu.getCtdv_gia()} VND</h5>
                         </div>
