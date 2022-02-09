@@ -70,7 +70,9 @@
                                     <div class="card-body">
                                         <div class="shop__sidebar__categories">
                                             <ul class="nice-scroll">
-                                                <li><a href="#">Men</a></li>
+                                                <c:forEach items="${giong_pets}" var="giong_pet">
+                                                    <li><a href="#">${giong_pet.gp_id}</a></li>
+                                                </c:forEach>
                                             </ul>
                                         </div>
                                     </div>
@@ -144,7 +146,8 @@
                                 <ul class="product__hover">
                                     <li><a href="#"><img src="img/icon/heart.png" alt=""> <span>Heart</span></a></li>
                                     <%--                            <li><a href="#"><img src="img/icon/compare.png" alt=""> <span>Compare</span></a></li>--%>
-                                    <li><a href="#"><img src="img/index/search.png" alt=""> <span>Detail</span></a></li>
+                                    <li><a href="shop-details.jsp"><img src="img/icon/search.png" alt="">
+                                        <span>Detail</span></a></li>
                                 </ul>
                             </div>
                             <div class="product__item__text">
