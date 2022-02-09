@@ -12,7 +12,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 @WebServlet(name = "HospitalServlet", urlPatterns = "/hospital")
-public class HospitalServlet extends HttpServlet {
+public class Hospital_Servlet extends HttpServlet {
     private static final HospitalService hospitalService = new HospitalService();
 
     @Override
