@@ -90,9 +90,6 @@
             </div>
         </div>
         <div class="row product__filter">
-<%--            <c:if test="${requestScope['list_pet_shop'].isEmpty()}">--%>
-<%--                <p>ko caocas as da</p>--%>
-<%--            </c:if>--%>
             <c:forEach items="${requestScope['pet_shops']}" var="pet_shop">
                 <div class="col-lg-3 col-md-6 col-sm-6 col-md-6 col-sm-6 mix new-arrivals">
                     <div class="product__item">
