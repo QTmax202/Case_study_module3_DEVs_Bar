@@ -59,7 +59,7 @@
                 <nav class="header__menu mobile-menu">
                     <ul>
                         <li class="active"><a href="<c:url value="/hospital?action=home"/>">Home</a></li>
-                        <li><a href="shop.jsp">Shop</a>
+                        <li><a href="<c:url value="/shop"/>">Shop</a>
                             <ul class="dropdown">
                                 <li><a href="./shop.jsp">Thú Cưng</a></li>
                                 <li><a href="./shop.jsp">Phụ Kiện</a></li>
