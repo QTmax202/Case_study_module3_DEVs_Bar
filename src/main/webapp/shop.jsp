@@ -71,7 +71,7 @@
                                         <div class="shop__sidebar__categories">
                                             <ul class="nice-scroll">
                                                 <c:forEach items="${giong_pets}" var="giong_pet">
-                                                    <li><a href="#">${giong_pet.gp_id}</a></li>
+                                                    <li><a href="/shop?action=thucung&id=${giong_pet.gp_id}">${giong_pet.gp_id}</a></li>
                                                 </c:forEach>
                                             </ul>
                                         </div>
@@ -84,12 +84,11 @@
                                 </div>
                                 <div id="collapseTwo" class="collapse show" data-parent="#accordionExample">
                                     <div class="card-body">
-                                        <div class="shop__sidebar__brand">
-                                            <ul>
-                                                <li><a href="#">Louis Vuitton</a></li>
-                                                <li><a href="#">Chanel</a></li>
-                                                <li><a href="#">Hermes</a></li>
-                                                <li><a href="#">Gucci</a></li>
+                                        <div class="shop__sidebar__categories">
+                                            <ul class="nice-scroll">
+                                                <c:forEach items="${phu_kiens}" var="phu_kien">
+                                                    <li><a href="#">${phu_kien.pk_lpk_id}</a></li>
+                                                </c:forEach>
                                             </ul>
                                         </div>
                                     </div>
@@ -101,14 +100,11 @@
                                 </div>
                                 <div id="collapseThree" class="collapse show" data-parent="#accordionExample">
                                     <div class="card-body">
-                                        <div class="shop__sidebar__price">
-                                            <ul>
-                                                <li><a href="#">$0.00 - $50.00</a></li>
-                                                <li><a href="#">$50.00 - $100.00</a></li>
-                                                <li><a href="#">$100.00 - $150.00</a></li>
-                                                <li><a href="#">$150.00 - $200.00</a></li>
-                                                <li><a href="#">$200.00 - $250.00</a></li>
-                                                <li><a href="#">250.00+</a></li>
+                                        <div class="shop__sidebar__categories">
+                                            <ul class="nice-scroll">
+                                                <c:forEach items="${chi_tiet_dvs}" var="chi_tiet_dv">
+                                                    <li><a href="#">${chi_tiet_dv.ctdv_dv_id}</a></li>
+                                                </c:forEach>
                                             </ul>
                                         </div>
                                     </div>
@@ -121,11 +117,7 @@
             <div class="col-lg-9">
                 <div class="shop__product__option">
                     <div class="row">
-                        <div class="col-lg-6    col-md-6 col-sm-6">
-                            <div class="shop__product__option__left">
-                                <p>Showing 1–12 of 126 results</p>
-                            </div>
-                        </div>
+                        <div class="col-lg-6    col-md-6 col-sm-6"></div>
                         <div class="col-lg-6 col-md-6 col-sm-6">
                             <div class="shop__product__option__right">
                                 <p>Sort by Price:</p>
@@ -139,36 +131,28 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-lg-4 col-md-6 col-sm-6">
-                        <div class="product__item">
-                            <div class="product__item__pic set-bg"
-                                 data-setbg="https://matpetfamily.com/wp-content/uploads/2022/01/D0015C3F-5BEC-4097-9222-280EE074B2FE.jpeg">
-                                <ul class="product__hover">
-                                    <li><a href="#"><img src="img/icon/heart.png" alt=""> <span>Heart</span></a></li>
-                                    <%--                            <li><a href="#"><img src="img/icon/compare.png" alt=""> <span>Compare</span></a></li>--%>
-                                    <li><a href="shop-details.jsp"><img src="img/icon/search.png" alt="">
-                                        <span>Detail</span></a></li>
-                                </ul>
-                            </div>
-                            <div class="product__item__text">
-                                <h6>Phốc sóc trắng</h6>
-                                <a href="#" class="add-cart">+ Add To Cart</a>
-                                <hr>
-                                <h5>20.000.000 VND</h5>
+                    <c:forEach items="${pet_shops}" var="pet_shop">
+                        <div class="col-lg-4 col-md-6 col-sm-6">
+                            <div class="product__item">
+                                <div class="product__item__pic set-bg"
+                                     data-setbg="${pet_shop.ps_anh}">
+                                    <ul class="product__hover">
+                                        <li><a href="#"><img src="img/icon/heart.png" alt=""> <span>Heart</span></a>
+                                        </li>
+                                            <%--                            <li><a href="#"><img src="img/icon/compare.png" alt=""> <span>Compare</span></a></li>--%>
+                                        <li><a href="shop-details.jsp"><img src="img/icon/search.png" alt="">
+                                            <span>Detail</span></a></li>
+                                    </ul>
+                                </div>
+                                <div class="product__item__text">
+                                    <h6>${pet_shop.ps_ten}</h6>
+                                    <a href="#" class="add-cart">+ Add To Cart</a>
+                                    <hr>
+                                    <h5>${pet_shop.ps_gia} VND</h5>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="product__pagination">
-                            <a class="active" href="#">1</a>
-                            <a href="#">2</a>
-                            <a href="#">3</a>
-                            <span>...</span>
-                            <a href="#">21</a>
-                        </div>
-                    </div>
+                    </c:forEach>
                 </div>
             </div>
         </div>
