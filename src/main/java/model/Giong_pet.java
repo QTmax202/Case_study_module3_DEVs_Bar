@@ -63,4 +63,8 @@ public class Giong_pet {
                 ", gp_lp_id='" + gp_lp_id + '\'' +
                 '}';
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 787db34e5fdd1ab57cc45903a38c1fe95afba508

@@ -1,14 +1,14 @@
 package service;
 
 import DAO.HospitalDAO;
-import model.pet_shop;
+import model.Pet_shop;
 
 import java.util.ArrayList;
 
 public class HospitalService {
     private static final HospitalDAO hospitalDAO = new HospitalDAO();
 
-    public ArrayList<pet_shop> getLimit8Pet_shop(){
-        return hospitalDAO.getLimit8Pet_Shop();
+    public ArrayList<Pet_shop> getAllPet_shop(){
+        return hospitalDAO.getAllPet_shop();
     }
 }

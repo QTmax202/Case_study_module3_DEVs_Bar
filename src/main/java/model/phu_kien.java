@@ -1,6 +1,6 @@
 package model;
 
-public class phu_kien {
+public class Phu_kien {
     private String pk_id;
     private String pk_ten;
     private String pk_anh;
