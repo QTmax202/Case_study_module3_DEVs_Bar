@@ -17,7 +17,9 @@
 </head>
 <body>
 <table>
-    <h1>adasda</h1>
+    <h1><a href="<c:url value="/hospital?action=search}"/>"><img
+            src="img/icon/search.png" alt=""> <span>Detail</span></a></h1>
+    <form action="${pageContext.request.contextPath}/hospital">
     <c:forEach items="${requestScope['pet_shops']}" var="pet_shop">
         <tr>
             <td>${pet_shop.getPs_ten()}</td>
@@ -27,6 +29,7 @@
             <td>${pet_shop.getPs_gp_id()}</td>
         </tr>
     </c:forEach>
+    </form>
 </table>
 </body>
 </html>

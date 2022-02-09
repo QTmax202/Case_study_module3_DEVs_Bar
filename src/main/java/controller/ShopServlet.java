@@ -1,8 +1,9 @@
 package controller;
 
-import model.Pet_shop;
-import service.HospitalService;
+import DAO.ShopDAOIpm;
+import model.Giong_pet;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -11,13 +12,14 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.ArrayList;
 
-@WebServlet(name = "HospitalServlet", urlPatterns = "/hospital")
-public class Hospital_Servlet extends HttpServlet {
-    private static final HospitalService hospitalService = new HospitalService();
+@WebServlet(name = "ShopServlet", urlPatterns = "/shop-servlet")
+public class ShopServlet extends HttpServlet {
+    private static final ShopDAOIpm shopDAOImp = new ShopDAOIpm();
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         action(request, response);
+
     }
 
     @Override
@@ -35,13 +37,14 @@ public class Hospital_Servlet extends HttpServlet {
             case "shop":
                 break;
             default:
-                display_pet_shop(request, response);
+                categoryPet(request, response);
         }    }
 
-    private void display_pet_shop(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
-        ArrayList<Pet_shop> Pet_shops = hospitalService.getAllPet_shop();
-        request.setAttribute("pet_shops", Pet_shops);
-        request.getRequestDispatcher("").forward(request,response);
+    private void categoryPet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
+        ArrayList<Giong_pet> giong_pets = (ArrayList<Giong_pet>) shopDAOImp.categoryPet();
+        request.setAttribute("giong_pets",giong_pets);
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher("shop.jsp");
+        requestDispatcher.forward(request, response);
     }
 
 }
