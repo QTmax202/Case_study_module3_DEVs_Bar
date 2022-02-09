@@ -7,7 +7,7 @@ import java.sql.*;
 import java.util.ArrayList;
 
 
-public class NhanVienDAO implements INhanVienDAO {
+public class NhanVienDAO {
     private static final String INSERT_NHAN_VIEN_SQL = "insert into nhan_vien(nv_id, nv_anh, nv_ten, nv_gioi_tinh, nv_email, nv_phone_number, nv_ngay_sinh, nv_dia_chi, nv_ca_id) value(?,?,?,?,?,?,?,?,?);";
     private static final String SELECT_ALL_NHAN_VIEN = "select * from nhan_vien;";
     private static final String UPDATE_NHAN_VIEN_SQL = "update nhan_vien set nv_anh= ?,nv_ten= ?, nv_gioi_tinh=?, nv_email=?, nv_phone_number=?, nv_ngay_sinh=?, nv_dia_chi=?, nv_ca_id=?  where nv_id = ?;";
@@ -21,7 +21,7 @@ public class NhanVienDAO implements INhanVienDAO {
         }
         return connection;
     }
-    @Override
+
     public void insertNhanVien(Nhan_vien nhanVien) throws SQLException {
         System.out.println(INSERT_NHAN_VIEN_SQL);
 
@@ -41,7 +41,7 @@ public class NhanVienDAO implements INhanVienDAO {
             printSQLException(e);
         }
     }
-    @Override
+
     public ArrayList<Nhan_vien> selectAllNhanViens() {
 
         ArrayList<Nhan_vien> nhanViens = new ArrayList<>();
@@ -70,7 +70,7 @@ public class NhanVienDAO implements INhanVienDAO {
         }
         return nhanViens;
     }
-    @Override
+
     public boolean updateNhanVien(Nhan_vien nhanVien) throws SQLException {
         boolean rowUpdated;
         try (Connection connection = getConnection();

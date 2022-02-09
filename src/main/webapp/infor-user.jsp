@@ -78,10 +78,10 @@
                                 <div class="checkout__input">
                                     <p>Giới Tính<span>*</span></p>
                                     <label>
-                                        <select name="kh_gioi_tinh">
-                                            <option value="">Nam</option>
-                                            <option value="">Nữ</option>
-                                            <option value="">Khác</option>
+                                        <select class="w3-select" name="kh_gioi_tinh">
+                                            <option value="1">Nam</option>
+                                            <option value="2">Nữ</option>
+                                            <option value="3">Khác</option>
                                         </select>
                                     </label>
                                 </div>

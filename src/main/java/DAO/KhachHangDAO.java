@@ -6,7 +6,7 @@ import model.Khach_hang;
 import java.sql.*;
 import java.util.ArrayList;
 
-public class KhachHangDAO implements IKhachHangDAO {
+public class KhachHangDAO {
     private static final String INSERT_KHACH_HANG_SQL = "insert into khach_hang(kh_anh, kh_ten, kh_gioi_tinh, kh_email, kh_phone_number, kh_ngay_sinh, kh_dia_chi) value(?,?,?,?,?,?,?);";
     private static final String SELECT_ALL_KHACH_HANG = "select * from khach_hang;";
     private static final String UPDATE_KHACH_HANG_SQL = "update khach_hang set kh_anh= ?,kh_ten= ?, kh_gioi_tinh=?, kh_email=?, kh_phone_number=?, kh_ngay_sinh=?, kh_dia_chi=?  where kh_id = ?;";
@@ -21,7 +21,7 @@ public class KhachHangDAO implements IKhachHangDAO {
         return connection;
     }
 
-    @Override
+
     public ArrayList<Khach_hang> selectAllKhachHangs() {
         return null;
     }
@@ -74,7 +74,7 @@ public class KhachHangDAO implements IKhachHangDAO {
         }
         return khachHangs;
     }
-    @Override
+
     public boolean updateKhachHang(Khach_hang kh) throws SQLException {
         boolean rowUpdated;
         try (Connection connection = getConnection();
