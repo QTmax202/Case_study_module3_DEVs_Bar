@@ -77,4 +77,32 @@ public class HospitalService {
         }
         return list_pks;
     }
+
+    public Chi_tiet_dv getDich_Vu(String id) {
+        ArrayList<Chi_tiet_dv> dich_vus = hospitalDAO.getAllDich_Vu();
+        for (Chi_tiet_dv dv : dich_vus) {
+            if (dv.getCtdv_id().equals(id)) {
+                return new Chi_tiet_dv(dv.getCtdv_id(), dv.getCtdv_anh(), dv.getCtdv_ten(), dv.getCtdv_gia(), dv.getCtdv_mo_ta(), dv.getCtdv_trang_thai(), dv.getCtdv_dv_id());
+            }
+        }
+        return null;
+    }
+
+    public ArrayList<Chi_tiet_dv> getLimit4Dich_Vu(String id) {
+        Chi_tiet_dv dich_vu = getDich_Vu(id);
+        ArrayList<Chi_tiet_dv> dich_vus = hospitalDAO.getAllDich_Vu();
+        ArrayList<Chi_tiet_dv> list_dvs = new ArrayList<>();
+        int index = 0;
+        for (Chi_tiet_dv dv : dich_vus) {
+            if (dich_vu.getCtdv_dv_id().equals(dv.getCtdv_dv_id()) && !dich_vu.getCtdv_id().equals(dv.getCtdv_id())) {
+                if (dv.getCtdv_trang_thai() != 0) {
+                    if (index < 4){
+                        list_dvs.add(dv);
+                        index++;
+                    }
+                }
+            }
+        }
+        return list_dvs;
+    }
 }

@@ -40,12 +40,24 @@ public class Hospital_Servlet extends HttpServlet {
             case "search_phu_kien":
                 search_phu_kien(request, response);
                 break;
+            case "search_dich_vu":
+                search_dich_vu(request, response);
+                break;
             case "home":
                 display_pet_shop(request, response);
                 break;
             default:
                 display_pet_shop(request, response);
         }    }
+
+    private void search_dich_vu(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
+        String id = request.getParameter("dv_id");
+        Chi_tiet_dv dich_vu = hospitalService.getDich_Vu(id);
+        ArrayList<Chi_tiet_dv> dich_vus = hospitalService.getLimit4Dich_Vu(id);
+        request.setAttribute("dich_vu",dich_vu);
+        request.setAttribute("dich_vus", dich_vus);
+        request.getRequestDispatcher("shop-details.jsp").forward(request,response);
+    }
 
     private void search_phu_kien(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
         String id = request.getParameter("pk_id");

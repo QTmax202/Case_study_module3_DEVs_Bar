@@ -106,7 +106,7 @@
                             <a href="<c:url value="/hospital?action=addToCart&id=${pet_shop.getPs_id()}"/>"
                                class="add-cart">+ Add To Cart</a>
                             <hr>
-                            <h5>${pet_shop.getPs_gia()} VND</h5>
+                            <h5>${pet_shop.getPs_gia()} VNĐ</h5>
                         </div>
                     </div>
                 </div>
@@ -143,7 +143,7 @@
                             <a href="<c:url value="/hospital?action=addToCart&id=${phu_kien.getPk_id()}"/>"
                                class="add-cart">+ Add To Cart</a>
                             <hr>
-                            <h5>${phu_kien.getPk_gia()} VND</h5>
+                            <h5>${phu_kien.getPk_gia()} VNĐ</h5>
                         </div>
                     </div>
                 </div>
@@ -171,7 +171,7 @@
                              data-setbg="${dich_vu.getCtdv_anh()}">
                             <ul class="product__hover">
                                 <li><a href="#"><img src="img/icon/heart.png" alt=""> <span>Heart</span></a></li>
-                                <li><a href="<c:url value="/hospital?action=search&id=${dich_vu.getCtdv_id()}"/>"><img
+                                <li><a href="<c:url value="/hospital?action=search_dich_vu&dv_id=${dich_vu.getCtdv_id()}"/>"><img
                                         src="img/icon/search.png" alt=""> <span>Detail</span></a></li>
                             </ul>
                         </div>
@@ -180,7 +180,7 @@
                             <a href="<c:url value="/hospital?action=addToCart&id=${dich_vu.getCtdv_id()}"/>"
                                class="add-cart">+ Add To Cart</a>
                             <hr>
-                            <h5>${dich_vu.getCtdv_gia()} VND</h5>
+                            <h5>${dich_vu.getCtdv_gia()} VNĐ</h5>
                         </div>
                     </div>
                 </div>

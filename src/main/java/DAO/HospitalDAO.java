@@ -19,9 +19,9 @@ public class HospitalDAO {
         ArrayList<Pet_shop> pet_shops = new ArrayList<>();
         try {
             Connection connection = myConnection.getConnection();
-            PreparedStatement preparedStatement = connection.prepareStatement("select ps.ps_id, ps.ps_ten, ps.ps_anh, ps.ps_gia , ps.ps_ngay_sinh, ps.ps_mota, ps.ps_trang_thai, gp.gp_ten from pet_shop ps\n" +
-                    "join giong_pet gp on ps.ps_gp_id = gp.gp_id\n"+
-                    "where ps.ps_trang_thai != 0\n"+
+            PreparedStatement preparedStatement = connection.prepareStatement("select ps.ps_id, ps.ps_ten, ps.ps_anh, ps.ps_gia , ps.ps_ngay_sinh, ps.ps_mota,  ps.ps_trang_thai, ps.ps_gp_id from pet_shop ps\n" +
+                    "join giong_pet gp on ps.ps_gp_id = gp.gp_id\n" +
+                    "where ps.ps_trang_thai != 0\n" +
                     "limit 8;");
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()){
@@ -146,4 +146,28 @@ public class HospitalDAO {
         return phu_kiens;
     }
 
+    public ArrayList<Chi_tiet_dv> getAllDich_Vu() {
+        ArrayList<Chi_tiet_dv> dich_vus = new ArrayList<>();
+        try {
+            Connection connection = myConnection.getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement("select ctdv.ctdv_id, ctdv.ctdv_anh, ctdv.ctdv_ten, ctdv.ctdv_gia, ctdv.ctdv_mo_ta, ctdv.ctdv_trang_thai, ctdv.ctdv_dv_id\n" +
+                    "from chi_tiet_dv ctdv\n" +
+                    "join dich_vu dv on dv.dv_id = ctdv.ctdv_dv_id");
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()){
+                String id = resultSet.getString(1);
+                String anh = resultSet.getString(2);
+                String name = resultSet.getString(3);
+                int gia = resultSet.getInt(4);
+                String mo_ta = resultSet.getString(5);
+                int trang_thai = resultSet.getInt(6);
+                String dich_vu = resultSet.getString(7);
+                dich_vus.add(new Chi_tiet_dv(id, anh, name, gia, mo_ta , trang_thai, dich_vu));
+            }
+
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        return dich_vus;
+    }
 }

@@ -43,6 +43,9 @@
     <c:if test="${phu_kien != null}">
         <c:param name="action" value="search_phu_kien"/>
     </c:if>
+    <c:if test="${dich_vu != null}">
+        <c:param name="action" value="search_dich_vu"/>
+    </c:if>
 </c:url>
 
 <jsp:include page="_Menu.jsp"></jsp:include>
@@ -72,6 +75,9 @@
                                 <c:if test="${phu_kien != null}">
                                     <img src="${phu_kien.getPk_anh()}" alt="">
                                 </c:if>
+                                <c:if test="${dich_vu != null}">
+                                    <img src="${dich_vu.getCtdv_anh()}" alt="">
+                                </c:if>
                             </div>
                         </div>
                     </div>
@@ -91,21 +97,30 @@
                             <c:if test="${phu_kien != null}">
                                 ${phu_kien.getPk_ten()}
                             </c:if>
+                            <c:if test="${dich_vu != null}">
+                                ${dich_vu.getCtdv_ten()}
+                            </c:if>
                         </h4>
                         <hr>
                         <h3>
                             <c:if test="${pet_shop != null}">
-                                ${pet_shop.getPs_gia()} VND
+                                ${pet_shop.getPs_gia()} VNĐ
                             </c:if>
                             <c:if test="${phu_kien != null}">
-                                ${phu_kien.getPk_gia()} VND
+                                ${phu_kien.getPk_gia()} VNĐ
+                            </c:if>
+                            <c:if test="${dich_vu != null}">
+                                ${dich_vu.getCtdv_gia()} VNĐ
                             </c:if>
                             <span>
                                 <c:if test="${pet_shop != null}">
-                                    ${pet_shop.getPs_gia() + Integer.valueOf(pet_shop.getPs_gia() * 0.1)}
+                                    ${pet_shop.getPs_gia() + Integer.valueOf(pet_shop.getPs_gia() * 0.1)} vnđ
                                 </c:if>
                                 <c:if test="${phu_kien != null}">
-                                    ${phu_kien.getPk_gia() + Integer.valueOf(phu_kien.getPk_gia() * 0.1)}
+                                    ${phu_kien.getPk_gia() + Integer.valueOf(phu_kien.getPk_gia() * 0.1)} vnđ
+                                </c:if>
+                                <c:if test="${dich_vu != null}">
+                                    ${dich_vu.getCtdv_gia() + Integer.valueOf(dich_vu.getCtdv_gia() * 0.1)} vnđ
                                 </c:if>
                             </span>
                         </h3>
@@ -119,6 +134,11 @@
                                     ${phu_kien.getPk_mo_ta()}
                             </p>
                         </c:if>
+                        <c:if test="${dich_vu != null}">
+                            <p>
+                                    ${dich_vu.getCtdv_mo_ta()}
+                            </p>
+                        </c:if>
                         <div class="product__details__btns__option">
                                 <c:if test="${pet_shop != null }">
                                     <c:if test="${pet_shop.getPs_trang_thai() != 0}">
@@ -129,6 +149,13 @@
                                 </c:if>
                             <c:if test="${phu_kien != null}">
                                 <c:if test="${phu_kien.getPk_so_luong() != 0}">
+                                    <p>
+                                        Tình trạng: Còn hàng
+                                    </p>
+                                </c:if>
+                            </c:if>
+                            <c:if test="${dich_vu != null}">
+                                <c:if test="${dich_vu.getCtdv_trang_thai() != 0}">
                                     <p>
                                         Tình trạng: Còn hàng
                                     </p>
@@ -148,6 +175,11 @@
                             </c:if>
                             <c:if test="${phu_kien != null}">
                                 <c:if test="${phu_kien.getPk_so_luong() != 0}">
+                                    <a href="#" class="primary-btn">add to cart</a>
+                                </c:if>
+                            </c:if>
+                            <c:if test="${dich_vu != null}">
+                                <c:if test="${dich_vu.getCtdv_trang_thai() != 0}">
                                     <a href="#" class="primary-btn">add to cart</a>
                                 </c:if>
                             </c:if>
@@ -213,6 +245,29 @@
                                    class="add-cart">+ Add To Cart</a>
                                 <hr>
                                 <h5>${phu_kien.getPk_gia()} VND</h5>
+                            </div>
+                        </div>
+                    </div>
+                </c:forEach>
+            </c:if>
+            <c:if test="${dich_vu != null}">
+                <c:forEach items="${requestScope['dich_vus']}" var="dich_vu">
+                    <div class="col-lg-3 col-md-6 col-sm-6 col-md-6 col-sm-6 mix new-arrivals">
+                        <div class="product__item">
+                            <div class="product__item__pic set-bg"
+                                 data-setbg="${dich_vu.getCtdv_anh()}">
+                                <ul class="product__hover">
+                                    <li><a href="#"><img src="img/icon/heart.png" alt=""> <span>Heart</span></a></li>
+                                    <li><a href="<c:url value="/hospital?action=search_dich_vu&dv_id=${dich_vu.getCtdv_id()}"/>"><img
+                                            src="img/icon/search.png" alt=""> <span>Detail</span></a></li>
+                                </ul>
+                            </div>
+                            <div class="product__item__text">
+                                <h6>${dich_vu.getCtdv_ten()}</h6>
+                                <a href="<c:url value="/hospital?action=addToCart&id=${dich_vu.getCtdv_id()}"/>"
+                                   class="add-cart">+ Add To Cart</a>
+                                <hr>
+                                <h5>${dich_vu.getCtdv_gia()} VNĐ</h5>
                             </div>
                         </div>
                     </div>
