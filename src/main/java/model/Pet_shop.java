@@ -1,21 +1,20 @@
 package model;
 
 import java.time.LocalDate;
-import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 import java.util.Date;
 
-public class pet_shop {
+public class Pet_shop {
     private int ps_id;
     private String ps_ten;
     private String ps_anh;
     private int ps_gia;
-    private final Date ps_ngay_sinh;
+    private Date ps_ngay_sinh;
     private String ps_mo_ta;
     private int ps_trang_thai;
     private String ps_gp_id;
 
-    public pet_shop(int ps_id, String ps_ten, String ps_anh, int ps_gia, Date ps_ngay_sinh, String ps_mo_ta, int ps_trang_thai, String ps_gp_id) {
+    public Pet_shop(int ps_id, String ps_ten, String ps_anh, int ps_gia, Date ps_ngay_sinh, String ps_mo_ta, int ps_trang_thai, String ps_gp_id) {
         this.ps_id = ps_id;
         this.ps_ten = ps_ten;
         this.ps_anh = ps_anh;
@@ -26,7 +25,7 @@ public class pet_shop {
         this.ps_gp_id = ps_gp_id;
     }
 
-    public pet_shop(String ps_ten, String ps_anh, int ps_gia, Date ps_ngay_sinh, String ps_mo_ta, int ps_trang_thai, String ps_gp_id) {
+    public Pet_shop(String ps_ten, String ps_anh, int ps_gia, Date ps_ngay_sinh, String ps_mo_ta, int ps_trang_thai, String ps_gp_id) {
         this.ps_ten = ps_ten;
         this.ps_anh = ps_anh;
         this.ps_gia = ps_gia;
@@ -72,9 +71,9 @@ public class pet_shop {
         return ps_ngay_sinh;
     }
 
-//    public void setPs_ngay_sinh(String ps_ngay_sinh) {
-//        this.ps_ngay_sinh = LocalDate.parse(ps_ngay_sinh, DateTimeFormatter.ofPattern("dd/MM/yyyy"));
-//    }
+    public void setPs_ngay_sinh(Date ps_ngay_sinh) {
+        this.ps_ngay_sinh = ps_ngay_sinh;
+    }
 
     public String getPs_mo_ta() {
         return ps_mo_ta;
