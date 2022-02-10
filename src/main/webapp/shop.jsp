@@ -55,8 +55,8 @@
             <div class="col-lg-3">
                 <div class="shop__sidebar">
                     <div class="shop__sidebar__search">
-                        <form action="#">
-                            <input type="text" placeholder="Search...">
+                        <form action="/shop?action=tim-kiem" method="post">
+                            <input value="${tim}" type="text" placeholder="Search..." name="tim-kiem">
                             <button type="submit"><span class="icon_search"></span></button>
                         </form>
                     </div>
@@ -70,6 +70,7 @@
                                     <div class="card-body">
                                         <div class="shop__sidebar__categories">
                                             <ul class="nice-scroll">
+                                                <li class="fa fa-star-o"><a href="/shop?action=list-thu-cung">  TẤT CẢ</a></li>
                                                 <c:forEach items="${giong_pets}" var="giong_pet">
                                                     <li><a href="/shop?action=thucung&id=${giong_pet.gp_id}">${giong_pet.gp_id}</a></li>
                                                 </c:forEach>
@@ -86,8 +87,9 @@
                                     <div class="card-body">
                                         <div class="shop__sidebar__categories">
                                             <ul class="nice-scroll">
+                                                <li class="fa fa-star-o"><a href="/shop?action=list-phu-kien">  TẤT CẢ</a></li>
                                                 <c:forEach items="${phu_kiens}" var="phu_kien">
-                                                    <li><a href="#">${phu_kien.pk_lpk_id}</a></li>
+                                                    <li><a href="/shop?action=phukien&id=${phu_kien.pk_mo_ta}">${phu_kien.pk_lpk_id}</a></li>
                                                 </c:forEach>
                                             </ul>
                                         </div>
@@ -102,8 +104,9 @@
                                     <div class="card-body">
                                         <div class="shop__sidebar__categories">
                                             <ul class="nice-scroll">
+                                                <li class="fa fa-star-o"><a href="/shop?action=list-dich-vu">  TẤT CẢ</a></li>
                                                 <c:forEach items="${chi_tiet_dvs}" var="chi_tiet_dv">
-                                                    <li><a href="#">${chi_tiet_dv.ctdv_dv_id}</a></li>
+                                                    <li><a href="/shop?action=dichvu&id=${chi_tiet_dv.ctdv_mo_ta}">${chi_tiet_dv.ctdv_dv_id}</a></li>
                                                 </c:forEach>
                                             </ul>
                                         </div>
@@ -120,16 +123,16 @@
                         <div class="col-lg-6    col-md-6 col-sm-6"></div>
                         <div class="col-lg-6 col-md-6 col-sm-6">
                             <div class="shop__product__option__right">
-                                <p>Sort by Price:</p>
+                                <p>Sắp xếp theo giá:</p>
                                 <select>
-                                    <option value="">Low To High</option>
-                                    <option value="">$0 - $55</option>
-                                    <option value="">$55 - $100</option>
+                                    <option><a href="shop?action=sap-xep-tang">Sắp xếp tăng dần</a></option>
+                                    <option><a href="shop?action=sap-xep-giam">Sắp xếp giảm dần</a></option>
                                 </select>
                             </div>
                         </div>
                     </div>
                 </div>
+
                 <div class="row">
                     <c:forEach items="${pet_shops}" var="pet_shop">
                         <div class="col-lg-4 col-md-6 col-sm-6">
@@ -145,10 +148,78 @@
                                     </ul>
                                 </div>
                                 <div class="product__item__text">
-                                    <h6>${pet_shop.ps_ten}</h6>
-                                    <a href="#" class="add-cart">+ Add To Cart</a>
-                                    <hr>
-                                    <h5>${pet_shop.ps_gia} VND</h5>
+                                    <c:if test="${pet_shop.getPs_trang_thai() != 0}">
+                                        <h6>${pet_shop.ps_ten}</h6>
+                                        <a href="#" class="add-cart">+ Add To Cart</a>
+                                        <hr>
+                                        <h5>${pet_shop.ps_gia} VND</h5>
+                                    </c:if>
+                                    <c:if test="${pet_shop.getPs_trang_thai() == 0}">
+                                        <h6>${pet_shop.ps_ten}</h6>
+                                        <a class="add-cart">Hết hàng</a>
+                                        <hr>
+                                        <h5>${pet_shop.ps_gia} VND</h5>
+                                    </c:if>
+                                </div>
+                            </div>
+                        </div>
+                    </c:forEach>
+                    <c:forEach items="${phu_kien_id}" var="phu_kien_id">
+                        <div class="col-lg-4 col-md-6 col-sm-6">
+                            <div class="product__item">
+                                <div class="product__item__pic set-bg"
+                                     data-setbg="${phu_kien_id.pk_anh}">
+                                    <ul class="product__hover">
+                                        <li><a href="#"><img src="img/icon/heart.png" alt=""> <span>Heart</span></a>
+                                        </li>
+                                            <%--                            <li><a href="#"><img src="img/icon/compare.png" alt=""> <span>Compare</span></a></li>--%>
+                                        <li><a href="shop-details.jsp"><img src="img/icon/search.png" alt="">
+                                            <span>Detail</span></a></li>
+                                    </ul>
+                                </div>
+                                <div class="product__item__text">
+                                    <c:if test="${phu_kien_id.getPk_so_luong() != 0}">
+                                        <h6>${phu_kien_id.pk_ten}</h6>
+                                        <a href="#" class="add-cart">+ Add To Cart</a>
+                                        <hr>
+                                        <h5>${phu_kien_id.pk_gia} VND</h5>
+                                    </c:if>
+                                    <c:if test="${phu_kien_id.getPk_so_luong() == 0}">
+                                        <h6>${phu_kien_id.pk_ten}</h6>
+                                        <a class="add-cart">Hết hàng</a>
+                                        <hr>
+                                        <h5>${phu_kien_id.pk_gia} VND</h5>
+                                    </c:if>
+                                </div>
+                            </div>
+                        </div>
+                    </c:forEach>
+                    <c:forEach items="${chi_tiet_dv}" var="chi_tiet_dv">
+                        <div class="col-lg-4 col-md-6 col-sm-6">
+                            <div class="product__item">
+                                <div class="product__item__pic set-bg"
+                                     data-setbg="${chi_tiet_dv.ctdv_anh}">
+                                    <ul class="product__hover">
+                                        <li><a href="#"><img src="img/icon/heart.png" alt=""> <span>Heart</span></a>
+                                        </li>
+                                            <%--                            <li><a href="#"><img src="img/icon/compare.png" alt=""> <span>Compare</span></a></li>--%>
+                                        <li><a href="shop-details.jsp"><img src="img/icon/search.png" alt="">
+                                            <span>Detail</span></a></li>
+                                    </ul>
+                                </div>
+                                <div class="product__item__text">
+                                    <c:if test="${chi_tiet_dv.getCtdv_trang_thai() != 0}">
+                                        <h6>${chi_tiet_dv.ctdv_ten}</h6>
+                                        <a href="#" class="add-cart">+ Add To Cart</a>
+                                        <hr>
+                                        <h5>${chi_tiet_dv.ctdv_gia} VND</h5>
+                                    </c:if>
+                                    <c:if test="${chi_tiet_dv.getCtdv_trang_thai() == 0}">
+                                        <h6>${chi_tiet_dv.ctdv_ten}</h6>
+                                        <a class="add-cart">Hết hàng</a>
+                                        <hr>
+                                        <h5>${chi_tiet_dv.ctdv_gia} VND</h5>
+                                    </c:if>
                                 </div>
                             </div>
                         </div>
