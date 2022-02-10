@@ -4,7 +4,9 @@ import model.Khach_hang;
 
 
 import java.sql.*;
+import java.time.LocalDate;
 import java.util.ArrayList;
+import java.sql.Date;
 
 public class KhachHangDAO {
     private static final String INSERT_KHACH_HANG_SQL = "insert into khach_hang(kh_anh, kh_ten, kh_gioi_tinh, kh_email, kh_phone_number, kh_ngay_sinh, kh_dia_chi) value(?,?,?,?,?,?,?);";
@@ -30,14 +32,14 @@ public class KhachHangDAO {
         System.out.println(INSERT_KHACH_HANG_SQL);
 
         try (Connection connection = getConnection(); PreparedStatement preparedStatement = connection.prepareStatement(INSERT_KHACH_HANG_SQL)) {
-            preparedStatement.setString(1, kh.getKh_id());
-            preparedStatement.setString(2, kh.getKh_anh());
-            preparedStatement.setString(3, kh.getKh_ten());
-            preparedStatement.setString(4, kh.getKh_gioi_tinh());
-            preparedStatement.setString(5, kh.getKh_email());
-            preparedStatement.setString(6, kh.getKh_phone_number());
-            preparedStatement.setDate(7, (Date) kh.getKh_ngay_sinh());
-            preparedStatement.setString(8, kh.getKh_dia_chi());
+//            preparedStatement.setString(1, kh.getKh_id());
+            preparedStatement.setString(1, kh.getKh_anh());
+            preparedStatement.setString(2, kh.getKh_ten());
+            preparedStatement.setString(3, kh.getKh_gioi_tinh());
+            preparedStatement.setString(4, kh.getKh_email());
+            preparedStatement.setString(5, kh.getKh_phone_number());
+            preparedStatement.setDate(6, java.sql.Date.valueOf(kh.getKh_ngay_sinh()));
+            preparedStatement.setString(7, kh.getKh_dia_chi());
 
             System.out.println(preparedStatement);
             preparedStatement.executeUpdate();
@@ -65,7 +67,7 @@ public class KhachHangDAO {
                 String kh_gioi_tinh = rs.getString("kh_gioi_tinh");
                 String kh_email = rs.getString("kh_email");
                 String kh_phone_number = rs.getString("kh_phone_number");
-                Date kh_ngay_sinh = rs.getDate("kh_ngay_sinh");
+                LocalDate kh_ngay_sinh = rs.getDate("kh_ngay_sinh").toLocalDate();
                 String kh_dia_chi = rs.getString("kh_dia_chi");
                 khachHangs.add(new Khach_hang(kh_id, kh_anh, kh_ten, kh_gioi_tinh, kh_email, kh_phone_number, kh_ngay_sinh, kh_dia_chi));
             }
@@ -79,14 +81,14 @@ public class KhachHangDAO {
         boolean rowUpdated;
         try (Connection connection = getConnection();
              PreparedStatement statement = connection.prepareStatement(UPDATE_KHACH_HANG_SQL);) {
-            statement.setString(1, kh.getKh_id());
-            statement.setString(2, kh.getKh_anh());
-            statement.setString(3, kh.getKh_ten());
-            statement.setString(4, kh.getKh_gioi_tinh());
-            statement.setString(5, kh.getKh_email());
-            statement.setString(6, kh.getKh_phone_number());
-            statement.setDate(7, (Date) kh.getKh_ngay_sinh());
-            statement.setString(8,  kh.getKh_dia_chi());
+
+            statement.setString(1, kh.getKh_anh());
+            statement.setString(2, kh.getKh_ten());
+            statement.setString(3, kh.getKh_gioi_tinh());
+            statement.setString(4, kh.getKh_email());
+            statement.setString(5, kh.getKh_phone_number());
+            statement.setDate(6, java.sql.Date.valueOf(kh.getKh_ngay_sinh()));
+            statement.setString(7,  kh.getKh_dia_chi());
 
             rowUpdated = statement.executeUpdate() > 0;
         }

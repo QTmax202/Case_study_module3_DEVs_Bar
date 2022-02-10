@@ -1,5 +1,6 @@
 package model;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 public class Khach_hang {
@@ -9,13 +10,13 @@ public class Khach_hang {
     private String kh_gioi_tinh;
     private String kh_email;
     private String kh_phone_number;
-    private Date kh_ngay_sinh;
+    private LocalDate kh_ngay_sinh;
     private String kh_dia_chi;
 
     public Khach_hang() {
     }
 
-    public Khach_hang(String kh_id, String kh_anh, String kh_ten, String kh_gioi_tinh, String kh_email, String kh_phone_number, Date kh_ngay_sinh, String kh_dia_chi) {
+    public Khach_hang(String kh_id, String kh_anh, String kh_ten, String kh_gioi_tinh, String kh_email, String kh_phone_number, LocalDate kh_ngay_sinh, String kh_dia_chi) {
         this.kh_id = kh_id;
         this.kh_anh = kh_anh;
         this.kh_ten = kh_ten;
@@ -74,11 +75,11 @@ public class Khach_hang {
         this.kh_phone_number = kh_phone_number;
     }
 
-    public Date getKh_ngay_sinh() {
+    public LocalDate getKh_ngay_sinh() {
         return kh_ngay_sinh;
     }
 
-    public void setKh_ngay_sinh(Date kh_ngay_sinh) {
+    public void setKh_ngay_sinh(LocalDate kh_ngay_sinh) {
         this.kh_ngay_sinh = kh_ngay_sinh;
     }
 

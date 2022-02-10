@@ -59,49 +59,56 @@
 <!-- Thêm Thú Cưng Begin -->
 <section class="checkout spad">
     <div class="container">
+
+        <%--        đăng kí thông tin nhân viên--%>
         <div class="checkout__form">
 
-            <form action="${pageContext.request.contextPath}/khachHang?action=creatPost">
+            <form action="${pageContext.request.contextPath}/nhanVien?action=creatPost" method="post">
                 <div class="row">
                     <div class="col-lg-8 col-md-6">
-                        <h6 class="checkout__title">Cập Nhật Thông Tin Khách Hàng</h6>
+                        <h6 class="checkout__title">Cập Nhật Thông Tin Nhân Viên</h6>
                         <div class="row">
-                            <div class="col-lg-9">
+                            <div class="col-lg-2">
+                                <div class="checkout__input">
+                                    <p>ID Nhân Viên<span>*</span></p>
+                                    <label>
+                                        <input type="text" name="nv_id">
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col-lg-7">
                                 <div class="checkout__input">
                                     <p>Họ & Tên<span>*</span></p>
                                     <label>
-                                        <input type="text" name="kh_name">
+                                        <input type="text" name="nv_ten">
                                     </label>
                                 </div>
                             </div>
                             <div class="col-lg-3">
                                 <div class="checkout__input">
                                     <p>Giới Tính<span>*</span></p>
-                                    <label>
-                                        <select class="w3-select" name="kh_gioi_tinh">
-                                            <option value="1">Nam</option>
-                                            <option value="2">Nữ</option>
-                                            <option value="3">Khác</option>
-                                        </select>
-                                    </label>
+                                    <input type="text" name="nv_gioi_tinh">
+                                    <%--                                    <label>--%>
+                                    <%--                                        <select class="w3-select">--%>
+                                    <%--                                            <option value="nam" name="kh_gioi_tinh">Nam</option>--%>
+                                    <%--                                            <option value="nu" name="kh_gioi_tinh">Nữ</option>--%>
+                                    <%--                                            <option value="khac" name="kh_gioi_tinh">Khác</option>--%>
+                                    <%--                                        </select>--%>
+                                    <%--                                    </label>--%>
                                 </div>
                             </div>
-                        </div>
-                        <div class="checkout__input">
-                            <p>Nhập Đường Dẫn Ảnh<span>*</span></p>
-                            <input type="text" name="kh_anh">
                         </div>
                         <div class="row">
                             <div class="col-lg-6">
                                 <div class="checkout__input">
                                     <p>Ngày Sinh<span>*</span></p>
-                                    <input type="date"  name="kh_ngay_sinh">
+                                    <input type="date" name="nv_ngay_sinh">
                                 </div>
                             </div>
                             <div class="col-lg-6">
                                 <div class="checkout__input">
                                     <p>Địa Chỉ<span>*</span></p>
-                                    <input type="text" placeholder="VND" name="kh_dia_chi">
+                                    <input type="text" placeholder="VND" name="nv_dia_chi">
                                 </div>
                             </div>
                         </div>
@@ -109,16 +116,58 @@
                             <div class="col-lg-6">
                                 <div class="checkout__input">
                                     <p>Email<span>*</span></p>
-                                    <input type="text"  name="kh_email">
+                                    <input type="text" placeholder="abc@gmail.com" name="nv_email">
                                 </div>
                             </div>
                             <div class="col-lg-6">
                                 <div class="checkout__input">
                                     <p>Số Điện Thoại<span>*</span></p>
-                                    <input type="text" placeholder="VND" name="kh_phone_number">
+                                    <input type="text" placeholder="0912345678" name="nv_phone_number">
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="checkout__input">
+                                    <p>Ca giờ làm<span>*</span></p>
+                                    <input type="text"  name="nv_ca_id">
                                 </div>
                             </div>
                         </div>
+                        <button type="submit" class="site-btn">XÁC NHẬN</button>
+                    </div>
+                </div>
+            </form>
+
+        </div>
+
+        đăng kí tài khoản nhân viên
+        <%--        Đăng kí tài khoản nhân viên--%>
+        <div class="checkout__form">
+            <form action="#">
+                <div class="row">
+                    <div class="col-lg-8 col-md-6">
+                        <h6 class="checkout__title">Đăng kí tài khoản nhân viên</h6>
+                        <div class="col-lg-9">
+                            <div class="checkout__input">
+                                <p>Nhập tài khoản<span>*</span></p>
+                                <input type="text" name="">
+                            </div>
+                        </div>
+                        <div class="col-lg-9">
+                            <div class="checkout__input">
+                                <p>Nhập mật khẩu<span>*</span></p>
+                                <input type="text" name="">
+                            </div>
+                        </div>
+
+
+                        <div class="col-lg-9">
+                            <div class="checkout__input">
+                                <p>Nhập lại mật khẩu<span>*</span></p>
+                                <input type="text" name="">
+                            </div>
+                        </div>
+
+
                         <button type="submit" class="site-btn">XÁC NHẬN</button>
                     </div>
                 </div>

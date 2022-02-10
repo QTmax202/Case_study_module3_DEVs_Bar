@@ -14,6 +14,8 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 
 @WebServlet(name = "NhanVienServlet", urlPatterns = "/nhanVien")
@@ -59,7 +61,7 @@ public class NhanVienServlet extends HttpServlet {
         String nv_gioi_tinh = request.getParameter("nv_gioi_tinh");
         String nv_email = request.getParameter("nv_email");
         String nv_phone_number = request.getParameter("nv_phone_number");
-        Date nv_ngay_sinh = new SimpleDateFormat("yyyy-MM-dd").parse(request.getParameter("nv_ngay_sinh"));
+        LocalDate nv_ngay_sinh = LocalDate.parse(request.getParameter("nv_ngay_sinh"), DateTimeFormatter.ofPattern("yyyy-MM-dd"));
         String nv_dia_chi = request.getParameter("nv_dia_chi");
         String nv_ca_id = request.getParameter("nv_ca_id");
         Nhan_vien nhanVien = new Nhan_vien(nv_id, nv_anh, nv_ten, nv_gioi_tinh, nv_email, nv_phone_number, nv_ngay_sinh, nv_dia_chi, nv_ca_id);
