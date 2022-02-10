@@ -59,12 +59,13 @@
 <!-- Thêm Thú Cưng Begin -->
 <section class="checkout spad">
     <div class="container">
-        <div class="checkout__form">
 
+        <%--        Đăng kí thông tin nhân viên--%>
+        <div class="checkout__form">
             <form action="#">
                 <div class="row">
                     <div class="col-lg-8 col-md-6">
-                        <h6 class="checkout__title">Cập Nhật Thông Tin Khách Hàng</h6>
+                        <h6 class="checkout__title">Đăng kí thông tin nhân viên</h6>
                         <div class="row">
                             <div class="col-lg-9">
                                 <div class="checkout__input">
@@ -75,25 +76,15 @@
                             <div class="col-lg-3">
                                 <div class="checkout__input">
                                     <p>Giới Tính<span>*</span></p>
-                                    <label>
-                                        <select name="">
-                                            <option value="">Nam</option>
-                                            <option value="">Nữ</option>
-                                            <option value="">Khác</option>
-                                        </select>
-                                    </label>
+                                    <input type="text" name="">
                                 </div>
                             </div>
-                        </div>
-                        <div class="checkout__input">
-                            <p>Nhập Đường Dẫn Ảnh<span>*</span></p>
-                            <input type="text" name="">
                         </div>
                         <div class="row">
                             <div class="col-lg-6">
                                 <div class="checkout__input">
                                     <p>Ngày Sinh<span>*</span></p>
-                                    <input type="date"  name="">
+                                    <input type="date" name="">
                                 </div>
                             </div>
                             <div class="col-lg-6">
@@ -107,7 +98,7 @@
                             <div class="col-lg-6">
                                 <div class="checkout__input">
                                     <p>Email<span>*</span></p>
-                                    <input type="text"  name="">
+                                    <input type="text" name="">
                                 </div>
                             </div>
                             <div class="col-lg-6">
@@ -117,6 +108,43 @@
                                 </div>
                             </div>
                         </div>
+                        <button type="submit" class="site-btn">XÁC NHẬN</button>
+                    </div>
+                </div>
+            </form>
+
+        </div>
+            <br>
+            <hr>
+
+        <%--        Đăng kí tài khoản nhân viên--%>
+        <div class="checkout__form">
+            <form action="#">
+                <div class="row">
+                    <div class="col-lg-8 col-md-6">
+                        <h6 class="checkout__title">Đăng kí tài khoản nhân viên</h6>
+                        <div class="col-lg-9">
+                            <div class="checkout__input">
+                                <p>Nhập tài khoản<span>*</span></p>
+                                <input type="text" name="">
+                            </div>
+                        </div>
+                        <div class="col-lg-9">
+                            <div class="checkout__input">
+                                <p>Nhập mật khẩu<span>*</span></p>
+                                <input type="text" name="">
+                            </div>
+                        </div>
+
+
+                        <div class="col-lg-9">
+                            <div class="checkout__input">
+                                <p>Nhập lại mật khẩu<span>*</span></p>
+                                <input type="text" name="">
+                            </div>
+                        </div>
+
+
                         <button type="submit" class="site-btn">XÁC NHẬN</button>
                     </div>
                 </div>
