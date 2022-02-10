@@ -104,7 +104,7 @@
                         <div class="product__item__text">
                             <h6>${pet_shop.getPs_ten()}</h6>
                             <a href="<c:url value="/hospital?action=addToCart&id=${pet_shop.getPs_id()}"/>"
-                               class="add-cart">+ Add To Cart</a>
+                               class="add-cart">+ Thêm Vào Giỏ Hàng</a>
                             <hr>
                             <h5>${pet_shop.getPs_gia()} VNĐ</h5>
                         </div>
@@ -141,7 +141,7 @@
                         <div class="product__item__text">
                             <h6>${phu_kien.getPk_ten()}</h6>
                             <a href="<c:url value="/hospital?action=addToCart&id=${phu_kien.getPk_id()}"/>"
-                               class="add-cart">+ Add To Cart</a>
+                               class="add-cart">+ Thêm Vào Giỏ Hàng</a>
                             <hr>
                             <h5>${phu_kien.getPk_gia()} VNĐ</h5>
                         </div>
@@ -178,7 +178,7 @@
                         <div class="product__item__text">
                             <h6>${dich_vu.getCtdv_ten()}</h6>
                             <a href="<c:url value="/hospital?action=addToCart&id=${dich_vu.getCtdv_id()}"/>"
-                               class="add-cart">+ Add To Cart</a>
+                               class="add-cart">+ Thêm Vào Giỏ Hàng</a>
                             <hr>
                             <h5>${dich_vu.getCtdv_gia()} VNĐ</h5>
                         </div>

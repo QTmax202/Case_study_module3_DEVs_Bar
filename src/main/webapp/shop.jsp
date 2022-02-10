@@ -151,7 +151,7 @@
                                 <div class="product__item__text">
                                     <c:if test="${pet_shop.getPs_trang_thai() != 0}">
                                         <h6>${pet_shop.ps_ten}</h6>
-                                        <a href="#" class="add-cart">+ Add To Cart</a>
+                                        <a href="#" class="add-cart">+ Thêm Vào Giỏ Hàng</a>
                                         <hr>
                                         <h5>${pet_shop.ps_gia} VND</h5>
                                     </c:if>
@@ -183,7 +183,7 @@
                                 <div class="product__item__text">
                                     <c:if test="${phu_kien_id.getPk_so_luong() != 0}">
                                         <h6>${phu_kien_id.pk_ten}</h6>
-                                        <a href="#" class="add-cart">+ Add To Cart</a>
+                                        <a href="#" class="add-cart">+ Thêm Vào Giỏ Hàng</a>
                                         <hr>
                                         <h5>${phu_kien_id.pk_gia} VND</h5>
                                     </c:if>
@@ -214,7 +214,7 @@
                                 <div class="product__item__text">
                                     <c:if test="${chi_tiet_dv.getCtdv_trang_thai() != 0}">
                                         <h6>${chi_tiet_dv.ctdv_ten}</h6>
-                                        <a href="#" class="add-cart">+ Add To Cart</a>
+                                        <a href="#" class="add-cart">+ Thêm Vào Giỏ Hàng</a>
                                         <hr>
                                         <h5>${chi_tiet_dv.ctdv_gia} VND</h5>
                                     </c:if>
