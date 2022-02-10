@@ -59,12 +59,13 @@
 <!-- Thêm Thú Cưng Begin -->
 <section class="checkout spad">
     <div class="container">
-        <div class="checkout__form">
 
-            <form action="${pageContext.request.contextPath}/khachHang?action=creatPost">
+        <%--        Đăng kí thông tin nhân viên--%>
+        <div class="checkout__form">
+            <form action="#">
                 <div class="row">
                     <div class="col-lg-8 col-md-6">
-                        <h6 class="checkout__title">Cập Nhật Thông Tin Khách Hàng</h6>
+                        <h6 class="checkout__title">Đăng kí thông tin nhân viên</h6>
                         <div class="row">
                             <div class="col-lg-9">
                                 <div class="checkout__input">
@@ -77,25 +78,15 @@
                             <div class="col-lg-3">
                                 <div class="checkout__input">
                                     <p>Giới Tính<span>*</span></p>
-                                    <label>
-                                        <select class="w3-select" name="kh_gioi_tinh">
-                                            <option value="1">Nam</option>
-                                            <option value="2">Nữ</option>
-                                            <option value="3">Khác</option>
-                                        </select>
-                                    </label>
+                                    <input type="text" name="">
                                 </div>
                             </div>
-                        </div>
-                        <div class="checkout__input">
-                            <p>Nhập Đường Dẫn Ảnh<span>*</span></p>
-                            <input type="text" name="kh_anh">
                         </div>
                         <div class="row">
                             <div class="col-lg-6">
                                 <div class="checkout__input">
                                     <p>Ngày Sinh<span>*</span></p>
-                                    <input type="date"  name="kh_ngay_sinh">
+                                    <input type="date" name="">
                                 </div>
                             </div>
                             <div class="col-lg-6">
@@ -109,7 +100,7 @@
                             <div class="col-lg-6">
                                 <div class="checkout__input">
                                     <p>Email<span>*</span></p>
-                                    <input type="text"  name="kh_email">
+                                    <input type="text"  name="">
                                 </div>
                             </div>
                             <div class="col-lg-6">
