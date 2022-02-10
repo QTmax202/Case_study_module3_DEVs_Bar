@@ -61,7 +61,7 @@
                             <a href="<c:url value="/hospital"/>">Home</a>
                             <a href="<c:url value="/shop"/>">Shop</a>
                             <span>Product Details</span>
-                        </c:if>>
+                        </c:if>
                         <c:if test="${sessionScope.acc != null}">
                             <c:if test="${sessionScope.acc_admin != null || sessionScope.acc_nhan_vien != null}">
                                 <a href="<c:url value="/shop"/>">Shop</a>
@@ -213,7 +213,7 @@
                                 <c:if test="${pet_shop.getPs_trang_thai() != 0}">
                                     <c:if test="${sessionScope.acc == null}">
                                         <a href="#" class="primary-btn">Hãy Đăng Nhập</a>
-                                    </c:if>>
+                                    </c:if>
                                     <c:if test="${sessionScope.acc != null}">
                                         <c:if test="${sessionScope.acc_admin != null || sessionScope.acc_nhan_vien != null}">
                                             <a href="#" class="primary-btn"> ADMIN </a>
@@ -228,7 +228,7 @@
                                 <c:if test="${phu_kien.getPk_so_luong() != 0}">
                                     <c:if test="${sessionScope.acc == null}">
                                         <a href="#" class="primary-btn">Hãy Đăng Nhập</a>
-                                    </c:if>>
+                                    </c:if>
                                     <c:if test="${sessionScope.acc != null}">
                                         <c:if test="${sessionScope.acc_admin != null || sessionScope.acc_nhan_vien != null}">
                                             <a href="#" class="primary-btn"> ADMIN </a>
@@ -243,7 +243,7 @@
                                 <c:if test="${dich_vu.getCtdv_trang_thai() != 0}">
                                     <c:if test="${sessionScope.acc == null}">
                                         <a href="#" class="primary-btn">Hãy Đăng Nhập</a>
-                                    </c:if>>
+                                    </c:if>
                                     <c:if test="${sessionScope.acc != null}">
                                         <c:if test="${sessionScope.acc_admin != null || sessionScope.acc_nhan_vien != null}">
                                             <a href="#" class="primary-btn"> ADMIN </a>
