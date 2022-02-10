@@ -2,9 +2,9 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <!-- Page Preloder -->
-<div id="preloder">
-    <div class="loader"></div>
-</div>
+<%--<div id="preloder">--%>
+<%--    <div class="loader"></div>--%>
+<%--</div>--%>
 
 <!-- Offcanvas Menu Begin -->
 <div class="offcanvas-menu-wrapper">
@@ -16,7 +16,7 @@
     </div>
     <div class="offcanvas__nav__option">
         <a href="#" class="search-switch"><img src="img/icon/search.png" alt=""></a>
-<%--        <a href="#"><img src="img/icon/heart.png" alt=""></a>--%>
+        <%--        <a href="#"><img src="img/icon/heart.png" alt=""></a>--%>
         <a href="shopping-cart.jsp"><img src="img/icon/cart.png" alt=""></a>
     </div>
     <div id="mobile-menu-wrap"></div>
@@ -52,18 +52,18 @@
         <div class="row">
             <div class="col-lg-3 col-md-3">
                 <div class="header__logo">
-                    <a href="<c:url value="/hospital"/>"><img src="img/logo.png" alt=""></a>
+                    <a href="<c:url value="/hospital?action=home"/>"><img src="img/logo.png" alt=""></a>
                 </div>
             </div>
             <div class="col-lg-6 col-md-6">
                 <nav class="header__menu mobile-menu">
                     <ul>
-                        <li class="active"><a href="<c:url value="/hospital"/>">Home</a></li>
-                        <li><a href="<c:url value="/shop"/>">Shop</a>
+                        <li class="active"><a href="<c:url value="/hospital?action=home"/>">Home</a></li>
+                        <li><a>Shop</a>
                             <ul class="dropdown">
-                                <li><a href="./shop.jsp">Thú Cưng</a></li>
-                                <li><a href="./shop.jsp">Phụ Kiện</a></li>
-                                <li><a href="./shop.jsp">Dịch Vụ</a></li>
+                                <li><a href="/shop?action=list-thu-cung">Thú Cưng</a></li>
+                                <li><a href="/shop?action=list-phu-kien">Phụ Kiện</a></li>
+                                <li><a href="/shop?action=list-dich-vu">Dịch Vụ</a></li>
                             </ul>
                         </li>
 
@@ -75,13 +75,13 @@
                             </ul>
                         </li>
 
-<%--                        <li><a href="shop-details.jsp">Shop Details</a></li>--%>
-<%--                        <li><a href="shopping-cart.jsp">Shopping Cart</a></li>--%>
+                        <%--                        <li><a href="shop-details.jsp">Shop Details</a></li>--%>
+                        <%--                        <li><a href="shopping-cart.jsp">Shopping Cart</a></li>--%>
 
                         <li><a href="create.jsp">Create</a></li>
                         <li><a href="edit.jsp">Edit</a></li>
-<%--                        <li><a href="blog-details.jsp">Blog Details</a></li>--%>
-<%--                        <li><a href="contact.jsp">Contacts</a></li>--%>
+                        <%--                        <li><a href="blog-details.jsp">Blog Details</a></li>--%>
+                        <%--                        <li><a href="contact.jsp">Contacts</a></li>--%>
                     </ul>
                 </nav>
             </div>
