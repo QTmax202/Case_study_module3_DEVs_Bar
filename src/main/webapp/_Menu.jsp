@@ -62,13 +62,13 @@
     </div>
     <div class="container">
         <div class="row">
-            <div class="col-lg-2 col-md-3">
+            <div class="col-lg-3 col-md-3">
                 <div class="header__logo">
                     <c:if test="${sessionScope.acc_khach_hang != null || sessionScope.acc == null}">
-                        <a href="<c:url value="/hospital"/>"><img src="img/logo2.png" alt=""></a>
+                        <a href="<c:url value="/hospital"/>"><img src="img/logo3.png" alt=""></a>
                     </c:if>
                     <c:if test="${sessionScope.acc_admin != null || sessionScope.acc_nhan_vien != null}">
-                        <a href="<c:url value="/shop"/>"><img src="img/logo2.png" alt=""></a>
+                        <a href="<c:url value="/shop"/>"><img src="img/logo3.png" alt=""></a>
                     </c:if>
                 </div>
             </div>
@@ -84,7 +84,7 @@
                                     <li><a href="<c:url value="/shop?action=list-dich-vu"/>">Dịch Vụ</a></li>
                                 </ul>
                             </li>
-                            <li><a href="blog-details.jsp">Chi Tiết Blog</a></li>
+                            <li><a href="blog-details.jsp">Blog</a></li>
                             <li><a href="contact.jsp">Liên Lạc</a></li>
                         </c:if>
                         <c:if test="${sessionScope.acc != null}">
@@ -119,14 +119,14 @@
                                 </li>
                             </c:if>
                             <c:if test="${sessionScope.acc_khach_hang != null}">
-                                <li><a href="blog-details.jsp">Chi Tiết Blog</a></li>
+                                <li><a href="blog-details.jsp">Blog</a></li>
                                 <li><a href="contact.jsp">Liên Lạc</a></li>
                             </c:if>
                         </c:if>
                     </ul>
                 </nav>
             </div>
-            <div class="col-lg-2 col-md-3">
+            <div class="col-lg-1 col-md-3">
                 <div class="header__nav__option">
                     <a href="#" class="search-switch">
                         <img src="img/icon/search.png" alt="">
