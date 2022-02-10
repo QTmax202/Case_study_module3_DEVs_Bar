@@ -1,31 +1,21 @@
 package DAO;
 
+import connection.MyConnection;
 import model.Nhan_vien;
-
-
 import java.sql.*;
 import java.util.ArrayList;
-
+import java.sql.Date;
 
 public class NhanVienDAO {
+    private static final MyConnection myConnection = new MyConnection();
     private static final String INSERT_NHAN_VIEN_SQL = "insert into nhan_vien(nv_id, nv_anh, nv_ten, nv_gioi_tinh, nv_email, nv_phone_number, nv_ngay_sinh, nv_dia_chi, nv_ca_id) value(?,?,?,?,?,?,?,?,?);";
     private static final String SELECT_ALL_NHAN_VIEN = "select * from nhan_vien;";
     private static final String UPDATE_NHAN_VIEN_SQL = "update nhan_vien set nv_anh= ?,nv_ten= ?, nv_gioi_tinh=?, nv_email=?, nv_phone_number=?, nv_ngay_sinh=?, nv_dia_chi=?, nv_ca_id=?  where nv_id = ?;";
-    protected Connection getConnection() {
-        Connection connection = null;
-        try {
-            Class.forName("com.mysql.jdbc.Driver");
-            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/quan_ly_pet_shop?useSSL=false", "root", "12345678");
-        } catch (SQLException | ClassNotFoundException e) {
-            e.printStackTrace();
-        }
-        return connection;
-    }
 
     public void insertNhanVien(Nhan_vien nhanVien) throws SQLException {
         System.out.println(INSERT_NHAN_VIEN_SQL);
 
-        try (Connection connection = getConnection(); PreparedStatement preparedStatement = connection.prepareStatement(INSERT_NHAN_VIEN_SQL)) {
+        try (Connection connection = myConnection.getConnection(); PreparedStatement preparedStatement = connection.prepareStatement(INSERT_NHAN_VIEN_SQL)) {
             preparedStatement.setString(1, nhanVien.getNv_id());
             preparedStatement.setString(2, nhanVien.getNv_anh());
             preparedStatement.setString(3, nhanVien.getNv_ten());
@@ -46,7 +36,7 @@ public class NhanVienDAO {
 
         ArrayList<Nhan_vien> nhanViens = new ArrayList<>();
 
-        try (Connection connection = getConnection();
+        try (Connection connection = myConnection.getConnection();
 
              PreparedStatement preparedStatement = connection.prepareStatement(SELECT_ALL_NHAN_VIEN);) {
             System.out.println(preparedStatement);
@@ -73,7 +63,7 @@ public class NhanVienDAO {
 
     public boolean updateNhanVien(Nhan_vien nhanVien) throws SQLException {
         boolean rowUpdated;
-        try (Connection connection = getConnection();
+        try (Connection connection = myConnection.getConnection();
              PreparedStatement statement = connection.prepareStatement(UPDATE_NHAN_VIEN_SQL);) {
             statement.setString(1, nhanVien.getNv_id());
             statement.setString(2, nhanVien.getNv_anh());

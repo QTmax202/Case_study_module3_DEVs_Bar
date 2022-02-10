@@ -44,8 +44,12 @@ public class NhanVienServlet extends HttpServlet {
             action = "";
         }
         switch (action) {
-            case "creatPost" -> createPost(request, response);
-            case "creatGet" -> createGet(request, response);
+            case "creatPost" :
+                createPost(request, response);
+                break;
+            case "creatGet" :
+                createGet(request, response);
+                break;
         }
     }
     private void createGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
