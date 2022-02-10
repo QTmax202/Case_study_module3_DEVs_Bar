@@ -48,7 +48,7 @@
                     </div>
                     <div class="banner__item__text">
                         <h2>Thú Cưng</h2>
-                        <a href="<c:url value="/shop"/>">Shop now</a>
+                        <a href="<c:url value="/shop?action=list-thu-cung"/>">Shop now</a>
                     </div>
                 </div>
             </div>
@@ -59,7 +59,7 @@
                     </div>
                     <div class="banner__item__text">
                         <h2>Phụ Kiện</h2>
-                        <a href="<c:url value="/shop"/>">Shop now</a>
+                        <a href="<c:url value="/shop?action=list-phu-kien"/>">Shop now</a>
                     </div>
                 </div>
             </div>
@@ -70,7 +70,7 @@
                     </div>
                     <div class="banner__item__text">
                         <h2>Dịch Vụ</h2>
-                        <a href="<c:url value="/shop"/>">Shop now</a>
+                        <a href="<c:url value="/shop?action=list-dich-vu"/>">Shop now</a>
                     </div>
                 </div>
             </div>
@@ -104,7 +104,7 @@
                         <div class="product__item__text">
                             <h6>${pet_shop.getPs_ten()}</h6>
                             <a href="<c:url value="/hospital?action=addToCart&id=${pet_shop.getPs_id()}"/>"
-                               class="add-cart">+ Add To Cart</a>
+                               class="add-cart">+ Thêm Vào Giỏ Hàng</a>
                             <hr>
                             <h5>${pet_shop.getPs_gia()} VNĐ</h5>
                         </div>
@@ -141,7 +141,7 @@
                         <div class="product__item__text">
                             <h6>${phu_kien.getPk_ten()}</h6>
                             <a href="<c:url value="/hospital?action=addToCart&id=${phu_kien.getPk_id()}"/>"
-                               class="add-cart">+ Add To Cart</a>
+                               class="add-cart">+ Thêm Vào Giỏ Hàng</a>
                             <hr>
                             <h5>${phu_kien.getPk_gia()} VNĐ</h5>
                         </div>
@@ -178,7 +178,7 @@
                         <div class="product__item__text">
                             <h6>${dich_vu.getCtdv_ten()}</h6>
                             <a href="<c:url value="/hospital?action=addToCart&id=${dich_vu.getCtdv_id()}"/>"
-                               class="add-cart">+ Add To Cart</a>
+                               class="add-cart">+ Thêm Vào Giỏ Hàng</a>
                             <hr>
                             <h5>${dich_vu.getCtdv_gia()} VNĐ</h5>
                         </div>

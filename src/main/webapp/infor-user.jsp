@@ -70,7 +70,9 @@
                             <div class="col-lg-9">
                                 <div class="checkout__input">
                                     <p>Họ & Tên<span>*</span></p>
-                                    <input type="text" name="">
+                                    <label>
+                                        <input type="text" name="kh_name">
+                                    </label>
                                 </div>
                             </div>
                             <div class="col-lg-3">
@@ -90,7 +92,7 @@
                             <div class="col-lg-6">
                                 <div class="checkout__input">
                                     <p>Địa Chỉ<span>*</span></p>
-                                    <input type="text" placeholder="VND" name="">
+                                    <input type="text" placeholder="VND" name="kh_dia_chi">
                                 </div>
                             </div>
                         </div>
@@ -98,53 +100,16 @@
                             <div class="col-lg-6">
                                 <div class="checkout__input">
                                     <p>Email<span>*</span></p>
-                                    <input type="text" name="">
+                                    <input type="text"  name="">
                                 </div>
                             </div>
                             <div class="col-lg-6">
                                 <div class="checkout__input">
                                     <p>Số Điện Thoại<span>*</span></p>
-                                    <input type="text" placeholder="VND" name="">
+                                    <input type="text" placeholder="VND" name="kh_phone_number">
                                 </div>
                             </div>
                         </div>
-                        <button type="submit" class="site-btn">XÁC NHẬN</button>
-                    </div>
-                </div>
-            </form>
-
-        </div>
-            <br>
-            <hr>
-
-        <%--        Đăng kí tài khoản nhân viên--%>
-        <div class="checkout__form">
-            <form action="#">
-                <div class="row">
-                    <div class="col-lg-8 col-md-6">
-                        <h6 class="checkout__title">Đăng kí tài khoản nhân viên</h6>
-                        <div class="col-lg-9">
-                            <div class="checkout__input">
-                                <p>Nhập tài khoản<span>*</span></p>
-                                <input type="text" name="">
-                            </div>
-                        </div>
-                        <div class="col-lg-9">
-                            <div class="checkout__input">
-                                <p>Nhập mật khẩu<span>*</span></p>
-                                <input type="text" name="">
-                            </div>
-                        </div>
-
-
-                        <div class="col-lg-9">
-                            <div class="checkout__input">
-                                <p>Nhập lại mật khẩu<span>*</span></p>
-                                <input type="text" name="">
-                            </div>
-                        </div>
-
-
                         <button type="submit" class="site-btn">XÁC NHẬN</button>
                     </div>
                 </div>

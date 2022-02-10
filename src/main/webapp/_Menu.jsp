@@ -39,9 +39,13 @@
                 <div class="col-lg-6 col-md-5">
                     <div class="header__top__right">
                         <div class="header__top__links">
-                            <a href="infor-user.jsp">Xin Chào Bro</a>
-                            <a href="sign-in.jsp">Đăng Nhập</a>
-                            <a href="sign-in.jsp">Đăng Xuất</a>
+                            <c:if test="${sessionScope.acc != null}">
+                                <a href="infor-user.jsp">Xin Chào Bro</a>
+                                <a href="sign-in.jsp">Đăng Xuất</a>
+                            </c:if>
+                            <c:if test="${sessionScope.acc == null}">
+                                <a href="sign-in.jsp">Đăng Nhập</a>
+                            </c:if>
                         </div>
                     </div>
                 </div>
@@ -58,28 +62,59 @@
             <div class="col-lg-6 col-md-6">
                 <nav class="header__menu mobile-menu">
                     <ul>
-                        <li class="active"><a href="<c:url value="/hospital?action=home"/>">Home</a></li>
-                        <li><a>Shop</a>
-                            <ul class="dropdown">
-                                <li><a href="/shop?action=list-thu-cung">Thú Cưng</a></li>
-                                <li><a href="/shop?action=list-phu-kien">Phụ Kiện</a></li>
-                                <li><a href="/shop?action=list-dich-vu">Dịch Vụ</a></li>
-                            </ul>
-                        </li>
+                        <c:if test="${sessionScope.acc == null}">
+                            <li class="active"><a href="<c:url value="/hospital?action=home"/>">Trang Chủ</a></li>
+                            <li><a href="<c:url value="/shop"/>">Cửa Hàng</a>
+                                <ul class="dropdown">
+                                    <li><a href="<c:url value="/shop?action=list-thu-cung"/>">Thú Cưng</a></li>
+                                    <li><a href="<c:url value="/shop?action=list-phu-kien"/>">Phụ Kiện</a></li>
+                                    <li><a href="<c:url value="/shop?action=list-dich-vu"/>">Dịch Vụ</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="blog-details.jsp">Blog Details</a></li>
+                            <li><a href="contact.jsp">Contacts</a></li>
+                        </c:if>
+                        <c:if test="${sessionScope.acc != null}">
+                            <li class="active"><a href="<c:url value="/hospital?action=home"/>">Trang Chủ</a></li>
+                            <li><a href="<c:url value="/shop"/>">Cửa Hàng</a>
+                                <ul class="dropdown">
+                                    <li><a href="<c:url value="/shop?action=list-thu-cung"/>">Thú Cưng</a></li>
+                                    <li><a href="<c:url value="/shop?action=list-phu-kien"/>">Phụ Kiện</a></li>
+                                    <li><a href="<c:url value="/shop?action=list-dich-vu"/>">Dịch Vụ</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="#">Quản Lý Sản Phẩm</a>
+                                <ul class="dropdown">
+                                    <li><a href="./create.jsp">Thêm Thú Cưng</a></li>
+                                    <li><a href="./create.jsp">Thêm Phụ Kiện</a></li>
+                                    <li><a href="./create.jsp">Thêm Dịch Vụ</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="blog-details.jsp">Blog Details</a></li>
+                            <li><a href="contact.jsp">Contacts</a></li>
+                        </c:if>
+<%--                        <li class="active"><a href="<c:url value="/hospital?action=home"/>">Trang Chủ</a></li>--%>
+<%--                        <li><a href="<c:url value="/shop"/>">Cửa Hàng</a>--%>
+<%--                            <ul class="dropdown">--%>
+<%--                                <li><a href="<c:url value="/shop?action=list-thu-cung"/>">Thú Cưng</a></li>--%>
+<%--                                <li><a href="<c:url value="/shop?action=list-phu-kien"/>">Phụ Kiện</a></li>--%>
+<%--                                <li><a href="<c:url value="/shop?action=list-dich-vu"/>">Dịch Vụ</a></li>--%>
+<%--                            </ul>--%>
+<%--                        </li>--%>
 
-                        <li><a href="#">Manager</a>
-                            <ul class="dropdown">
-                                <li><a href="./create.jsp">Thêm Thú Cưng</a></li>
-                                <li><a href="./create.jsp">Thêm Phụ Kiện</a></li>
-                                <li><a href="./create.jsp">Thêm Dịch Vụ</a></li>
-                            </ul>
-                        </li>
+<%--                        <li><a href="#">Quản Lý Sản Phẩm</a>--%>
+<%--                            <ul class="dropdown">--%>
+<%--                                <li><a href="./create.jsp">Thêm Thú Cưng</a></li>--%>
+<%--                                <li><a href="./create.jsp">Thêm Phụ Kiện</a></li>--%>
+<%--                                <li><a href="./create.jsp">Thêm Dịch Vụ</a></li>--%>
+<%--                            </ul>--%>
+<%--                        </li>--%>
 
                         <%--                        <li><a href="shop-details.jsp">Shop Details</a></li>--%>
                         <%--                        <li><a href="shopping-cart.jsp">Shopping Cart</a></li>--%>
 
-                        <li><a href="create.jsp">Create</a></li>
-                        <li><a href="edit.jsp">Edit</a></li>
+<%--                        <li><a href="create.jsp">Create</a></li>--%>
+<%--                        <li><a href="edit.jsp">Edit</a></li>--%>
                         <%--                        <li><a href="blog-details.jsp">Blog Details</a></li>--%>
                         <%--                        <li><a href="contact.jsp">Contacts</a></li>--%>
                     </ul>

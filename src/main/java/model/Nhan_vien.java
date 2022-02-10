@@ -125,4 +125,5 @@ public class Nhan_vien {
                 ", nv_ca_id='" + nv_ca_id + '\'' +
                 '}';
     }
+
 }
