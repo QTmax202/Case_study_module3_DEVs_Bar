@@ -48,7 +48,7 @@
                     </div>
                     <div class="banner__item__text">
                         <h2>Thú Cưng</h2>
-                        <a href="<c:url value="/shop"/>">Shop now</a>
+                        <a href="<c:url value="/shop?action=list-thu-cung"/>">Shop now</a>
                     </div>
                 </div>
             </div>
@@ -59,7 +59,7 @@
                     </div>
                     <div class="banner__item__text">
                         <h2>Phụ Kiện</h2>
-                        <a href="<c:url value="/shop"/>">Shop now</a>
+                        <a href="<c:url value="/shop?action=list-phu-kien"/>">Shop now</a>
                     </div>
                 </div>
             </div>
@@ -70,7 +70,7 @@
                     </div>
                     <div class="banner__item__text">
                         <h2>Dịch Vụ</h2>
-                        <a href="<c:url value="/shop"/>">Shop now</a>
+                        <a href="<c:url value="/shop?action=list-dich-vu"/>">Shop now</a>
                     </div>
                 </div>
             </div>

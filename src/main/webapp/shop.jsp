@@ -38,8 +38,8 @@
                 <div class="breadcrumb__text">
                     <h4>Shop</h4>
                     <div class="breadcrumb__links">
-                        <a href="index.jsp">Home</a>
-                        <span>Shop</span>
+                        <a href="<c:url value="/hospital?action=home"/>">Home</a>
+                        <span><a href="<c:url value="/shop"/>">Shop</a></span>
                     </div>
                 </div>
             </div>
@@ -140,10 +140,11 @@
                                 <div class="product__item__pic set-bg"
                                      data-setbg="${pet_shop.ps_anh}">
                                     <ul class="product__hover">
-                                        <li><a href="#"><img src="img/icon/heart.png" alt=""> <span>Heart</span></a>
-                                        </li>
+                                        <li><a href="#"><img src="img/icon/heart.png" alt=""> <span>Heart</span></a></li>
                                             <%--                            <li><a href="#"><img src="img/icon/compare.png" alt=""> <span>Compare</span></a></li>--%>
-                                        <li><a href="shop-details.jsp"><img src="img/icon/search.png" alt="">
+                                        <li>
+                                            <a href="<c:url value="/hospital?action=search_pet_shop&ps_id=${pet_shop.getPs_id()}"/>">
+                                            <img src="img/icon/search.png" alt="">
                                             <span>Detail</span></a></li>
                                     </ul>
                                 </div>
@@ -173,7 +174,9 @@
                                         <li><a href="#"><img src="img/icon/heart.png" alt=""> <span>Heart</span></a>
                                         </li>
                                             <%--                            <li><a href="#"><img src="img/icon/compare.png" alt=""> <span>Compare</span></a></li>--%>
-                                        <li><a href="shop-details.jsp"><img src="img/icon/search.png" alt="">
+                                        <li>
+                                            <a href="<c:url value="/hospital?action=search_phu_kien&pk_id=${phu_kien_id.getPk_id()}"/>">
+                                                <img src="img/icon/search.png" alt="">
                                             <span>Detail</span></a></li>
                                     </ul>
                                 </div>
@@ -203,7 +206,8 @@
                                         <li><a href="#"><img src="img/icon/heart.png" alt=""> <span>Heart</span></a>
                                         </li>
                                             <%--                            <li><a href="#"><img src="img/icon/compare.png" alt=""> <span>Compare</span></a></li>--%>
-                                        <li><a href="shop-details.jsp"><img src="img/icon/search.png" alt="">
+                                        <li><a href="<c:url value="/hospital?action=search_dich_vu&dv_id=${chi_tiet_dv.getCtdv_id()}"/>">
+                                            <img src="img/icon/search.png" alt="">
                                             <span>Detail</span></a></li>
                                     </ul>
                                 </div>

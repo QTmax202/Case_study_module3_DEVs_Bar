@@ -59,11 +59,11 @@
                 <nav class="header__menu mobile-menu">
                     <ul>
                         <li class="active"><a href="<c:url value="/hospital?action=home"/>">Home</a></li>
-                        <li><a>Shop</a>
+                        <li><a href="<c:url value="/shop"/>">Shop</a>
                             <ul class="dropdown">
-                                <li><a href="/shop?action=list-thu-cung">Thú Cưng</a></li>
-                                <li><a href="/shop?action=list-phu-kien">Phụ Kiện</a></li>
-                                <li><a href="/shop?action=list-dich-vu">Dịch Vụ</a></li>
+                                <li><a href="<c:url value="/shop?action=list-thu-cung"/>">Thú Cưng</a></li>
+                                <li><a href="<c:url value="/shop?action=list-phu-kien"/>">Phụ Kiện</a></li>
+                                <li><a href="<c:url value="/shop?action=list-dich-vu"/>">Dịch Vụ</a></li>
                             </ul>
                         </li>
 

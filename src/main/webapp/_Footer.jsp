@@ -18,9 +18,9 @@
                 <div class="footer__widget">
                     <h6>Shopping</h6>
                     <ul>
-                        <li><a href="#">Thú Cưng</a></li>
-                        <li><a href="#">Phụ Kiện</a></li>
-                        <li><a href="#">Dịch Vụ</a></li>
+                        <li><a href="<c:url value="/shop?action=list-thu-cung"/>">Thú Cưng</a></li>
+                        <li><a href="<c:url value="/shop?action=list-phu-kien"/>">Phụ Kiện</a></li>
+                        <li><a href="<c:url value="/shop?action=list-dich-vu"/>">Dịch Vụ</a></li>
                         <li><a href="#">Giới Thiệu</a></li>
                     </ul>
                 </div>
