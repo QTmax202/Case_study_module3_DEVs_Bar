@@ -51,10 +51,14 @@ public class NhanVienServlet extends HttpServlet {
         }
     }
     private void createGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        response.setContentType("text/html;charset=UTF-8");
+        request.setCharacterEncoding("UTF-8");
         RequestDispatcher requestDispatcher = request.getRequestDispatcher("info-user.jsp");
         requestDispatcher.forward(request, response);
     }
-    private void createPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException, ParseException {
+    private void createPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException {
+        response.setContentType("text/html;charset=UTF-8");
+        request.setCharacterEncoding("UTF-8");
         String nv_id = request.getParameter("nv_id");
         String nv_anh = request.getParameter("nv_anh");
         String nv_ten = request.getParameter("nv_ten");

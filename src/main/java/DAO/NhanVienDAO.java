@@ -6,7 +6,7 @@ import model.Nhan_vien;
 import java.sql.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.sql.Date;
+
 
 public class NhanVienDAO {
     private static final String INSERT_NHAN_VIEN_SQL = "insert into nhan_vien(nv_id, nv_anh, nv_ten, nv_gioi_tinh, nv_email, nv_phone_number, nv_ngay_sinh, nv_dia_chi, nv_ca_id) value(?,?,?,?,?,?,?,?,?);";
@@ -105,4 +105,6 @@ public class NhanVienDAO {
             }
         }
     }
+
+
 }

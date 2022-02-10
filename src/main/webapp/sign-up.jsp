@@ -68,14 +68,14 @@
                     <form action="sign-in.jsp" method="post">
                         <div class="form-group first">
                             <label for="username">Tài khoản</label>
-                            <input type="text" class="form-control" placeholder="Nhập tài khoản" id="username">
+                            <input type="text" class="form-control" placeholder="Nhập tài khoản" id="username" >
                         </div>
                         <div class="form-group last mb-3">
                             <label for="password">Mật khẩu</label>
                             <input type="password" class="form-control" placeholder="Nhập mật khẩu" id="password">
                         </div>
                         <div class="form-group last mb-3">
-                            <label for="password2">Mật khẩu</label>
+                            <label for="password2">Nh</label>
                             <input type="password" class="form-control" placeholder="Nhập lại mật khẩu" id="password2">
                         </div>
 
