@@ -160,7 +160,7 @@
                                                 <span>Detail</span></a>
                                         </li>
                                         <li>
-                                            <a href="#">
+                                            <a href="edit.jsp">
                                                 <img src="https://image.flaticon.com/icons/png/512/84/84380.png" width="36" height="36" alt="">
                                                 <span>Edit</span></a>
                                         </li>

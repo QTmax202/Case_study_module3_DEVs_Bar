@@ -16,20 +16,13 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 </head>
 <body>
-<table>
-    <h1><a href="<c:url value="/hospital?action=search}"/>"><img
-            src="img/icon/search.png" alt=""> <span>Detail</span></a></h1>
-    <form action="${pageContext.request.contextPath}/hospital">
-    <c:forEach items="${requestScope['pet_shops']}" var="pet_shop">
-        <tr>
-            <td>${pet_shop.getPs_ten()}</td>
-            <td>${pet_shop.getPs_gia()}</td>
-            <td>${pet_shop.getPs_anh()}</td>
-            <td>${pet_shop.getPs_ngay_sinh()}</td>
-            <td>${pet_shop.getPs_gp_id()}</td>
-        </tr>
-    </c:forEach>
-    </form>
-</table>
+2222222
+    <select name="" id="">
+        <option value="">2</option>
+        <option value="">5</option>
+        <option value="">4</option>
+        <option value="">3</option>
+    </select>
+
 </body>
 </html>

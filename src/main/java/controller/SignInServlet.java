@@ -47,9 +47,6 @@ public class SignInServlet extends HttpServlet {
         if (a == null) {
             request.setAttribute("mess", "Wrong user or pass");
             request.getRequestDispatcher("/sign-in.jsp").forward(request, response);
-            request.setAttribute("phan-quyen", a);
-            RequestDispatcher requestDispatcher = request.getRequestDispatcher("_Menu.jsp");
-            requestDispatcher.forward(request, response);
         } else {
             HttpSession session = request.getSession();
             session.setAttribute("acc", a);

@@ -40,7 +40,7 @@
                     <div class="header__top__right">
                         <div class="header__top__links">
                             <c:if test="${sessionScope.acc != null}">
-                                <a href="infor-user.jsp">Xin Chào Bro</a>
+                                <a href="infor-user.jsp">Xin Chào</a>
                                 <a href="sign-in.jsp">Đăng Xuất</a>
                             </c:if>
                             <c:if test="${sessionScope.acc == null}">
@@ -85,9 +85,9 @@
                             </li>
                             <li><a href="#">Quản Lý Sản Phẩm</a>
                                 <ul class="dropdown">
-                                    <li><a href="./create.jsp">Thêm Thú Cưng</a></li>
-                                    <li><a href="./create.jsp">Thêm Phụ Kiện</a></li>
-                                    <li><a href="./create.jsp">Thêm Dịch Vụ</a></li>
+                                    <li><a href="/quan-ly?action=them_thu_cung_get">Thêm Thú Cưng</a></li>
+                                    <li><a href="/quan-ly?action=them_phu_kien_get">Thêm Phụ Kiện</a></li>
+                                    <li><a href="/quan-ly?action=them_dich_vu_get">Thêm Dịch Vụ</a></li>
                                 </ul>
                             </li>
                             <li><a href="blog-details.jsp">Blog Details</a></li>
