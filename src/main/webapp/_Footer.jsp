@@ -21,7 +21,7 @@
                         <li><a href="<c:url value="/shop?action=list-thu-cung"/>">Thú Cưng</a></li>
                         <li><a href="<c:url value="/shop?action=list-phu-kien"/>">Phụ Kiện</a></li>
                         <li><a href="<c:url value="/shop?action=list-dich-vu"/>">Dịch Vụ</a></li>
-                        <li><a href="#">Giới Thiệu</a></li>
+                        <li><a href="blog-details.jsp">Giới Thiệu</a></li>
                     </ul>
                 </div>
             </div>

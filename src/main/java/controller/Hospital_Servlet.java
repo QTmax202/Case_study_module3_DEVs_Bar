@@ -44,8 +44,6 @@ public class Hospital_Servlet extends HttpServlet {
                 search_dich_vu(request, response);
                 break;
             case "home":
-                display_pet_shop(request, response);
-                break;
             default:
                 display_pet_shop(request, response);
         }    }

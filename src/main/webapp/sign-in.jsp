@@ -1,4 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -30,7 +32,7 @@
                     <p class="text-danger">${mess}</p>
                     <hr>
                     <%--                    <p class="mb-4">Lorem ipsum dolor sit amet elit. Sapiente sit aut eos consectetur adipisicing.</p>--%>
-                    <form action="/sign-in?action=logIn" method="post">
+                    <form action="<c:url value="/sign-in?action=logIn"/>" method="post">
                         <div class="form-group first">
                             <label for="username">Tài khoản</label>
                             <input type="text" class="form-control" placeholder="Nhập tài khoản" id="username" name="acc_username">
@@ -53,7 +55,7 @@
                             <span class="ml-auto"><a href="sign-up.jsp" class="forgot-pass">Đăng kí</a></span>
                         </div>
 
-                        <input type="submit" value="Sign In" class="btn btn-block btn-primary">
+                        <input type="submit" value="Đăng nhập" class="btn btn-block btn-primary" href="<c:url value="/hospital?action=home"/>">
 
                     </form>
                 </div>
