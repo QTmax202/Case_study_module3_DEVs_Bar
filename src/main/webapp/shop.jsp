@@ -55,7 +55,7 @@
             <div class="col-lg-3">
                 <div class="shop__sidebar">
                     <div class="shop__sidebar__search">
-                        <form action="/shop?action=tim-kiem" method="post">
+                        <form action="<c:url value="/shop?action=tim-kiem"/>" method="post">
                             <input value="${tim}" type="text" placeholder="Search..." name="tim-kiem">
                             <button type="submit"><span class="icon_search"></span></button>
                         </form>

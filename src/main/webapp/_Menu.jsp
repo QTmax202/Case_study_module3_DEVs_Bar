@@ -87,7 +87,9 @@
             </div>
             <div class="col-lg-3 col-md-3">
                 <div class="header__nav__option">
-                    <a href="#" class="search-switch"><img src="img/icon/search.png" alt=""></a>
+                    <a href="#" class="search-switch">
+                        <img src="img/icon/search.png" alt="">
+                    </a>
                     <a href="shopping-cart.jsp"><img src="img/icon/cart.png" alt=""></a>
                 </div>
             </div>
