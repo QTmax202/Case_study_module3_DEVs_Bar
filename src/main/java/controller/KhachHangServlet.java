@@ -47,10 +47,17 @@ public class KhachHangServlet extends HttpServlet {
             action = "";
         }
         switch (action) {
+<<<<<<< HEAD
             case "creatPost":
                 createPost(request, response);
                 break;
             case "creatGet":
+=======
+            case "creatPost" :
+                createPost(request, response);
+                break;
+            case "creatGet" :
+>>>>>>> 34bdb348175a14c9f063d9ba7e8d8a1fa8c9ddc8
                 createGet(request, response);
                 break;
         }

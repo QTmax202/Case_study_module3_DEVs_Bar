@@ -35,6 +35,19 @@
 </head>
 
 <body>
+
+<c:url value="/hospital" var="myUrl">
+    <c:if test="${pet_shop != null}">
+        <c:param name="action" value="search_pet_shop"/>
+    </c:if>
+    <c:if test="${phu_kien != null}">
+        <c:param name="action" value="search_phu_kien"/>
+    </c:if>
+    <c:if test="${dich_vu != null}">
+        <c:param name="action" value="search_dich_vu"/>
+    </c:if>
+</c:url>
+
 <jsp:include page="_Menu.jsp"></jsp:include>
 
 <!-- Shop Details Section Begin -->
@@ -44,9 +57,22 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="product__details__breadcrumb">
-                        <a href="index.jsp">Home</a>
-                        <a href="shop.jsp">Shop</a>
-                        <span>Product Details</span>
+                        <c:if test="${sessionScope.acc == null}">
+                            <a href="<c:url value="/hospital"/>">Home</a>
+                            <a href="<c:url value="/shop"/>">Shop</a>
+                            <span>Product Details</span>
+                        </c:if>>
+                        <c:if test="${sessionScope.acc != null}">
+                            <c:if test="${sessionScope.acc_admin != null || sessionScope.acc_nhan_vien != null}">
+                                <a href="<c:url value="/shop"/>">Shop</a>
+                                <span>Product Details</span>
+                            </c:if>
+                            <c:if test="${sessionScope.acc_khach_hang != null}">
+                                <a href="<c:url value="/hospital"/>">Home</a>
+                                <a href="<c:url value="/shop"/>">Shop</a>
+                                <span>Product Details</span>
+                            </c:if>
+                        </c:if>
                     </div>
                 </div>
             </div>
@@ -56,7 +82,15 @@
                     <div class="tab-content">
                         <div class="tab-pane active" id="tabs-1" role="tabpanel">
                             <div class="product__details__pic__item align-content-center mx-auto d-block">
-                                <img src="https://matpetfamily.com/wp-content/uploads/2022/01/D0015C3F-5BEC-4097-9222-280EE074B2FE.jpeg" alt="">
+                                <c:if test="${pet_shop != null}">
+                                    <img src="${pet_shop.getPs_anh()}" alt="">
+                                </c:if>
+                                <c:if test="${phu_kien != null}">
+                                    <img src="${phu_kien.getPk_anh()}" alt="">
+                                </c:if>
+                                <c:if test="${dich_vu != null}">
+                                    <img src="${dich_vu.getCtdv_anh()}" alt="">
+                                </c:if>
                             </div>
                         </div>
                     </div>
@@ -69,20 +103,157 @@
             <div class="row d-flex justify-content-center">
                 <div class="col-lg-8">
                     <div class="product__details__text">
-                        <h4>Phốc sóc trắng</h4>
+                        <h4>
+                            <c:if test="${pet_shop != null}">
+                                ${pet_shop.getPs_ten()}
+                            </c:if>
+                            <c:if test="${phu_kien != null}">
+                                ${phu_kien.getPk_ten()}
+                            </c:if>
+                            <c:if test="${dich_vu != null}">
+                                ${dich_vu.getCtdv_ten()}
+                            </c:if>
+                        </h4>
                         <hr>
-                        <h3>20.000.000 VND <span>25.000.000</span></h3>
-                        <p>Mô tả giống pet & pet shop</p>
+                        <h3>
+                            <c:if test="${pet_shop != null}">
+                                ${pet_shop.getPs_gia()} VNĐ
+                            </c:if>
+                            <c:if test="${phu_kien != null}">
+                                ${phu_kien.getPk_gia()} VNĐ
+                            </c:if>
+                            <c:if test="${dich_vu != null}">
+                                ${dich_vu.getCtdv_gia()} VNĐ
+                            </c:if>
+                            <span>
+                                <c:if test="${pet_shop != null}">
+                                    ${pet_shop.getPs_gia() + Integer.valueOf(pet_shop.getPs_gia() * 0.1)} vnđ
+                                </c:if>
+                                <c:if test="${phu_kien != null}">
+                                    ${phu_kien.getPk_gia() + Integer.valueOf(phu_kien.getPk_gia() * 0.1)} vnđ
+                                </c:if>
+                                <c:if test="${dich_vu != null}">
+                                    ${dich_vu.getCtdv_gia() + Integer.valueOf(dich_vu.getCtdv_gia() * 0.1)} vnđ
+                                </c:if>
+                            </span>
+                        </h3>
+                        <c:if test="${pet_shop != null}">
+                            <p>
+                                    ${pet_shop.getPs_mo_ta()}
+                            </p>
+                        </c:if>
+                        <c:if test="${phu_kien != null}">
+                            <p>
+                                    ${phu_kien.getPk_mo_ta()}
+                            </p>
+                        </c:if>
+                        <c:if test="${dich_vu != null}">
+                            <p>
+                                    ${dich_vu.getCtdv_mo_ta()}
+                            </p>
+                        </c:if>
                         <div class="product__details__btns__option">
-                            <p>Tình trạng: Còn hàng</p>
+                            <c:if test="${pet_shop != null }">
+                                <c:if test="${pet_shop.getPs_trang_thai() != 0}">
+                                    <p>
+                                        Tình trạng: Còn hàng
+                                    </p>
+                                </c:if>
+                            </c:if>
+                            <c:if test="${phu_kien != null}">
+                                <c:if test="${phu_kien.getPk_so_luong() != 0}">
+                                    <p>
+                                        Tình trạng: Còn hàng
+                                    </p>
+                                </c:if>
+                            </c:if>
+                            <c:if test="${dich_vu != null}">
+                                <c:if test="${dich_vu.getCtdv_trang_thai() != 0}">
+                                    <p>
+                                        Tình trạng: Còn hàng
+                                    </p>
+                                </c:if>
+                            </c:if>
                         </div>
                         <div class="product__details__cart__option">
-                            <div class="quantity">
-                                <div class="pro-qty">
-                                    <input type="text" value="1">
-                                </div>
-                            </div>
-                            <a href="#" class="primary-btn">add to cart</a>
+                            <c:if test="${pet_shop != null }">
+                                <c:if test="${sessionScope.acc != null}">
+                                    <c:if test="${sessionScope.acc_khach_hang != null}">
+                                        <div class="quantity">
+                                            <div class="pro-qty">
+                                                <input type="text" value="1">
+                                            </div>
+                                        </div>
+                                    </c:if>
+                                </c:if>
+                            </c:if>
+                            <c:if test="${phu_kien != null}">
+                                <c:if test="${sessionScope.acc != null}">
+                                    <c:if test="${sessionScope.acc_khach_hang != null}">
+                                        <div class="quantity">
+                                            <div class="pro-qty">
+                                                <input type="text" value="1">
+                                            </div>
+                                        </div>
+                                    </c:if>
+                                </c:if>
+                            </c:if>
+                            <c:if test="${dich_vu != null}">
+                                <c:if test="${sessionScope.acc != null}">
+                                    <c:if test="${sessionScope.acc_khach_hang != null}">
+                                        <div class="quantity">
+                                            <div class="pro-qty">
+                                                <input type="text" value="1">
+                                            </div>
+                                        </div>
+                                    </c:if>
+                                </c:if>
+                            </c:if>
+                            <c:if test="${pet_shop != null }">
+                                <c:if test="${pet_shop.getPs_trang_thai() != 0}">
+                                    <c:if test="${sessionScope.acc == null}">
+                                        <a href="#" class="primary-btn">Hãy Đăng Nhập</a>
+                                    </c:if>>
+                                    <c:if test="${sessionScope.acc != null}">
+                                        <c:if test="${sessionScope.acc_admin != null || sessionScope.acc_nhan_vien != null}">
+                                            <a href="#" class="primary-btn"> ADMIN </a>
+                                        </c:if>
+                                        <c:if test="${sessionScope.acc_khach_hang != null}">
+                                            <a href="#" class="primary-btn">Thêm Vào Giỏ Hàng</a>
+                                        </c:if>
+                                    </c:if>
+                                </c:if>
+                            </c:if>
+                            <c:if test="${phu_kien != null}">
+                                <c:if test="${phu_kien.getPk_so_luong() != 0}">
+                                    <c:if test="${sessionScope.acc == null}">
+                                        <a href="#" class="primary-btn">Hãy Đăng Nhập</a>
+                                    </c:if>>
+                                    <c:if test="${sessionScope.acc != null}">
+                                        <c:if test="${sessionScope.acc_admin != null || sessionScope.acc_nhan_vien != null}">
+                                            <a href="#" class="primary-btn"> ADMIN </a>
+                                        </c:if>
+                                        <c:if test="${sessionScope.acc_khach_hang != null}">
+                                            <a href="#" class="primary-btn">Thêm Vào Giỏ Hàng</a>
+                                        </c:if>
+                                    </c:if>
+                                </c:if>
+                            </c:if>
+                            <c:if test="${dich_vu != null}">
+                                <c:if test="${dich_vu.getCtdv_trang_thai() != 0}">
+                                    <c:if test="${sessionScope.acc == null}">
+                                        <a href="#" class="primary-btn">Hãy Đăng Nhập</a>
+                                    </c:if>>
+                                    <c:if test="${sessionScope.acc != null}">
+                                        <c:if test="${sessionScope.acc_admin != null || sessionScope.acc_nhan_vien != null}">
+                                            <a href="#" class="primary-btn"> ADMIN </a>
+                                        </c:if>
+                                        <c:if test="${sessionScope.acc_khach_hang != null}">
+                                            <a href="#" class="primary-btn">Thêm Vào Giỏ Hàng</a>
+                                        </c:if>
+                                    </c:if>
+                                </c:if>
+                            </c:if>
                         </div>
                         <div class="product__details__btns__option">
                             <a href="#"><i class="fa fa-heart"></i> add to wishlist</a>
@@ -104,144 +275,108 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-lg-3 col-md-6 col-sm-6 col-sm-6">
-                <div class="product__item">
-                    <div class="product__item__pic set-bg" data-setbg="img/product/product-1.jpg">
-                        <span class="label">New</span>
-                        <ul class="product__hover">
-                            <li><a href="#"><img src="img/icon/heart.png" alt=""></a></li>
-                            <li><a href="#"><img src="img/icon/compare.png" alt=""> <span>Compare</span></a></li>
-                            <li><a href="#"><img src="img/index/search.png" alt=""></a></li>
-                        </ul>
-                    </div>
-                    <div class="product__item__text">
-                        <h6>Piqué Biker Jacket</h6>
-                        <a href="#" class="add-cart">+ Add To Cart</a>
-                        <div class="rating">
-                            <i class="fa fa-star-o"></i>
-                            <i class="fa fa-star-o"></i>
-                            <i class="fa fa-star-o"></i>
-                            <i class="fa fa-star-o"></i>
-                            <i class="fa fa-star-o"></i>
-                        </div>
-                        <h5>$67.24</h5>
-                        <div class="product__color__select">
-                            <label for="pc-1">
-                                <input type="radio" id="pc-1">
-                            </label>
-                            <label class="active black" for="pc-2">
-                                <input type="radio" id="pc-2">
-                            </label>
-                            <label class="grey" for="pc-3">
-                                <input type="radio" id="pc-3">
-                            </label>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6 col-sm-6 col-sm-6">
-                <div class="product__item">
-                    <div class="product__item__pic set-bg" data-setbg="img/product/product-2.jpg">
-                        <ul class="product__hover">
-                            <li><a href="#"><img src="img/icon/heart.png" alt=""></a></li>
-                            <li><a href="#"><img src="img/icon/compare.png" alt=""> <span>Compare</span></a></li>
-                            <li><a href="#"><img src="img/index/search.png" alt=""></a></li>
-                        </ul>
-                    </div>
-                    <div class="product__item__text">
-                        <h6>Piqué Biker Jacket</h6>
-                        <a href="#" class="add-cart">+ Add To Cart</a>
-                        <div class="rating">
-                            <i class="fa fa-star-o"></i>
-                            <i class="fa fa-star-o"></i>
-                            <i class="fa fa-star-o"></i>
-                            <i class="fa fa-star-o"></i>
-                            <i class="fa fa-star-o"></i>
-                        </div>
-                        <h5>$67.24</h5>
-                        <div class="product__color__select">
-                            <label for="pc-4">
-                                <input type="radio" id="pc-4">
-                            </label>
-                            <label class="active black" for="pc-5">
-                                <input type="radio" id="pc-5">
-                            </label>
-                            <label class="grey" for="pc-6">
-                                <input type="radio" id="pc-6">
-                            </label>
+            <c:if test="${pet_shop != null }">
+                <c:forEach items="${requestScope['pet_shops']}" var="pet_shop">
+                    <div class="col-lg-3 col-md-6 col-sm-6 col-md-6 col-sm-6 mix new-arrivals">
+                        <div class="product__item">
+                            <div class="product__item__pic set-bg"
+                                 data-setbg="${pet_shop.getPs_anh()}">
+                                <ul class="product__hover">
+                                    <li><a href="#"><img src="img/icon/heart.png" alt=""> <span>Heart</span></a></li>
+                                    <li>
+                                        <a href="<c:url value="/hospital?action=search_pet_shop&ps_id=${pet_shop.getPs_id()}"/>"><img
+                                                src="img/icon/search.png" alt=""> <span>Detail</span></a></li>
+                                </ul>
+                            </div>
+                            <div class="product__item__text">
+                                <h6>${pet_shop.getPs_ten()}</h6>
+                                <c:if test="${sessionScope.acc != null}">
+                                    <c:if test="${sessionScope.acc_khach_hang != null}">
+                                        <a href="<c:url value="/hospital?action=addToCart&id=${pet_shop.getPs_id()}"/>"
+                                           class="add-cart">+ Thêm Vào Giỏ Hàng</a>
+                                    </c:if>
+                                    <c:if test="${sessionScope.acc_admin != null || sessionScope.acc_nhan_vien != null}">
+                                        <a href="#" class="add-cart">+ ${pet_shop.getPs_gp_id()}</a>
+                                    </c:if>
+                                </c:if>
+                                <c:if test="${sessionScope.acc == null}">
+                                    <a href="#" class="add-cart">+ Hãy Đăng Nhập</a>
+                                </c:if>
+                                <hr>
+                                <h5>${pet_shop.getPs_gia()} VND</h5>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6 col-sm-6 col-sm-6">
-                <div class="product__item sale">
-                    <div class="product__item__pic set-bg" data-setbg="img/product/product-3.jpg">
-                        <span class="label">Sale</span>
-                        <ul class="product__hover">
-                            <li><a href="#"><img src="img/icon/heart.png" alt=""></a></li>
-                            <li><a href="#"><img src="img/icon/compare.png" alt=""> <span>Compare</span></a></li>
-                            <li><a href="#"><img src="img/index/search.png" alt=""></a></li>
-                        </ul>
-                    </div>
-                    <div class="product__item__text">
-                        <h6>Multi-pocket Chest Bag</h6>
-                        <a href="#" class="add-cart">+ Add To Cart</a>
-                        <div class="rating">
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star-o"></i>
-                        </div>
-                        <h5>$43.48</h5>
-                        <div class="product__color__select">
-                            <label for="pc-7">
-                                <input type="radio" id="pc-7">
-                            </label>
-                            <label class="active black" for="pc-8">
-                                <input type="radio" id="pc-8">
-                            </label>
-                            <label class="grey" for="pc-9">
-                                <input type="radio" id="pc-9">
-                            </label>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6 col-sm-6 col-sm-6">
-                <div class="product__item">
-                    <div class="product__item__pic set-bg" data-setbg="img/product/product-4.jpg">
-                        <ul class="product__hover">
-                            <li><a href="#"><img src="img/icon/heart.png" alt=""></a></li>
-                            <li><a href="#"><img src="img/icon/compare.png" alt=""> <span>Compare</span></a></li>
-                            <li><a href="#"><img src="img/index/search.png" alt=""></a></li>
-                        </ul>
-                    </div>
-                    <div class="product__item__text">
-                        <h6>Diagonal Textured Cap</h6>
-                        <a href="#" class="add-cart">+ Add To Cart</a>
-                        <div class="rating">
-                            <i class="fa fa-star-o"></i>
-                            <i class="fa fa-star-o"></i>
-                            <i class="fa fa-star-o"></i>
-                            <i class="fa fa-star-o"></i>
-                            <i class="fa fa-star-o"></i>
-                        </div>
-                        <h5>$60.9</h5>
-                        <div class="product__color__select">
-                            <label for="pc-10">
-                                <input type="radio" id="pc-10">
-                            </label>
-                            <label class="active black" for="pc-11">
-                                <input type="radio" id="pc-11">
-                            </label>
-                            <label class="grey" for="pc-12">
-                                <input type="radio" id="pc-12">
-                            </label>
+                </c:forEach>
+            </c:if>
+            <c:if test="${phu_kien != null}">
+                <c:forEach items="${requestScope['phu_kiens']}" var="phu_kien">
+                    <div class="col-lg-3 col-md-6 col-sm-6 col-md-6 col-sm-6 mix new-arrivals">
+                        <div class="product__item">
+                            <div class="product__item__pic set-bg"
+                                 data-setbg="${phu_kien.getPk_anh()}">
+                                <ul class="product__hover">
+                                    <li><a href="#"><img src="img/icon/heart.png" alt=""> <span>Heart</span></a></li>
+                                    <li>
+                                        <a href="<c:url value="/hospital?action=search_phu_kien&pk_id=${phu_kien.getPk_id()}"/>"><img
+                                                src="img/icon/search.png" alt=""> <span>Detail</span></a></li>
+                                </ul>
+                            </div>
+                            <div class="product__item__text">
+                                <h6>${phu_kien.getPk_ten()}</h6>
+                                <c:if test="${sessionScope.acc != null}">
+                                    <c:if test="${sessionScope.acc_khach_hang != null}">
+                                        <a href="<c:url value="/hospital?action=addToCart&id=${phu_kien.getPk_id()}"/>"
+                                           class="add-cart">+ Thêm Vào Giỏ Hàng</a>
+                                    </c:if>
+                                    <c:if test="${sessionScope.acc_admin != null || sessionScope.acc_nhan_vien != null}">
+                                        <a href="#" class="add-cart">+ ${phu_kien.getPk_lpk_id()}</a>
+                                    </c:if>
+                                </c:if>
+                                <c:if test="${sessionScope.acc == null}">
+                                    <a href="#" class="add-cart">+ Hãy Đăng Nhập</a>
+                                </c:if>
+                                <hr>
+                                <h5>${phu_kien.getPk_gia()} VND</h5>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </div>
+                </c:forEach>
+            </c:if>
+            <c:if test="${dich_vu != null}">
+                <c:forEach items="${requestScope['dich_vus']}" var="dich_vu">
+                    <div class="col-lg-3 col-md-6 col-sm-6 col-md-6 col-sm-6 mix new-arrivals">
+                        <div class="product__item">
+                            <div class="product__item__pic set-bg"
+                                 data-setbg="${dich_vu.getCtdv_anh()}">
+                                <ul class="product__hover">
+                                    <li><a href="#"><img src="img/icon/heart.png" alt=""> <span>Heart</span></a></li>
+                                    <li>
+                                        <a href="<c:url value="/hospital?action=search_dich_vu&dv_id=${dich_vu.getCtdv_id()}"/>"><img
+                                                src="img/icon/search.png" alt=""> <span>Detail</span></a></li>
+                                </ul>
+                            </div>
+                            <div class="product__item__text">
+                                <h6>${dich_vu.getCtdv_ten()}</h6>
+                                <c:if test="${sessionScope.acc != null}">
+                                    <c:if test="${sessionScope.acc_khach_hang != null}">
+                                        <a href="<c:url value="/hospital?action=addToCart&id=${dich_vu.getCtdv_id()}"/>"
+                                           class="add-cart">+ Thêm Vào Giỏ Hàng</a>
+                                    </c:if>
+                                    <c:if test="${sessionScope.acc_admin != null || sessionScope.acc_nhan_vien != null}">
+                                        <a href="#" class="add-cart">+ ${dich_vu.getCtdv_dv_id()}</a>
+                                    </c:if>
+                                </c:if>
+                                <c:if test="${sessionScope.acc == null}">
+                                    <a href="#" class="add-cart">+ Hãy Đăng Nhập</a>
+                                </c:if>
+                                <hr>
+                                <h5>${dich_vu.getCtdv_gia()} VNĐ</h5>
+                            </div>
+                        </div>
+                    </div>
+                </c:forEach>
+            </c:if>
         </div>
     </div>
 </section>

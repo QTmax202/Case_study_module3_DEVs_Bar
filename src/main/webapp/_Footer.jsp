@@ -18,10 +18,10 @@
                 <div class="footer__widget">
                     <h6>Shopping</h6>
                     <ul>
-                        <li><a href="#">Thú Cưng</a></li>
-                        <li><a href="#">Phụ Kiện</a></li>
-                        <li><a href="#">Dịch Vụ</a></li>
-                        <li><a href="#">Giới Thiệu</a></li>
+                        <li><a href="<c:url value="/shop?action=list-thu-cung"/>">Thú Cưng</a></li>
+                        <li><a href="<c:url value="/shop?action=list-phu-kien"/>">Phụ Kiện</a></li>
+                        <li><a href="<c:url value="/shop?action=list-dich-vu"/>">Dịch Vụ</a></li>
+                        <li><a href="blog-details.jsp">Giới Thiệu</a></li>
                     </ul>
                 </div>
             </div>
@@ -44,8 +44,10 @@
 <div class="search-model">
     <div class="h-100 d-flex align-items-center justify-content-center">
         <div class="search-close-switch">+</div>
-        <form class="search-model-form">
-            <input type="text" id="search-input" placeholder="Search here.....">
+        <form class="search-model-form" action="/shop?action=tim-kiem" method="post">
+            <label>
+                <input type="text" id="search-input" placeholder="Search here....." name="tim-kiem">
+            </label>
         </form>
     </div>
 </div>

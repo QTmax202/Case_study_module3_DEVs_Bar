@@ -63,7 +63,10 @@ public class ShopServlet extends HttpServlet {
             case "list-thu-cung":
             default:
                 giongPet(request, response);
+<<<<<<< HEAD
                 break;
+=======
+>>>>>>> 34bdb348175a14c9f063d9ba7e8d8a1fa8c9ddc8
         }
     }
 
@@ -164,7 +167,10 @@ public class ShopServlet extends HttpServlet {
 
     private void tim_kiem(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+<<<<<<< HEAD
         request.setCharacterEncoding("UTF-8");
+=======
+>>>>>>> 34bdb348175a14c9f063d9ba7e8d8a1fa8c9ddc8
         String name = request.getParameter("tim-kiem");
         request.setAttribute("tim", name);
         ArrayList<Pet_shop> pet_shops = (ArrayList<Pet_shop>) shopDAO.tim_thu_cung(name);
@@ -173,7 +179,10 @@ public class ShopServlet extends HttpServlet {
         request.setAttribute("phu_kien_id", list_phu_kien);
         ArrayList<Chi_tiet_dv> list_dich_vu = (ArrayList<Chi_tiet_dv>) shopDAO.tim_dich_vu(name);
         request.setAttribute("chi_tiet_dv", list_dich_vu);
+<<<<<<< HEAD
 
+=======
+>>>>>>> 34bdb348175a14c9f063d9ba7e8d8a1fa8c9ddc8
         ArrayList<Giong_pet> giong_pets = (ArrayList<Giong_pet>) shopDAO.giongPet();
         request.setAttribute("giong_pets", giong_pets);
         ArrayList<Chi_tiet_dv> chi_tiet_dvs = (ArrayList<Chi_tiet_dv>) shopDAO.loaiDichVu();

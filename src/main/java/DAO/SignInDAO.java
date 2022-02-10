@@ -28,6 +28,7 @@ public class SignInDAO {
                         rs.getString(6));
             }
         } catch (SQLException e) {
+<<<<<<< HEAD
 
         }
 
@@ -57,3 +58,10 @@ public class SignInDAO {
         return null;
     }
 }
+=======
+            e.printStackTrace();
+        }
+        return null;
+    }
+}
+>>>>>>> 34bdb348175a14c9f063d9ba7e8d8a1fa8c9ddc8

@@ -1,28 +1,17 @@
 package DAO;
 
+import connection.MyConnection;
 import model.Khach_hang;
-
-
 import java.sql.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.sql.Date;
 
 public class KhachHangDAO {
+    private static final MyConnection myConnection = new MyConnection();
     private static final String INSERT_KHACH_HANG_SQL = "insert into khach_hang(kh_anh, kh_ten, kh_gioi_tinh, kh_email, kh_phone_number, kh_ngay_sinh, kh_dia_chi) value(?,?,?,?,?,?,?);";
     private static final String SELECT_ALL_KHACH_HANG = "select * from khach_hang;";
     private static final String UPDATE_KHACH_HANG_SQL = "update khach_hang set kh_anh= ?,kh_ten= ?, kh_gioi_tinh=?, kh_email=?, kh_phone_number=?, kh_ngay_sinh=?, kh_dia_chi=?  where kh_id = ?;";
-    protected Connection getConnection() {
-        Connection connection = null;
-        try {
-            Class.forName("com.mysql.jdbc.Driver");
-            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/quan_ly_pet_shop?useSSL=false", "root", "12345678");
-        } catch (SQLException | ClassNotFoundException e) {
-            e.printStackTrace();
-        }
-        return connection;
-    }
-
 
     public ArrayList<Khach_hang> selectAllKhachHangs() {
         return null;
@@ -31,6 +20,7 @@ public class KhachHangDAO {
     public void insertKhachHang(Khach_hang kh) throws SQLException {
         System.out.println(INSERT_KHACH_HANG_SQL);
 
+<<<<<<< HEAD
         try (Connection connection = getConnection(); PreparedStatement preparedStatement = connection.prepareStatement(INSERT_KHACH_HANG_SQL)) {
 //            preparedStatement.setString(1, kh.getKh_id());
             preparedStatement.setString(1, kh.getKh_anh());
@@ -40,6 +30,17 @@ public class KhachHangDAO {
             preparedStatement.setString(5, kh.getKh_phone_number());
             preparedStatement.setDate(6, java.sql.Date.valueOf(kh.getKh_ngay_sinh()));
             preparedStatement.setString(7, kh.getKh_dia_chi());
+=======
+        try (Connection connection = myConnection.getConnection(); PreparedStatement preparedStatement = connection.prepareStatement(INSERT_KHACH_HANG_SQL)) {
+            preparedStatement.setString(1, kh.getKh_id());
+            preparedStatement.setString(2, kh.getKh_anh());
+            preparedStatement.setString(3, kh.getKh_ten());
+            preparedStatement.setString(4, kh.getKh_gioi_tinh());
+            preparedStatement.setString(5, kh.getKh_email());
+            preparedStatement.setString(6, kh.getKh_phone_number());
+            preparedStatement.setDate(7, (Date) kh.getKh_ngay_sinh());
+            preparedStatement.setString(8, kh.getKh_dia_chi());
+>>>>>>> 34bdb348175a14c9f063d9ba7e8d8a1fa8c9ddc8
 
             System.out.println(preparedStatement);
             preparedStatement.executeUpdate();
@@ -53,7 +54,7 @@ public class KhachHangDAO {
 
         ArrayList<Khach_hang> khachHangs = new ArrayList<>();
 
-        try (Connection connection = getConnection();
+        try (Connection connection = myConnection.getConnection();
 
              PreparedStatement preparedStatement = connection.prepareStatement(SELECT_ALL_KHACH_HANG);) {
             System.out.println(preparedStatement);
@@ -79,7 +80,7 @@ public class KhachHangDAO {
 
     public boolean updateKhachHang(Khach_hang kh) throws SQLException {
         boolean rowUpdated;
-        try (Connection connection = getConnection();
+        try (Connection connection = myConnection.getConnection();
              PreparedStatement statement = connection.prepareStatement(UPDATE_KHACH_HANG_SQL);) {
 
             statement.setString(1, kh.getKh_anh());

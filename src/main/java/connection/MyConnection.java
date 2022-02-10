@@ -6,9 +6,9 @@ import java.sql.SQLException;
 
 public class MyConnection {
     // các tham số để kết nối databases
-    private String URL = "jdbc:mysql://localhost:3306/quan_ly_pet_shop?useSSL=false";
-    private String userName = "root";
-    private String passWord = "12345678";
+    private final String URL = "jdbc:mysql://localhost:3306/quan_ly_pet_shop?useSSL=false";
+    private final String userName = "root";
+    private final String passWord = "M@cb@c202";
 
     public Connection getConnection() {
         Connection connection = null;

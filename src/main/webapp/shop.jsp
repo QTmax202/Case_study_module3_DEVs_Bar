@@ -38,8 +38,8 @@
                 <div class="breadcrumb__text">
                     <h4>Shop</h4>
                     <div class="breadcrumb__links">
-                        <a href="index.jsp">Home</a>
-                        <span>Shop</span>
+                        <a href="<c:url value="/hospital?action=home"/>">Home</a>
+                        <span><a href="<c:url value="/shop"/>">Shop</a></span>
                     </div>
                 </div>
             </div>
@@ -55,8 +55,8 @@
             <div class="col-lg-3">
                 <div class="shop__sidebar">
                     <div class="shop__sidebar__search">
-                        <form action="#">
-                            <input type="text" placeholder="Search...">
+                        <form action="<c:url value="/shop?action=tim-kiem"/>" method="post">
+                            <input value="${tim}" type="text" placeholder="Search..." name="tim-kiem">
                             <button type="submit"><span class="icon_search"></span></button>
                         </form>
                     </div>
@@ -70,8 +70,12 @@
                                     <div class="card-body">
                                         <div class="shop__sidebar__categories">
                                             <ul class="nice-scroll">
+                                                <li class="fa fa-star-o"><a href="/shop?action=list-thu-cung"> TẤT
+                                                    CẢ</a></li>
                                                 <c:forEach items="${giong_pets}" var="giong_pet">
-                                                    <li><a href="#">${giong_pet.gp_id}</a></li>
+                                                    <li>
+                                                        <a href="/shop?action=thucung&id=${giong_pet.gp_id}">${giong_pet.gp_id}</a>
+                                                    </li>
                                                 </c:forEach>
                                             </ul>
                                         </div>
@@ -84,12 +88,15 @@
                                 </div>
                                 <div id="collapseTwo" class="collapse show" data-parent="#accordionExample">
                                     <div class="card-body">
-                                        <div class="shop__sidebar__brand">
-                                            <ul>
-                                                <li><a href="#">Louis Vuitton</a></li>
-                                                <li><a href="#">Chanel</a></li>
-                                                <li><a href="#">Hermes</a></li>
-                                                <li><a href="#">Gucci</a></li>
+                                        <div class="shop__sidebar__categories">
+                                            <ul class="nice-scroll">
+                                                <li class="fa fa-star-o"><a href="/shop?action=list-phu-kien"> TẤT
+                                                    CẢ</a></li>
+                                                <c:forEach items="${phu_kiens}" var="phu_kien">
+                                                    <li>
+                                                        <a href="/shop?action=phukien&id=${phu_kien.pk_mo_ta}">${phu_kien.pk_lpk_id}</a>
+                                                    </li>
+                                                </c:forEach>
                                             </ul>
                                         </div>
                                     </div>
@@ -101,14 +108,15 @@
                                 </div>
                                 <div id="collapseThree" class="collapse show" data-parent="#accordionExample">
                                     <div class="card-body">
-                                        <div class="shop__sidebar__price">
-                                            <ul>
-                                                <li><a href="#">$0.00 - $50.00</a></li>
-                                                <li><a href="#">$50.00 - $100.00</a></li>
-                                                <li><a href="#">$100.00 - $150.00</a></li>
-                                                <li><a href="#">$150.00 - $200.00</a></li>
-                                                <li><a href="#">$200.00 - $250.00</a></li>
-                                                <li><a href="#">250.00+</a></li>
+                                        <div class="shop__sidebar__categories">
+                                            <ul class="nice-scroll">
+                                                <li class="fa fa-star-o"><a href="/shop?action=list-dich-vu"> TẤT CẢ</a>
+                                                </li>
+                                                <c:forEach items="${chi_tiet_dvs}" var="chi_tiet_dv">
+                                                    <li>
+                                                        <a href="/shop?action=dichvu&id=${chi_tiet_dv.ctdv_mo_ta}">${chi_tiet_dv.ctdv_dv_id}</a>
+                                                    </li>
+                                                </c:forEach>
                                             </ul>
                                         </div>
                                     </div>
@@ -121,54 +129,129 @@
             <div class="col-lg-9">
                 <div class="shop__product__option">
                     <div class="row">
-                        <div class="col-lg-6    col-md-6 col-sm-6">
-                            <div class="shop__product__option__left">
-                                <p>Showing 1–12 of 126 results</p>
-                            </div>
-                        </div>
+                        <div class="col-lg-6    col-md-6 col-sm-6"></div>
                         <div class="col-lg-6 col-md-6 col-sm-6">
                             <div class="shop__product__option__right">
-                                <p>Sort by Price:</p>
+                                <p>Sắp xếp theo giá:</p>
                                 <select>
-                                    <option value="">Low To High</option>
-                                    <option value="">$0 - $55</option>
-                                    <option value="">$55 - $100</option>
+                                    <option><a href="shop?action=sap-xep-tang">Sắp xếp tăng dần</a></option>
+                                    <option><a href="shop?action=sap-xep-giam">Sắp xếp giảm dần</a></option>
                                 </select>
                             </div>
                         </div>
                     </div>
                 </div>
+
                 <div class="row">
-                    <div class="col-lg-4 col-md-6 col-sm-6">
-                        <div class="product__item">
-                            <div class="product__item__pic set-bg"
-                                 data-setbg="https://matpetfamily.com/wp-content/uploads/2022/01/D0015C3F-5BEC-4097-9222-280EE074B2FE.jpeg">
-                                <ul class="product__hover">
-                                    <li><a href="#"><img src="img/icon/heart.png" alt=""> <span>Heart</span></a></li>
-                                    <%--                            <li><a href="#"><img src="img/icon/compare.png" alt=""> <span>Compare</span></a></li>--%>
-                                    <li><a href="shop-details.jsp"><img src="img/icon/search.png" alt="">
-                                        <span>Detail</span></a></li>
-                                </ul>
-                            </div>
-                            <div class="product__item__text">
-                                <h6>Phốc sóc trắng</h6>
-                                <a href="#" class="add-cart">+ Add To Cart</a>
-                                <hr>
-                                <h5>20.000.000 VND</h5>
+                    <c:forEach items="${pet_shops}" var="pet_shop">
+                        <div class="col-lg-4 col-md-6 col-sm-6">
+                            <div class="product__item">
+                                <div class="product__item__pic set-bg"
+                                     data-setbg="${pet_shop.ps_anh}">
+                                    <ul class="product__hover">
+                                        <li>
+                                            <a href="#">
+                                                <img src="img/icon/heart.png" alt="">
+                                                <span>Heart</span></a>
+                                        </li>
+                                        <li>
+                                            <a href="<c:url value="/hospital?action=search_pet_shop&ps_id=${pet_shop.getPs_id()}"/>">
+                                                <img src="img/icon/search.png" alt="">
+                                                <span>Detail</span></a>
+                                        </li>
+                                        <li>
+                                            <a href="#">
+                                                <img src="https://image.flaticon.com/icons/png/512/84/84380.png" width="36" height="36" alt="">
+                                                <span>Edit</span></a>
+                                        </li>
+                                        <li>
+                                            <a href="#">
+                                                <img src="https://icon-library.com/images/icon-delete/icon-delete-16.jpg" width="36" height="36" alt="">
+                                                <span>Delete</span></a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="product__item__text">
+                                    <c:if test="${pet_shop.getPs_trang_thai() != 0}">
+                                        <h6>${pet_shop.ps_ten}</h6>
+                                        <a href="#" class="add-cart">+ Thêm Vào Giỏ Hàng</a>
+                                        <hr>
+                                        <h5>${pet_shop.ps_gia} VND</h5>
+                                    </c:if>
+                                    <c:if test="${pet_shop.getPs_trang_thai() == 0}">
+                                        <h6>${pet_shop.ps_ten}</h6>
+                                        <a class="add-cart">Hết hàng</a>
+                                        <hr>
+                                        <h5>${pet_shop.ps_gia} VND</h5>
+                                    </c:if>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="product__pagination">
-                            <a class="active" href="#">1</a>
-                            <a href="#">2</a>
-                            <a href="#">3</a>
-                            <span>...</span>
-                            <a href="#">21</a>
+                    </c:forEach>
+                    <c:forEach items="${phu_kien_id}" var="phu_kien_id">
+                        <div class="col-lg-4 col-md-6 col-sm-6">
+                            <div class="product__item">
+                                <div class="product__item__pic set-bg"
+                                     data-setbg="${phu_kien_id.pk_anh}">
+                                    <ul class="product__hover">
+                                        <li><a href="#"><img src="img/icon/heart.png" alt=""> <span>Heart</span></a>
+                                        </li>
+                                            <%--                            <li><a href="#"><img src="img/icon/compare.png" alt=""> <span>Compare</span></a></li>--%>
+                                        <li>
+                                            <a href="<c:url value="/hospital?action=search_phu_kien&pk_id=${phu_kien_id.getPk_id()}"/>">
+                                                <img src="img/icon/search.png" alt="">
+                                                <span>Detail</span></a></li>
+                                    </ul>
+                                </div>
+                                <div class="product__item__text">
+                                    <c:if test="${phu_kien_id.getPk_so_luong() != 0}">
+                                        <h6>${phu_kien_id.pk_ten}</h6>
+                                        <a href="#" class="add-cart">+ Thêm Vào Giỏ Hàng</a>
+                                        <hr>
+                                        <h5>${phu_kien_id.pk_gia} VND</h5>
+                                    </c:if>
+                                    <c:if test="${phu_kien_id.getPk_so_luong() == 0}">
+                                        <h6>${phu_kien_id.pk_ten}</h6>
+                                        <a class="add-cart">Hết hàng</a>
+                                        <hr>
+                                        <h5>${phu_kien_id.pk_gia} VND</h5>
+                                    </c:if>
+                                </div>
+                            </div>
                         </div>
-                    </div>
+                    </c:forEach>
+                    <c:forEach items="${chi_tiet_dv}" var="chi_tiet_dv">
+                        <div class="col-lg-4 col-md-6 col-sm-6">
+                            <div class="product__item">
+                                <div class="product__item__pic set-bg"
+                                     data-setbg="${chi_tiet_dv.ctdv_anh}">
+                                    <ul class="product__hover">
+                                        <li><a href="#"><img src="img/icon/heart.png" alt=""> <span>Heart</span></a>
+                                        </li>
+                                            <%--                            <li><a href="#"><img src="img/icon/compare.png" alt=""> <span>Compare</span></a></li>--%>
+                                        <li>
+                                            <a href="<c:url value="/hospital?action=search_dich_vu&dv_id=${chi_tiet_dv.getCtdv_id()}"/>">
+                                                <img src="img/icon/search.png" alt="">
+                                                <span>Detail</span></a></li>
+                                    </ul>
+                                </div>
+                                <div class="product__item__text">
+                                    <c:if test="${chi_tiet_dv.getCtdv_trang_thai() != 0}">
+                                        <h6>${chi_tiet_dv.ctdv_ten}</h6>
+                                        <a href="#" class="add-cart">+ Thêm Vào Giỏ Hàng</a>
+                                        <hr>
+                                        <h5>${chi_tiet_dv.ctdv_gia} VND</h5>
+                                    </c:if>
+                                    <c:if test="${chi_tiet_dv.getCtdv_trang_thai() == 0}">
+                                        <h6>${chi_tiet_dv.ctdv_ten}</h6>
+                                        <a class="add-cart">Hết hàng</a>
+                                        <hr>
+                                        <h5>${chi_tiet_dv.ctdv_gia} VND</h5>
+                                    </c:if>
+                                </div>
+                            </div>
+                        </div>
+                    </c:forEach>
                 </div>
             </div>
         </div>

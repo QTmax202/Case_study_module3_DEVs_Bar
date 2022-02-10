@@ -269,7 +269,11 @@ public class ShopDAO {
         List<Pet_shop> pet_shops = new ArrayList<>();
         try {
             Connection connection = myConnection.getConnection();
+<<<<<<< HEAD
             PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM pet_shop WHERE ps_ten LIKE ?;");
+=======
+            PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM pet_shop WHERE ps_ten LIKE N?;");
+>>>>>>> 34bdb348175a14c9f063d9ba7e8d8a1fa8c9ddc8
             preparedStatement.setString(1, "%" + name + "%");
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
@@ -293,7 +297,11 @@ public class ShopDAO {
         List<Phu_kien> phu_kiens = new ArrayList<>();
         try {
             Connection connection = myConnection.getConnection();
+<<<<<<< HEAD
             PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM phu_kien WHERE pk_ten LIKE ?;");
+=======
+            PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM phu_kien WHERE pk_ten LIKE N?;");
+>>>>>>> 34bdb348175a14c9f063d9ba7e8d8a1fa8c9ddc8
             preparedStatement.setString(1, "%" + name + "%");
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
@@ -316,7 +324,11 @@ public class ShopDAO {
         List<Chi_tiet_dv> chi_tiet_dvs = new ArrayList<>();
         try {
             Connection connection = myConnection.getConnection();
+<<<<<<< HEAD
             PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM chi_tiet_dv WHERE ctdv_ten LIKE ?;");
+=======
+            PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM chi_tiet_dv WHERE ctdv_ten LIKE N?;");
+>>>>>>> 34bdb348175a14c9f063d9ba7e8d8a1fa8c9ddc8
             preparedStatement.setString(1, "%" + name + "%");
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
@@ -334,4 +346,8 @@ public class ShopDAO {
         }
         return chi_tiet_dvs;
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 34bdb348175a14c9f063d9ba7e8d8a1fa8c9ddc8

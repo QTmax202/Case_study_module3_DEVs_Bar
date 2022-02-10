@@ -59,6 +59,7 @@
 <!-- Thêm Thú Cưng Begin -->
 <section class="checkout spad">
     <div class="container">
+<<<<<<< HEAD
 
         <%--        đăng kí thông tin nhân viên--%>
         <div class="checkout__form">
@@ -67,6 +68,15 @@
                 <div class="row">
                     <div class="col-lg-8 col-md-6">
                         <h6 class="checkout__title">Cập Nhật Thông Tin Nhân Viên</h6>
+=======
+
+        <%--        Đăng kí thông tin nhân viên--%>
+        <div class="checkout__form">
+            <form action="#">
+                <div class="row">
+                    <div class="col-lg-8 col-md-6">
+                        <h6 class="checkout__title">Đăng kí thông tin nhân viên</h6>
+>>>>>>> 34bdb348175a14c9f063d9ba7e8d8a1fa8c9ddc8
                         <div class="row">
                             <div class="col-lg-2">
                                 <div class="checkout__input">
@@ -87,6 +97,7 @@
                             <div class="col-lg-3">
                                 <div class="checkout__input">
                                     <p>Giới Tính<span>*</span></p>
+<<<<<<< HEAD
                                     <input type="text" name="nv_gioi_tinh">
                                     <%--                                    <label>--%>
                                     <%--                                        <select class="w3-select">--%>
@@ -95,6 +106,9 @@
                                     <%--                                            <option value="khac" name="kh_gioi_tinh">Khác</option>--%>
                                     <%--                                        </select>--%>
                                     <%--                                    </label>--%>
+=======
+                                    <input type="text" name="">
+>>>>>>> 34bdb348175a14c9f063d9ba7e8d8a1fa8c9ddc8
                                 </div>
                             </div>
                         </div>
@@ -102,7 +116,11 @@
                             <div class="col-lg-6">
                                 <div class="checkout__input">
                                     <p>Ngày Sinh<span>*</span></p>
+<<<<<<< HEAD
                                     <input type="date" name="nv_ngay_sinh">
+=======
+                                    <input type="date" name="">
+>>>>>>> 34bdb348175a14c9f063d9ba7e8d8a1fa8c9ddc8
                                 </div>
                             </div>
                             <div class="col-lg-6">
@@ -116,7 +134,11 @@
                             <div class="col-lg-6">
                                 <div class="checkout__input">
                                     <p>Email<span>*</span></p>
+<<<<<<< HEAD
                                     <input type="text" placeholder="abc@gmail.com" name="nv_email">
+=======
+                                    <input type="text"  name="">
+>>>>>>> 34bdb348175a14c9f063d9ba7e8d8a1fa8c9ddc8
                                 </div>
                             </div>
                             <div class="col-lg-6">
