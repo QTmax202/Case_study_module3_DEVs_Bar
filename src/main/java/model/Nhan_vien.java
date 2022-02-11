@@ -1,6 +1,6 @@
 package model;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 public class Nhan_vien {
     private String nv_id;
@@ -9,14 +9,14 @@ public class Nhan_vien {
     private String nv_gioi_tinh;
     private String nv_email;
     private String nv_phone_number;
-    private Date nv_ngay_sinh;
+    private LocalDate nv_ngay_sinh;
     private String nv_dia_chi;
     private String nv_ca_id;
 
     public Nhan_vien() {
     }
 
-    public Nhan_vien(String nv_anh, String nv_ten, String nv_gioi_tinh, String nv_email, String nv_phone_number, Date nv_ngay_sinh, String nv_dia_chi, String nv_ca_id) {
+    public Nhan_vien(String nv_anh, String nv_ten, String nv_gioi_tinh, String nv_email, String nv_phone_number, LocalDate nv_ngay_sinh, String nv_dia_chi, String nv_ca_id) {
         this.nv_anh = nv_anh;
         this.nv_ten = nv_ten;
         this.nv_gioi_tinh = nv_gioi_tinh;
@@ -27,7 +27,7 @@ public class Nhan_vien {
         this.nv_ca_id = nv_ca_id;
     }
 
-    public Nhan_vien(String nv_id, String nv_anh, String nv_ten, String nv_gioi_tinh, String nv_email, String nv_phone_number, Date nv_ngay_sinh, String nv_dia_chi, String nv_ca_id) {
+    public Nhan_vien(String nv_id, String nv_anh, String nv_ten, String nv_gioi_tinh, String nv_email, String nv_phone_number, LocalDate nv_ngay_sinh, String nv_dia_chi, String nv_ca_id) {
         this.nv_id = nv_id;
         this.nv_anh = nv_anh;
         this.nv_ten = nv_ten;
@@ -87,11 +87,11 @@ public class Nhan_vien {
         this.nv_phone_number = nv_phone_number;
     }
 
-    public Date getNv_ngay_sinh() {
+    public LocalDate getNv_ngay_sinh() {
         return nv_ngay_sinh;
     }
 
-    public void setNv_ngay_sinh(Date nv_ngay_sinh) {
+    public void setNv_ngay_sinh(LocalDate nv_ngay_sinh) {
         this.nv_ngay_sinh = nv_ngay_sinh;
     }
 

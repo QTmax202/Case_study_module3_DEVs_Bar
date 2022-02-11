@@ -3,6 +3,7 @@ package DAO;
 import connection.MyConnection;
 import model.Nhan_vien;
 import java.sql.*;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.sql.Date;
 
@@ -10,6 +11,7 @@ public class NhanVienDAO {
     private static final MyConnection myConnection = new MyConnection();
     private static final String INSERT_NHAN_VIEN_SQL = "insert into nhan_vien(nv_id, nv_anh, nv_ten, nv_gioi_tinh, nv_email, nv_phone_number, nv_ngay_sinh, nv_dia_chi, nv_ca_id) value(?,?,?,?,?,?,?,?,?);";
     private static final String SELECT_ALL_NHAN_VIEN = "select * from nhan_vien;";
+    private static final String SELECT_NHAN_VIEN_BY_ID = "SELECT * FROM nhan_vien WHERE nv_id = ?;";
     private static final String UPDATE_NHAN_VIEN_SQL = "update nhan_vien set nv_anh= ?,nv_ten= ?, nv_gioi_tinh=?, nv_email=?, nv_phone_number=?, nv_ngay_sinh=?, nv_dia_chi=?, nv_ca_id=?  where nv_id = ?;";
 
     public void insertNhanVien(Nhan_vien nhanVien) throws SQLException {
@@ -22,7 +24,7 @@ public class NhanVienDAO {
             preparedStatement.setString(4, nhanVien.getNv_gioi_tinh());
             preparedStatement.setString(5, nhanVien.getNv_email());
             preparedStatement.setString(6, nhanVien.getNv_phone_number());
-            preparedStatement.setDate(7, (Date) nhanVien.getNv_ngay_sinh());
+            preparedStatement.setDate(7, java.sql.Date.valueOf(nhanVien.getNv_ngay_sinh()));
             preparedStatement.setString(8, nhanVien.getNv_dia_chi());
             preparedStatement.setString(9, nhanVien.getNv_ca_id());
             System.out.println(preparedStatement);
@@ -50,7 +52,7 @@ public class NhanVienDAO {
                 String nv_gioi_tinh = rs.getString("nv_gioi_tinh");
                 String nv_email = rs.getString("nv_email");
                 String nv_phone_number = rs.getString("nv_phone_number");
-                Date nv_ngay_sinh = rs.getDate("nv_ngay_sinh");
+                LocalDate nv_ngay_sinh = rs.getDate("nv_ngay_sinh").toLocalDate();
                 String nv_dia_chi = rs.getString("nv_dia_chi");
                 String nv_ca_id = rs.getString("nv_ca_id");
                 nhanViens.add(new Nhan_vien(nv_id, nv_anh, nv_ten, nv_gioi_tinh, nv_email, nv_phone_number, nv_ngay_sinh, nv_dia_chi, nv_ca_id));
@@ -59,6 +61,31 @@ public class NhanVienDAO {
             printSQLException(e);
         }
         return nhanViens;
+    }
+
+    public static Nhan_vien tim_nhan_vien(String id) {
+        Nhan_vien nhan_vien = null;
+        try {
+            Connection connection = myConnection.getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement(SELECT_NHAN_VIEN_BY_ID);
+            preparedStatement.setString(1, id);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                String nv_id = resultSet.getString(1);
+                String nv_anh = resultSet.getString(2);
+                String nv_ten = resultSet.getString(3);
+                String nv_gioi_tinh = resultSet.getString(4);
+                String nv_email = resultSet.getString(5);
+                String nv_phone_number = resultSet.getString(6);
+                LocalDate nv_ngay_sinh = resultSet.getDate(7).toLocalDate();
+                String nv_dia_chi = resultSet.getString(8);
+                String nv_ca_id = resultSet.getString(9);
+                nhan_vien = new Nhan_vien(nv_id, nv_anh, nv_ten, nv_gioi_tinh, nv_email, nv_phone_number, nv_ngay_sinh, nv_dia_chi, nv_ca_id);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return nhan_vien;
     }
 
     public boolean updateNhanVien(Nhan_vien nhanVien) throws SQLException {
@@ -71,14 +98,15 @@ public class NhanVienDAO {
             statement.setString(4, nhanVien.getNv_gioi_tinh());
             statement.setString(5, nhanVien.getNv_email());
             statement.setString(6, nhanVien.getNv_phone_number());
-            statement.setDate(7, (Date) nhanVien.getNv_ngay_sinh());
-            statement.setString(8,  nhanVien.getNv_dia_chi());
-            statement.setString(9,  nhanVien.getNv_ca_id());
+            statement.setDate(7, java.sql.Date.valueOf(nhanVien.getNv_ngay_sinh()));
+            statement.setString(8, nhanVien.getNv_dia_chi());
+            statement.setString(9, nhanVien.getNv_ca_id());
 
             rowUpdated = statement.executeUpdate() > 0;
         }
         return rowUpdated;
     }
+
     private void printSQLException(SQLException ex) {
         for (Throwable e : ex) {
             if (e instanceof SQLException) {
