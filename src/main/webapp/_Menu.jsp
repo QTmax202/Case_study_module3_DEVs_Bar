@@ -102,9 +102,9 @@
                                 <li>
                                     <a href="#">Quản Lý Sản Phẩm</a>
                                     <ul class="dropdown">
-                                        <li><a href="./create.jsp">Thêm Thú Cưng</a></li>
-                                        <li><a href="./create.jsp">Thêm Phụ Kiện</a></li>
-                                        <li><a href="./create.jsp">Thêm Dịch Vụ</a></li>
+                                        <li><a href="/quan-ly?action=them_thu_cung_get">Thêm Thú Cưng</a></li>
+                                        <li><a href="/quan-ly?action=them_phu_kien_get">Thêm Phụ Kiện</a></li>
+                                        <li><a href="/quan-ly?action=them_dich_vu-get">Thêm Dịch Vụ</a></li>
                                     </ul>
                                 </li>
                             </c:if>
