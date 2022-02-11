@@ -30,7 +30,7 @@
                     <div class="footer__logo">
                         <a href="#"><img src="img/footer-logo1.png" alt=""></a>
                     </div>
-                    <p>The customer is at the heart of our unique business model, which includes design.</p>
+                    <p>Khách hàng là trọng tâm của mô hình kinh doanh độc đáo của chúng tôi.</p>
                     <a href="#"><img src="img/payment.png" alt=""></a>
                 </div>
             </div>

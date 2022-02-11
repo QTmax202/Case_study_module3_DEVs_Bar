@@ -43,10 +43,10 @@
         <div class="row d-flex justify-content-center">
             <div class="col-lg-9 text-center">
                 <div class="blog__hero__text">
-                    <h2>Are you one of the thousands of Iphone owners who has no idea</h2>
+                    <h2>HỆ THỐNG BỆNH VIỆN THÚ CƯNG DEV's BAR</h2>
                     <ul>
-                        <li>By Deercreative</li>
-                        <li>February 21, 2019</li>
+                        <li>By The Dev's Bar</li>
+                        <li>Tháng Hai 22, 2022</li>
                         <li>8 Comments</li>
                     </ul>
                 </div>
@@ -77,70 +77,25 @@
                         </ul>
                     </div>
                     <div class="blog__details__text">
-                        <p>Hydroderm is the highly desired anti-aging cream on the block. This serum restricts the
-                            occurrence of early aging sings on the skin and keeps the skin younger, tighter and
-                            healthier. It reduces the wrinkles and loosening of skin. This cream nourishes the skin
-                            and brings back the glow that had lost in the run of hectic years.</p>
-                        <p>The most essential ingredient that makes hydroderm so effective is Vyo-Serum, which is a
-                            product of natural selected proteins. This concentrate works actively in bringing about
-                            the natural youthful glow of the skin. It tightens the skin along with its moisturizing
-                            effect on the skin. The other important ingredient, making hydroderm so effective is
-                            “marine collagen” which along with Vyo-Serum helps revitalize the skin.</p>
+                        <p>
+                            The Dev's Bar là chuỗi bệnh viện thú cưng tại Hà Nội, TP.HCM, Đà Nẵng và Hải Phòng với hệ thống nhiều chi nhánh cửa hàng thú
+                            cưng chuyên cung cấp đồ dùng, quần áo, thức ăn, sữa tắm, chuồng, vòng cổ xích và các phụ kiện cho Chó cảnh , Mèo cảnh. Cùng nhiều bài viết chia sẻ
+                            kinh nghiệm chăm sóc Chó cảnh , Mèo cảnh,...  cảnh hàng đầu tại Việt Nam. Địa chỉ nhận tắm spa, chăm sóc, cắt tỉa lông và
+                            trông giữ thú cưng chuyên nghiệp. Với chất lượng dịch vụ tốt nhất luôn được khách hàng tin tưởng sẽ là điểm đến lý tưởng và tuyệt vời dành cho vật nuôi.
+                        </p>
                     </div>
                     <div class="blog__details__quote">
                         <i class="fa fa-quote-left"></i>
-                        <p>“When designing an advertisement for a particular product many things should be
-                            researched like where it should be displayed.”</p>
-                        <h6>_ John Smith _</h6>
-                    </div>
-                    <div class="blog__details__text">
-                        <p>Vyo-Serum along with tightening the skin also reduces the fine lines indicating aging of
-                            skin. Problems like dark circles, puffiness, and crow’s feet can be control from the
-                            strong effects of this serum.</p>
-                        <p>Hydroderm is a multi-functional product that helps in reducing the cellulite and giving
-                            the body a toned shape, also helps in cleansing the skin from the root and not letting
-                            the pores clog, nevertheless also let’s sweeps out the wrinkles and all signs of aging
-                            from the sensitive near the eyes.</p>
-                    </div>
-                    <div class="blog__details__option">
-                        <div class="row">
-                            <div class="col-lg-6 col-md-6 col-sm-6">
-                                <div class="blog__details__author">
-                                    <div class="blog__details__author__pic">
-                                        <img src="img/blog/details/blog-author.jpg" alt="">
-                                    </div>
-                                    <div class="blog__details__author__text">
-                                        <h5>Aiden Blair</h5>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-6 col-md-6 col-sm-6">
-                                <div class="blog__details__tags">
-                                    <a href="#">#Fashion</a>
-                                    <a href="#">#Trending</a>
-                                    <a href="#">#2020</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="blog__details__btns">
-                        <div class="row">
-                            <div class="col-lg-6 col-md-6 col-sm-6">
-                                <a href="" class="blog__details__btns__item">
-                                    <p><span class="arrow_left"></span> Previous Pod</p>
-                                    <h5>It S Classified How To Utilize Free Classified Ad Sites</h5>
-                                </a>
-                            </div>
-                            <div class="col-lg-6 col-md-6 col-sm-6">
-                                <a href="" class="blog__details__btns__item blog__details__btns__item--next">
-                                    <p>Next Pod <span class="arrow_right"></span></p>
-                                    <h5>Tips For Choosing The Perfect Gloss For Your Lips</h5>
-                                </a>
-                            </div>
-                        </div>
+                        <p>
+                            “Một cựu sát thủ trả thù những kẻ đột nhập vào nhà, lấy trộm chiếc xe cổ và giết chú chó
+                            con của tôi - Wick (Daisy), đó là món quà cuối cùng từ người vợ vừa qua đời Helen (Moynahan).
+                            Sau khi trả thù và đang trên đường về nhà, tôi - Wick (Daisy) dừng chân tại một phòng khám thú y để điều trị vết thương và giải cứu một con chó con Pit bull.
+                            Tôi - Wick (Daisy) và chú chó đi bộ về nhà dọc theo lối đi bộ bên bờ sông, nơi có cuộc hẹn hò cuối cùng với Helen (người vợ vừa qua đời).”
+                        </p>
+                        <h6>_ John Wick _</h6>
                     </div>
                     <div class="blog__details__comment">
-                        <h4>Leave A Comment</h4>
+                        <h4>Để lại bình luận</h4>
                         <form action="#">
                             <div class="row">
                                 <div class="col-lg-4 col-md-4">
@@ -154,7 +109,7 @@
                                 </div>
                                 <div class="col-lg-12 text-center">
                                     <textarea placeholder="Comment"></textarea>
-                                    <button type="submit" class="site-btn">Post Comment</button>
+                                    <button type="submit" class="site-btn">đăng bình luận</button>
                                 </div>
                             </div>
                         </form>

@@ -10,6 +10,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -69,7 +71,7 @@ public class ShopDAO {
                 String ps_ten = resultSet.getString(2);
                 String ps_anh = resultSet.getString(3);
                 int ps_gia = Integer.parseInt(resultSet.getString(4));
-                Date ps_ngay_sinh = resultSet.getDate(5);
+                LocalDate ps_ngay_sinh = LocalDate.parse(String.valueOf(resultSet.getDate(5)), DateTimeFormatter.ofPattern("yyyy-MM-dd"));
                 String ps_mo_ta = resultSet.getString(6);
                 int ps_trang_thai = Integer.parseInt(resultSet.getString(7));
                 String ps_gp_id = resultSet.getString(8);
@@ -92,7 +94,7 @@ public class ShopDAO {
                 String ps_ten = resultSet.getString(2);
                 String ps_anh = resultSet.getString(3);
                 int ps_gia = Integer.parseInt(resultSet.getString(4));
-                Date ps_ngay_sinh = resultSet.getDate(5);
+                LocalDate ps_ngay_sinh = LocalDate.parse(String.valueOf(resultSet.getDate(5)), DateTimeFormatter.ofPattern("yyyy-MM-dd"));
                 String ps_mo_ta = resultSet.getString(6);
                 int ps_trang_thai = Integer.parseInt(resultSet.getString(7));
                 String ps_gp_id = resultSet.getString(8);
@@ -253,7 +255,7 @@ public class ShopDAO {
                 String ps_ten = resultSet.getString(2);
                 String ps_anh = resultSet.getString(3);
                 int ps_gia = resultSet.getInt(4);
-                Date ps_ngay_sinh = resultSet.getDate(5);
+                LocalDate ps_ngay_sinh = LocalDate.parse(String.valueOf(resultSet.getDate(5)), DateTimeFormatter.ofPattern("yyyy-MM-dd"));
                 String ps_mo_ta = resultSet.getString(6);
                 int ps_trang_thai = resultSet.getInt(7);
                 String ps_gp_id = resultSet.getString(8);
@@ -277,7 +279,7 @@ public class ShopDAO {
                 String ps_ten = resultSet.getString(2);
                 String ps_anh = resultSet.getString(3);
                 int ps_gia = Integer.parseInt(resultSet.getString(4));
-                Date ps_ngay_sinh = resultSet.getDate(5);
+                LocalDate ps_ngay_sinh = LocalDate.parse(String.valueOf(resultSet.getDate(5)), DateTimeFormatter.ofPattern("yyyy-MM-dd"));
                 String ps_mo_ta = resultSet.getString(6);
                 int ps_trang_thai = Integer.parseInt(resultSet.getString(7));
                 String ps_gp_id = resultSet.getString(8);

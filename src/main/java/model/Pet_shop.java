@@ -1,5 +1,6 @@
 package model;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 public class Pet_shop {
@@ -7,12 +8,12 @@ public class Pet_shop {
     private String ps_ten;
     private String ps_anh;
     private int ps_gia;
-    private Date ps_ngay_sinh;
+    private LocalDate ps_ngay_sinh;
     private String ps_mo_ta;
     private int ps_trang_thai;
     private String ps_gp_id;
 
-    public Pet_shop(int ps_id, String ps_ten, String ps_anh, int ps_gia, Date ps_ngay_sinh, String ps_mo_ta, int ps_trang_thai, String ps_gp_id) {
+    public Pet_shop(int ps_id, String ps_ten, String ps_anh, int ps_gia, LocalDate ps_ngay_sinh, String ps_mo_ta, int ps_trang_thai, String ps_gp_id) {
         this.ps_id = ps_id;
         this.ps_ten = ps_ten;
         this.ps_anh = ps_anh;
@@ -23,7 +24,7 @@ public class Pet_shop {
         this.ps_gp_id = ps_gp_id;
     }
 
-    public Pet_shop(String ps_ten, String ps_anh, int ps_gia, Date ps_ngay_sinh, String ps_mo_ta, int ps_trang_thai, String ps_gp_id) {
+    public Pet_shop(String ps_ten, String ps_anh, int ps_gia, LocalDate ps_ngay_sinh, String ps_mo_ta, int ps_trang_thai, String ps_gp_id) {
         this.ps_ten = ps_ten;
         this.ps_anh = ps_anh;
         this.ps_gia = ps_gia;
@@ -65,11 +66,11 @@ public class Pet_shop {
         this.ps_gia = ps_gia;
     }
 
-    public Date getPs_ngay_sinh() {
+    public LocalDate getPs_ngay_sinh() {
         return ps_ngay_sinh;
     }
 
-    public void setPs_ngay_sinh(Date ps_ngay_sinh) {
+    public void setPs_ngay_sinh(LocalDate ps_ngay_sinh) {
         this.ps_ngay_sinh = ps_ngay_sinh;
     }
 

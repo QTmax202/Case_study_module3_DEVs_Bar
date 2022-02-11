@@ -49,19 +49,21 @@
             <div class="col-lg-6 col-md-6">
                 <div class="contact__text">
                     <div class="section-title">
-                        <span>Information</span>
-                        <h2>Contact Us</h2>
-                        <p>As you might expect of a company that began as a high-end interiors contractor, we pay
-                            strict attention.</p>
+                        <span>Thông Tin</span>
+                        <h2>Liên Hệ Với Chúng Tôi</h2>
+                        <p>
+                            The Dev's Bar là chuỗi bệnh viện thú cưng tại Hà Nội, TP.HCM, Đà Nẵng và Hải Phòng với hệ thống nhiều chi nhánh cửa hàng thú
+                            cưng chuyên cung cấp đồ dùng, quần áo, thức ăn, sữa tắm, chuồng, vòng cổ xích và các phụ kiện cho Chó cảnh , Mèo cảnh.
+                        </p>
                     </div>
                     <ul>
                         <li>
-                            <h4>America</h4>
-                            <p>195 E Parker Square Dr, Parker, CO 801 <br />+43 982-314-0958</p>
-                        </li>
-                        <li>
-                            <h4>France</h4>
-                            <p>109 Avenue Léon, 63 Clermont-Ferrand <br />+12 345-423-9893</p>
+                            <h4>VIỆT NAM</h4>
+                            <p>
+                                Địa chỉ: Số 23, Lô TT01, KĐT Mon City, Mỹ Đình 2, Nam Từ Liêm, Hà Nội.<br />
+                                Hotline: 02462538829 <br>
+                                Email: info@codegym.vn
+                            </p>
                         </li>
                     </ul>
                 </div>
@@ -78,7 +80,7 @@
                             </div>
                             <div class="col-lg-12">
                                 <textarea placeholder="Message"></textarea>
-                                <button type="submit" class="site-btn">Send Message</button>
+                                <button type="submit" class="site-btn">Gửi tin nhắn</button>
                             </div>
                         </div>
                     </form>

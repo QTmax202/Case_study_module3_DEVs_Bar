@@ -9,6 +9,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -29,9 +31,7 @@ public class HospitalDAO {
                 String name = resultSet.getString(2);
                 String anh = resultSet.getString(3);
                 int gia = resultSet.getInt(4);
-//                String ngay_sinh = resultSet.getString(resultSet.getDate(5).format(DateTimeFormatter.ofPattern("dd/MM/yyyy")));
-//                LocalDate ngay_sinh = resultSet.getDate(5).toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-                Date ngay_sinh = resultSet.getDate(5);
+                LocalDate ngay_sinh = LocalDate.parse(String.valueOf(resultSet.getDate(5)), DateTimeFormatter.ofPattern("yyyy-MM-dd"));
                 String mo_ta = resultSet.getString(6);
                 int trang_thai = resultSet.getInt(7);
                 String giong = resultSet.getString(8);
@@ -109,7 +109,7 @@ public class HospitalDAO {
                 String name = resultSet.getString(2);
                 String anh = resultSet.getString(3);
                 int gia = resultSet.getInt(4);
-                Date ngay_sinh = resultSet.getDate(5);
+                LocalDate ngay_sinh = LocalDate.parse(String.valueOf(resultSet.getDate(5)), DateTimeFormatter.ofPattern("yyyy-MM-dd"));
                 String mo_ta = resultSet.getString(6) + " " +resultSet.getString(7);
                 int trang_thai = resultSet.getInt(8);
                 String giong = resultSet.getString(9);
