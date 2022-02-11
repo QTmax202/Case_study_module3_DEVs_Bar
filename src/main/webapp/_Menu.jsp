@@ -33,7 +33,7 @@
             <div class="row">
                 <div class="col-lg-6 col-md-7">
                     <div class="header__top__left">
-                        <p>Dev's Bar</p>
+                        <p>The Dev's Bar</p>
                     </div>
                 </div>
                 <div class="col-lg-6 col-md-5">
@@ -44,10 +44,10 @@
                                     <a href="#">Xin Chào ${sessionScope.acc_admin.getAcc_username()}</a>
                                 </c:if>
                                 <c:if test="${sessionScope.acc_nhan_vien != null}">
-                                    <a href="infor-user.jsp">Xin Chào ${sessionScope.acc_nhan_vien.getAcc_username()}</a>
+                                    <a href="infor-user.jsp">Xin Chào NV ${sessionScope.acc_nhan_vien.getAcc_username()}</a>
                                 </c:if>
                                 <c:if test="${sessionScope.acc_khach_hang != null}">
-                                    <a href="infor-user.jsp">Xin Chào ${sessionScope.acc_khach_hang.getAcc_username()}</a>
+                                    <a href="infor-user.jsp">Xin Chào KH ${sessionScope.acc_khach_hang.getAcc_username()}</a>
                                 </c:if>
                                 <a href="<c:url value="/sign-in?action=logOut"/>">Đăng Xuất</a>
                             </c:if>
@@ -65,10 +65,10 @@
             <div class="col-lg-2 col-md-3">
                 <div class="header__logo">
                     <c:if test="${sessionScope.acc_khach_hang != null || sessionScope.acc == null}">
-                        <a href="<c:url value="/hospital"/>"><img src="img/logo.png" alt=""></a>
+                        <a href="<c:url value="/hospital"/>"><img src="img/logo2.png" alt=""></a>
                     </c:if>
                     <c:if test="${sessionScope.acc_admin != null || sessionScope.acc_nhan_vien != null}">
-                        <a href="<c:url value="/shop"/>"><img src="img/logo.png" alt=""></a>
+                        <a href="<c:url value="/shop"/>"><img src="img/logo2.png" alt=""></a>
                     </c:if>
                 </div>
             </div>
@@ -144,4 +144,3 @@
     </div>
 </header>
 <!-- Header Section End -->
-
