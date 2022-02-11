@@ -8,7 +8,11 @@ public class Account {
     private int acc_kh_id;
     private String acc_nv_id;
 
-    public Account(String string, String rsString) {
+    public Account(String acc_username, String acc_password, String acc_phan_cap, int acc_kh_id) {
+        this.acc_username = acc_username;
+        this.acc_password = acc_password;
+        this.acc_phan_cap = acc_phan_cap;
+        this.acc_kh_id = acc_kh_id;
     }
 
     public Account(int acc_id, String acc_username, String acc_password, String acc_phan_cap, int acc_kh_id, String acc_nv_id) {

@@ -98,6 +98,8 @@ public class QuanLyServlet extends HttpServlet {
     }
 
     private void them_thu_cung_get(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        ArrayList<Pet_shop> pet_shops = (ArrayList<Pet_shop>) shopDAO.petShop();
+        request.setAttribute("pet_shops", pet_shops);
         RequestDispatcher requestDispatcher = request.getRequestDispatcher("create.jsp");
         requestDispatcher.forward(request, response);
     }
@@ -118,6 +120,8 @@ public class QuanLyServlet extends HttpServlet {
     }
 
     private void them_phu_kien_get(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        ArrayList<Phu_kien> list_phu_kien = (ArrayList<Phu_kien>) shopDAO.phu_kien();
+        request.setAttribute("phu_kien_id", list_phu_kien);
         RequestDispatcher requestDispatcher = request.getRequestDispatcher("create.jsp");
         requestDispatcher.forward(request, response);
     }
@@ -137,6 +141,8 @@ public class QuanLyServlet extends HttpServlet {
     }
 
     private void them_dich_vu_get(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        ArrayList<Chi_tiet_dv> list_dich_vu = (ArrayList<Chi_tiet_dv>) shopDAO.dich_vu();
+        request.setAttribute("chi_tiet_dv", list_dich_vu);
         RequestDispatcher requestDispatcher = request.getRequestDispatcher("create.jsp");
         requestDispatcher.forward(request, response);
     }
@@ -174,6 +180,9 @@ public class QuanLyServlet extends HttpServlet {
         String ps_gp_id = request.getParameter("ps_gp_id");
         Pet_shop pet_shop = new Pet_shop(ps_id, ps_ten, ps_anh, ps_gia, ps_ngay_sinh, ps_mo_ta, ps_trang_thai, ps_gp_id);
         quanLyDAO.sua_thu_cung(pet_shop);
+        if (pet_shop == null) {
+            request.setAttribute("thong_bao", "Thay đổi thông tin thú cưng thành công !");
+        }
         RequestDispatcher requestDispatcher = request.getRequestDispatcher("edit.jsp");
         requestDispatcher.forward(request, response);
     }
@@ -196,6 +205,7 @@ public class QuanLyServlet extends HttpServlet {
         String pk_lpk_id = request.getParameter("pk_lpk_id");
         Phu_kien phu_kien = new Phu_kien(pk_id, pk_ten, pk_anh, pk_gia, pk_so_luong, pk_mo_ta, pk_lpk_id);
         quanLyDAO.sua_phu_kien(phu_kien);
+        request.setAttribute("thong_bao", "Thay đổi thông tin phụ kiện thành công !");
         RequestDispatcher requestDispatcher = request.getRequestDispatcher("edit.jsp");
         requestDispatcher.forward(request, response);
     }
@@ -218,6 +228,7 @@ public class QuanLyServlet extends HttpServlet {
         String ctdv_dv_id = request.getParameter("ctdv_dv_id");
         Chi_tiet_dv chi_tiet_dv = new Chi_tiet_dv(ctdv_id, ctdv_anh, ctdv_ten, ctdv_gia, ctdv_mo_ta, ctdv_trang_thai, ctdv_dv_id);
         quanLyDAO.sua_dich_vu(chi_tiet_dv);
+        request.setAttribute("thong_bao", "Thay đổi thông tin dịch vụ thành công !");
         RequestDispatcher requestDispatcher = request.getRequestDispatcher("edit.jsp");
         requestDispatcher.forward(request, response);
     }

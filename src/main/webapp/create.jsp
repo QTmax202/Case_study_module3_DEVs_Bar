@@ -56,19 +56,20 @@
 </section>
 <!-- Breadcrumb Section End -->
 
-<!-- Thêm Thú Cưng Begin -->
-<section class="checkout spad">
-    <div class="container">
-        <div class="checkout__form">
+<c:if test="${pet_shops != null}">
+    <!-- Thêm Thú Cưng Begin -->
+    <section class="checkout spad">
+        <div class="container">
+            <div class="checkout__form">
 
-            <form action="/quan-ly?action=them_thu_cung_post" method="post">
-                <div class="row">
-                    <div class="col-lg-8 col-md-6">
-                        <h6 class="checkout__title">Thêm Thú Cưng</h6>
-                        <div class="row">
-                            <div class="col-lg-3">
-                                <div class="checkout__input">
-                                    <p>Chọn Giống Pet<span>*</span></p>
+                <form action="/quan-ly?action=them_thu_cung_post" method="post">
+                    <div class="row">
+                        <div class="col-lg-8 col-md-6">
+                            <h6 class="checkout__title">Thêm Thú Cưng</h6>
+                            <div class="row">
+                                <div class="col-lg-3">
+                                    <div class="checkout__input">
+                                        <p>Chọn Giống Pet<span>*</span></p>
                                         <select name="ps_gp_id">
                                             <option value="BEAGLE" name="ps_gp_id">Chó Beagle</option>
                                             <option value="BRITISH" name="ps_gp_id">Mèo Anh (Ngắn + Dài)</option>
@@ -80,194 +81,202 @@
                                             <option value="PUG" name="ps_gp_id">Chó Pug</option>
                                             <option value="SAMOYED" name="ps_gp_id">Chó Samoyed</option>
                                         </select>
+                                    </div>
+                                </div>
+                                <div class="col-lg-9">
+                                    <div class="checkout__input">
+                                        <p>Nhập Tên<span>*</span></p>
+                                        <input type="text" name="ps_ten">
+                                    </div>
                                 </div>
                             </div>
-                            <div class="col-lg-9">
-                                <div class="checkout__input">
-                                    <p>Nhập Tên<span>*</span></p>
-                                    <input type="text" name="ps_ten">
+                            <div class="checkout__input">
+                                <p>Nhập Đường Dẫn Ảnh<span>*</span></p>
+                                <input type="text" name="ps_anh">
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <div class="checkout__input">
+                                        <p>Ngày Sinh<span>*</span></p>
+                                        <input type="date"  name="ps_ngay_sinh">
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="checkout__input">
+                                        <p>Đơn Giá<span>*</span></p>
+                                        <input type="text" placeholder="VND" name="ps_gia">
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="checkout__input">
-                            <p>Nhập Đường Dẫn Ảnh<span>*</span></p>
-                            <input type="text" name="ps_anh">
-                        </div>
-                        <div class="row">
-                            <div class="col-lg-6">
-                                <div class="checkout__input">
-                                    <p>Ngày Sinh<span>*</span></p>
-                                    <input type="date"  name="ps_ngay_sinh">
+                            <div class="row">
+                                <div class="col-lg-3">
+                                    <div>
+                                        <p>Trạng thái<span>*</span></p>
+                                        <select name="ps_trang_thai">
+                                            <option value="1" name="ps_trang_thai">Sẵn sàng</option>
+                                            <option value="0" name="ps_trang_thai">Khóa</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-lg-9">
+                                    <div class="checkout__input">
+                                        <p>Mô Tả</p>
+                                        <input type="text" name="ps_mo_ta">
+                                    </div>
                                 </div>
                             </div>
-                            <div class="col-lg-6">
-                                <div class="checkout__input">
-                                    <p>Đơn Giá<span>*</span></p>
-                                    <input type="text" placeholder="VND" name="ps_gia">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-lg-6">
-                                <div>
-                                    <p>Trạng thái<span>*</span></p>
-                                    <select name="ps_trang_thai">
-                                        <option value="1" name="ps_trang_thai">Sẵn sàng</option>
-                                        <option value="0" name="ps_trang_thai">Khóa</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="col-lg-6">
-                                <div class="checkout__input">
-                                    <p>Mô Tả</p>
-                                    <input type="text" name="ps_mo_ta">
-                                </div>
-                            </div>
-                        </div>
 
-                        <button type="submit" class="site-btn">XÁC NHẬN</button>
+                            <button type="submit" class="site-btn">XÁC NHẬN</button>
+                        </div>
                     </div>
-                </div>
-            </form>
+                </form>
 
+            </div>
         </div>
-    </div>
-</section>
+    </section>
+</c:if>
+
+
 <!-- Thêm Thú Cưng End -->
 
-<!-- Thêm Phụ Kiện Begin -->
-<section class="checkout spad">
-    <div class="container">
-        <div class="checkout__form">
-            <form action="/quan-ly?action=them_phu_kien_post" method="post">
-                <div class="row">
-                    <div class="col-lg-8 col-md-6">
-                        <h6 class="checkout__title">Thêm Phụ Kiện</h6>
-                        <div class="row">
-                            <div class="col-lg-2">
-                                <div>
-                                    <p>Loại Phụ Kiện<span>*</span></p>
-                                    <select name="pk_lpk_id">
+<c:if test="${phu_kien_id != null}">
+    <!-- Thêm Phụ Kiện Begin -->
+    <section class="checkout spad">
+        <div class="container">
+            <div class="checkout__form">
+                <form action="/quan-ly?action=them_phu_kien_post" method="post">
+                    <div class="row">
+                        <div class="col-lg-8 col-md-6">
+                            <h6 class="checkout__title">Thêm Phụ Kiện</h6>
+                            <div class="row">
+                                <div class="col-lg-2">
+                                    <div>
+                                        <p>Loại Phụ Kiện<span>*</span></p>
+                                        <select name="pk_lpk_id">
                                             <option value="AO" name="pk_lpk_id">Áo</option>
                                             <option value="BALO" name="pk_lpk_id">Balo</option>
                                             <option value="CH" name="pk_lpk_id">Chuồng</option>
                                             <option value="DC" name="pk_lpk_id">Đồ chơi</option>
                                             <option value="TP" name="pk_lpk_id">Thực phẩm</option>
                                             <option value="VC" name="pk_lpk_id">Vòng cổ</option>
-                                    </select>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-lg-2">
+                                    <div class="checkout__input">
+                                        <p>Mã Phụ Kiện<span>*</span></p>
+                                        <input type="text" name="pk_id">
+                                    </div>
+                                </div>
+                                <div class="col-lg-8">
+                                    <div class="checkout__input">
+                                        <p>Tên Phụ Kiện<span>*</span></p>
+                                        <input type="text" name="pk_ten">
+                                    </div>
                                 </div>
                             </div>
-                            <div class="col-lg-2">
-                                <div class="checkout__input">
-                                    <p>Mã Phụ Kiện<span>*</span></p>
-                                    <input type="text" name="pk_id">
+                            <div class="checkout__input">
+                                <p>Đường Dẫn Ảnh<span>*</span></p>
+                                <input type="text" name="pk_anh">
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <div class="checkout__input">
+                                        <p>Số Lượng<span>*</span></p>
+                                        <input type="text" name="pk_so_luong">
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="checkout__input">
+                                        <p>Đơn Giá<span>*</span></p>
+                                        <input type="text" placeholder="VND" name="pk_gia">
+                                    </div>
                                 </div>
                             </div>
-                            <div class="col-lg-8">
-                                <div class="checkout__input">
-                                    <p>Tên Phụ Kiện<span>*</span></p>
-                                    <input type="text" name="pk_ten">
-                                </div>
+                            <div class="checkout__input">
+                                <p>Mô Tả</p>
+                                <input type="text" name="pk_mo_ta">
                             </div>
+                            <button type="submit" class="site-btn">XÁC NHẬN</button>
                         </div>
-                        <div class="checkout__input">
-                            <p>Đường Dẫn Ảnh<span>*</span></p>
-                            <input type="text" name="pk_anh">
-                        </div>
-                        <div class="row">
-                            <div class="col-lg-6">
-                                <div class="checkout__input">
-                                    <p>Số Lượng<span>*</span></p>
-                                    <input type="text" name="pk_so_luong">
-                                </div>
-                            </div>
-                            <div class="col-lg-6">
-                                <div class="checkout__input">
-                                    <p>Đơn Giá<span>*</span></p>
-                                    <input type="text" placeholder="VND" name="pk_gia">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="checkout__input">
-                            <p>Mô Tả</p>
-                            <input type="text" name="pk_mo_ta">
-                        </div>
-                        <button type="submit" class="site-btn">XÁC NHẬN</button>
                     </div>
-                </div>
-            </form>
+                </form>
+            </div>
         </div>
-    </div>
-</section>
-<!-- Thêm Phụ Kiện End -->
+    </section>
+    <!-- Thêm Phụ Kiện End -->
+</c:if>
 
 
 
-<!-- Thêm Dịch Vụ Begin -->
-<section class="checkout spad">
-    <div class="container">
-        <div class="checkout__form">
-            <form action="/quan-ly?action=them_dich_vu_post" method="post">
-                <div class="row">
-                    <div class="col-lg-8 col-md-6">
-                        <h6 class="checkout__title">Thêm Dịch Vụ</h6>
-                        <div class="row">
-                            <div class="col-lg-2">
-                                <div>
-                                    <p>Loại Dịch Vụ<span>*</span></p>
-                                    <select name="ctdv_dv_id">
-                                        <option value="HT" name="ctdv_dv_id">Hotel</option>
-                                        <option value="SPA" name="ctdv_dv_id">Spa</option>
-                                        <option value="TC" name="ctdv_dv_id">Tiêm chủng</option>
-                                    </select>
+<c:if test="${chi_tiet_dv != null}">
+    <!-- Thêm Dịch Vụ Begin -->
+    <section class="checkout spad">
+        <div class="container">
+            <div class="checkout__form">
+                <form action="/quan-ly?action=them_dich_vu_post" method="post">
+                    <div class="row">
+                        <div class="col-lg-8 col-md-6">
+                            <h6 class="checkout__title">Thêm Dịch Vụ</h6>
+                            <div class="row">
+                                <div class="col-lg-2">
+                                    <div>
+                                        <p>Loại Dịch Vụ<span>*</span></p>
+                                        <select name="ctdv_dv_id">
+                                            <option value="HT" name="ctdv_dv_id">Hotel</option>
+                                            <option value="SPA" name="ctdv_dv_id">Spa</option>
+                                            <option value="TC" name="ctdv_dv_id">Tiêm chủng</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-lg-2">
+                                    <div class="checkout__input">
+                                        <p>Mã Dịch Vụ<span>*</span></p>
+                                        <input type="text" name="ctdv_id">
+                                    </div>
+                                </div>
+                                <div class="col-lg-8">
+                                    <div class="checkout__input">
+                                        <p>Tên Dịch Vụ<span>*</span></p>
+                                        <input type="text" name="ctdv_ten">
+                                    </div>
                                 </div>
                             </div>
-                            <div class="col-lg-2">
-                                <div class="checkout__input">
-                                    <p>Mã Dịch Vụ<span>*</span></p>
-                                    <input type="text" name="ctdv_id">
+                            <div class="checkout__input">
+                                <p>Đường Dẫn Ảnh<span>*</span></p>
+                                <input type="text" name="ctdv_anh">
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-3">
+                                    <div>
+                                        <p>Trạng thái<span>*</span></p>
+                                        <select name="ctdv_trang_thai">
+                                            <option value="1" name="ctdv_trang_thai">Sẵn sàng</option>
+                                            <option value="0" name="ctdv_trang_thai">Khóa</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-lg-9">
+                                    <div class="checkout__input">
+                                        <p>Đơn Giá<span>*</span></p>
+                                        <input type="text" placeholder="VND" name="ctdv_gia">
+                                    </div>
                                 </div>
                             </div>
-                            <div class="col-lg-8">
-                                <div class="checkout__input">
-                                    <p>Tên Dịch Vụ<span>*</span></p>
-                                    <input type="text" name="ctdv_ten">
-                                </div>
+                            <div class="checkout__input">
+                                <p>Mô Tả</p>
+                                <input type="text" name="ctdv_mo_ta">
                             </div>
+                            <button type="submit" class="site-btn">XÁC NHẬN</button>
                         </div>
-                        <div class="checkout__input">
-                            <p>Đường Dẫn Ảnh<span>*</span></p>
-                            <input type="text" name="ctdv_anh">
-                        </div>
-                        <div class="row">
-                            <div class="col-lg-2">
-                                <div>
-                                    <p>Trạng thái<span>*</span></p>
-                                    <select name="ctdv_trang_thai">
-                                        <option value="1" name="ctdv_trang_thai">Sẵn sàng</option>
-                                        <option value="0" name="ctdv_trang_thai">Khóa</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="col-lg-6">
-                                <div class="checkout__input">
-                                    <p>Đơn Giá<span>*</span></p>
-                                    <input type="text" placeholder="VND" name="ctdv_gia">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="checkout__input">
-                            <p>Mô Tả</p>
-                            <input type="text" name="ctdv_mo_ta">
-                        </div>
-                        <button type="submit" class="site-btn">XÁC NHẬN</button>
                     </div>
-                </div>
-            </form>
+                </form>
+            </div>
         </div>
-    </div>
-</section>
-<!-- Thêm Dịch VỤ End -->
+    </section>
+    <!-- Thêm Dịch VỤ End -->
+</c:if>
+
 
 <jsp:include page="_Footer.jsp"></jsp:include>
 </body>

@@ -104,7 +104,7 @@
                                     <ul class="dropdown">
                                         <li><a href="/quan-ly?action=them_thu_cung_get">Thêm Thú Cưng</a></li>
                                         <li><a href="/quan-ly?action=them_phu_kien_get">Thêm Phụ Kiện</a></li>
-                                        <li><a href="/quan-ly?action=them_dich_vu-get">Thêm Dịch Vụ</a></li>
+                                        <li><a href="/quan-ly?action=them_dich_vu_get">Thêm Dịch Vụ</a></li>
                                     </ul>
                                 </li>
                             </c:if>

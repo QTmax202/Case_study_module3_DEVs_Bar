@@ -1,87 +1,86 @@
 package DAO;
 
 import connection.MyConnection;
+import model.Account;
 import model.Khach_hang;
+
 import java.sql.*;
-import java.util.ArrayList;
-import java.sql.Date;
 
 public class KhachHangDAO {
     private static final MyConnection myConnection = new MyConnection();
-    private static final String INSERT_KHACH_HANG_SQL = "insert into khach_hang(kh_anh, kh_ten, kh_gioi_tinh, kh_email, kh_phone_number, kh_ngay_sinh, kh_dia_chi) value(?,?,?,?,?,?,?);";
-    private static final String SELECT_ALL_KHACH_HANG = "select * from khach_hang;";
-    private static final String UPDATE_KHACH_HANG_SQL = "update khach_hang set kh_anh= ?,kh_ten= ?, kh_gioi_tinh=?, kh_email=?, kh_phone_number=?, kh_ngay_sinh=?, kh_dia_chi=?  where kh_id = ?;";
 
-    public ArrayList<Khach_hang> selectAllKhachHangs() {
-        return null;
-    }
+    private static final String INSERT_KHACH_HANG = "INSERT INTO khach_hang (`kh_ten`, `kh_gioi_tinh`, `kh_phone_number`, `kh_dia_chi`) VALUES (?,?,?,?);";
+    private static final String INSERT_ACC_KHACH_HANG = "INSERT INTO `casemd3`.`account` (`acc_username`, `acc_password`, `acc_phan_cap`, `acc_kh_id`) VALUES (?,?,?,?);";
+    private static final String SELECT_KHACH_HANG_TOP = "SELECT * FROM khach_hang WHERE kh_id = (SELECT max(kh_id) from khach_hang);";
+    private static final String SELECT_KHACH_HANG_BY_ID = "SELECT * FROM khach_hang WHERE kh_id = ?;";
 
-    public void insertKhachHang(Khach_hang kh) throws SQLException {
-        System.out.println(INSERT_KHACH_HANG_SQL);
 
-        try (Connection connection = myConnection.getConnection(); PreparedStatement preparedStatement = connection.prepareStatement(INSERT_KHACH_HANG_SQL)) {
-            preparedStatement.setString(1, kh.getKh_id());
-            preparedStatement.setString(2, kh.getKh_anh());
-            preparedStatement.setString(3, kh.getKh_ten());
-            preparedStatement.setString(4, kh.getKh_gioi_tinh());
-            preparedStatement.setString(5, kh.getKh_email());
-            preparedStatement.setString(6, kh.getKh_phone_number());
-            preparedStatement.setDate(7, (Date) kh.getKh_ngay_sinh());
-            preparedStatement.setString(8, kh.getKh_dia_chi());
-
-            System.out.println(preparedStatement);
+    public void them_khach_hang(Khach_hang khach_hang) throws SQLException {
+        try {
+            Connection connection = myConnection.getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement(INSERT_KHACH_HANG);
+            preparedStatement.setString(1, khach_hang.getKh_ten());
+            preparedStatement.setString(2, khach_hang.getKh_gioi_tinh());
+            preparedStatement.setString(3, khach_hang.getKh_phone_number());
+            preparedStatement.setString(4, khach_hang.getKh_dia_chi());
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
             printSQLException(e);
         }
     }
 
+    public Khach_hang tim_khach_hang() {
+        Khach_hang khach_hang = null;
+        try {
+            Connection connection = myConnection.getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement(SELECT_KHACH_HANG_TOP);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                String kh_id = resultSet.getString(1);
+                String kh_ten = resultSet.getString(3);
+                String kh_gioi_tinh = resultSet.getString(4);
+                String kh_phone_number = resultSet.getString(6);
+                String kh_dia_chi = resultSet.getString(8);
+                khach_hang = new Khach_hang(kh_id, kh_ten, kh_gioi_tinh, kh_phone_number, kh_dia_chi);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return khach_hang;
+    }
 
-    public ArrayList<Khach_hang> selectAllKhachHang(){
+    public void them_acc_khach_hang(Account account) throws SQLException {
+        try {
+            Connection connection = myConnection.getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement(INSERT_ACC_KHACH_HANG);
+            preparedStatement.setString(1, account.getAcc_username());
+            preparedStatement.setString(2, account.getAcc_password());
+            preparedStatement.setString(3, account.getAcc_phan_cap());
+            preparedStatement.setInt(4, account.getAcc_kh_id());
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            printSQLException(e);
+        }
+    }
 
-        ArrayList<Khach_hang> khachHangs = new ArrayList<>();
-
-        try (Connection connection = myConnection.getConnection();
-
-             PreparedStatement preparedStatement = connection.prepareStatement(SELECT_ALL_KHACH_HANG);) {
-            System.out.println(preparedStatement);
-
-            ResultSet rs = preparedStatement.executeQuery();
-
-            while (rs.next()) {
-                String kh_id = rs.getString("kh_id");
-                String kh_anh = rs.getString("kh_anh");
-                String kh_ten = rs.getString("kh_ten");
-                String kh_gioi_tinh = rs.getString("kh_gioi_tinh");
-                String kh_email = rs.getString("kh_email");
-                String kh_phone_number = rs.getString("kh_phone_number");
-                Date kh_ngay_sinh = rs.getDate("kh_ngay_sinh");
-                String kh_dia_chi = rs.getString("kh_dia_chi");
-                khachHangs.add(new Khach_hang(kh_id, kh_anh, kh_ten, kh_gioi_tinh, kh_email, kh_phone_number, kh_ngay_sinh, kh_dia_chi));
+    public Account kiem_tra_acc_khach_hang(String account) throws SQLException {
+        try {
+            Connection connection = myConnection.getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM account WHERE acc_username = ?");
+            preparedStatement.setString(1, account);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                String acc_username = resultSet.getString(2);
+                String acc_password = resultSet.getString(3);
+                String acc_phan_cap = resultSet.getString(4);
+                String acc_kh_id = resultSet.getString(5);
             }
         } catch (SQLException e) {
             printSQLException(e);
         }
-        return khachHangs;
+        return null;
     }
 
-    public boolean updateKhachHang(Khach_hang kh) throws SQLException {
-        boolean rowUpdated;
-        try (Connection connection = myConnection.getConnection();
-             PreparedStatement statement = connection.prepareStatement(UPDATE_KHACH_HANG_SQL);) {
-            statement.setString(1, kh.getKh_id());
-            statement.setString(2, kh.getKh_anh());
-            statement.setString(3, kh.getKh_ten());
-            statement.setString(4, kh.getKh_gioi_tinh());
-            statement.setString(5, kh.getKh_email());
-            statement.setString(6, kh.getKh_phone_number());
-            statement.setDate(7, (Date) kh.getKh_ngay_sinh());
-            statement.setString(8,  kh.getKh_dia_chi());
-
-            rowUpdated = statement.executeUpdate() > 0;
-        }
-        return rowUpdated;
-    }
     private void printSQLException(SQLException ex) {
         for (Throwable e : ex) {
             if (e instanceof SQLException) {
