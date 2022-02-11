@@ -104,7 +104,7 @@
                                     <ul class="dropdown">
                                         <li><a href="/quan-ly?action=them_thu_cung_get">Thêm Thú Cưng</a></li>
                                         <li><a href="/quan-ly?action=them_phu_kien_get">Thêm Phụ Kiện</a></li>
-                                        <li><a href="/quan-ly?action=them_dich_vu-get">Thêm Dịch Vụ</a></li>
+                                        <li><a href="/quan-ly?action=them_dich_vu_get">Thêm Dịch Vụ</a></li>
                                     </ul>
                                 </li>
                             </c:if>
@@ -132,7 +132,7 @@
                         <img src="img/icon/search.png" alt="">
                     </a>
                     <c:if test="${sessionScope.acc_khach_hang != null}">
-                        <a href="shopping-cart.jsp">
+                        <a href="<c:url value="/gio_hang?action&hd_kh_id=${sessionScope.acc_khach_hang.getAcc_kh_id()}"/>">
                             <img src="img/icon/cart.png" alt="">
                         </a>
                     </c:if>
