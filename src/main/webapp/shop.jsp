@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html lang="zxx">
 
@@ -226,7 +227,11 @@
                                             <a href="#" class="add-cart">+ Hãy Đăng Nhập</a>
                                         </c:if>
                                         <hr>
-                                        <h5>${pet_shop.ps_gia} VND</h5>
+                                        <h5>
+                                                <fmt:setLocale value = "vi_VN"/>
+                                                <fmt:formatNumber value = "${pet_shop.ps_gia}" type = "currency"/>
+                                        </h5>
+<%--                                        <h5>${pet_shop.ps_gia} VND</h5>--%>
                                     </c:if>
                                     <c:if test="${pet_shop.getPs_trang_thai() == 0}">
                                         <h6>${pet_shop.ps_ten}</h6>

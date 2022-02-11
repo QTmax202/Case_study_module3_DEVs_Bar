@@ -64,21 +64,23 @@ public class KhachHangDAO {
     }
 
     public Account kiem_tra_acc_khach_hang(String account) throws SQLException {
+        Account account1 = null;
         try {
             Connection connection = myConnection.getConnection();
-            PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM account WHERE acc_username = ?");
+            PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM account WHERE acc_username LIKE ?");
             preparedStatement.setString(1, account);
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
                 String acc_username = resultSet.getString(2);
                 String acc_password = resultSet.getString(3);
                 String acc_phan_cap = resultSet.getString(4);
-                String acc_kh_id = resultSet.getString(5);
+                int acc_kh_id = resultSet.getInt(5);
+                account1 = new Account(acc_username, acc_password, acc_phan_cap, acc_kh_id);
             }
         } catch (SQLException e) {
             printSQLException(e);
         }
-        return null;
+        return account1;
     }
 
     private void printSQLException(SQLException ex) {

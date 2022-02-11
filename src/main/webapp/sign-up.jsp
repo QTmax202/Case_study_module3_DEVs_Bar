@@ -33,7 +33,7 @@
                         <h3>Đăng ký thông tin <br>
                             <strong>Pet Hospital</strong>
                         </h3>
-                        <p class="text-danger">${thong-bao}</p>
+                        <p class="text-danger">${message}</p>
                         <hr>
                         <form action="/khach-hang?action=them_khach_hang_post" method="post">
                             <div class="form-group first">
@@ -77,7 +77,7 @@
                         <h3>Đăng ký tài khoản <br>
                             <strong>Pet Hospital</strong>
                         </h3>
-                        <p class="text-danger">${thong-bao}</p>
+                        <p class="text-danger">${message}</p>
                         <hr>
                         <form action="/khach-hang?action=them_acc_khach_hang" method="post">
                             <div class="form-group first">

@@ -32,7 +32,7 @@
                         <strong>
                             <a href="<c:url value="/hospital?action=home"/>">Pet Hospital</a>
                         </strong></h3>
-                    <p class="text-danger">${mess}</p>
+                    <p class="text-danger">${message}</p>
                     <hr>
                     <form action="<c:url value="/sign-in?action=logIn"/>" method="post">
                         <div class="form-group first">

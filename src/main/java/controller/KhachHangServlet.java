@@ -84,21 +84,22 @@ public class KhachHangServlet extends HttpServlet {
         String acc_phan_cap = request.getParameter("acc_phan_cap");
         int acc_kh_id = Integer.parseInt(request.getParameter("acc_kh_id"));
         if (!acc_password.equals(acc_password2)) {
-            request.setAttribute("thong-bao","Mật khẩu không trùng. Vui lòng nhập lại");
+            request.setAttribute("message","Mật khẩu không trùng. Vui lòng nhập lại");
             request.getRequestDispatcher("/khach-hang?action=them_khach_hang_post").forward(request, response);
         } else {
             Account a = khachHangDAO.kiem_tra_acc_khach_hang(acc_username);
             if (a == null) {
                 Account account = new Account(acc_username, acc_password, acc_phan_cap, acc_kh_id);
                 khachHangDAO.them_acc_khach_hang(account);
-                request.setAttribute("thong-bao","Đăng kí thành công. Vui lòng nhập lại");
-                request.getRequestDispatcher("/khach-hang?action=them_khach_hang_post").forward(request, response);
+                request.setAttribute("message","Đăng kí thành công. Vui lòng nhập");
+                request.getRequestDispatcher("/sign-in.jsp").forward(request, response);
             } else {
-                response.sendRedirect("/khach-hang?action=them_khach_hang_post");
-                request.setAttribute("thong-bao","Đã có tài khoản. Vui lòng nhập lại");
+                request.setAttribute("message","Trùng tên tài khoản. Vui lòng nhập lại");
                 request.getRequestDispatcher("/khach-hang?action=them_khach_hang_post").forward(request, response);
             }
         }
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher("sign-up.jsp");
+        requestDispatcher.forward(request, response);
     }
 
 
