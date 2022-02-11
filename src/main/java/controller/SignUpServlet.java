@@ -2,6 +2,7 @@ package controller;
 
 import DAO.NhanVienDAO;
 import DAO.SignInDAO;
+import DAO.SignUpDAO;
 import model.Account;
 
 import javax.servlet.ServletException;
@@ -19,12 +20,24 @@ public class SignUpServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+        signUp(request, response);
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        signUp(request, response);
+    }
 
+    private void signUp(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String action = request.getParameter("signup");
+        if (action == null) {
+            action = "";
+        }
+        switch (action) {
+            case "signUp":
+                processRequest(request, response);
+                break;
+        }
     }
     protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
@@ -32,12 +45,15 @@ public class SignUpServlet extends HttpServlet {
         String pass = request.getParameter("acc_password");
         String re_pass = request.getParameter("repass");
         if (!pass.equals(re_pass)) {
-            response.sendRedirect("sign-in.jsp");
+            response.sendRedirect("info-user.jsp");
         } else {
-            SignInDAO dao = new SignInDAO();
+            SignUpDAO dao = new SignUpDAO();
             Account a = dao.checkAccountExist(user);
             if (a == null) {
-                response.sendRedirect("sign-in.jsp");
+               dao.signup(user, pass);
+               response.sendRedirect("sign-in.jsp");
+            } else {
+                response.sendRedirect("info-user.jsp");
             }
         }
     }

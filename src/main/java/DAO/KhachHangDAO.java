@@ -20,8 +20,8 @@ public class KhachHangDAO {
     public void insertKhachHang(Khach_hang kh) throws SQLException {
         System.out.println(INSERT_KHACH_HANG_SQL);
 
-<<<<<<< HEAD
-        try (Connection connection = getConnection(); PreparedStatement preparedStatement = connection.prepareStatement(INSERT_KHACH_HANG_SQL)) {
+
+        try (Connection connection = myConnection.getConnection(); PreparedStatement preparedStatement = connection.prepareStatement(INSERT_KHACH_HANG_SQL)) {
 //            preparedStatement.setString(1, kh.getKh_id());
             preparedStatement.setString(1, kh.getKh_anh());
             preparedStatement.setString(2, kh.getKh_ten());
@@ -30,18 +30,6 @@ public class KhachHangDAO {
             preparedStatement.setString(5, kh.getKh_phone_number());
             preparedStatement.setDate(6, java.sql.Date.valueOf(kh.getKh_ngay_sinh()));
             preparedStatement.setString(7, kh.getKh_dia_chi());
-=======
-        try (Connection connection = myConnection.getConnection(); PreparedStatement preparedStatement = connection.prepareStatement(INSERT_KHACH_HANG_SQL)) {
-            preparedStatement.setString(1, kh.getKh_id());
-            preparedStatement.setString(2, kh.getKh_anh());
-            preparedStatement.setString(3, kh.getKh_ten());
-            preparedStatement.setString(4, kh.getKh_gioi_tinh());
-            preparedStatement.setString(5, kh.getKh_email());
-            preparedStatement.setString(6, kh.getKh_phone_number());
-            preparedStatement.setDate(7, (Date) kh.getKh_ngay_sinh());
-            preparedStatement.setString(8, kh.getKh_dia_chi());
->>>>>>> 34bdb348175a14c9f063d9ba7e8d8a1fa8c9ddc8
-
             System.out.println(preparedStatement);
             preparedStatement.executeUpdate();
         } catch (SQLException e) {

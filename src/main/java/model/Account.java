@@ -79,8 +79,5 @@ public class Account {
                 ", acc_nv_id='" + acc_nv_id + '\'' +
                 '}';
     }
-<<<<<<< HEAD
+
 }
-=======
-}
->>>>>>> 34bdb348175a14c9f063d9ba7e8d8a1fa8c9ddc8
