@@ -8,6 +8,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html lang="zxx">
 
@@ -63,112 +64,130 @@
             <div class="col-lg-8">
                 <div class="shopping__cart__table">
                     <c:if test="${lists_hd_ps != null}">
-                    <table>
-                        <thead>
-                        <tr><h4 class="checkout__title text-center">Thú Cưng</h4></tr>
-                        <tr>
-                            <th>SẢN PHẨM</th>
-                            <th>SỐ LƯỢNG</th>
-                            <th>THÀNH TIỀN</th>
-                            <th></th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <c:forEach items="${requestScope['lists_hd_ps']}" var="hd_ps">
+                        <table>
+                            <thead>
+                            <tr><h4 class="checkout__title text-center">Thú Cưng</h4></tr>
+                            <tr>
+                                <th>SẢN PHẨM</th>
+                                <th>SỐ LƯỢNG</th>
+                                <th>THÀNH TIỀN</th>
+                                <th></th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <c:forEach items="${requestScope['lists_hd_ps']}" var="hd_ps">
+                                <tr>
+                                    <td class="product__cart__item">
+                                        <div class="product__cart__item__pic">
+                                            <img src="img/shopping-cart/cart-4.jpg" alt="">
+                                        </div>
+                                        <div class="product__cart__item__text">
+                                            <h6>${hd_ps.getHdmhtt_ten()}</h6>
+                                        </div>
+                                    </td>
+                                    <td class="quantity__item">
+                                        <div class="quantity">
+                                            <div class="pro-qty-2">
+                                                <input type="text" value="1">
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="cart__price">${hd_ps.getHdmhtt_thanh_tien()} VNĐ</td>
+                                    <td class="cart__close">
+                                        <a href="<c:url value="/gio_hang?action=delete_ps_pk&hd_id=${hd_ps.getHdmhtt_id()}&hd_kh_id=${sessionScope.acc_khach_hang.getAcc_kh_id()}"/>">
+                                            <i class="fa fa-close"></i>
+                                        </a>
+                                    </td>
+                                </tr>
+                            </c:forEach>
+                            </tbody>
+                        </table>
+                    </c:if>
+                    <br>
+                    <c:if test="${lists_hd_pk != null}">
+                        <table>
+                            <thead>
+                            <tr><h4 class="checkout__title text-center">Phụ Kiện</h4></tr>
+                            <tr>
+                                <th>SẢN PHẨM</th>
+                                <th>SỐ LƯỢNG</th>
+                                <th>THÀNH TIỀN</th>
+                                <th></th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <c:forEach items="${requestScope['lists_hd_pk']}" var="hd_pk">
+                                <tr>
+                                    <td class="product__cart__item">
+                                        <div class="product__cart__item__pic">
+                                            <img src="img/shopping-cart/cart-4.jpg" alt="">
+                                        </div>
+                                        <div class="product__cart__item__text">
+                                            <h6>${hd_pk.getHdmhtt_ten()}</h6>
+                                        </div>
+                                    </td>
+                                    <td class="quantity__item">
+                                        <div class="quantity">
+                                            <div class="pro-qty-2">
+                                                <input type="text" value="1">
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="cart__price">${hd_pk.getHdmhtt_thanh_tien()} VNĐ</td>
+                                    <td class="cart__close">
+                                        <a href="<c:url value="/gio_hang?action=delete_ps_pk&hd_id=${hd_pk.getHdmhtt_id()}&hd_kh_id=${sessionScope.acc_khach_hang.getAcc_kh_id()}"/>">
+                                            <i class="fa fa-close"></i>
+                                        </a>
+                                    </td>
+                                </tr>
+                            </c:forEach>
+                            </tbody>
+                        </table>
+                    </c:if>
+                    <br>
+                    <c:if test="${lists_hd_dv != null}">
+                        <table>
+                            <thead>
+                            <tr><h4 class="checkout__title text-center">Dịch vụ</h4></tr>
+                            <tr>
+                                <th>SẢN PHẨM</th>
+                                <th>THỜI GIAN ĐẶT</th>
+                                <th>THÀNH TIỀN</th>
+                                <th></th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <c:forEach items="${requestScope['lists_hd_dv']}" var="hd_dv">
                             <tr>
                                 <td class="product__cart__item">
                                     <div class="product__cart__item__pic">
                                         <img src="img/shopping-cart/cart-4.jpg" alt="">
                                     </div>
                                     <div class="product__cart__item__text">
-                                        <h6>${hd_ps.getHdmhtt_ten()}</h6>
+                                        <h6>${hd_dv.getHddvtt_ctdv_id()}</h6>
                                     </div>
                                 </td>
                                 <td class="quantity__item">
                                     <div class="quantity">
-                                        <div class="pro-qty-2">
-                                            <input type="text" value="1">
+<%--                                        <div class="pro-qty-2">--%>
+<%--                                            <input type="text" value="1">--%>
+<%--                                        </div>--%>
+                                        <div>
+                                            <h6>${hd_dv.getHddvtt_thoi_gian_dat()}</h6>
                                         </div>
                                     </div>
                                 </td>
-                                <td class="cart__price">${hd_ps.getHdmhtt_thanh_tien()} VNĐ</td>
-                                <td class="cart__close"><i class="fa fa-close"></i></td>
+                                <td class="cart__price">${hd_dv.getHddvtt_thanh_tien()}</td>
+                                <td class="cart__close">
+                                    <a href="<c:url value="/gio_hang?action=delete_dv&hddv_id=${hd_dv.getHddvtt_ctdv_id()}&hd_kh_id=${sessionScope.acc_khach_hang.getAcc_kh_id()}"/>">
+                                        <i class="fa fa-close"></i>
+                                    </a>
+                                </td>
                             </tr>
-                        </c:forEach>
-                        </tbody>
-                    </table>
+                            </c:forEach>
+                            </tbody>
+                        </table>
                     </c:if>
-                    <br>
-                    <c:if test="${lists_hd_pk != null}">
-                    <table>
-                        <thead>
-                        <tr><h4 class="checkout__title text-center">Phụ Kiện</h4></tr>
-                        <tr>
-                            <th>SẢN PHẨM</th>
-                            <th>SỐ LƯỢNG</th>
-                            <th>THÀNH TIỀN</th>
-                            <th></th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <c:forEach items="${requestScope['lists_hd_pk']}" var="hd_pk">
-                        <tr>
-                            <td class="product__cart__item">
-                                <div class="product__cart__item__pic">
-                                    <img src="img/shopping-cart/cart-4.jpg" alt="">
-                                </div>
-                                <div class="product__cart__item__text">
-                                    <h6>${hd_pk.getHdmhtt_ten()}</h6>
-                                </div>
-                            </td>
-                            <td class="quantity__item">
-                                <div class="quantity">
-                                    <div class="pro-qty-2">
-                                        <input type="text" value="1">
-                                    </div>
-                                </div>
-                            </td>
-                            <td class="cart__price">${hd_pk.getHdmhtt_thanh_tien()} VNĐ</td>
-                            <td class="cart__close"><i class="fa fa-close"></i></td>
-                        </tr>
-                        </c:forEach>
-                        </tbody>
-                    </table>
-                    </c:if>
-                    <br>
-                    <table>
-                        <thead>
-                        <tr><h4 class="checkout__title text-center">Dịch vụ</h4></tr>
-                        <tr>
-                            <th>SẢN PHẨM</th>
-                            <th>THỜI GIAN ĐẶT</th>
-                            <th>THÀNH TIỀN</th>
-                            <th></th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr>
-                            <td class="product__cart__item">
-                                <div class="product__cart__item__pic">
-                                    <img src="img/shopping-cart/cart-4.jpg" alt="">
-                                </div>
-                                <div class="product__cart__item__text">
-                                    <h6>Basic Flowing Scarf</h6>
-                                    <h5>$98.49</h5>
-                                </div>
-                            </td>
-                            <td class="quantity__item">
-                                <div class="quantity">
-                                    <div class="pro-qty-2">
-                                        <input type="text" value="1">
-                                    </div>
-                                </div>
-                            </td>
-                            <td class="cart__price">$ 30.00</td>
-                            <td class="cart__close"><i class="fa fa-close"></i></td>
-                        </tr>
-                        </tbody>
-                    </table>
                 </div>
                 <div class="row">
                     <div class="col-lg-6 col-md-6 col-sm-6">

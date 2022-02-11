@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html lang="zxx">
 
@@ -210,11 +211,12 @@
                                         <h6>${pet_shop.ps_ten}</h6>
                                         <c:if test="${sessionScope.acc != null}">
                                             <c:if test="${sessionScope.acc_khach_hang != null}">
-                                                <a href="<c:url value="/hospital?action=addToCart&id=${pet_shop.getPs_id()}"/>"
+                                                <a href="<c:url value="/gio_hang?action=add_pet_shop&hd_ps_id=${pet_shop.getPs_id()}&hd_kh_id=${sessionScope.acc_khach_hang.getAcc_kh_id()}"/>"
                                                    class="add-cart">+ Thêm Vào Giỏ Hàng</a>
                                             </c:if>
                                             <c:if test="${sessionScope.acc_admin != null || sessionScope.acc_nhan_vien != null}">
-                                                <a href="<c:url value="/hospital?action=search_pet_shop&ps_id=${pet_shop.getPs_id()}"/>" class="add-cart">
+                                                <a href="<c:url value="/hospital?action=search_pet_shop&ps_id=${pet_shop.getPs_id()}"/>"
+                                                   class="add-cart">
                                                     + ${pet_shop.getPs_ten()}
                                                 </a>
                                             </c:if>
@@ -293,7 +295,7 @@
                                         <h6>${phu_kien_id.pk_ten}</h6>
                                         <c:if test="${sessionScope.acc != null}">
                                             <c:if test="${sessionScope.acc_khach_hang != null}">
-                                                <a href="<c:url value="/hospital?action=addToCart&id=${phu_kien_id.getPk_id()}"/>"
+                                                <a href="<c:url value="/gio_hang?action=add_phu_kien&hd_pk_id=${phu_kien_id.getPk_id()}&hd_kh_id=${sessionScope.acc_khach_hang.getAcc_kh_id()}"/>"
                                                    class="add-cart">+ Thêm Vào Giỏ Hàng</a>
                                             </c:if>
                                             <c:if test="${sessionScope.acc_admin != null || sessionScope.acc_nhan_vien != null}">
@@ -376,8 +378,9 @@
                                         <h6>${chi_tiet_dv.ctdv_ten}</h6>
                                         <c:if test="${sessionScope.acc != null}">
                                             <c:if test="${sessionScope.acc_khach_hang != null}">
-                                                <a href="<c:url value="/hospital?action=addToCart&id=${chi_tiet_dv.getCtdv_id()}"/>"
-                                                   class="add-cart">+ Thêm Vào Giỏ Hàng</a>
+                                                <a href="<c:url value="/hospital?action=search_dich_vu&dv_id=${chi_tiet_dv.getCtdv_id()}"/>"
+                                                   class="add-cart">+ Đăng ký dịch vụ
+                                                </a>
                                             </c:if>
                                             <c:if test="${sessionScope.acc_admin != null || sessionScope.acc_nhan_vien != null}">
                                                 <a href="<c:url value="/hospital?action=search_dich_vu&dv_id=${chi_tiet_dv.getCtdv_id()}"/>" class="add-cart">
