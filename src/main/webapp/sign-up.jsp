@@ -107,15 +107,24 @@
                     <form action="sign-in.jsp" method="post">
                         <div class="form-group first">
                             <label for="username">Tài khoản</label>
+<<<<<<< tien98
                             <input type="text" class="form-control" placeholder="Nhập tài khoản" id="username" >
+=======
+                            <input type="text" class="form-control" placeholder="Nhập tài khoản" id="username" name="acc_username">
+>>>>>>> local
                         </div>
                         <div class="form-group last mb-3">
                             <label for="password">Mật khẩu</label>
-                            <input type="password" class="form-control" placeholder="Nhập mật khẩu" id="password">
+                            <input type="password" class="form-control" placeholder="Nhập mật khẩu" id="password" name="acc_password">
                         </div>
                         <div class="form-group last mb-3">
+<<<<<<< tien98
                             <label for="password2">Nh</label>
                             <input type="password" class="form-control" placeholder="Nhập lại mật khẩu" id="password2">
+=======
+                            <label for="password2">Mật khẩu</label>
+                            <input type="password" class="form-control" placeholder="Nhập lại mật khẩu" id="password2" name="repass">
+>>>>>>> local
                         </div>
 
                         <div class="d-flex mb-5 align-items-center">
