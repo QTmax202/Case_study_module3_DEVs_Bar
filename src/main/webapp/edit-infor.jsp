@@ -70,7 +70,7 @@
                             <div class="col-lg-10">
                                 <div class="checkout__input">
                                     <p>Họ & Tên<span>*</span></p>
-                                    <input type="text" name="">
+                                    <input type="text" name="nv_id">
                                 </div>
                             </div>
                             <div class="col-lg-2">
