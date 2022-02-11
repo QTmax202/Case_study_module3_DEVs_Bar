@@ -57,63 +57,82 @@
 <!-- Breadcrumb Section End -->
 
 <!-- Thêm Thú Cưng Begin -->
-<%--<section class="checkout spad">--%>
-<%--    <div class="container">--%>
-<%--        <div class="checkout__form">--%>
+<section class="checkout spad">
+    <div class="container">
+        <div class="checkout__form">
 
-<%--            <form action="#">--%>
-<%--                <div class="row">--%>
-<%--                    <div class="col-lg-8 col-md-6">--%>
-<%--                        <h6 class="checkout__title">Thêm Thú Cưng</h6>--%>
-<%--                        <div class="row">--%>
-<%--                            <div class="col-lg-3">--%>
-<%--                                <div class="checkout__input">--%>
-<%--                                    <p>Chọn Giống Pet<span>*</span></p>--%>
-<%--                                    <label>--%>
-<%--                                        <select name="">--%>
-<%--                                            <option value="">Pug</option>--%>
-<%--                                            <option value="">Poodle</option>--%>
-<%--                                        </select>--%>
-<%--                                    </label>--%>
-<%--                                </div>--%>
-<%--                            </div>--%>
-<%--                            <div class="col-lg-9">--%>
-<%--                                <div class="checkout__input">--%>
-<%--                                    <p>Nhập Tên<span>*</span></p>--%>
-<%--                                    <input type="text" name="">--%>
-<%--                                </div>--%>
-<%--                            </div>--%>
-<%--                        </div>--%>
-<%--                        <div class="checkout__input">--%>
-<%--                            <p>Nhập Đường Dẫn Ảnh<span>*</span></p>--%>
-<%--                            <input type="text" name="">--%>
-<%--                        </div>--%>
-<%--                        <div class="row">--%>
-<%--                            <div class="col-lg-6">--%>
-<%--                                <div class="checkout__input">--%>
-<%--                                    <p>Ngày Sinh<span>*</span></p>--%>
-<%--                                    <input type="date"  name="">--%>
-<%--                                </div>--%>
-<%--                            </div>--%>
-<%--                            <div class="col-lg-6">--%>
-<%--                                <div class="checkout__input">--%>
-<%--                                    <p>Đơn Giá<span>*</span></p>--%>
-<%--                                    <input type="text" placeholder="VND" name="">--%>
-<%--                                </div>--%>
-<%--                            </div>--%>
-<%--                        </div>--%>
-<%--                        <div class="checkout__input">--%>
-<%--                            <p>Mô Tả</p>--%>
-<%--                            <input type="text" name="">--%>
-<%--                        </div>--%>
-<%--                        <button type="submit" class="site-btn">XÁC NHẬN</button>--%>
-<%--                    </div>--%>
-<%--                </div>--%>
-<%--            </form>--%>
+            <form action="/quan-ly?action=them_thu_cung_post" method="post">
+                <div class="row">
+                    <div class="col-lg-8 col-md-6">
+                        <h6 class="checkout__title">Thêm Thú Cưng</h6>
+                        <div class="row">
+                            <div class="col-lg-3">
+                                <div class="checkout__input">
+                                    <p>Chọn Giống Pet<span>*</span></p>
+                                        <select name="ps_gp_id">
+                                            <option value="BEAGLE" name="ps_gp_id">Chó Beagle</option>
+                                            <option value="BRITISH" name="ps_gp_id">Mèo Anh (Ngắn + Dài)</option>
+                                            <option value="CORGI" name="ps_gp_id">Chó CORGI</option>
+                                            <option value="GOLDEN" name="ps_gp_id">Chó Golden Retriever</option>
+                                            <option value="HUSKY" name="ps_gp_id">Chó Husky</option>
+                                            <option value="MUNCHKIN" name="ps_gp_id">Mèo chân ngắn</option>
+                                            <option value="POODLE" name="ps_gp_id">Chó Poodle</option>
+                                            <option value="PUG" name="ps_gp_id">Chó Pug</option>
+                                            <option value="SAMOYED" name="ps_gp_id">Chó Samoyed</option>
+                                        </select>
+                                </div>
+                            </div>
+                            <div class="col-lg-9">
+                                <div class="checkout__input">
+                                    <p>Nhập Tên<span>*</span></p>
+                                    <input type="text" name="ps_ten">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="checkout__input">
+                            <p>Nhập Đường Dẫn Ảnh<span>*</span></p>
+                            <input type="text" name="ps_anh">
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="checkout__input">
+                                    <p>Ngày Sinh<span>*</span></p>
+                                    <input type="date"  name="ps_ngay_sinh">
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="checkout__input">
+                                    <p>Đơn Giá<span>*</span></p>
+                                    <input type="text" placeholder="VND" name="ps_gia">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div>
+                                    <p>Trạng thái<span>*</span></p>
+                                    <select name="ps_trang_thai">
+                                        <option value="1" name="ps_trang_thai">Sẵn sàng</option>
+                                        <option value="0" name="ps_trang_thai">Khóa</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="checkout__input">
+                                    <p>Mô Tả</p>
+                                    <input type="text" name="ps_mo_ta">
+                                </div>
+                            </div>
+                        </div>
 
-<%--        </div>--%>
-<%--    </div>--%>
-<%--</section>--%>
+                        <button type="submit" class="site-btn">XÁC NHẬN</button>
+                    </div>
+                </div>
+            </form>
+
+        </div>
+    </div>
+</section>
 <!-- Thêm Thú Cưng End -->
 
 <!-- Thêm Phụ Kiện Begin -->

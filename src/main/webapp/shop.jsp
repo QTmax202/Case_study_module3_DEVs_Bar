@@ -180,12 +180,12 @@
                                                         <span>Detail</span></a>
                                                 </li>
                                                 <li>
-                                                    <a href="edit.jsp">
+                                                    <a href="/quan-ly?action=sua_thu_cung_get&tc_id=${pet_shop.getPs_id()}">
                                                         <img src="https://image.flaticon.com/icons/png/512/84/84380.png" width="36" height="36" alt="">
                                                         <span>Edit</span></a>
                                                 </li>
                                                 <li>
-                                                    <a href="#">
+                                                    <a href="/quan-ly?action=xoa_thu_cung&tc_id=${pet_shop.getPs_id()}">
                                                         <img src="https://icon-library.com/images/icon-delete/icon-delete-16.jpg" width="36" height="36" alt="">
                                                         <span>Delete</span></a>
                                                 </li>
