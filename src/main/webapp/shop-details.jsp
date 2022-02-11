@@ -61,7 +61,7 @@
                             <a href="<c:url value="/hospital"/>">Home</a>
                             <a href="<c:url value="/shop"/>">Shop</a>
                             <span>Product Details</span>
-                        </c:if>>
+                        </c:if>
                         <c:if test="${sessionScope.acc != null}">
                             <c:if test="${sessionScope.acc_admin != null || sessionScope.acc_nhan_vien != null}">
                                 <a href="<c:url value="/shop"/>">Shop</a>
@@ -159,6 +159,11 @@
                                         Tình trạng: Còn hàng
                                     </p>
                                 </c:if>
+                                <c:if test="${pet_shop.getPs_trang_thai() == 0}">
+                                    <p>
+                                        Tình trạng: Hết hàng
+                                    </p>
+                                </c:if>
                             </c:if>
                             <c:if test="${phu_kien != null}">
                                 <c:if test="${phu_kien.getPk_so_luong() != 0}">
@@ -166,11 +171,21 @@
                                         Tình trạng: Còn hàng
                                     </p>
                                 </c:if>
+                                <c:if test="${phu_kien.getPk_so_luong() == 0}">
+                                    <p>
+                                        Tình trạng: Hết hàng
+                                    </p>
+                                </c:if>
                             </c:if>
                             <c:if test="${dich_vu != null}">
                                 <c:if test="${dich_vu.getCtdv_trang_thai() != 0}">
                                     <p>
                                         Tình trạng: Còn hàng
+                                    </p>
+                                </c:if>
+                                <c:if test="${dich_vu.getCtdv_trang_thai() == 0}">
+                                    <p>
+                                        Tình trạng: Hết hàng
                                     </p>
                                 </c:if>
                             </c:if>
@@ -213,7 +228,7 @@
                                 <c:if test="${pet_shop.getPs_trang_thai() != 0}">
                                     <c:if test="${sessionScope.acc == null}">
                                         <a href="#" class="primary-btn">Hãy Đăng Nhập</a>
-                                    </c:if>>
+                                    </c:if>
                                     <c:if test="${sessionScope.acc != null}">
                                         <c:if test="${sessionScope.acc_admin != null || sessionScope.acc_nhan_vien != null}">
                                             <a href="#" class="primary-btn"> ADMIN </a>
@@ -228,7 +243,7 @@
                                 <c:if test="${phu_kien.getPk_so_luong() != 0}">
                                     <c:if test="${sessionScope.acc == null}">
                                         <a href="#" class="primary-btn">Hãy Đăng Nhập</a>
-                                    </c:if>>
+                                    </c:if>
                                     <c:if test="${sessionScope.acc != null}">
                                         <c:if test="${sessionScope.acc_admin != null || sessionScope.acc_nhan_vien != null}">
                                             <a href="#" class="primary-btn"> ADMIN </a>
@@ -243,7 +258,7 @@
                                 <c:if test="${dich_vu.getCtdv_trang_thai() != 0}">
                                     <c:if test="${sessionScope.acc == null}">
                                         <a href="#" class="primary-btn">Hãy Đăng Nhập</a>
-                                    </c:if>>
+                                    </c:if>
                                     <c:if test="${sessionScope.acc != null}">
                                         <c:if test="${sessionScope.acc_admin != null || sessionScope.acc_nhan_vien != null}">
                                             <a href="#" class="primary-btn"> ADMIN </a>
@@ -282,10 +297,49 @@
                             <div class="product__item__pic set-bg"
                                  data-setbg="${pet_shop.getPs_anh()}">
                                 <ul class="product__hover">
-                                    <li><a href="#"><img src="img/icon/heart.png" alt=""> <span>Heart</span></a></li>
-                                    <li>
-                                        <a href="<c:url value="/hospital?action=search_pet_shop&ps_id=${pet_shop.getPs_id()}"/>"><img
-                                                src="img/icon/search.png" alt=""> <span>Detail</span></a></li>
+                                    <c:if test="${sessionScope.acc == null}">
+                                        <li>
+                                            <a href="#">
+                                                <img src="img/icon/heart.png" alt="">
+                                                <span>Heart</span></a>
+                                        </li>
+                                        <li>
+                                            <a href="<c:url value="/hospital?action=search_pet_shop&ps_id=${pet_shop.getPs_id()}"/>">
+                                                <img src="img/icon/search.png" alt="">
+                                                <span>Detail</span></a>
+                                        </li>
+                                    </c:if>
+                                    <c:if test="${sessionScope.acc != null}">
+                                        <c:if test="${sessionScope.acc_admin != null || sessionScope.acc_nhan_vien != null}">
+                                            <li>
+                                                <a href="<c:url value="/hospital?action=search_pet_shop&ps_id=${pet_shop.getPs_id()}"/>">
+                                                    <img src="img/icon/search.png" alt="">
+                                                    <span>Detail</span></a>
+                                            </li>
+                                            <li>
+                                                <a href="edit.jsp">
+                                                    <img src="https://image.flaticon.com/icons/png/512/84/84380.png" width="36" height="36" alt="">
+                                                    <span>Edit</span></a>
+                                            </li>
+                                            <li>
+                                                <a href="#">
+                                                    <img src="https://icon-library.com/images/icon-delete/icon-delete-16.jpg" width="36" height="36" alt="">
+                                                    <span>Delete</span></a>
+                                            </li>
+                                        </c:if>
+                                        <c:if test="${sessionScope.acc_khach_hang != null}">
+                                            <li>
+                                                <a href="#">
+                                                    <img src="img/icon/heart.png" alt="">
+                                                    <span>Heart</span></a>
+                                            </li>
+                                            <li>
+                                                <a href="<c:url value="/hospital?action=search_pet_shop&ps_id=${pet_shop.getPs_id()}"/>">
+                                                    <img src="img/icon/search.png" alt="">
+                                                    <span>Detail</span></a>
+                                            </li>
+                                        </c:if>
+                                    </c:if>
                                 </ul>
                             </div>
                             <div class="product__item__text">
@@ -296,7 +350,9 @@
                                            class="add-cart">+ Thêm Vào Giỏ Hàng</a>
                                     </c:if>
                                     <c:if test="${sessionScope.acc_admin != null || sessionScope.acc_nhan_vien != null}">
-                                        <a href="#" class="add-cart">+ ${pet_shop.getPs_gp_id()}</a>
+                                        <a href="<c:url value="/hospital?action=search_pet_shop&ps_id=${pet_shop.getPs_id()}"/>" class="add-cart">
+                                            + ${pet_shop.getPs_ten()}
+                                        </a>
                                     </c:if>
                                 </c:if>
                                 <c:if test="${sessionScope.acc == null}">
@@ -316,10 +372,49 @@
                             <div class="product__item__pic set-bg"
                                  data-setbg="${phu_kien.getPk_anh()}">
                                 <ul class="product__hover">
-                                    <li><a href="#"><img src="img/icon/heart.png" alt=""> <span>Heart</span></a></li>
-                                    <li>
-                                        <a href="<c:url value="/hospital?action=search_phu_kien&pk_id=${phu_kien.getPk_id()}"/>"><img
-                                                src="img/icon/search.png" alt=""> <span>Detail</span></a></li>
+                                    <c:if test="${sessionScope.acc == null}">
+                                        <li>
+                                            <a href="#">
+                                                <img src="img/icon/heart.png" alt="">
+                                                <span>Heart</span></a>
+                                        </li>
+                                        <li>
+                                            <a href="<c:url value="/hospital?action=search_phu_kien&pk_id=${phu_kien.getPk_id()}"/>">
+                                                <img src="img/icon/search.png" alt="">
+                                                <span>Detail</span></a>
+                                        </li>
+                                    </c:if>
+                                    <c:if test="${sessionScope.acc != null}">
+                                        <c:if test="${sessionScope.acc_admin != null || sessionScope.acc_nhan_vien != null}">
+                                            <li>
+                                                <a href="<c:url value="/hospital?action=search_phu_kien&pk_id=${phu_kien.getPk_id()}"/>">
+                                                    <img src="img/icon/search.png" alt="">
+                                                    <span>Detail</span></a>
+                                            </li>
+                                            <li>
+                                                <a href="edit.jsp">
+                                                    <img src="https://image.flaticon.com/icons/png/512/84/84380.png" width="36" height="36" alt="">
+                                                    <span>Edit</span></a>
+                                            </li>
+                                            <li>
+                                                <a href="#">
+                                                    <img src="https://icon-library.com/images/icon-delete/icon-delete-16.jpg" width="36" height="36" alt="">
+                                                    <span>Delete</span></a>
+                                            </li>
+                                        </c:if>
+                                        <c:if test="${sessionScope.acc_khach_hang != null}">
+                                            <li>
+                                                <a href="#">
+                                                    <img src="img/icon/heart.png" alt="">
+                                                    <span>Heart</span></a>
+                                            </li>
+                                            <li>
+                                                <a href="<c:url value="/hospital?action=search_phu_kien&pk_id=${phu_kien.getPk_id()}"/>">
+                                                    <img src="img/icon/search.png" alt="">
+                                                    <span>Detail</span></a>
+                                            </li>
+                                        </c:if>
+                                    </c:if>
                                 </ul>
                             </div>
                             <div class="product__item__text">
@@ -330,7 +425,9 @@
                                            class="add-cart">+ Thêm Vào Giỏ Hàng</a>
                                     </c:if>
                                     <c:if test="${sessionScope.acc_admin != null || sessionScope.acc_nhan_vien != null}">
-                                        <a href="#" class="add-cart">+ ${phu_kien.getPk_lpk_id()}</a>
+                                        <a href="<c:url value="/hospital?action=search_phu_kien&pk_id=${phu_kien.getPk_id()}"/>" class="add-cart">
+                                            + ${phu_kien.getPk_ten()}
+                                        </a>
                                     </c:if>
                                 </c:if>
                                 <c:if test="${sessionScope.acc == null}">
@@ -350,10 +447,49 @@
                             <div class="product__item__pic set-bg"
                                  data-setbg="${dich_vu.getCtdv_anh()}">
                                 <ul class="product__hover">
-                                    <li><a href="#"><img src="img/icon/heart.png" alt=""> <span>Heart</span></a></li>
-                                    <li>
-                                        <a href="<c:url value="/hospital?action=search_dich_vu&dv_id=${dich_vu.getCtdv_id()}"/>"><img
-                                                src="img/icon/search.png" alt=""> <span>Detail</span></a></li>
+                                    <c:if test="${sessionScope.acc == null}">
+                                        <li>
+                                            <a href="#">
+                                                <img src="img/icon/heart.png" alt="">
+                                                <span>Heart</span></a>
+                                        </li>
+                                        <li>
+                                            <a href="<c:url value="/hospital?action=search_dich_vu&dv_id=${dich_vu.getCtdv_id()}"/>">
+                                                <img src="img/icon/search.png" alt="">
+                                                <span>Detail</span></a>
+                                        </li>
+                                    </c:if>
+                                    <c:if test="${sessionScope.acc != null}">
+                                        <c:if test="${sessionScope.acc_admin != null  || sessionScope.acc_nhan_vien != null}">
+                                            <li>
+                                                <a href="<c:url value="/hospital?action=search_dich_vu&dv_id=${dich_vu.getCtdv_id()}"/>">
+                                                    <img src="img/icon/search.png" alt="">
+                                                    <span>Detail</span></a>
+                                            </li>
+                                            <li>
+                                                <a href="edit.jsp">
+                                                    <img src="https://image.flaticon.com/icons/png/512/84/84380.png" width="36" height="36" alt="">
+                                                    <span>Edit</span></a>
+                                            </li>
+                                            <li>
+                                                <a href="#">
+                                                    <img src="https://icon-library.com/images/icon-delete/icon-delete-16.jpg" width="36" height="36" alt="">
+                                                    <span>Delete</span></a>
+                                            </li>
+                                        </c:if>
+                                        <c:if test="${sessionScope.acc_khach_hang != null}">
+                                            <li>
+                                                <a href="#">
+                                                    <img src="img/icon/heart.png" alt="">
+                                                    <span>Heart</span></a>
+                                            </li>
+                                            <li>
+                                                <a href="<c:url value="/hospital?action=search_dich_vu&dv_id=${dich_vu.getCtdv_id()}"/>">
+                                                    <img src="img/icon/search.png" alt="">
+                                                    <span>Detail</span></a>
+                                            </li>
+                                        </c:if>
+                                    </c:if>
                                 </ul>
                             </div>
                             <div class="product__item__text">
@@ -364,7 +500,9 @@
                                            class="add-cart">+ Thêm Vào Giỏ Hàng</a>
                                     </c:if>
                                     <c:if test="${sessionScope.acc_admin != null || sessionScope.acc_nhan_vien != null}">
-                                        <a href="#" class="add-cart">+ ${dich_vu.getCtdv_dv_id()}</a>
+                                        <a href="<c:url value="/hospital?action=search_dich_vu&dv_id=${dich_vu.getCtdv_id()}"/>" class="add-cart">
+                                            + ${dich_vu.getCtdv_ten()}
+                                        </a>
                                     </c:if>
                                 </c:if>
                                 <c:if test="${sessionScope.acc == null}">
