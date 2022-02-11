@@ -63,7 +63,6 @@
                             </div>
 
                             <input type="submit" value="ĐĂNG KÝ" class="btn btn-block btn-primary">
-
                         </form>
                     </div>
                 </div>
