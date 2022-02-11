@@ -81,7 +81,8 @@
                                     <div class="card-body">
                                         <div class="shop__sidebar__categories">
                                             <ul class="nice-scroll">
-                                                <li class="fa fa-star-o"><a href="/shop?action=list-thu-cung"> TẤT CẢ</a></li>
+                                                <li class="fa fa-star-o"><a href="/shop?action=list-thu-cung"> TẤT
+                                                    CẢ</a></li>
                                                 <c:forEach items="${giong_pets}" var="giong_pet">
                                                     <li>
                                                         <a href="/shop?action=thucung&id=${giong_pet.gp_id}">${giong_pet.gp_id}</a>
@@ -100,7 +101,8 @@
                                     <div class="card-body">
                                         <div class="shop__sidebar__categories">
                                             <ul class="nice-scroll">
-                                                <li class="fa fa-star-o"><a href="/shop?action=list-phu-kien"> TẤT CẢ</a></li>
+                                                <li class="fa fa-star-o"><a href="/shop?action=list-phu-kien"> TẤT
+                                                    CẢ</a></li>
                                                 <c:forEach items="${phu_kiens}" var="phu_kien">
                                                     <li>
                                                         <a href="/shop?action=phukien&id=${phu_kien.pk_mo_ta}">${phu_kien.pk_lpk_id}</a>
@@ -233,6 +235,8 @@
                             </div>
                         </div>
                     </c:forEach>
+
+<%--                    Phụ kiện--%>
                     <c:forEach items="${phu_kien_id}" var="phu_kien_id">
                         <div class="col-lg-4 col-md-6 col-sm-6">
                             <div class="product__item">
@@ -259,12 +263,12 @@
                                                         <span>Detail</span></a>
                                                 </li>
                                                 <li>
-                                                    <a href="edit.jsp">
+                                                    <a href="/quan-ly?action=sua_phu_kien_get&pk_id=${phu_kien_id.getPk_id()}">
                                                         <img src="https://image.flaticon.com/icons/png/512/84/84380.png" width="36" height="36" alt="">
                                                         <span>Edit</span></a>
                                                 </li>
                                                 <li>
-                                                    <a href="#">
+                                                    <a href="/quan-ly?action=xoa_phu_kien&pk_id=${phu_kien_id.getPk_id()}">
                                                         <img src="https://icon-library.com/images/icon-delete/icon-delete-16.jpg" width="36" height="36" alt="">
                                                         <span>Delete</span></a>
                                                 </li>
@@ -314,6 +318,8 @@
                             </div>
                         </div>
                     </c:forEach>
+
+<%--                    Dịch vụ--%>
                     <c:forEach items="${chi_tiet_dv}" var="chi_tiet_dv">
                         <div class="col-lg-4 col-md-6 col-sm-6">
                             <div class="product__item">
@@ -340,12 +346,12 @@
                                                         <span>Detail</span></a>
                                                 </li>
                                                 <li>
-                                                    <a href="edit.jsp">
+                                                    <a href="/quan-ly?action=sua_dich_vu_get&dv_id=${chi_tiet_dv.getCtdv_id()}">
                                                         <img src="https://image.flaticon.com/icons/png/512/84/84380.png" width="36" height="36" alt="">
                                                         <span>Edit</span></a>
                                                 </li>
                                                 <li>
-                                                    <a href="#">
+                                                    <a href="/quan-ly?action=xoa_dich_vu&dv_id=${chi_tiet_dv.getCtdv_id()}">
                                                         <img src="https://icon-library.com/images/icon-delete/icon-delete-16.jpg" width="36" height="36" alt="">
                                                         <span>Delete</span></a>
                                                 </li>
