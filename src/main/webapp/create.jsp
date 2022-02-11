@@ -128,7 +128,7 @@
                             <div class="col-lg-2">
                                 <div>
                                     <p>Loại Phụ Kiện<span>*</span></p>
-                                    <select>
+                                    <select name="pk_lpk_id">
                                             <option value="AO" name="pk_lpk_id">Áo</option>
                                             <option value="BALO" name="pk_lpk_id">Balo</option>
                                             <option value="CH" name="pk_lpk_id">Chuồng</option>

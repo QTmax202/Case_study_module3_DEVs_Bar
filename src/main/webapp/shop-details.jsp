@@ -57,9 +57,22 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="product__details__breadcrumb">
-                        <a href="<c:url value="/hospital"/>">Home</a>
-                        <a href="<c:url value="/shop"/>">Shop</a>
-                        <span>Product Details</span>
+                        <c:if test="${sessionScope.acc == null}">
+                            <a href="<c:url value="/hospital"/>">Home</a>
+                            <a href="<c:url value="/shop"/>">Shop</a>
+                            <span>Product Details</span>
+                        </c:if>>
+                        <c:if test="${sessionScope.acc != null}">
+                            <c:if test="${sessionScope.acc_admin != null || sessionScope.acc_nhan_vien != null}">
+                                <a href="<c:url value="/shop"/>">Shop</a>
+                                <span>Product Details</span>
+                            </c:if>
+                            <c:if test="${sessionScope.acc_khach_hang != null}">
+                                <a href="<c:url value="/hospital"/>">Home</a>
+                                <a href="<c:url value="/shop"/>">Shop</a>
+                                <span>Product Details</span>
+                            </c:if>
+                        </c:if>
                     </div>
                 </div>
             </div>
@@ -125,9 +138,9 @@
                             </span>
                         </h3>
                         <c:if test="${pet_shop != null}">
-                        <p>
-                                ${pet_shop.getPs_mo_ta()}
-                        </p>
+                            <p>
+                                    ${pet_shop.getPs_mo_ta()}
+                            </p>
                         </c:if>
                         <c:if test="${phu_kien != null}">
                             <p>
@@ -140,13 +153,13 @@
                             </p>
                         </c:if>
                         <div class="product__details__btns__option">
-                                <c:if test="${pet_shop != null }">
-                                    <c:if test="${pet_shop.getPs_trang_thai() != 0}">
-                                        <p>
-                                            Tình trạng: Còn hàng
-                                        </p>
-                                    </c:if>
+                            <c:if test="${pet_shop != null }">
+                                <c:if test="${pet_shop.getPs_trang_thai() != 0}">
+                                    <p>
+                                        Tình trạng: Còn hàng
+                                    </p>
                                 </c:if>
+                            </c:if>
                             <c:if test="${phu_kien != null}">
                                 <c:if test="${phu_kien.getPk_so_luong() != 0}">
                                     <p>
@@ -163,24 +176,82 @@
                             </c:if>
                         </div>
                         <div class="product__details__cart__option">
-                            <div class="quantity">
-                                <div class="pro-qty">
-                                    <input type="text" value="1">
-                                </div>
-                            </div>
+                            <c:if test="${pet_shop != null }">
+                                <c:if test="${sessionScope.acc != null}">
+                                    <c:if test="${sessionScope.acc_khach_hang != null}">
+                                        <div class="quantity">
+                                            <div class="pro-qty">
+                                                <input type="text" value="1">
+                                            </div>
+                                        </div>
+                                    </c:if>
+                                </c:if>
+                            </c:if>
+                            <c:if test="${phu_kien != null}">
+                                <c:if test="${sessionScope.acc != null}">
+                                    <c:if test="${sessionScope.acc_khach_hang != null}">
+                                        <div class="quantity">
+                                            <div class="pro-qty">
+                                                <input type="text" value="1">
+                                            </div>
+                                        </div>
+                                    </c:if>
+                                </c:if>
+                            </c:if>
+                            <c:if test="${dich_vu != null}">
+                                <c:if test="${sessionScope.acc != null}">
+                                    <c:if test="${sessionScope.acc_khach_hang != null}">
+                                        <div class="quantity">
+                                            <div class="pro-qty">
+                                                <input type="text" value="1">
+                                            </div>
+                                        </div>
+                                    </c:if>
+                                </c:if>
+                            </c:if>
                             <c:if test="${pet_shop != null }">
                                 <c:if test="${pet_shop.getPs_trang_thai() != 0}">
-                                    <a href="#" class="primary-btn">Thêm Vào Giỏ Hàng</a>
+                                    <c:if test="${sessionScope.acc == null}">
+                                        <a href="#" class="primary-btn">Hãy Đăng Nhập</a>
+                                    </c:if>>
+                                    <c:if test="${sessionScope.acc != null}">
+                                        <c:if test="${sessionScope.acc_admin != null || sessionScope.acc_nhan_vien != null}">
+                                            <a href="#" class="primary-btn"> ADMIN </a>
+                                        </c:if>
+                                        <c:if test="${sessionScope.acc_khach_hang != null}">
+                                            <a href="#" class="primary-btn">Thêm Vào Giỏ Hàng</a>
+                                        </c:if>
+                                    </c:if>
                                 </c:if>
                             </c:if>
                             <c:if test="${phu_kien != null}">
                                 <c:if test="${phu_kien.getPk_so_luong() != 0}">
-                                    <a href="#" class="primary-btn">Thêm Vào Giỏ Hàng</a>
+                                    <c:if test="${sessionScope.acc == null}">
+                                        <a href="#" class="primary-btn">Hãy Đăng Nhập</a>
+                                    </c:if>>
+                                    <c:if test="${sessionScope.acc != null}">
+                                        <c:if test="${sessionScope.acc_admin != null || sessionScope.acc_nhan_vien != null}">
+                                            <a href="#" class="primary-btn"> ADMIN </a>
+                                        </c:if>
+                                        <c:if test="${sessionScope.acc_khach_hang != null}">
+                                            <a href="#" class="primary-btn">Thêm Vào Giỏ Hàng</a>
+                                        </c:if>
+                                    </c:if>
                                 </c:if>
                             </c:if>
                             <c:if test="${dich_vu != null}">
                                 <c:if test="${dich_vu.getCtdv_trang_thai() != 0}">
-                                    <a href="#" class="primary-btn">Thêm Vào Giỏ Hàng</a>
+                                    <c:if test="${sessionScope.acc == null}">
+                                        <a href="#" class="primary-btn">Hãy Đăng Nhập</a>
+                                    </c:if>>
+                                    <c:if test="${sessionScope.acc != null}">
+                                        <c:if test="${sessionScope.acc_admin != null || sessionScope.acc_nhan_vien != null}">
+                                            <a href="#" class="primary-btn"> ADMIN </a>
+                                        </c:if>
+                                        <c:if test="${sessionScope.acc_khach_hang != null}">
+                                            <a href="#" class="primary-btn">Thêm Vào Giỏ Hàng</a>
+                                        </c:if>
+                                    </c:if>
                                 </c:if>
                             </c:if>
                         </div>
@@ -204,29 +275,40 @@
             </div>
         </div>
         <div class="row">
-        <c:if test="${pet_shop != null }">
-            <c:forEach items="${requestScope['pet_shops']}" var="pet_shop">
-                <div class="col-lg-3 col-md-6 col-sm-6 col-md-6 col-sm-6 mix new-arrivals">
-                    <div class="product__item">
-                        <div class="product__item__pic set-bg"
-                             data-setbg="${pet_shop.getPs_anh()}">
-                            <ul class="product__hover">
-                                <li><a href="#"><img src="img/icon/heart.png" alt=""> <span>Heart</span></a></li>
-                                <li><a href="<c:url value="/hospital?action=search_pet_shop&ps_id=${pet_shop.getPs_id()}"/>"><img
-                                        src="img/icon/search.png" alt=""> <span>Detail</span></a></li>
-                            </ul>
-                        </div>
-                        <div class="product__item__text">
-                            <h6>${pet_shop.getPs_ten()}</h6>
-                            <a href="<c:url value="/hospital?action=addToCart&id=${pet_shop.getPs_id()}"/>"
-                               class="add-cart">+ Thêm Vào Giỏ Hàng</a>
-                            <hr>
-                            <h5>${pet_shop.getPs_gia()} VND</h5>
+            <c:if test="${pet_shop != null }">
+                <c:forEach items="${requestScope['pet_shops']}" var="pet_shop">
+                    <div class="col-lg-3 col-md-6 col-sm-6 col-md-6 col-sm-6 mix new-arrivals">
+                        <div class="product__item">
+                            <div class="product__item__pic set-bg"
+                                 data-setbg="${pet_shop.getPs_anh()}">
+                                <ul class="product__hover">
+                                    <li><a href="#"><img src="img/icon/heart.png" alt=""> <span>Heart</span></a></li>
+                                    <li>
+                                        <a href="<c:url value="/hospital?action=search_pet_shop&ps_id=${pet_shop.getPs_id()}"/>"><img
+                                                src="img/icon/search.png" alt=""> <span>Detail</span></a></li>
+                                </ul>
+                            </div>
+                            <div class="product__item__text">
+                                <h6>${pet_shop.getPs_ten()}</h6>
+                                <c:if test="${sessionScope.acc != null}">
+                                    <c:if test="${sessionScope.acc_khach_hang != null}">
+                                        <a href="<c:url value="/hospital?action=addToCart&id=${pet_shop.getPs_id()}"/>"
+                                           class="add-cart">+ Thêm Vào Giỏ Hàng</a>
+                                    </c:if>
+                                    <c:if test="${sessionScope.acc_admin != null || sessionScope.acc_nhan_vien != null}">
+                                        <a href="#" class="add-cart">+ ${pet_shop.getPs_gp_id()}</a>
+                                    </c:if>
+                                </c:if>
+                                <c:if test="${sessionScope.acc == null}">
+                                    <a href="#" class="add-cart">+ Hãy Đăng Nhập</a>
+                                </c:if>
+                                <hr>
+                                <h5>${pet_shop.getPs_gia()} VND</h5>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </c:forEach>
-        </c:if>
+                </c:forEach>
+            </c:if>
             <c:if test="${phu_kien != null}">
                 <c:forEach items="${requestScope['phu_kiens']}" var="phu_kien">
                     <div class="col-lg-3 col-md-6 col-sm-6 col-md-6 col-sm-6 mix new-arrivals">
@@ -235,14 +317,25 @@
                                  data-setbg="${phu_kien.getPk_anh()}">
                                 <ul class="product__hover">
                                     <li><a href="#"><img src="img/icon/heart.png" alt=""> <span>Heart</span></a></li>
-                                    <li><a href="<c:url value="/hospital?action=search_phu_kien&pk_id=${phu_kien.getPk_id()}"/>"><img
-                                            src="img/icon/search.png" alt=""> <span>Detail</span></a></li>
+                                    <li>
+                                        <a href="<c:url value="/hospital?action=search_phu_kien&pk_id=${phu_kien.getPk_id()}"/>"><img
+                                                src="img/icon/search.png" alt=""> <span>Detail</span></a></li>
                                 </ul>
                             </div>
                             <div class="product__item__text">
                                 <h6>${phu_kien.getPk_ten()}</h6>
-                                <a href="<c:url value="/hospital?action=addToCart&id=${phu_kien.getPk_id()}"/>"
-                                   class="add-cart">+ Thêm Vào Giỏ Hàng</a>
+                                <c:if test="${sessionScope.acc != null}">
+                                    <c:if test="${sessionScope.acc_khach_hang != null}">
+                                        <a href="<c:url value="/hospital?action=addToCart&id=${phu_kien.getPk_id()}"/>"
+                                           class="add-cart">+ Thêm Vào Giỏ Hàng</a>
+                                    </c:if>
+                                    <c:if test="${sessionScope.acc_admin != null || sessionScope.acc_nhan_vien != null}">
+                                        <a href="#" class="add-cart">+ ${phu_kien.getPk_lpk_id()}</a>
+                                    </c:if>
+                                </c:if>
+                                <c:if test="${sessionScope.acc == null}">
+                                    <a href="#" class="add-cart">+ Hãy Đăng Nhập</a>
+                                </c:if>
                                 <hr>
                                 <h5>${phu_kien.getPk_gia()} VND</h5>
                             </div>
@@ -258,14 +351,25 @@
                                  data-setbg="${dich_vu.getCtdv_anh()}">
                                 <ul class="product__hover">
                                     <li><a href="#"><img src="img/icon/heart.png" alt=""> <span>Heart</span></a></li>
-                                    <li><a href="<c:url value="/hospital?action=search_dich_vu&dv_id=${dich_vu.getCtdv_id()}"/>"><img
-                                            src="img/icon/search.png" alt=""> <span>Detail</span></a></li>
+                                    <li>
+                                        <a href="<c:url value="/hospital?action=search_dich_vu&dv_id=${dich_vu.getCtdv_id()}"/>"><img
+                                                src="img/icon/search.png" alt=""> <span>Detail</span></a></li>
                                 </ul>
                             </div>
                             <div class="product__item__text">
                                 <h6>${dich_vu.getCtdv_ten()}</h6>
-                                <a href="<c:url value="/hospital?action=addToCart&id=${dich_vu.getCtdv_id()}"/>"
-                                   class="add-cart">+ Thêm Vào Giỏ Hàng</a>
+                                <c:if test="${sessionScope.acc != null}">
+                                    <c:if test="${sessionScope.acc_khach_hang != null}">
+                                        <a href="<c:url value="/hospital?action=addToCart&id=${dich_vu.getCtdv_id()}"/>"
+                                           class="add-cart">+ Thêm Vào Giỏ Hàng</a>
+                                    </c:if>
+                                    <c:if test="${sessionScope.acc_admin != null || sessionScope.acc_nhan_vien != null}">
+                                        <a href="#" class="add-cart">+ ${dich_vu.getCtdv_dv_id()}</a>
+                                    </c:if>
+                                </c:if>
+                                <c:if test="${sessionScope.acc == null}">
+                                    <a href="#" class="add-cart">+ Hãy Đăng Nhập</a>
+                                </c:if>
                                 <hr>
                                 <h5>${dich_vu.getCtdv_gia()} VNĐ</h5>
                             </div>

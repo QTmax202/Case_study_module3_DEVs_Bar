@@ -40,8 +40,16 @@
                     <div class="header__top__right">
                         <div class="header__top__links">
                             <c:if test="${sessionScope.acc != null}">
-                                <a href="infor-user.jsp">Xin Chào</a>
-                                <a href="sign-in.jsp">Đăng Xuất</a>
+                                <c:if test="${sessionScope.acc_admin != null}">
+                                    <a href="#">Xin Chào ${sessionScope.acc_admin.getAcc_username()}</a>
+                                </c:if>
+                                <c:if test="${sessionScope.acc_nhan_vien != null}">
+                                    <a href="infor-user.jsp">Xin Chào ${sessionScope.acc_nhan_vien.getAcc_username()}</a>
+                                </c:if>
+                                <c:if test="${sessionScope.acc_khach_hang != null}">
+                                    <a href="infor-user.jsp">Xin Chào ${sessionScope.acc_khach_hang.getAcc_username()}</a>
+                                </c:if>
+                                <a href="<c:url value="/sign-in?action=logOut"/>">Đăng Xuất</a>
                             </c:if>
                             <c:if test="${sessionScope.acc == null}">
                                 <a href="sign-in.jsp">Đăng Nhập</a>
@@ -54,12 +62,17 @@
     </div>
     <div class="container">
         <div class="row">
-            <div class="col-lg-3 col-md-3">
+            <div class="col-lg-2 col-md-3">
                 <div class="header__logo">
-                    <a href="<c:url value="/hospital?action=home"/>"><img src="img/logo.png" alt=""></a>
+                    <c:if test="${sessionScope.acc_khach_hang != null || sessionScope.acc == null}">
+                        <a href="<c:url value="/hospital"/>"><img src="img/logo.png" alt=""></a>
+                    </c:if>
+                    <c:if test="${sessionScope.acc_admin != null || sessionScope.acc_nhan_vien != null}">
+                        <a href="<c:url value="/shop"/>"><img src="img/logo.png" alt=""></a>
+                    </c:if>
                 </div>
             </div>
-            <div class="col-lg-6 col-md-6">
+            <div class="col-lg-8 col-md-6">
                 <nav class="header__menu mobile-menu">
                     <ul>
                         <c:if test="${sessionScope.acc == null}">
@@ -71,11 +84,13 @@
                                     <li><a href="<c:url value="/shop?action=list-dich-vu"/>">Dịch Vụ</a></li>
                                 </ul>
                             </li>
-                            <li><a href="blog-details.jsp">Blog Details</a></li>
-                            <li><a href="contact.jsp">Contacts</a></li>
+                            <li><a href="blog-details.jsp">Chi Tiết Blog</a></li>
+                            <li><a href="contact.jsp">Liên Lạc</a></li>
                         </c:if>
                         <c:if test="${sessionScope.acc != null}">
-                            <li class="active"><a href="<c:url value="/hospital?action=home"/>">Trang Chủ</a></li>
+                            <c:if test="${sessionScope.acc_khach_hang != null}">
+                                <li class="active"><a href="<c:url value="/hospital?action=home"/>">Trang Chủ</a></li>
+                            </c:if>
                             <li><a href="<c:url value="/shop"/>">Cửa Hàng</a>
                                 <ul class="dropdown">
                                     <li><a href="<c:url value="/shop?action=list-thu-cung"/>">Thú Cưng</a></li>
@@ -83,47 +98,45 @@
                                     <li><a href="<c:url value="/shop?action=list-dich-vu"/>">Dịch Vụ</a></li>
                                 </ul>
                             </li>
-                            <li><a href="#">Quản Lý Sản Phẩm</a>
-                                <ul class="dropdown">
-                                    <li><a href="/quan-ly?action=them_thu_cung_get">Thêm Thú Cưng</a></li>
-                                    <li><a href="/quan-ly?action=them_phu_kien_get">Thêm Phụ Kiện</a></li>
-                                    <li><a href="/quan-ly?action=them_dich_vu_get">Thêm Dịch Vụ</a></li>
-                                </ul>
-                            </li>
-                            <li><a href="blog-details.jsp">Blog Details</a></li>
-                            <li><a href="contact.jsp">Contacts</a></li>
+                            <c:if test="${sessionScope.acc_admin != null || sessionScope.acc_nhan_vien != null}">
+                                <li>
+                                    <a href="#">Quản Lý Sản Phẩm</a>
+                                    <ul class="dropdown">
+                                        <li><a href="./create.jsp">Thêm Thú Cưng</a></li>
+                                        <li><a href="./create.jsp">Thêm Phụ Kiện</a></li>
+                                        <li><a href="./create.jsp">Thêm Dịch Vụ</a></li>
+                                    </ul>
+                                </li>
+                            </c:if>
+                            <c:if test="${sessionScope.acc_admin != null || sessionScope.acc_nhan_vien != null}">
+                                <li>
+                                    <a href="#">Quản Lý Hóa Đơn</a>
+                                </li>
+                            </c:if>
+                            <c:if test="${sessionScope.acc_admin != null }">
+                                <li>
+                                    <a href="#">Quản Lý Tài Khoản</a>
+                                </li>
+                            </c:if>
+                            <c:if test="${sessionScope.acc_khach_hang != null}">
+                                <li><a href="blog-details.jsp">Chi Tiết Blog</a></li>
+                                <li><a href="contact.jsp">Liên Lạc</a></li>
+                            </c:if>
                         </c:if>
-<%--                        <li class="active"><a href="<c:url value="/hospital?action=home"/>">Trang Chủ</a></li>--%>
-<%--                        <li><a href="<c:url value="/shop"/>">Cửa Hàng</a>--%>
-<%--                            <ul class="dropdown">--%>
-<%--                                <li><a href="<c:url value="/shop?action=list-thu-cung"/>">Thú Cưng</a></li>--%>
-<%--                                <li><a href="<c:url value="/shop?action=list-phu-kien"/>">Phụ Kiện</a></li>--%>
-<%--                                <li><a href="<c:url value="/shop?action=list-dich-vu"/>">Dịch Vụ</a></li>--%>
-<%--                            </ul>--%>
-<%--                        </li>--%>
-
-<%--                        <li><a href="#">Quản Lý Sản Phẩm</a>--%>
-<%--                            <ul class="dropdown">--%>
-<%--                                <li><a href="./create.jsp">Thêm Thú Cưng</a></li>--%>
-<%--                                <li><a href="./create.jsp">Thêm Phụ Kiện</a></li>--%>
-<%--                                <li><a href="./create.jsp">Thêm Dịch Vụ</a></li>--%>
-<%--                            </ul>--%>
-<%--                        </li>--%>
-
-                        <%--                        <li><a href="shop-details.jsp">Shop Details</a></li>--%>
-                        <%--                        <li><a href="shopping-cart.jsp">Shopping Cart</a></li>--%>
-
-<%--                        <li><a href="create.jsp">Create</a></li>--%>
-<%--                        <li><a href="edit.jsp">Edit</a></li>--%>
-                        <%--                        <li><a href="blog-details.jsp">Blog Details</a></li>--%>
-                        <%--                        <li><a href="contact.jsp">Contacts</a></li>--%>
                     </ul>
                 </nav>
             </div>
-            <div class="col-lg-3 col-md-3">
+            <div class="col-lg-2 col-md-3">
                 <div class="header__nav__option">
-                    <a href="#" class="search-switch"><img src="img/icon/search.png" alt=""></a>
-                    <a href="shopping-cart.jsp"><img src="img/icon/cart.png" alt=""></a>
+                    <a href="#" class="search-switch">
+                        <img src="img/icon/search.png" alt="">
+                    </a>
+                    <c:if test="${sessionScope.acc_khach_hang != null}">
+                        <a href="shopping-cart.jsp">
+                            <img src="img/icon/cart.png" alt="">
+                        </a>
+                    </c:if>
+
                 </div>
             </div>
         </div>

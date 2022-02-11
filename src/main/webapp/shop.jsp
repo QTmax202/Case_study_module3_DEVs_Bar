@@ -55,7 +55,7 @@
             <div class="col-lg-3">
                 <div class="shop__sidebar">
                     <div class="shop__sidebar__search">
-                        <form action="/shop?action=tim-kiem" method="post">
+                        <form action="<c:url value="/shop?action=tim-kiem"/>" method="post">
                             <input value="${tim}" type="text" placeholder="Search..." name="tim-kiem">
                             <button type="submit"><span class="icon_search"></span></button>
                         </form>
@@ -201,6 +201,16 @@
                                             <a href="<c:url value="/hospital?action=search_phu_kien&pk_id=${phu_kien_id.getPk_id()}"/>">
                                                 <img src="img/icon/search.png" alt="">
                                                 <span>Detail</span></a></li>
+                                        <li>
+                                            <a href="/quan-ly?action=sua_phu_kien_get&pk_id=${phu_kien_id.getPk_id()}">
+                                                <img src="https://image.flaticon.com/icons/png/512/84/84380.png" width="36" height="36" alt="">
+                                                <span>Edit</span></a>
+                                        </li>
+                                        <li>
+                                            <a href="/quan-ly?action=xoa_phu_kien&pk_id=${phu_kien_id.getPk_id()}">
+                                                <img src="https://icon-library.com/images/icon-delete/icon-delete-16.jpg" width="36" height="36" alt="">
+                                                <span>Delete</span></a>
+                                        </li>
                                     </ul>
                                 </div>
                                 <div class="product__item__text">
@@ -233,6 +243,16 @@
                                             <a href="<c:url value="/hospital?action=search_dich_vu&dv_id=${chi_tiet_dv.getCtdv_id()}"/>">
                                                 <img src="img/icon/search.png" alt="">
                                                 <span>Detail</span></a></li>
+                                        <li>
+                                            <a href="/quan-ly?action=sua_dich_vu_get&dv_id=${chi_tiet_dv.getCtdv_id()}">
+                                                <img src="https://image.flaticon.com/icons/png/512/84/84380.png" width="36" height="36" alt="">
+                                                <span>Edit</span></a>
+                                        </li>
+                                        <li>
+                                            <a href="/quan-ly?action=xoa_dich_vu&dv_id=${chi_tiet_dv.getCtdv_id()}">
+                                                <img src="https://icon-library.com/images/icon-delete/icon-delete-16.jpg" width="36" height="36" alt="">
+                                                <span>Delete</span></a>
+                                        </li>
                                     </ul>
                                 </div>
                                 <div class="product__item__text">
