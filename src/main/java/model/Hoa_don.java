@@ -6,17 +6,17 @@ import java.time.LocalDateTime;
 public class Hoa_don {
     private int hd_id;
     private String hd_nv_id;
-    private String hd_kh_id;
+    private int hd_kh_id;
     private LocalDate hd_ngay_lap;
 
-    public Hoa_don(int hd_id, String hd_nv_id, String hd_kh_id, LocalDate hd_ngay_lap) {
+    public Hoa_don(int hd_id, String hd_nv_id, int hd_kh_id, LocalDate hd_ngay_lap) {
         this.hd_id = hd_id;
         this.hd_nv_id = hd_nv_id;
         this.hd_kh_id = hd_kh_id;
         this.hd_ngay_lap = hd_ngay_lap;
     }
 
-    public Hoa_don(String hd_nv_id, String hd_kh_id, LocalDate hd_ngay_lap) {
+    public Hoa_don(String hd_nv_id, int hd_kh_id, LocalDate hd_ngay_lap) {
         this.hd_nv_id = hd_nv_id;
         this.hd_kh_id = hd_kh_id;
         this.hd_ngay_lap = hd_ngay_lap;
@@ -38,11 +38,11 @@ public class Hoa_don {
         this.hd_nv_id = hd_nv_id;
     }
 
-    public String getHd_kh_id() {
+    public int getHd_kh_id() {
         return hd_kh_id;
     }
 
-    public void setHd_kh_id(String hd_kh_id) {
+    public void setHd_kh_id(int hd_kh_id) {
         this.hd_kh_id = hd_kh_id;
     }
 

@@ -92,7 +92,10 @@
                                             </div>
                                         </div>
                                     </td>
-                                    <td class="cart__price">${hd_ps.getHdmhtt_thanh_tien()} VNĐ</td>
+                                    <td class="cart__price">
+                                                <fmt:setLocale value = "vi_VN"/>
+                                                <fmt:formatNumber value = "${hd_ps.getHdmhtt_thanh_tien()}" type = "currency"/>
+                                    </td>
                                     <td class="cart__close">
                                         <a href="<c:url value="/gio_hang?action=delete_ps_pk&hd_id=${hd_ps.getHdmhtt_id()}&hd_kh_id=${sessionScope.acc_khach_hang.getAcc_kh_id()}"/>">
                                             <i class="fa fa-close"></i>
@@ -133,7 +136,10 @@
                                             </div>
                                         </div>
                                     </td>
-                                    <td class="cart__price">${hd_pk.getHdmhtt_thanh_tien()} VNĐ</td>
+                                    <td class="cart__price">
+                                                <fmt:setLocale value = "vi_VN"/>
+                                                <fmt:formatNumber value = "${hd_pk.getHdmhtt_thanh_tien()}" type = "currency"/>
+                                    </td>
                                     <td class="cart__close">
                                         <a href="<c:url value="/gio_hang?action=delete_ps_pk&hd_id=${hd_pk.getHdmhtt_id()}&hd_kh_id=${sessionScope.acc_khach_hang.getAcc_kh_id()}"/>">
                                             <i class="fa fa-close"></i>
@@ -150,7 +156,7 @@
                             <thead>
                             <tr><h4 class="checkout__title text-center">Dịch vụ</h4></tr>
                             <tr>
-                                <th>SẢN PHẨM</th>
+                                <th>DỊCH VỤ</th>
                                 <th>THỜI GIAN ĐẶT</th>
                                 <th>THÀNH TIỀN</th>
                                 <th></th>
@@ -164,7 +170,7 @@
                                         <img src="img/shopping-cart/cart-4.jpg" alt="">
                                     </div>
                                     <div class="product__cart__item__text">
-                                        <h6>${hd_dv.getHddvtt_ctdv_id()}</h6>
+                                        <h6>${hd_dv.getHddvtt_ctdv_ten()}</h6>
                                     </div>
                                 </td>
                                 <td class="quantity__item">
@@ -177,9 +183,12 @@
                                         </div>
                                     </div>
                                 </td>
-                                <td class="cart__price">${hd_dv.getHddvtt_thanh_tien()}</td>
+                                <td class="cart__price">
+                                            <fmt:setLocale value = "vi_VN"/>
+                                            <fmt:formatNumber value = "${hd_dv.getHddvtt_thanh_tien()}" type = "currency"/>
+                                </td>
                                 <td class="cart__close">
-                                    <a href="<c:url value="/gio_hang?action=delete_dv&hddv_id=${hd_dv.getHddvtt_ctdv_id()}&hd_kh_id=${sessionScope.acc_khach_hang.getAcc_kh_id()}"/>">
+                                    <a href="<c:url value="/gio_hang?action=delete_dv&hd_id=${hd_dv.getHddvtt_id()}&hd_kh_id=${sessionScope.acc_khach_hang.getAcc_kh_id()}"/>">
                                         <i class="fa fa-close"></i>
                                     </a>
                                 </td>
@@ -197,7 +206,9 @@
                     </div>
                     <div class="col-lg-6 col-md-6 col-sm-6">
                         <div class="continue__btn update__btn">
-                            <a href="#"><i class="fa fa-spinner"></i> Cập nhật giỏ hàng</a>
+                            <a href="<c:url value="/gio_hang?action&hd_kh_id=${sessionScope.acc_khach_hang.getAcc_kh_id()}"/>">
+                                <i class="fa fa-spinner"></i> Cập nhật giỏ hàng
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -213,10 +224,22 @@
                 <div class="cart__total">
                     <h6>TỔNG TIỀN GIỎ HÀNG</h6>
                     <ul>
-                        <li>Tổng cộng <span>$ 169.50</span></li>
-                        <li>Thành tiền <span>$ 169.50</span></li>
+                        <li>Tổng cộng
+                            <span>
+                                <fmt:setLocale value = "vi_VN"/>
+                                    <fmt:formatNumber value = "${tong_tien + Integer.valueOf(tong_tien * 0.1)}" type = "currency"/>
+                            </span>
+                        </li>
+                        <li>Thành tiền
+                            <span>
+                                 <fmt:setLocale value = "vi_VN"/>
+                                <fmt:formatNumber value = "${tong_tien}" type = "currency"/>
+                            </span>
+                        </li>
                     </ul>
-                    <a href="#" class="primary-btn">THANH TOÁN</a>
+                    <a href="<c:url value="/gio_hang?action=thanh_toan&hd_kh_id=${sessionScope.acc_khach_hang.getAcc_kh_id()}"/>"
+                       class="primary-btn">THANH TOÁN
+                    </a>
                 </div>
             </div>
         </div>

@@ -29,14 +29,14 @@ public class Hddv_tam_thoi {
         this.hddvtt_thanh_tien = hddvtt_thanh_tien;
     }
 
-    public Hddv_tam_thoi(int hddvtt_kh_id, String hddvtt_ctdv_id, LocalDate hddvtt_thoi_gian_dat, int hddvtt_thanh_tien) {
+    public Hddv_tam_thoi(int hddvtt_kh_id, String hddvtt_ctdv_id, LocalDate hddvtt_ngay_dat, int hddvtt_thanh_tien) {
         this.hddvtt_kh_id = hddvtt_kh_id;
         this.hddvtt_ctdv_id = hddvtt_ctdv_id;
-        this.hddvtt_thoi_gian_dat = hddvtt_thoi_gian_dat;
+        this.hddvtt_thoi_gian_dat = hddvtt_ngay_dat;
         this.hddvtt_thanh_tien = hddvtt_thanh_tien;
     }
 
-    public Hddv_tam_thoi(int hddvtt_id, int hddvtt_kh_id, String hddvtt_ctdv_id,String hddvtt_ctdv_ten, LocalDate hddvtt_thoi_gian_dat, int hddvtt_thanh_tien) {
+    public Hddv_tam_thoi(int hddvtt_id, int hddvtt_kh_id, String hddvtt_ctdv_id, String hddvtt_ctdv_ten, LocalDate hddvtt_thoi_gian_dat, int hddvtt_thanh_tien) {
         this.hddvtt_id = hddvtt_id;
         this.hddvtt_kh_id = hddvtt_kh_id;
         this.hddvtt_ctdv_id = hddvtt_ctdv_id;
@@ -81,6 +81,10 @@ public class Hddv_tam_thoi {
         return hddvtt_thoi_gian_dat.format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
     }
 
+    public LocalDate getHddvtt_ngay_dat() {
+        return hddvtt_thoi_gian_dat;
+    }
+
     public void setHddvtt_thoi_gian_dat(LocalDate hddvtt_thoi_gian_dat) {
         this.hddvtt_thoi_gian_dat = hddvtt_thoi_gian_dat;
     }
@@ -93,5 +97,7 @@ public class Hddv_tam_thoi {
         this.hddvtt_thanh_tien = hddvtt_thanh_tien;
     }
 
-
+    public String getHddvtt_ctdv_ten() {
+        return hddvtt_ctdv_ten;
+    }
 }

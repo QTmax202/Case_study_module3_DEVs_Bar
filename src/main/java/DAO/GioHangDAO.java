@@ -1,9 +1,7 @@
 package DAO;
 
 import connection.MyConnection;
-import model.Hddv_tam_thoi;
-import model.Hdmh_tam_thoi;
-import model.Pet_shop;
+import model.*;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -43,6 +41,157 @@ public class GioHangDAO {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+    }
+
+    public void create_hddvtt(Hddv_tam_thoi list){
+        try {
+            Connection connection = myConnection.getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement("insert into hddv_tam_thoi (hddvtt_kh_id, hddvtt_ctdv_id, hddvtt_ngay_dat, hddvtt_thanh_tien)\n" +
+                    " values (?, ?, ?, ?);");
+            preparedStatement.setInt(1, list.getHddvtt_kh_id());
+            preparedStatement.setString(2, list.getHddvtt_ctdv_id());
+            preparedStatement.setDate(3, java.sql.Date.valueOf(list.getHddvtt_ngay_dat()));
+            preparedStatement.setInt(4, list.getHddvtt_thanh_tien());
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void create_hd(String nv_id, int kh_id){
+        try {
+            Connection connection = myConnection.getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement("insert into hoa_don (hd_nv_id, hd_kh_id, hd_ngay_lap)\n" +
+                    " values (?, ?, ?);");
+            preparedStatement.setString(1, nv_id);
+            preparedStatement.setInt(2, kh_id);
+            preparedStatement.setDate(3, java.sql.Date.valueOf(LocalDate.now()));
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void create_hdmh_ps(Hoa_don_mua_hang list_ps){
+        try {
+            Connection connection = myConnection.getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement("insert into hoa_don_mua_hang (hdmh_hd_id, hdmh_ps_id, hdmh_so_luong, hdmh_thanh_tien)\n" +
+                    "values (?, ?, 1, ?); ");
+            preparedStatement.setInt(1, list_ps.getHdmh_hd_id());
+            preparedStatement.setInt(2, list_ps.getHdmh_ps_id());
+            preparedStatement.setInt(3, list_ps.getHdmh_thanh_tien());
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void create_hdmh_pk(Hoa_don_mua_hang list_ps){
+        try {
+            Connection connection = myConnection.getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement("insert into hoa_don_mua_hang (hdmh_hd_id, hdmh_pk_id, hdmh_so_luong, hdmh_thanh_tien)\n" +
+                    "values (?, ?, 1, ?); ");
+            preparedStatement.setInt(1, list_ps.getHdmh_hd_id());
+            preparedStatement.setString(2, list_ps.getHdmh_pk_id());
+            preparedStatement.setInt(3, list_ps.getHdmh_thanh_tien());
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void create_hddv(Hoa_don_dich_vu list_dv){
+        try {
+            Connection connection = myConnection.getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement("insert into hoa_don_dich_vu (hddv_hd_id, hddv_ctdv_id, hddv_ngay_dat, hddv_thanh_tien)\n" +
+                    "values (?, ?, ?, ?);");
+            preparedStatement.setInt(1, list_dv.getHddv_hd_id());
+            preparedStatement.setString(2, list_dv.getHddv_ctdv_id());
+            preparedStatement.setDate(3, java.sql.Date.valueOf(list_dv.getHddv_ngay_dat()));
+            preparedStatement.setInt(4, list_dv.getHddv_thanh_tien());
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void update_pet_shop(int ps_id){
+        try {
+            Connection connection = myConnection.getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement("update pet_shop set ps_trang_thai = 0 \n" +
+                    "where ps_id = ?;");
+            preparedStatement.setInt(1, ps_id);
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void update_phu_kien(String pk_id){
+        try {
+            Connection connection = myConnection.getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement("update phu_kien set pk_so_luong = (pk_so_luong - 1)\n" +
+                    "where pk_id = ?; ");
+            preparedStatement.setString(1, pk_id);
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public Nhan_vien get_nhan_vien(int ca_nhan_vien){
+        try {
+            Connection connection = myConnection.getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement("select * from nhan_vien\n" +
+                    "join ca on ca.ca_id = nhan_vien.nv_ca_id\n" +
+                    "where ca.ca_bat_dau < ?\n" +
+                    "and ca.ca_ket_thuc > ?;");
+            preparedStatement.setInt(1, ca_nhan_vien);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            String nv_id = resultSet.getString(1);
+            return new Nhan_vien(nv_id);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public Hoa_don get_hoa_don_kh_id_limit1(int kh_id) {
+        try {
+            Connection connection = myConnection.getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement("select * from hoa_don\n" +
+                    "where hd_kh_id = ?\n" +
+                    "order by hd_id desc\n" +
+                    "limit 1;");
+            preparedStatement.setInt(1, kh_id);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            int hd_id = resultSet.getInt(1);
+            String hd_nv_id = resultSet.getString(2);
+            int hd_kh_id = resultSet.getInt(3);
+            LocalDate hd_ngay_lap = LocalDate.parse(String.valueOf(resultSet.getDate(4)), DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+            return new Hoa_don(hd_id, hd_nv_id, hd_kh_id, hd_ngay_lap);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public Hoa_don get_hoa_don_kh_id(int kh_id) {
+        try {
+            Connection connection = myConnection.getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement("select * from hoa_don\n" +
+                    "where hd_kh_id = ?;");
+            preparedStatement.setInt(1, kh_id);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            int hd_id = resultSet.getInt(1);
+            String hd_nv_id = resultSet.getString(2);
+            int hd_kh_id = resultSet.getInt(3);
+            LocalDate hd_ngay_lap = LocalDate.parse(String.valueOf(resultSet.getDate(4)), DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+            return new Hoa_don(hd_id, hd_nv_id, hd_kh_id, hd_ngay_lap);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 
     public Hdmh_tam_thoi getHdmh_tam_thoi(int hdmhtt_id){
@@ -127,8 +276,8 @@ public class GioHangDAO {
             while (resultSet.next()){
                 int id = resultSet.getInt(1);
                 int kh_id = resultSet.getInt(2);
-                String ctdv_id =resultSet.getString(3);
-                String ctdv_ten =resultSet.getString(4);
+                String ctdv_id = resultSet.getString(3);
+                String ctdv_ten = resultSet.getString(4);
                 LocalDate ngay_dat = LocalDate.parse(String.valueOf(resultSet.getDate(5)), DateTimeFormatter.ofPattern("yyyy-MM-dd"));
                 int thanh_tien = resultSet.getInt(6);
                 lists.add(new Hddv_tam_thoi(id, kh_id, ctdv_id, ctdv_ten, ngay_dat, thanh_tien));
@@ -176,11 +325,11 @@ public class GioHangDAO {
         }
     }
 
-    public void delete_hdmhdv(int hdmhtt_kh_id){
+    public void delete_hddvtt(int hdmhtt_kh_id){
         try{
             Connection connection = myConnection.getConnection();
-            PreparedStatement preparedStatement = connection.prepareStatement("delete from hdmh_tam_thoi\n" +
-                    " where hdmhtt_kh_id = ?;");
+            PreparedStatement preparedStatement = connection.prepareStatement("delete from hddv_tam_thoi\n" +
+                    " where hddvtt_kh_id = ?;");
             preparedStatement.setInt(1, hdmhtt_kh_id);
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
@@ -188,12 +337,12 @@ public class GioHangDAO {
         }
     }
 
-    public void delete_hdmhtt_ps_pk(int hd_kh_id){
+    public void delete_hdmhtt_ps_pk(int hd_id){
         try {
             Connection connection = myConnection.getConnection();
-            PreparedStatement preparedStatement = connection.prepareStatement("delete from hddv_tam_thoi\n" +
-                    " where hddvtt_kh_id = ? ;");
-            preparedStatement.setInt(1, hd_kh_id);
+            PreparedStatement preparedStatement = connection.prepareStatement("delete from hdmh_tam_thoi\n" +
+                    " where hdmhtt_id = ? ;");
+            preparedStatement.setInt(1, hd_id);
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();

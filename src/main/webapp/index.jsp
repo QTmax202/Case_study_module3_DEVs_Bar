@@ -114,7 +114,10 @@
                                    class="add-cart">+ Hãy Đăng Nhập</a>
                             </c:if>
                             <hr>
-                            <h5>${pet_shop.getPs_gia()} VNĐ</h5>
+                            <h5>
+                                <fmt:setLocale value="vi_VN"/>
+                                <fmt:formatNumber value="${pet_shop.getPs_gia()}" type="currency"/>
+                            </h5>
                         </div>
                     </div>
                 </div>
@@ -157,7 +160,10 @@
                                    class="add-cart">+ Hãy Đăng Nhập</a>
                             </c:if>
                             <hr>
-                            <h5>${phu_kien.getPk_gia()} VNĐ</h5>
+                            <h5>
+                                <fmt:setLocale value="vi_VN"/>
+                                <fmt:formatNumber value="${phu_kien.getPk_gia()}" type="currency"/>
+                            </h5>
                         </div>
                     </div>
                 </div>
@@ -201,7 +207,10 @@
                                    class="add-cart">+ Hãy Đăng Nhập</a>
                             </c:if>
                             <hr>
-                            <h5>${dich_vu.getCtdv_gia()} VNĐ</h5>
+                            <h5>
+                                <fmt:setLocale value="vi_VN"/>
+                                <fmt:formatNumber value="${dich_vu.getCtdv_gia()}" type="currency"/>
+                            </h5>
                         </div>
                     </div>
                 </div>
