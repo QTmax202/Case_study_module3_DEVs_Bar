@@ -66,12 +66,12 @@
                     <div class="row">
                         <div class="col-lg-8 col-md-6">
                             <h6 class="checkout__title">Thay đổi thông tin nhân viên</h6>
-                            <input type="text" name="nv_id">
+                            <input type="text" name="nv_id" value="${nhan_vien.nv_id}">
                             <div class="row">
                                 <div class="col-lg-10">
                                     <div class="checkout__input">
                                         <p>Họ & Tên<span>*</span></p>
-                                        <input type="text" name="nv_ten">
+                                        <input type="text" name="nv_ten" >
                                     </div>
                                 </div>
                                 <div class="col-lg-2">
@@ -89,13 +89,13 @@
                                 <div class="col-lg-6">
                                     <div class="checkout__input">
                                         <p>Tài khoản<span>*</span></p>
-                                        <p>hehe</p>
+                                        <p>${account.acc_username}</p>
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="checkout__input">
                                         <p>Mật khẩu<span>*</span></p>
-                                        <input type="text" name="nv_phone_number">
+                                        <input type="text" name="acc_password">
                                     </div>
                                 </div>
                             </div>

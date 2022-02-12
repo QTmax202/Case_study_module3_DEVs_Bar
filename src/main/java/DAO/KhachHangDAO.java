@@ -6,6 +6,8 @@ import model.Khach_hang;
 import model.Nhan_vien;
 
 import java.sql.*;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 public class KhachHangDAO {
     private static final MyConnection myConnection = new MyConnection();
@@ -15,7 +17,89 @@ public class KhachHangDAO {
     private static final String INSERT_ACC_NHAN_VIEN = "INSERT INTO `casemd3`.`account` (`acc_username`, `acc_password`, `acc_phan_cap`, `acc_nv_id`) VALUES (?,?,?,?);";
     private static final String SELECT_KHACH_HANG_TOP = "SELECT * FROM khach_hang WHERE kh_id = (SELECT max(kh_id) from khach_hang);";
     private static final String INSERT_NHAN_VIEN = "INSERT INTO nhan_vien (`nv_id`, `nv_ten`, `nv_gioi_tinh`, `nv_email`, `nv_phone_number`, `nv_ngay_sinh`, `nv_dia_chi`, `nv_ca_id`) VALUES (?,?,?,?,?,?,?,?);";
+    private static final String SELECT_NHAN_VIEN_BY_ID = "SELECT * FROM nhan_vien WHERE nv_id LIKE ?;";
+    private static final String SELECT_ACC_NHAN_VIEN = "SELECT * FROM account WHERE acc_nv_id LIKE ?;";
+    private static final String UPDATE_NHAN_VIEN = "UPDATE nhan_vien SET nv_ten = ?, nv_gioi_tinh = ?, nv_email = ?, nv_phone_number = ?, nv_ngay_sinh = ?, nv_dia_chi = ?, nv_ca_id = ? WHERE nv_id = ?;";
+    private static final String UPDATE_ACC_NHAN_VIEN = "UPDATE account SET acc_password = ? WHERE acc_nv_id = ?;";
 
+    public Nhan_vien tim_nhan_vien(String id) {
+        Nhan_vien nhan_vien = null;
+        try {
+            Connection connection = myConnection.getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement(SELECT_NHAN_VIEN_BY_ID);
+            preparedStatement.setString(1, id);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                String nv_id = resultSet.getString(1);
+                String nv_ten = resultSet.getString(3);
+                String nv_gioi_tinh = resultSet.getString(4);
+                String nv_email = resultSet.getString(5);
+                String nv_phone_number = resultSet.getString(6);
+                LocalDate nv_ngay_sinh = LocalDate.parse(String.valueOf(resultSet.getDate(7)), DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+                String nv_dia_chi = resultSet.getString(8);
+                String nv_ca_id = resultSet.getString(9);
+                nhan_vien = new Nhan_vien(nv_id, nv_ten, nv_gioi_tinh, nv_email, nv_phone_number, nv_ngay_sinh, nv_dia_chi, nv_ca_id);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return nhan_vien;
+    }
+
+    public Account tim_acc_nhan_vien(String id) {
+        Account account = null;
+        try {
+            Connection connection = myConnection.getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement(SELECT_ACC_NHAN_VIEN);
+            preparedStatement.setString(1, id);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                String acc_username = resultSet.getString(2);
+                String acc_password = resultSet.getString(3);
+                String acc_phan_cap = resultSet.getString(4);
+                String acc_nv_id = resultSet.getString(6);
+                account = new Account(acc_username, acc_password, acc_phan_cap, acc_nv_id);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return account;
+    }
+
+    public boolean sua_nhan_vien(Nhan_vien nhan_vien) throws SQLException {
+        boolean rowUpdated = false;
+        try {
+            Connection connection = myConnection.getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement(UPDATE_NHAN_VIEN);
+            preparedStatement.setString(8, nhan_vien.getNv_id());
+            preparedStatement.setString(1, nhan_vien.getNv_ten());
+            preparedStatement.setString(2, nhan_vien.getNv_gioi_tinh());
+            preparedStatement.setString(3, nhan_vien.getNv_email());
+            preparedStatement.setString(4, nhan_vien.getNv_phone_number());
+            preparedStatement.setDate(5, java.sql.Date.valueOf(nhan_vien.getNv_ngay_sinh()));
+            preparedStatement.setString(6, nhan_vien.getNv_dia_chi());
+            preparedStatement.setString(7, nhan_vien.getNv_ca_id());
+            System.out.println(preparedStatement);
+            rowUpdated = preparedStatement.executeUpdate() > 0;
+        } catch (SQLException e) {
+            printSQLException(e);
+        }
+        return rowUpdated;
+    }
+
+    public boolean sua_acc_nhan_vien(Account account) throws SQLException {
+        boolean rowUpdated = false;
+        try {
+            Connection connection = myConnection.getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement(UPDATE_ACC_NHAN_VIEN);
+            preparedStatement.setString(1, account.getAcc_password());
+            preparedStatement.setString(2, account.getAcc_nv_id());
+            rowUpdated = preparedStatement.executeUpdate() > 0;
+        } catch (SQLException e) {
+            printSQLException(e);
+        }
+        return rowUpdated;
+    }
 
     public void them_khach_hang(Khach_hang khach_hang) throws SQLException {
         try {
