@@ -228,8 +228,6 @@
     <%--  Đăng kí thông tin nhân viên--%>
 </c:if>
 
-
-
 <jsp:include page="_Footer.jsp"></jsp:include>
 </body>
 <script src="js/jquery-3.3.1.min.js"></script>
