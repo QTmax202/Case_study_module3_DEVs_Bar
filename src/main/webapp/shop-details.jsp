@@ -228,15 +228,33 @@
                             </c:if>
                             <c:if test="${dich_vu != null}">
                                 <c:if test="${sessionScope.acc != null}">
-                                    <c:if test="${sessionScope.acc_khach_hang != null}">
-                                        <div class="quantity">
-                                            <label>
-                                                <input type="date" name="ngay_dat_dv">
-                                            </label>
-                                        </div>
+                                    <c:if test="${dich_vu.getCtdv_trang_thai() != 0}">
+                                        <c:if test="${sessionScope.acc_khach_hang != null}">
+                                            <form action="/gio_hang?action=add_dich_vu&hd_dv_id=${dich_vu.getCtdv_id()}&hd_kh_id=${sessionScope.acc_khach_hang.getAcc_kh_id()}"
+                                                  method="post">
+                                                <div class="quantity">
+                                                    <label>
+                                                        <input type="date" name="ngay_dat_dv">
+                                                    </label>
+                                                </div>
+                                                <button type="submit" class="primary-btn">
+                                                    Đăng ký dịch vụ
+                                                </button>
+                                            </form>
+                                        </c:if>
+                                        <c:if test="${sessionScope.acc_admin != null || sessionScope.acc_nhan_vien != null}">
+                                            <a href="#" class="primary-btn"> ADMIN </a>
+                                        </c:if>
+                                    </c:if>
+                                    <c:if test="${dich_vu.getCtdv_trang_thai() == 0}">
+                                        <a href="#" class="primary-btn">Hết hàng</a>
                                     </c:if>
                                 </c:if>
+                                <c:if test="${sessionScope.acc == null}">
+                                    <a href="#" class="primary-btn">Hãy Đăng Nhập</a>
+                                </c:if>
                             </c:if>
+
                             <c:if test="${pet_shop != null }">
                                 <c:if test="${pet_shop.getPs_trang_thai() != 0}">
                                     <c:if test="${sessionScope.acc == null}">
@@ -252,6 +270,9 @@
                                             </a>
                                         </c:if>
                                     </c:if>
+                                </c:if>
+                                <c:if test="${pet_shop.getPs_trang_thai() == 0}">
+                                    <a href="#" class="primary-btn">Hết hàng</a>
                                 </c:if>
                             </c:if>
                             <c:if test="${phu_kien != null}">
@@ -271,23 +292,8 @@
                                         </c:if>
                                     </c:if>
                                 </c:if>
-                            </c:if>
-                            <c:if test="${dich_vu != null}">
-                                <c:if test="${dich_vu.getCtdv_trang_thai() != 0}">
-                                    <c:if test="${sessionScope.acc == null}">
-                                        <a href="#" class="primary-btn">Hãy Đăng Nhập</a>
-                                    </c:if>
-                                    <c:if test="${sessionScope.acc != null}">
-                                        <c:if test="${sessionScope.acc_admin != null || sessionScope.acc_nhan_vien != null}">
-                                            <a href="#" class="primary-btn"> ADMIN </a>
-                                        </c:if>
-                                        <c:if test="${sessionScope.acc_khach_hang != null}">
-                                            <a href="<c:url value="/gio_hang?action=add_dich_vu&hd_dv_id=${dich_vu.getCtdv_id()}&hd_kh_id=${sessionScope.acc_khach_hang.getAcc_kh_id()}"/>"
-                                               class="primary-btn">
-                                                Thêm Vào Giỏ Hàng
-                                            </a>
-                                        </c:if>
-                                    </c:if>
+                                <c:if test="${phu_kien.getPk_so_luong() != 0}">
+                                    <a href="#" class="primary-btn">Hết hàng</a>
                                 </c:if>
                             </c:if>
                         </div>

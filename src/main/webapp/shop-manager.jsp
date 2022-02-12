@@ -8,6 +8,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html lang="zxx">
 
@@ -43,11 +44,10 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="breadcrumb__text">
-                    <h4>Shopping Cart</h4>
+                    <h4>Hóa Đơn</h4>
                     <div class="breadcrumb__links">
-                        <a href="index.jsp">Home</a>
-                        <a href="shop.jsp">Shop</a>
-                        <span>Shopping Cart</span>
+                        <a href="<c:url value="/shop"/>">Shop</a>
+                        <span>Hóa Đơn</span>
                     </div>
                 </div>
             </div>
@@ -66,32 +66,45 @@
                         <thead>
                         <tr><h4 class="checkout__title text-center">Quản lý hóa đơn</h4></tr>
                         <tr>
-                            <th>Thời gian</th>
-                            <th>Nhân viên</th>
-                            <th>Khách hàng</th>
+                            <th>ID</th>
+                            <th>ID Nhân viên</th>
+                            <th>ID Khách hàng</th>
+                            <th>Ngày lập</th>
                             <th>Tổng đơn</th>
                             <th></th>
                         </tr>
                         </thead>
                         <tbody>
-                        <tr>
-                            <td class="cart__price">time</td>
-                            <td class="">nhanvien</td>
-                            <td class="">khachhang</td>
-                            <td class="cart__price">$ 30.00</td>
-                            <td class="cart__close"><i class="fa fa-close"></i></td>
-                        </tr>
+                        <c:forEach items="${requestScope['hoa_dons']}" var="hoa_don">
+                            <tr>
+                                <td class="cart__price">${hoa_don.getHd_id()}</td>
+                                <td class="cart__price">${hoa_don.getHd_nv_id()}</td>
+                                <td class="cart__price">${hoa_don.getHd_kh_id()}</td>
+                                <td class="cart__price">${hoa_don.getNgay_lap_hd()}</td>
+                                <td class="cart__price">
+                                    <fmt:setLocale value="vi_VN"/>
+                                    <fmt:formatNumber value="${hoa_don.getTong_tien()}" type="currency"/>
+                                </td>
+                                <td class="cart__close">
+                                    <a href="#">
+                                        <i class="fa fa-close"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                        </c:forEach>
                         </tbody>
                     </table>
                     <div class="row">
                         <div class="col-lg-6 col-md-6 col-sm-6">
                             <div class="continue__btn">
-                                <a href="#">Continue Shopping</a>
+                                <a href="<c:url value="/shop"/>">Quay lại cửa hàng</a>
                             </div>
                         </div>
                         <div class="col-lg-6 col-md-6 col-sm-6">
                             <div class="continue__btn update__btn">
-                                <a href="#"><i class="fa fa-spinner"></i> Update cart</a>
+                                <a href="<c:url value="/gio_hang?action=quan_ly_hoa_don"/>">
+                                    <i class="fa fa-spinner"></i> Cập nhật giỏ hàng
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -106,8 +119,10 @@
                 <div class="cart__total">
                     <h6>Doanh thu</h6>
                     <ul>
-                        <li>Doanh thu <span>$ 169.50</span></li>
-                        <li>Lợi nhuận <span>$ 169.50</span></li>
+                        <li>Lợi nhuận <span>
+                            <fmt:setLocale value="vi_VN"/>
+                            <fmt:formatNumber value="${doanh_thu}" type="currency"/>
+                        </span></li>
                     </ul>
                 </div>
             </div>

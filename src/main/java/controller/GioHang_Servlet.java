@@ -58,17 +58,32 @@ public class GioHang_Servlet extends HttpServlet {
             case "thanh_toan":
                 thanh_toan(request, response);
                 break;
+            case "quan_ly_hoa_don":
+                quan_ly_hoa_don(request, response);
+                break;
             default:
                 display_gio_hang(request, response);
         }
     }
 
+    private void quan_ly_hoa_don(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+//        ArrayList<Hoa_don> hoa_dons = gioHangService.getAll_hoa_don();
+        ArrayList<Hoa_don> hoa_dons = gioHangDAO.get_all_hd_hddv();
+        request.setAttribute("hoa_dons", hoa_dons);
+        int doanh_thu = 0;
+        for (Hoa_don hd : hoa_dons){
+            doanh_thu += hd.getTong_tien();
+        }
+        request.setAttribute("doanh_thu", doanh_thu);
+        request.getRequestDispatcher("shop-manager.jsp").forward(request, response);
+    }
+
     private void thanh_toan(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         int kh_id = Integer.parseInt(request.getParameter("hd_kh_id"));
         int ca_nv = LocalDateTime.now().getHour();
-        Nhan_vien nhan_vien = gioHangDAO.get_nhan_vien(ca_nv);
-        gioHangDAO.create_hd(nhan_vien.getNv_id(), kh_id);
-        int hd_id = gioHangDAO.get_hoa_don_kh_id_limit1(kh_id).getHd_id();
+        String nv_id = gioHangDAO.get_nhan_vien_id(ca_nv);
+        gioHangDAO.create_hd(nv_id, kh_id);
+        int hd_id = gioHangDAO.get_hoa_don_kh_id_limit1(kh_id);
         ArrayList<Hdmh_tam_thoi> lists_hd_ps = gioHangDAO.getLists_hdmhtt_ps(kh_id);
         ArrayList<Hdmh_tam_thoi> lists_hd_pk = gioHangDAO.getLists_hdmhtt_pk(kh_id);
         ArrayList<Hddv_tam_thoi> lists_hd_dv = gioHangDAO.getLists_hddvtt_dv(kh_id);
@@ -151,23 +166,20 @@ public class GioHang_Servlet extends HttpServlet {
         int kh_id = Integer.parseInt(request.getParameter("hd_kh_id"));
         String dv_id = request.getParameter("hd_dv_id");
         ArrayList<Hddv_tam_thoi> lists_hd_dv = gioHangDAO.getLists_hddvtt_dv(kh_id);
-        boolean check = false;
-        for (Hddv_tam_thoi dv: lists_hd_dv) {
+        for (Hddv_tam_thoi dv : lists_hd_dv) {
             if (dv.getHddvtt_ctdv_id().equals(dv_id)) {
-                check = true;
-                break;
+                gioHangDAO.delete_hdmhtt_dv(dv.getHddvtt_id());
             }
         }
-        if (!check){
-            Chi_tiet_dv dich_vu = hospitalService.getDich_Vu(dv_id);
-            LocalDate ngay_dat = LocalDate.parse(request.getParameter("ngay_dat_dv"), DateTimeFormatter.ofPattern("yyyy-MM-dd"));
-            Hddv_tam_thoi hddvtt = new Hddv_tam_thoi(kh_id, dv_id, ngay_dat, dich_vu.getCtdv_gia());
-            gioHangDAO.create_hddvtt(hddvtt);
-        }
+        Chi_tiet_dv dich_vu = hospitalService.getDich_Vu(dv_id);
+        String ngay_dat_dv = request.getParameter("ngay_dat_dv");
+        LocalDate ngay_dat = LocalDate.parse(ngay_dat_dv, DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+        Hddv_tam_thoi hddvtt = new Hddv_tam_thoi(kh_id, dv_id, ngay_dat, dich_vu.getCtdv_gia());
+        gioHangDAO.create_hddvtt(hddvtt);
         ArrayList<Hdmh_tam_thoi> lists_hd_ps = gioHangDAO.getLists_hdmhtt_ps(kh_id);
-        request.setAttribute("lists_hd_ps",lists_hd_ps);
+        request.setAttribute("lists_hd_ps", lists_hd_ps);
         ArrayList<Hdmh_tam_thoi> lists_hd_pk = gioHangDAO.getLists_hdmhtt_pk(kh_id);
-        request.setAttribute("lists_hd_pk",lists_hd_pk);
+        request.setAttribute("lists_hd_pk", lists_hd_pk);
         lists_hd_dv = gioHangDAO.getLists_hddvtt_dv(kh_id);
         request.setAttribute("lists_hd_dv", lists_hd_dv);
         ArrayList<Hdmh_tam_thoi> lists_hdmhtt = gioHangDAO.getAll_hdmhtt(kh_id);
@@ -179,7 +191,7 @@ public class GioHang_Servlet extends HttpServlet {
             thanh_tien += hd.getHddvtt_thanh_tien();
         }
         request.setAttribute("tong_tien", thanh_tien);
-        request.getRequestDispatcher("shopping-cart.jsp").forward(request,response);
+        request.getRequestDispatcher("shopping-cart.jsp").forward(request, response);
     }
 
     private void add_phu_kien(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -193,14 +205,14 @@ public class GioHang_Servlet extends HttpServlet {
                 break;
             }
         }
-        if (!check){
+        if (!check) {
             Phu_kien phu_kien = hospitalService.getPhu_Kien(pk_id);
             gioHangDAO.create_hdmhtt_pk(new Hdmh_tam_thoi(kh_id, pk_id, 1, phu_kien.getPk_gia()));
         }
         ArrayList<Hdmh_tam_thoi> lists_hd_ps = gioHangDAO.getLists_hdmhtt_ps(kh_id);
-        request.setAttribute("lists_hd_ps",lists_hd_ps);
+        request.setAttribute("lists_hd_ps", lists_hd_ps);
         ArrayList<Hdmh_tam_thoi> lists_hd_pk = gioHangDAO.getLists_hdmhtt_pk(kh_id);
-        request.setAttribute("lists_hd_pk",lists_hd_pk);
+        request.setAttribute("lists_hd_pk", lists_hd_pk);
         ArrayList<Hddv_tam_thoi> lists_hd_dv = gioHangDAO.getLists_hddvtt_dv(kh_id);
         request.setAttribute("lists_hd_dv", lists_hd_dv);
         ArrayList<Hdmh_tam_thoi> lists_hdmhtt = gioHangDAO.getAll_hdmhtt(kh_id);
@@ -212,7 +224,7 @@ public class GioHang_Servlet extends HttpServlet {
             thanh_tien += hd.getHddvtt_thanh_tien();
         }
         request.setAttribute("tong_tien", thanh_tien);
-        request.getRequestDispatcher("shopping-cart.jsp").forward(request,response);
+        request.getRequestDispatcher("shopping-cart.jsp").forward(request, response);
     }
 
     private void add_pet_shop(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

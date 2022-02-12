@@ -230,11 +230,11 @@
                                     <fmt:formatNumber value = "${tong_tien + Integer.valueOf(tong_tien * 0.1)}" type = "currency"/>
                             </span>
                         </li>
-                        <li>Thành tiền
+                        <li><h5>Thành tiền
                             <span>
                                  <fmt:setLocale value = "vi_VN"/>
                                 <fmt:formatNumber value = "${tong_tien}" type = "currency"/>
-                            </span>
+                            </span></h5>
                         </li>
                     </ul>
                     <a href="<c:url value="/gio_hang?action=thanh_toan&hd_kh_id=${sessionScope.acc_khach_hang.getAcc_kh_id()}"/>"

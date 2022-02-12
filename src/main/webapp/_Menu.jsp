@@ -110,7 +110,9 @@
                             </c:if>
                             <c:if test="${sessionScope.acc_admin != null || sessionScope.acc_nhan_vien != null}">
                                 <li>
-                                    <a href="#">Quản Lý Hóa Đơn</a>
+                                    <a href="<c:url value="/gio_hang?action=quan_ly_hoa_don"/>">
+                                        Quản Lý Hóa Đơn
+                                    </a>
                                 </li>
                             </c:if>
                             <c:if test="${sessionScope.acc_admin != null }">
