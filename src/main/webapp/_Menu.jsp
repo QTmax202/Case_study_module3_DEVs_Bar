@@ -47,7 +47,7 @@
                                     <a href="/khach-hang?action=sua_nhan_vien_get&nv_id=${sessionScope.acc_nhan_vien.acc_nv_id}">Xin Chào NV ${sessionScope.acc_nhan_vien.getAcc_username()}</a>
                                 </c:if>
                                 <c:if test="${sessionScope.acc_khach_hang != null}">
-                                    <a href="edit-infor.jsp">Xin Chào KH ${sessionScope.acc_khach_hang.getAcc_username()}</a>
+                                    <a href="/khach-hang?action=sua_khach_hang_get&kh_id=${sessionScope.acc_khach_hang.acc_kh_id}">Xin Chào KH ${sessionScope.acc_khach_hang.getAcc_username()}</a>
                                 </c:if>
                                 <a href="<c:url value="/sign-in?action=logOut"/>">Đăng Xuất</a>
                             </c:if>

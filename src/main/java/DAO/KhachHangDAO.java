@@ -21,6 +21,10 @@ public class KhachHangDAO {
     private static final String SELECT_ACC_NHAN_VIEN = "SELECT * FROM account WHERE acc_nv_id LIKE ?;";
     private static final String UPDATE_NHAN_VIEN = "UPDATE nhan_vien SET nv_ten = ?, nv_gioi_tinh = ?, nv_email = ?, nv_phone_number = ?, nv_ngay_sinh = ?, nv_dia_chi = ?, nv_ca_id = ? WHERE nv_id = ?;";
     private static final String UPDATE_ACC_NHAN_VIEN = "UPDATE account SET acc_password = ? WHERE acc_nv_id = ?;";
+    private static final String SELECT_KHACH_HANG_BY_ID = "SELECT * FROM khach_hang WHERE kh_id LIKE ?;";
+    private static final String SELECT_ACC_KHACH_HANG = "SELECT * FROM account WHERE acc_kh_id LIKE ?;";
+    private static final String UPDATE_KHACH_HANG = "UPDATE khach_hang SET kh_ten = ?, kh_gioi_tinh = ?, kh_phone_number = ?, kh_dia_chi = ? WHERE kh_id = ?;";
+    private static final String UPDATE_ACC_KHACH_HANG = "UPDATE account SET acc_password = ? WHERE acc_kh_id = ?";
 
     public Nhan_vien tim_nhan_vien(String id) {
         Nhan_vien nhan_vien = null;
@@ -46,6 +50,27 @@ public class KhachHangDAO {
         return nhan_vien;
     }
 
+    public Khach_hang tim_khach_hang(String id) {
+        Khach_hang khach_hang = null;
+        try {
+            Connection connection = myConnection.getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement(SELECT_KHACH_HANG_BY_ID);
+            preparedStatement.setString(1, id);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                String kh_id = resultSet.getString(1);
+                String kh_ten = resultSet.getString(3);
+                String kh_gioi_tinh = resultSet.getString(4);
+                String kh_phone_number = resultSet.getString(6);
+                String kh_dia_chi = resultSet.getString(8);
+                khach_hang = new Khach_hang(kh_id, kh_ten, kh_gioi_tinh, kh_phone_number, kh_dia_chi);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return khach_hang;
+    }
+
     public Account tim_acc_nhan_vien(String id) {
         Account account = null;
         try {
@@ -59,6 +84,26 @@ public class KhachHangDAO {
                 String acc_phan_cap = resultSet.getString(4);
                 String acc_nv_id = resultSet.getString(6);
                 account = new Account(acc_username, acc_password, acc_phan_cap, acc_nv_id);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return account;
+    }
+
+    public Account tim_acc_khach_hang(String id) {
+        Account account = null;
+        try {
+            Connection connection = myConnection.getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement(SELECT_ACC_KHACH_HANG);
+            preparedStatement.setString(1, id);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                String acc_username = resultSet.getString(2);
+                String acc_password = resultSet.getString(3);
+                String acc_phan_cap = resultSet.getString(4);
+                int acc_kh_id = Integer.parseInt(resultSet.getString(5));
+                account = new Account(acc_username, acc_password, acc_phan_cap, acc_kh_id);
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -87,6 +132,24 @@ public class KhachHangDAO {
         return rowUpdated;
     }
 
+    public boolean sua_khach_hang(Khach_hang khach_hang) throws SQLException {
+        boolean rowUpdated = false;
+        try {
+            Connection connection = myConnection.getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement(UPDATE_KHACH_HANG);
+            preparedStatement.setString(5, khach_hang.getKh_id());
+            preparedStatement.setString(1, khach_hang.getKh_ten());
+            preparedStatement.setString(2, khach_hang.getKh_gioi_tinh());
+            preparedStatement.setString(3, khach_hang.getKh_phone_number());
+            preparedStatement.setString(4, khach_hang.getKh_dia_chi());
+            System.out.println(preparedStatement);
+            rowUpdated = preparedStatement.executeUpdate() > 0;
+        } catch (SQLException e) {
+            printSQLException(e);
+        }
+        return rowUpdated;
+    }
+
     public boolean sua_acc_nhan_vien(Account account) throws SQLException {
         boolean rowUpdated = false;
         try {
@@ -94,6 +157,20 @@ public class KhachHangDAO {
             PreparedStatement preparedStatement = connection.prepareStatement(UPDATE_ACC_NHAN_VIEN);
             preparedStatement.setString(1, account.getAcc_password());
             preparedStatement.setString(2, account.getAcc_nv_id());
+            rowUpdated = preparedStatement.executeUpdate() > 0;
+        } catch (SQLException e) {
+            printSQLException(e);
+        }
+        return rowUpdated;
+    }
+
+    public boolean sua_acc_khach_hang(Account account) throws SQLException {
+        boolean rowUpdated = false;
+        try {
+            Connection connection = myConnection.getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement(UPDATE_ACC_KHACH_HANG);
+            preparedStatement.setString(1, account.getAcc_password());
+            preparedStatement.setInt(2, account.getAcc_kh_id());
             rowUpdated = preparedStatement.executeUpdate() > 0;
         } catch (SQLException e) {
             printSQLException(e);
@@ -134,7 +211,7 @@ public class KhachHangDAO {
         }
     }
 
-    public Khach_hang tim_khach_hang() {
+    public Khach_hang tim_khach_hang_moi() {
         Khach_hang khach_hang = null;
         try {
             Connection connection = myConnection.getConnection();

@@ -73,7 +73,40 @@ public class KhachHangServlet extends HttpServlet {
             case "sua_nhan_vien_post":
                 sua_nhan_vien_post(request, response);
                 break;
+            case "sua_khach_hang_get":
+                sua_khach_hang_get(request, response);
+                break;
+            case "sua_khach_hang_post":
+                sua_khach_hang_post(request, response);
+                break;
         }
+    }
+
+    private void sua_khach_hang_get(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String id = request.getParameter("kh_id");
+        Khach_hang khach_hang = khachHangDAO.tim_khach_hang(id);
+        Account account = khachHangDAO.tim_acc_khach_hang(id);
+        request.setAttribute("khach_hang", khach_hang);
+        request.setAttribute("account", account);
+        RequestDispatcher dispatcher = request.getRequestDispatcher("edit-infor.jsp");
+        dispatcher.forward(request, response);
+    }
+
+    private void sua_khach_hang_post(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException {
+        String kh_id = request.getParameter("kh_id");
+        String kh_ten = request.getParameter("kh_ten");
+        String kh_gioi_tinh = request.getParameter("kh_gioi_tinh");
+        String kh_phone_number = request.getParameter("kh_phone_number");
+        String kh_dia_chi = request.getParameter("kh_dia_chi");
+        Khach_hang khach_hang = new Khach_hang(kh_id, kh_ten, kh_gioi_tinh, kh_phone_number, kh_dia_chi);
+        khachHangDAO.sua_khach_hang(khach_hang);
+        String acc_password = request.getParameter("acc_password");
+        int acc_kh_id = Integer.parseInt(kh_id);
+        Account account = new Account(acc_password, acc_kh_id);
+        khachHangDAO.sua_acc_khach_hang(account);
+        request.setAttribute("tai-khoan","Sửa thông tin thành công");
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher("edit-infor.jsp");
+        requestDispatcher.forward(request, response);
     }
 
 
@@ -101,7 +134,7 @@ public class KhachHangServlet extends HttpServlet {
         String acc_password = request.getParameter("acc_password");
         Account account = new Account(acc_password, nv_id);
         khachHangDAO.sua_acc_nhan_vien(account);
-        request.setAttribute("createMessage","Sửa thành công");
+        request.setAttribute("tai-khoan","Sửa thông tin thành công");
         RequestDispatcher requestDispatcher = request.getRequestDispatcher("edit-infor.jsp");
         requestDispatcher.forward(request, response);
     }
@@ -119,7 +152,7 @@ public class KhachHangServlet extends HttpServlet {
         String kh_dia_chi = request.getParameter("kh_dia_chi");
         Khach_hang khach_hang = new Khach_hang(kh_ten, kh_gioi_tinh, kh_phone_number, kh_dia_chi);
         khachHangDAO.them_khach_hang(khach_hang);
-        Khach_hang khach_hang_gui = khachHangDAO.tim_khach_hang();
+        Khach_hang khach_hang_gui = khachHangDAO.tim_khach_hang_moi();
         request.setAttribute("khach_hang", khach_hang_gui);
         RequestDispatcher requestDispatcher = request.getRequestDispatcher("sign-up.jsp");
         requestDispatcher.forward(request, response);

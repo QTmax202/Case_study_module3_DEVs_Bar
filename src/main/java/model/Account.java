@@ -16,6 +16,11 @@ public class Account {
         this.acc_nv_id = acc_nv_id;
     }
 
+    public Account(String acc_password, int acc_kh_id) {
+        this.acc_password = acc_password;
+        this.acc_kh_id = acc_kh_id;
+    }
+
     public Account(String acc_username, String acc_password, String acc_phan_cap, int acc_kh_id) {
         this.acc_username = acc_username;
         this.acc_password = acc_password;
