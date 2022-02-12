@@ -115,7 +115,7 @@
                             </c:if>
                             <c:if test="${sessionScope.acc_admin != null }">
                                 <li>
-                                    <a href="#">Quản Lý Tài Khoản</a>
+                                    <a href="/khach-hang?action=them_nhan_vien_get">Quản Lý Tài Khoản</a>
                                 </li>
                             </c:if>
                             <c:if test="${sessionScope.acc_khach_hang != null}">

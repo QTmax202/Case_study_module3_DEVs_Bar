@@ -3,6 +3,7 @@ package DAO;
 import connection.MyConnection;
 import model.Account;
 import model.Khach_hang;
+import model.Nhan_vien;
 
 import java.sql.*;
 
@@ -11,8 +12,9 @@ public class KhachHangDAO {
 
     private static final String INSERT_KHACH_HANG = "INSERT INTO khach_hang (`kh_ten`, `kh_gioi_tinh`, `kh_phone_number`, `kh_dia_chi`) VALUES (?,?,?,?);";
     private static final String INSERT_ACC_KHACH_HANG = "INSERT INTO `casemd3`.`account` (`acc_username`, `acc_password`, `acc_phan_cap`, `acc_kh_id`) VALUES (?,?,?,?);";
+    private static final String INSERT_ACC_NHAN_VIEN = "INSERT INTO `casemd3`.`account` (`acc_username`, `acc_password`, `acc_phan_cap`, `acc_nv_id`) VALUES (?,?,?,?);";
     private static final String SELECT_KHACH_HANG_TOP = "SELECT * FROM khach_hang WHERE kh_id = (SELECT max(kh_id) from khach_hang);";
-    private static final String SELECT_KHACH_HANG_BY_ID = "SELECT * FROM khach_hang WHERE kh_id = ?;";
+    private static final String INSERT_NHAN_VIEN = "INSERT INTO nhan_vien (`nv_id`, `nv_ten`, `nv_gioi_tinh`, `nv_email`, `nv_phone_number`, `nv_ngay_sinh`, `nv_dia_chi`, `nv_ca_id`) VALUES (?,?,?,?,?,?,?,?);";
 
 
     public void them_khach_hang(Khach_hang khach_hang) throws SQLException {
@@ -23,6 +25,25 @@ public class KhachHangDAO {
             preparedStatement.setString(2, khach_hang.getKh_gioi_tinh());
             preparedStatement.setString(3, khach_hang.getKh_phone_number());
             preparedStatement.setString(4, khach_hang.getKh_dia_chi());
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            printSQLException(e);
+        }
+    }
+
+    public void them_nhan_vien(Nhan_vien nhan_vien) throws SQLException {
+        try {
+            Connection connection = myConnection.getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement(INSERT_NHAN_VIEN);
+            preparedStatement.setString(1, nhan_vien.getNv_id());
+            preparedStatement.setString(2, nhan_vien.getNv_ten());
+            preparedStatement.setString(3, nhan_vien.getNv_gioi_tinh());
+            preparedStatement.setString(4, nhan_vien.getNv_email());
+            preparedStatement.setString(5, nhan_vien.getNv_phone_number());
+            preparedStatement.setDate(6, java.sql.Date.valueOf(nhan_vien.getNv_ngay_sinh()));
+            preparedStatement.setString(7, nhan_vien.getNv_dia_chi());
+            preparedStatement.setString(8, nhan_vien.getNv_ca_id());
+            System.out.println(preparedStatement);
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
             printSQLException(e);
@@ -61,6 +82,40 @@ public class KhachHangDAO {
         } catch (SQLException e) {
             printSQLException(e);
         }
+    }
+
+    public void them_acc_nhan_vien(Account account) throws SQLException {
+        try {
+            Connection connection = myConnection.getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement(INSERT_ACC_NHAN_VIEN);
+            preparedStatement.setString(1, account.getAcc_username());
+            preparedStatement.setString(2, account.getAcc_password());
+            preparedStatement.setString(3, account.getAcc_phan_cap());
+            preparedStatement.setString(4, account.getAcc_nv_id());
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            printSQLException(e);
+        }
+    }
+
+    public Account kiem_tra_acc_nhan_vien(String account) throws SQLException {
+        Account account1 = null;
+        try {
+            Connection connection = myConnection.getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM account WHERE acc_username LIKE ?");
+            preparedStatement.setString(1, account);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                String acc_username = resultSet.getString(2);
+                String acc_password = resultSet.getString(3);
+                String acc_phan_cap = resultSet.getString(4);
+                String acc_nv_id = resultSet.getString(6);
+                account1 = new Account(acc_username, acc_password, acc_phan_cap, acc_nv_id);
+            }
+        } catch (SQLException e) {
+            printSQLException(e);
+        }
+        return account1;
     }
 
     public Account kiem_tra_acc_khach_hang(String account) throws SQLException {
