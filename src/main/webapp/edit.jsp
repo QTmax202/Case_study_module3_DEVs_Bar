@@ -56,6 +56,16 @@
 </section>
 <!-- Breadcrumb Section End -->
 
+<c:if test="${requestScope['createMessage'] != null}">
+    <section class="checkout spad">
+        <div class="container">
+            <div class="checkout__form">
+                <p class="text-danger">${createMessage}</p>
+            </div>
+        </div>
+    </section>
+</c:if>
+
 <c:if test="${pet_shop != null}">
     <section class="checkout spad">
         <div class="container">
@@ -65,7 +75,6 @@
                     <div class="row">
                         <div class="col-lg-8 col-md-6">
                             <h6 class="checkout__title">Sửa Thông Tin Thú Cưng</h6>
-                            <p class="text-danger">${thong_bao}</p>
                             <div class="row">
                                 <div class="col-lg-3">
                                     <div class="checkout__input">
@@ -148,7 +157,6 @@
                     <div class="row">
                         <div class="col-lg-8 col-md-6">
                             <h6 class="checkout__title">Sửa Thông Tin Phụ Kiện</h6>
-                            <p class="text-danger">${thong_bao}</p>
                             <div class="row">
                                 <div class="col-lg-3">
                                     <div>
@@ -213,7 +221,6 @@
                     <div class="row">
                         <div class="col-lg-8 col-md-6">
                             <h6 class="checkout__title">Sửa Thông Tin Dịch Vụ</h6>
-                            <p class="text-danger">${thong_bao}</p>
                             <div class="row">
                                 <div class="col-lg-3">
                                     <div>

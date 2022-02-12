@@ -55,6 +55,15 @@
     </div>
 </section>
 <!-- Breadcrumb Section End -->
+<c:if test="${requestScope['createMessage'] != null}">
+    <section class="checkout spad">
+        <div class="container">
+            <div class="checkout__form">
+                <p class="text-danger">${createMessage}</p>
+            </div>
+        </div>
+    </section>
+</c:if>
 
 <c:if test="${pet_shops != null}">
     <!-- Thêm Thú Cưng Begin -->
@@ -98,7 +107,7 @@
                                 <div class="col-lg-6">
                                     <div class="checkout__input">
                                         <p>Ngày Sinh<span>*</span></p>
-                                        <input type="date"  name="ps_ngay_sinh">
+                                        <input type="date" name="ps_ngay_sinh">
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
@@ -206,7 +215,6 @@
     </section>
     <!-- Thêm Phụ Kiện End -->
 </c:if>
-
 
 
 <c:if test="${chi_tiet_dv != null}">
