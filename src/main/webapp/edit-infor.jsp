@@ -56,77 +56,178 @@
 </section>
 <!-- Breadcrumb Section End -->
 
-<!-- Thêm Thú Cưng Begin -->
-<section class="checkout spad">
-    <div class="container">
-
-        <%--        Đăng kí thông tin nhân viên--%>
-        <div class="checkout__form">
-            <form action="/nhanVien?action=sua_phu_kien_post"method="post">
-                <div class="row">
-                    <div class="col-lg-8 col-md-6">
-                        <h6 class="checkout__title">Thay đổi thông tin nhân viên</h6>
-                        <div class="row">
-                            <div class="col-lg-10">
-                                <div class="checkout__input">
-                                    <p>Họ & Tên<span>*</span></p>
-                                    <input type="text" name="nv_id">
-                                </div>
-                            </div>
-                            <div class="col-lg-2">
-                                <div class="checkout__input">
-                                    <p>Giới Tính<span>*</span></p>
-                                    <select name="" id="">
-                                        <option value="">Nam</option>
-                                        <option value="">Nữ</option>
-                                        <option value="">Khác</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-12">
-                            <div class="checkout__input">
-                                <p>Mật khẩu<span>*</span></p>
-                                <input type="text" name="">
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-lg-6">
-                                <div class="checkout__input">
-                                    <p>Ngày Sinh<span>*</span></p>
-                                    <input type="date" name="">
-                                </div>
-                            </div>
-                            <div class="col-lg-6">
-                                <div class="checkout__input">
-                                    <p>Địa Chỉ<span>*</span></p>
-                                    <input type="text" placeholder="VND" name="kh_dia_chi">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-lg-6">
-                                <div class="checkout__input">
-                                    <p>Email<span>*</span></p>
-                                    <input type="text" name="">
-                                </div>
-                            </div>
-                            <div class="col-lg-6">
-                                <div class="checkout__input">
-                                    <p>Số Điện Thoại<span>*</span></p>
-                                    <input type="text" placeholder="VND" name="kh_phone_number">
-                                </div>
-                            </div>
-                        </div>
-                        <button type="submit" class="site-btn">XÁC NHẬN</button>
-                    </div>
-                </div>
-            </form>
-
+<c:if test="${requestScope['tai-khoan'] != null}">
+    <section class="checkout spad">
+        <div class="container">
+            <div class="checkout__form">
+                <p class="text-danger">Sửa thông tin thành công</p>
+            </div>
         </div>
-    </div>
-</section>
-<!-- Thêm Thú Cưng End -->
+    </section>
+</c:if>
+
+
+<c:if test="${requestScope.nhan_vien.nv_id != null}">
+    <%--        Đăng kí thông tin nhân viên--%>
+    <section class="checkout spad">
+        <div class="container">
+            <div class="checkout__form">
+                <form action="/khach-hang?action=sua_nhan_vien_post" method="post">
+                    <div class="row">
+                        <div class="col-lg-8 col-md-6">
+                            <h6 class="checkout__title">Thay đổi thông tin nhân viên</h6>
+                            <input type="text" name="nv_id" value="${nhan_vien.nv_id}">
+                            <div class="row">
+                                <div class="col-lg-10">
+                                    <div class="checkout__input">
+                                        <p>Họ & Tên<span>*</span></p>
+                                        <input type="text" name="nv_ten" value="${nhan_vien.nv_ten}">
+                                    </div>
+                                </div>
+                                <div class="col-lg-2">
+                                    <div class="checkout__input">
+                                        <p>Giới Tính<span>*</span></p>
+                                        <select name="nv_gioi_tinh">
+                                            <option value="Nam" name="nv_gioi_tinh">Nam</option>
+                                            <option value="Nữ" name="nv_gioi_tinh">Nữ</option>
+                                            <option value="Khác" name="nv_gioi_tinh">Khác</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <div class="checkout__input">
+                                        <p>Tài khoản<span>*</span></p>
+                                        <p>${account.acc_username}</p>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="checkout__input">
+                                        <p>Mật khẩu<span>*</span></p>
+                                        <input type="text" name="acc_password" value="${account.acc_password}">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <div class="checkout__input">
+                                        <p>Ngày Sinh<span>*</span></p>
+                                        <input type="date" name="nv_ngay_sinh"  value="${nhan_vien.nv_ngay_sinh}">
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="checkout__input">
+                                        <p>Số Điện Thoại<span>*</span></p>
+                                        <input type="text" name="nv_phone_number" value="${nhan_vien.nv_phone_number}">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <div class="checkout__input">
+                                        <p>Email<span>*</span></p>
+                                        <input type="text" name="nv_email" value="${nhan_vien.nv_email}">
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="checkout__input">
+                                        <p>Địa chỉ<span>*</span></p>
+                                        <input type="text" name="nv_dia_chi" value="${nhan_vien.nv_dia_chi}">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <div class="checkout__input">
+                                        <p>Ca làm việc<span>*</span></p>
+                                        <select name="nv_ca_id">
+                                            <option value="0h-6h" name="nv_ca_id">Ca 00:01 đến 06:00</option>
+                                            <option value="6h-12h" name="nv_ca_id">Ca 06:01 đến 12:00</option>
+                                            <option value="12h-18h" name="nv_ca_id">Ca 12:01 đến 18:00</option>
+                                            <option value="18h-24h" name="nv_ca_id">Ca 18:01 đến 00:00</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <br>
+                            <button type="submit" class="site-btn">XÁC NHẬN</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+    <%--  Đăng kí thông tin nhân viên--%>
+</c:if>
+
+<c:if test="${requestScope.khach_hang.kh_id != null}">
+    <%--        Đăng kí thông tin nhân viên--%>
+    <section class="checkout spad">
+        <div class="container">
+            <div class="checkout__form">
+                <form action="/khach-hang?action=sua_khach_hang_post" method="post">
+                    <div class="row">
+                        <div class="col-lg-8 col-md-6">
+                            <h6 class="checkout__title">Thay đổi thông tin khách hàng</h6>
+                            <input type="text" name="kh_id" value="${khach_hang.kh_id}">
+                            <div class="row">
+                                <div class="col-lg-10">
+                                    <div class="checkout__input">
+                                        <p>Họ & Tên<span>*</span></p>
+                                        <input type="text" name="kh_ten" value="${khach_hang.kh_ten}">
+                                    </div>
+                                </div>
+                                <div class="col-lg-2">
+                                    <div class="checkout__input">
+                                        <p>Giới Tính<span>*</span></p>
+                                        <select name="kh_gioi_tinh">
+                                            <option value="Nam" name="kh_gioi_tinh">Nam</option>
+                                            <option value="Nữ" name="kh_gioi_tinh">Nữ</option>
+                                            <option value="Khác" name="kh_gioi_tinh">Khác</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <div class="checkout__input">
+                                        <p>Tài khoản<span>*</span></p>
+                                        <p>${account.acc_username}</p>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="checkout__input">
+                                        <p>Mật khẩu<span>*</span></p>
+                                        <input type="text" name="acc_password" value="${account.acc_password}">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <div class="checkout__input">
+                                        <p>Số Điện Thoại<span>*</span></p>
+                                        <input type="text" name="kh_phone_number" value="${khach_hang.kh_phone_number}">
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="checkout__input">
+                                        <p>Địa chỉ<span>*</span></p>
+                                        <input type="text" name="kh_dia_chi" value="${khach_hang.kh_dia_chi}">
+                                    </div>
+                                </div>
+                            </div>
+                            <br>
+                            <button type="submit" class="site-btn">XÁC NHẬN</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+    <%--  Đăng kí thông tin nhân viên--%>
+</c:if>
+
 
 <jsp:include page="_Footer.jsp"></jsp:include>
 </body>

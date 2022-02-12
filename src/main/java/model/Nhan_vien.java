@@ -1,6 +1,7 @@
 package model;
 
 import java.time.LocalDate;
+import java.util.Date;
 
 public class Nhan_vien {
     private String nv_id;
@@ -16,8 +17,8 @@ public class Nhan_vien {
     public Nhan_vien() {
     }
 
-    public Nhan_vien(String nv_anh, String nv_ten, String nv_gioi_tinh, String nv_email, String nv_phone_number, LocalDate nv_ngay_sinh, String nv_dia_chi, String nv_ca_id) {
-        this.nv_anh = nv_anh;
+    public Nhan_vien(String nv_id, String nv_ten, String nv_gioi_tinh, String nv_email, String nv_phone_number, LocalDate nv_ngay_sinh, String nv_dia_chi, String nv_ca_id) {
+        this.nv_id = nv_id;
         this.nv_ten = nv_ten;
         this.nv_gioi_tinh = nv_gioi_tinh;
         this.nv_email = nv_email;

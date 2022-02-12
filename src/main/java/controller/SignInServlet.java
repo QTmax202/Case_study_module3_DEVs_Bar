@@ -54,7 +54,7 @@ public class SignInServlet extends HttpServlet {
         String acc_password = request.getParameter("acc_password");
         Account acc = signInDAO.signIn(acc_username, acc_password);
         if (acc == null) {
-            request.setAttribute("mess", "Tên tài khoản hoặc mật khẩu sai !");
+            request.setAttribute("message", "Tên tài khoản hoặc mật khẩu sai !");
             request.getRequestDispatcher("/sign-in.jsp").forward(request, response);
         } else {
             HttpSession session = request.getSession();

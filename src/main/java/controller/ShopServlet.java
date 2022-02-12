@@ -84,6 +84,7 @@ public class ShopServlet extends HttpServlet {
         String id = request.getParameter("id");
         ArrayList<Chi_tiet_dv> chi_tiet_dv = (ArrayList<Chi_tiet_dv>) shopDAO.dich_vu_theo_id(id);
         request.setAttribute("chi_tiet_dv", chi_tiet_dv);
+        request.setAttribute("ghim", id);
         ArrayList<Giong_pet> giong_pets = (ArrayList<Giong_pet>) shopDAO.giongPet();
         request.setAttribute("giong_pets", giong_pets);
         ArrayList<Chi_tiet_dv> chi_tiet_dvs = (ArrayList<Chi_tiet_dv>) shopDAO.loaiDichVu();
@@ -98,6 +99,7 @@ public class ShopServlet extends HttpServlet {
         String id = request.getParameter("id");
         ArrayList<Phu_kien> phu_kien_id = (ArrayList<Phu_kien>) shopDAO.phu_kien_theo_id(id);
         request.setAttribute("phu_kien_id", phu_kien_id);
+        request.setAttribute("ghim", id);
         ArrayList<Giong_pet> giong_pets = (ArrayList<Giong_pet>) shopDAO.giongPet();
         request.setAttribute("giong_pets", giong_pets);
         ArrayList<Chi_tiet_dv> chi_tiet_dvs = (ArrayList<Chi_tiet_dv>) shopDAO.loaiDichVu();
@@ -112,6 +114,7 @@ public class ShopServlet extends HttpServlet {
         String petShop_id = request.getParameter("id");
         ArrayList<Pet_shop> pet_shops = (ArrayList<Pet_shop>) shopDAO.petShopById(petShop_id);
         request.setAttribute("pet_shops", pet_shops);
+        request.setAttribute("ghim", petShop_id);
         ArrayList<Giong_pet> giong_pets = (ArrayList<Giong_pet>) shopDAO.giongPet();
         request.setAttribute("giong_pets", giong_pets);
         ArrayList<Chi_tiet_dv> chi_tiet_dvs = (ArrayList<Chi_tiet_dv>) shopDAO.loaiDichVu();

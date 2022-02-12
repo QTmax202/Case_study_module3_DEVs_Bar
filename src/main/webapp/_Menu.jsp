@@ -44,10 +44,10 @@
                                     <a href="#">Xin Chào ${sessionScope.acc_admin.getAcc_username()}</a>
                                 </c:if>
                                 <c:if test="${sessionScope.acc_nhan_vien != null}">
-                                    <a href="infor-user.jsp">Xin Chào NV ${sessionScope.acc_nhan_vien.getAcc_username()}</a>
+                                    <a href="/khach-hang?action=sua_nhan_vien_get&nv_id=${sessionScope.acc_nhan_vien.acc_nv_id}">Xin Chào NV ${sessionScope.acc_nhan_vien.getAcc_username()}</a>
                                 </c:if>
                                 <c:if test="${sessionScope.acc_khach_hang != null}">
-                                    <a href="infor-user.jsp">Xin Chào KH ${sessionScope.acc_khach_hang.getAcc_username()}</a>
+                                    <a href="/khach-hang?action=sua_khach_hang_get&kh_id=${sessionScope.acc_khach_hang.acc_kh_id}">Xin Chào KH ${sessionScope.acc_khach_hang.getAcc_username()}</a>
                                 </c:if>
                                 <a href="<c:url value="/sign-in?action=logOut"/>">Đăng Xuất</a>
                             </c:if>
@@ -115,7 +115,7 @@
                             </c:if>
                             <c:if test="${sessionScope.acc_admin != null }">
                                 <li>
-                                    <a href="#">Quản Lý Tài Khoản</a>
+                                    <a href="/khach-hang?action=them_nhan_vien_get">Quản Lý Tài Khoản</a>
                                 </li>
                             </c:if>
                             <c:if test="${sessionScope.acc_khach_hang != null}">
@@ -132,7 +132,7 @@
                         <img src="img/icon/search.png" alt="">
                     </a>
                     <c:if test="${sessionScope.acc_khach_hang != null}">
-                        <a href="<c:url value="/gio_hang?action&hd_kh_id=${sessionScope.acc_khach_hang.getAcc_kh_id()}"/>">
+                        <a href="shopping-cart.jsp">
                             <img src="img/icon/cart.png" alt="">
                         </a>
                     </c:if>

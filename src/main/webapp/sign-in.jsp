@@ -32,16 +32,16 @@
                         <strong>
                             <a href="<c:url value="/hospital?action=home"/>">Pet Hospital</a>
                         </strong></h3>
-                    <p class="text-danger">${mess}</p>
+                    <p class="text-danger">${message}</p>
                     <hr>
                     <form action="<c:url value="/sign-in?action=logIn"/>" method="post">
                         <div class="form-group first">
                             <label for="username">Tài khoản</label>
-                            <input type="text" class="form-control" placeholder="Nhập tài khoản" id="username" name="acc_username">
+                            <input type="text" class="form-control" placeholder="Nhập tài khoản" id="username" name="acc_username" required>
                         </div>
                         <div class="form-group last mb-3">
                             <label for="password">Mật khẩu</label>
-                            <input type="password" class="form-control" placeholder="Nhập mật khẩu" id="password" name="acc_password">
+                            <input type="password" class="form-control" placeholder="Nhập mật khẩu" id="password" name="acc_password" required>
                         </div>
 
                         <div class="form-group form-check">
@@ -50,7 +50,7 @@
                         </div>
 
                         <div class="d-flex mb-5 align-items-center">
-                            <span class="ml-auto"><a href="sign-up.jsp" class="forgot-pass">Đăng kí</a></span>
+                            <span class="ml-auto"><a href="/khach-hang?action=them_khach_hang_get" class="forgot-pass">Đăng kí</a></span>
                         </div>
 
                         <input type="submit" value="Đăng nhập" class="btn btn-block btn-primary" href="<c:url value="/hospital?action=home"/>">

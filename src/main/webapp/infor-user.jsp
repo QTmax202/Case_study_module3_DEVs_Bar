@@ -56,69 +56,147 @@
 </section>
 <!-- Breadcrumb Section End -->
 
-<!-- Thêm Thú Cưng Begin -->
-<section class="checkout spad">
-    <div class="container">
-
-        <%--        Đăng kí thông tin nhân viên--%>
-        <div class="checkout__form">
-            <form action="#">
-                <div class="row">
-                    <div class="col-lg-8 col-md-6">
-                        <h6 class="checkout__title">Đăng kí thông tin nhân viên</h6>
-                        <div class="row">
-                            <div class="col-lg-9">
-                                <div class="checkout__input">
-                                    <p>Họ & Tên<span>*</span></p>
-                                    <label>
-                                        <input type="text" name="kh_name">
-                                    </label>
-                                </div>
-                            </div>
-                            <div class="col-lg-3">
-                                <div class="checkout__input">
-                                    <p>Giới Tính<span>*</span></p>
-                                    <input type="text" name="">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-lg-6">
-                                <div class="checkout__input">
-                                    <p>Ngày Sinh<span>*</span></p>
-                                    <input type="date" name="">
-                                </div>
-                            </div>
-                            <div class="col-lg-6">
-                                <div class="checkout__input">
-                                    <p>Địa Chỉ<span>*</span></p>
-                                    <input type="text" placeholder="VND" name="kh_dia_chi">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-lg-6">
-                                <div class="checkout__input">
-                                    <p>Email<span>*</span></p>
-                                    <input type="text"  name="">
-                                </div>
-                            </div>
-                            <div class="col-lg-6">
-                                <div class="checkout__input">
-                                    <p>Số Điện Thoại<span>*</span></p>
-                                    <input type="text" placeholder="VND" name="kh_phone_number">
-                                </div>
-                            </div>
-                        </div>
-                        <button type="submit" class="site-btn">XÁC NHẬN</button>
-                    </div>
-                </div>
-            </form>
-
+<c:if test="${requestScope['vienNhan'] != null}">
+    <section class="checkout spad">
+        <div class="container">
+            <div class="checkout__form">
+                <p class="text-danger">${vienNhan}</p>
+            </div>
         </div>
-    </div>
-</section>
-<!-- Thêm Thú Cưng End -->
+    </section>
+</c:if>
+
+<c:if test="${requestScope['mess'] != null}">
+    <%--        Đăng kí thông tin nhân viên--%>
+    <section class="checkout spad">
+        <div class="container">
+            <div class="checkout__form">
+                <form action="/khach-hang?action=them_nhan_vien_post" method="post">
+                    <div class="row">
+                        <div class="col-lg-8 col-md-6">
+                            <h6 class="checkout__title">Đăng kí thông tin nhân viên</h6>
+                            <div class="row">
+                                <div class="col-lg-3">
+                                    <div class="checkout__input">
+                                        <p>Mã Nhân Viên<span>*</span></p>
+                                        <input type="text" name="nv_id" required>
+                                    </div>
+                                </div>
+                                <div class="col-lg-7">
+                                    <div class="checkout__input">
+                                        <p>Họ & Tên<span>*</span></p>
+                                        <input type="text" name="nv_ten" required>
+                                    </div>
+                                </div>
+                                <div class="col-lg-2">
+                                    <div class="checkout__input">
+                                        <p>Giới Tính<span>*</span></p>
+                                        <select name="nv_gioi_tinh">
+                                            <option value="Nam" name="nv_gioi_tinh">Nam</option>
+                                            <option value="Nữ" name="nv_gioi_tinh">Nữ</option>
+                                            <option value="Khác" name="nv_gioi_tinh">Khác</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <div class="checkout__input">
+                                        <p>Ngày Sinh<span>*</span></p>
+                                        <input type="date" name="nv_ngay_sinh" required>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="checkout__input">
+                                        <p>Số Điện Thoại<span>*</span></p>
+                                        <input type="text" name="nv_phone_number" required>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <div class="checkout__input">
+                                        <p>Email<span>*</span></p>
+                                        <input type="text" name="nv_email" required>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="checkout__input">
+                                        <p>Địa chỉ<span>*</span></p>
+                                        <input type="text" name="nv_dia_chi" required>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <div class="checkout__input">
+                                        <p>Ca làm việc<span>*</span></p>
+                                        <select name="nv_ca_id">
+                                            <option value="0h-6h" name="nv_ca_id">Ca 00:01 đến 06:00</option>
+                                            <option value="6h-12h" name="nv_ca_id">Ca 06:01 đến 12:00</option>
+                                            <option value="12h-18h" name="nv_ca_id">Ca 12:01 đến 18:00</option>
+                                            <option value="18h-24h" name="nv_ca_id">Ca 18:01 đến 00:00</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <br>
+                            <button type="submit" class="site-btn">XÁC NHẬN</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+    <%--  Đăng kí thông tin nhân viên--%>
+</c:if>
+
+<c:if test="${requestScope['nhan_vien'] != null}">
+    <section class="checkout spad">
+        <div class="container">
+            <div class="checkout__form">
+                <form action="/khach-hang?action=them_acc_nhan_vien" method="post">
+                    <div class="row">
+                        <div class="col-lg-8 col-md-6">
+                            <h6 class="checkout__title">Đăng kí tài khoản nhân viên </h6>
+                            <p class="text-danger">Đăng kí thông tin nhân viên thành công. Nhập tài khoản đăng
+                                kí</p>
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <div class="checkout__input">
+                                        <p>Tài Khoản<span>*</span></p>
+                                        <input type="text" name="acc_username" required>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <div class="checkout__input">
+                                        <p>Mật Khẩu<span>*</span></p>
+                                        <input type="password" name="acc_password" required>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <div class="checkout__input">
+                                        <p>Nhập Lại Mật Khẩu<span>*</span></p>
+                                        <input type="password" name="acc_password2" required>
+                                    </div>
+                                </div>
+                            </div>
+                            <input type="hidden" name="acc_nv_id" value="${nhan_vien.nv_id}">
+                            <input type="hidden" name="acc_phan_cap" value="NV">
+                            <br>
+                            <button type="submit" class="site-btn">XÁC NHẬN</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+    <%--  Đăng kí thông tin nhân viên--%>
+</c:if>
 
 <jsp:include page="_Footer.jsp"></jsp:include>
 </body>

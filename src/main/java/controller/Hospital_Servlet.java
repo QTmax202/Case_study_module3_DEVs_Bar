@@ -46,8 +46,7 @@ public class Hospital_Servlet extends HttpServlet {
             case "home":
             default:
                 display_pet_shop(request, response);
-        }
-    }
+        }    }
 
     private void search_dich_vu(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
         String id = request.getParameter("dv_id");
@@ -79,7 +78,7 @@ public class Hospital_Servlet extends HttpServlet {
     private void display_pet_shop(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
         ArrayList<Pet_shop> Pet_shops = hospitalService.getLimit8Pet_Shop();
         ArrayList<Phu_kien> Phu_kiens = hospitalService.getLimit8Phu_Kien();
-        ArrayList<Chi_tiet_dv> Dich_vus = hospitalService.getLimit8Dich_Vu();
+        ArrayList<Chi_tiet_dv> Dich_vus =hospitalService.getLimit8Dich_Vu();
         request.setAttribute("pet_shops", Pet_shops);
         request.setAttribute("phu_kiens", Phu_kiens);
         request.setAttribute("dich_vus", Dich_vus);

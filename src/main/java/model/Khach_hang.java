@@ -15,6 +15,15 @@ public class Khach_hang {
     public Khach_hang() {
     }
 
+
+
+    public Khach_hang(String kh_ten, String kh_gioi_tinh, String kh_phone_number, String kh_dia_chi) {
+        this.kh_ten = kh_ten;
+        this.kh_gioi_tinh = kh_gioi_tinh;
+        this.kh_phone_number = kh_phone_number;
+        this.kh_dia_chi = kh_dia_chi;
+    }
+
     public Khach_hang(String kh_id, String kh_anh, String kh_ten, String kh_gioi_tinh, String kh_email, String kh_phone_number, Date kh_ngay_sinh, String kh_dia_chi) {
         this.kh_id = kh_id;
         this.kh_anh = kh_anh;
@@ -23,6 +32,14 @@ public class Khach_hang {
         this.kh_email = kh_email;
         this.kh_phone_number = kh_phone_number;
         this.kh_ngay_sinh = kh_ngay_sinh;
+        this.kh_dia_chi = kh_dia_chi;
+    }
+
+    public Khach_hang(String kh_id, String kh_ten, String kh_gioi_tinh, String kh_phone_number, String kh_dia_chi) {
+        this.kh_id = kh_id;
+        this.kh_ten = kh_ten;
+        this.kh_gioi_tinh = kh_gioi_tinh;
+        this.kh_phone_number = kh_phone_number;
         this.kh_dia_chi = kh_dia_chi;
     }
 
