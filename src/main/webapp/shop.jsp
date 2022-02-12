@@ -85,7 +85,7 @@
                                                 <li class="fa fa-star-o"><a href="/shop?action=list-thu-cung"> TẤT
                                                     CẢ</a></li>
                                                 <c:forEach items="${giong_pets}" var="giong_pet">
-                                                    <li>
+                                                    <li class="${ghim == giong_pet.gp_id ? "active":""}">
                                                         <a href="/shop?action=thucung&id=${giong_pet.gp_id}">${giong_pet.gp_id}</a>
                                                     </li>
                                                 </c:forEach>
@@ -143,13 +143,13 @@
                     <div class="row">
                         <div class="col-lg-6    col-md-6 col-sm-6"></div>
                         <div class="col-lg-6 col-md-6 col-sm-6">
-                            <div class="shop__product__option__right">
-                                <p>Sắp xếp theo giá:</p>
-                                <select>
-                                    <option><a href="shop?action=sap-xep-tang">Sắp xếp tăng dần</a></option>
-                                    <option><a href="shop?action=sap-xep-giam">Sắp xếp giảm dần</a></option>
-                                </select>
-                            </div>
+                            <%--                            <div class="shop__product__option__right">--%>
+                            <%--                                <p>Sắp xếp theo giá:</p>--%>
+                            <%--                                <select>--%>
+                            <%--                                    <option><a href="shop?action=sap-xep-tang">Sắp xếp tăng dần</a></option>--%>
+                            <%--                                    <option><a href="shop?action=sap-xep-giam">Sắp xếp giảm dần</a></option>--%>
+                            <%--                                </select>--%>
+                            <%--                            </div>--%>
                         </div>
                     </div>
                 </div>
@@ -181,13 +181,15 @@
                                                         <span>Detail</span></a>
                                                 </li>
                                                 <li>
-                                                    <a href="edit.jsp">
-                                                        <img src="https://image.flaticon.com/icons/png/512/84/84380.png" width="36" height="36" alt="">
+                                                    <a href="/quan-ly?action=sua_thu_cung_get&tc_id=${pet_shop.getPs_id()}">
+                                                        <img src="https://image.flaticon.com/icons/png/512/84/84380.png"
+                                                             width="36" height="36" alt="">
                                                         <span>Edit</span></a>
                                                 </li>
                                                 <li>
-                                                    <a href="#">
-                                                        <img src="https://icon-library.com/images/icon-delete/icon-delete-16.jpg" width="36" height="36" alt="">
+                                                    <a href="/quan-ly?action=xoa_thu_cung&tc_id=${pet_shop.getPs_id()}">
+                                                        <img src="https://icon-library.com/images/icon-delete/icon-delete-16.jpg"
+                                                             width="36" height="36" alt="">
                                                         <span>Delete</span></a>
                                                 </li>
                                             </c:if>
@@ -225,7 +227,11 @@
                                             <a href="#" class="add-cart">+ Hãy Đăng Nhập</a>
                                         </c:if>
                                         <hr>
-                                        <h5>${pet_shop.ps_gia} VND</h5>
+                                        <h5>
+                                                <fmt:setLocale value = "vi_VN"/>
+                                                <fmt:formatNumber value = "${pet_shop.ps_gia}" type = "currency"/>
+                                        </h5>
+<%--                                        <h5>${pet_shop.ps_gia} VND</h5>--%>
                                     </c:if>
                                     <c:if test="${pet_shop.getPs_trang_thai() == 0}">
                                         <h6>${pet_shop.ps_ten}</h6>
@@ -238,7 +244,7 @@
                         </div>
                     </c:forEach>
 
-<%--                    Phụ kiện--%>
+                    <%--                    Phụ kiện--%>
                     <c:forEach items="${phu_kien_id}" var="phu_kien_id">
                         <div class="col-lg-4 col-md-6 col-sm-6">
                             <div class="product__item">
@@ -266,12 +272,14 @@
                                                 </li>
                                                 <li>
                                                     <a href="/quan-ly?action=sua_phu_kien_get&pk_id=${phu_kien_id.getPk_id()}">
-                                                        <img src="https://image.flaticon.com/icons/png/512/84/84380.png" width="36" height="36" alt="">
+                                                        <img src="https://image.flaticon.com/icons/png/512/84/84380.png"
+                                                             width="36" height="36" alt="">
                                                         <span>Edit</span></a>
                                                 </li>
                                                 <li>
                                                     <a href="/quan-ly?action=xoa_phu_kien&pk_id=${phu_kien_id.getPk_id()}">
-                                                        <img src="https://icon-library.com/images/icon-delete/icon-delete-16.jpg" width="36" height="36" alt="">
+                                                        <img src="https://icon-library.com/images/icon-delete/icon-delete-16.jpg"
+                                                             width="36" height="36" alt="">
                                                         <span>Delete</span></a>
                                                 </li>
                                             </c:if>
@@ -299,7 +307,8 @@
                                                    class="add-cart">+ Thêm Vào Giỏ Hàng</a>
                                             </c:if>
                                             <c:if test="${sessionScope.acc_admin != null || sessionScope.acc_nhan_vien != null}">
-                                                <a href="<c:url value="/hospital?action=search_phu_kien&pk_id=${phu_kien_id.getPk_id()}"/>" class="add-cart">
+                                                <a href="<c:url value="/hospital?action=search_phu_kien&pk_id=${phu_kien_id.getPk_id()}"/>"
+                                                   class="add-cart">
                                                     + ${phu_kien_id.getPk_ten()}
                                                 </a>
                                             </c:if>
@@ -321,7 +330,7 @@
                         </div>
                     </c:forEach>
 
-<%--                    Dịch vụ--%>
+                    <%--                    Dịch vụ--%>
                     <c:forEach items="${chi_tiet_dv}" var="chi_tiet_dv">
                         <div class="col-lg-4 col-md-6 col-sm-6">
                             <div class="product__item">
@@ -349,12 +358,14 @@
                                                 </li>
                                                 <li>
                                                     <a href="/quan-ly?action=sua_dich_vu_get&dv_id=${chi_tiet_dv.getCtdv_id()}">
-                                                        <img src="https://image.flaticon.com/icons/png/512/84/84380.png" width="36" height="36" alt="">
+                                                        <img src="https://image.flaticon.com/icons/png/512/84/84380.png"
+                                                             width="36" height="36" alt="">
                                                         <span>Edit</span></a>
                                                 </li>
                                                 <li>
                                                     <a href="/quan-ly?action=xoa_dich_vu&dv_id=${chi_tiet_dv.getCtdv_id()}">
-                                                        <img src="https://icon-library.com/images/icon-delete/icon-delete-16.jpg" width="36" height="36" alt="">
+                                                        <img src="https://icon-library.com/images/icon-delete/icon-delete-16.jpg"
+                                                             width="36" height="36" alt="">
                                                         <span>Delete</span></a>
                                                 </li>
                                             </c:if>
@@ -383,7 +394,8 @@
                                                 </a>
                                             </c:if>
                                             <c:if test="${sessionScope.acc_admin != null || sessionScope.acc_nhan_vien != null}">
-                                                <a href="<c:url value="/hospital?action=search_dich_vu&dv_id=${chi_tiet_dv.getCtdv_id()}"/>" class="add-cart">
+                                                <a href="<c:url value="/hospital?action=search_dich_vu&dv_id=${chi_tiet_dv.getCtdv_id()}"/>"
+                                                   class="add-cart">
                                                     + ${chi_tiet_dv.getCtdv_ten()}
                                                 </a>
                                             </c:if>
