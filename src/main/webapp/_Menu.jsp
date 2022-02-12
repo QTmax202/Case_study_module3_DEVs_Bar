@@ -44,10 +44,10 @@
                                     <a href="#">Xin Chào ${sessionScope.acc_admin.getAcc_username()}</a>
                                 </c:if>
                                 <c:if test="${sessionScope.acc_nhan_vien != null}">
-                                    <a href="infor-user.jsp">Xin Chào NV ${sessionScope.acc_nhan_vien.getAcc_username()}</a>
+                                    <a href="edit-infor.jsp">Xin Chào NV ${sessionScope.acc_nhan_vien.getAcc_username()}</a>
                                 </c:if>
                                 <c:if test="${sessionScope.acc_khach_hang != null}">
-                                    <a href="infor-user.jsp">Xin Chào KH ${sessionScope.acc_khach_hang.getAcc_username()}</a>
+                                    <a href="edit-infor.jsp">Xin Chào KH ${sessionScope.acc_khach_hang.getAcc_username()}</a>
                                 </c:if>
                                 <a href="<c:url value="/sign-in?action=logOut"/>">Đăng Xuất</a>
                             </c:if>
