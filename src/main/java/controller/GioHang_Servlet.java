@@ -67,8 +67,7 @@ public class GioHang_Servlet extends HttpServlet {
     }
 
     private void quan_ly_hoa_don(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//        ArrayList<Hoa_don> hoa_dons = gioHangService.getAll_hoa_don();
-        ArrayList<Hoa_don> hoa_dons = gioHangDAO.get_all_hd_hddv();
+        ArrayList<Hoa_don> hoa_dons = gioHangService.getAll_hoa_don();
         request.setAttribute("hoa_dons", hoa_dons);
         int doanh_thu = 0;
         for (Hoa_don hd : hoa_dons){
