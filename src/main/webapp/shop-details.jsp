@@ -218,9 +218,7 @@
                                 <c:if test="${sessionScope.acc != null}">
                                     <c:if test="${sessionScope.acc_khach_hang != null}">
                                         <div class="quantity">
-                                            <div class="pro-qty">
-                                                <input type="date" value="1">
-                                            </div>
+                                            <input type="date" name="ngay_dat_dv">
                                         </div>
                                     </c:if>
                                 </c:if>
