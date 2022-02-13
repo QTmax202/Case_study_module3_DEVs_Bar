@@ -79,13 +79,13 @@
                                 <div class="col-lg-3">
                                     <div class="checkout__input">
                                         <p>Mã Nhân Viên<span>*</span></p>
-                                        <input type="text" name="nv_id">
+                                        <input type="text" name="nv_id" required>
                                     </div>
                                 </div>
                                 <div class="col-lg-7">
                                     <div class="checkout__input">
                                         <p>Họ & Tên<span>*</span></p>
-                                        <input type="text" name="nv_ten">
+                                        <input type="text" name="nv_ten" required>
                                     </div>
                                 </div>
                                 <div class="col-lg-2">
@@ -103,13 +103,13 @@
                                 <div class="col-lg-6">
                                     <div class="checkout__input">
                                         <p>Ngày Sinh<span>*</span></p>
-                                        <input type="date" name="nv_ngay_sinh">
+                                        <input type="date" name="nv_ngay_sinh" required>
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="checkout__input">
                                         <p>Số Điện Thoại<span>*</span></p>
-                                        <input type="text" name="nv_phone_number">
+                                        <input type="text" name="nv_phone_number" required>
                                     </div>
                                 </div>
                             </div>
@@ -117,13 +117,13 @@
                                 <div class="col-lg-6">
                                     <div class="checkout__input">
                                         <p>Email<span>*</span></p>
-                                        <input type="text" name="nv_email">
+                                        <input type="text" name="nv_email" required>
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="checkout__input">
                                         <p>Địa chỉ<span>*</span></p>
-                                        <input type="text" name="nv_dia_chi">
+                                        <input type="text" name="nv_dia_chi" required>
                                     </div>
                                 </div>
                             </div>
@@ -165,7 +165,7 @@
                                 <div class="col-lg-6">
                                     <div class="checkout__input">
                                         <p>Tài Khoản<span>*</span></p>
-                                        <input type="text" name="acc_username">
+                                        <input type="text" name="acc_username" required>
                                     </div>
                                 </div>
                             </div>
@@ -173,7 +173,7 @@
                                 <div class="col-lg-6">
                                     <div class="checkout__input">
                                         <p>Mật Khẩu<span>*</span></p>
-                                        <input type="password" name="acc_password">
+                                        <input type="password" name="acc_password" required>
                                     </div>
                                 </div>
                             </div>
@@ -181,7 +181,7 @@
                                 <div class="col-lg-6">
                                     <div class="checkout__input">
                                         <p>Nhập Lại Mật Khẩu<span>*</span></p>
-                                        <input type="password" name="acc_password2">
+                                        <input type="password" name="acc_password2" required>
                                     </div>
                                 </div>
                             </div>
