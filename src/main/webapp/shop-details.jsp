@@ -292,7 +292,7 @@
                                         </c:if>
                                     </c:if>
                                 </c:if>
-                                <c:if test="${phu_kien.getPk_so_luong() != 0}">
+                                <c:if test="${phu_kien.getPk_so_luong() == 0}">
                                     <a href="#" class="primary-btn">Hết hàng</a>
                                 </c:if>
                             </c:if>

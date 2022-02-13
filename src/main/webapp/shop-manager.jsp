@@ -86,7 +86,7 @@
                                     <fmt:formatNumber value="${hoa_don.getTong_tien()}" type="currency"/>
                                 </td>
                                 <td class="cart__close">
-                                    <a href="#">
+                                    <a href="<c:url value="/gio_hang?action=delete_hd_id&hd_id=${hoa_don.getHd_id()}"/>">
                                         <i class="fa fa-close"></i>
                                     </a>
                                 </td>

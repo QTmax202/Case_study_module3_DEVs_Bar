@@ -30,20 +30,39 @@ public class GioHang_Service {
     }
 
     public ArrayList<Hoa_don> getAll_hoa_don() {
-        ArrayList<Hoa_don> lists_hd = gioHangDAO.get_all_hd_hddv();
+        ArrayList<Hoa_don> lists_hd = new ArrayList<>();
         ArrayList<Hoa_don> lists_hddv = gioHangDAO.get_all_hd_hddv();
         ArrayList<Hoa_don> lists_hdmh = gioHangDAO.get_all_hd_hdmh();
         for (Hoa_don hddv : lists_hddv) {
-            lists_hd.add(new Hoa_don(hddv.getHd_id(), hddv.getHd_nv_id(), hddv.getHd_kh_id(), hddv.getHd_ngay_lap(), hddv.getTong_tien()));
+            for (Hoa_don hdmh : lists_hdmh) {
+                if (hddv.getHd_id() == hdmh.getHd_id()){
+                    int tong_tien = hddv.getTong_tien() + hdmh.getTong_tien();
+                    lists_hd.add(new Hoa_don(hddv.getHd_id(), hddv.getHd_nv_id(), hddv.getHd_kh_id(), hddv.getHd_ngay_lap(), tong_tien));
+                }
+            }
+        }
+        for (Hoa_don hddv : lists_hddv) {
+            boolean check = false;
+            for (Hoa_don hd : lists_hd) {
+                if (hd.getHd_id() == hddv.getHd_id()) {
+                    check = true;
+                    break;
+                }
+            }
+            if (!check){
+                lists_hd.add(new Hoa_don(hddv.getHd_id(), hddv.getHd_nv_id(), hddv.getHd_kh_id(), hddv.getHd_ngay_lap(), hddv.getTong_tien()));
+            }
         }
         for (Hoa_don hdmh : lists_hdmh) {
+            boolean check = false;
             for (Hoa_don hd : lists_hd) {
                 if (hd.getHd_id() == hdmh.getHd_id()) {
-                    int tong_tien = hd.getTong_tien() + hdmh.getTong_tien();
-                    hd.setTong_tien(tong_tien);
-                } else {
-                    lists_hd.add(new Hoa_don(hdmh.getHd_id(), hdmh.getHd_nv_id(), hdmh.getHd_kh_id(), hdmh.getHd_ngay_lap(), hdmh.getTong_tien()));
+                    check = true;
+                    break;
                 }
+            }
+            if (!check){
+                lists_hd.add(new Hoa_don(hdmh.getHd_id(), hdmh.getHd_nv_id(), hdmh.getHd_kh_id(), hdmh.getHd_ngay_lap(), hdmh.getTong_tien()));
             }
         }
         return lists_hd;

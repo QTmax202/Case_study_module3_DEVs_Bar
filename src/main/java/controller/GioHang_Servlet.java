@@ -61,9 +61,27 @@ public class GioHang_Servlet extends HttpServlet {
             case "quan_ly_hoa_don":
                 quan_ly_hoa_don(request, response);
                 break;
+            case "delete_hd_id":
+                delete_hd_id(request, response);
+                break;
             default:
                 display_gio_hang(request, response);
         }
+    }
+
+    private void delete_hd_id(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        int hd_id = Integer.parseInt(request.getParameter("hd_id"));
+        gioHangDAO.delete_hd_id(hd_id);
+        gioHangDAO.delete_hdmh_hd_id(hd_id);
+        gioHangDAO.delete_hddv_hd_id(hd_id);
+        ArrayList<Hoa_don> hoa_dons = gioHangService.getAll_hoa_don();
+        request.setAttribute("hoa_dons", hoa_dons);
+        int doanh_thu = 0;
+        for (Hoa_don hd : hoa_dons){
+            doanh_thu += hd.getTong_tien();
+        }
+        request.setAttribute("doanh_thu", doanh_thu);
+        request.getRequestDispatcher("shop-manager.jsp").forward(request, response);
     }
 
     private void quan_ly_hoa_don(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -78,34 +96,36 @@ public class GioHang_Servlet extends HttpServlet {
     }
 
     private void thanh_toan(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        response.setContentType("text/html;charset=UTF-8");
+        request.setCharacterEncoding("UTF-8");
         int kh_id = Integer.parseInt(request.getParameter("hd_kh_id"));
         int ca_nv = LocalDateTime.now().getHour();
         String nv_id = gioHangDAO.get_nhan_vien_id(ca_nv);
         gioHangDAO.create_hd(nv_id, kh_id);
         int hd_id = gioHangDAO.get_hoa_don_kh_id_limit1(kh_id);
-        ArrayList<Hdmh_tam_thoi> lists_hd_ps = gioHangDAO.getLists_hdmhtt_ps(kh_id);
-        ArrayList<Hdmh_tam_thoi> lists_hd_pk = gioHangDAO.getLists_hdmhtt_pk(kh_id);
+        ArrayList<Hdmh_tam_thoi> lists_hdmhtt = gioHangDAO.getAll_hdmhtt(kh_id);
         ArrayList<Hddv_tam_thoi> lists_hd_dv = gioHangDAO.getLists_hddvtt_dv(kh_id);
-        for (Hdmh_tam_thoi hd_ps : lists_hd_ps) {
-            gioHangDAO.create_hdmh_ps(new Hoa_don_mua_hang(hd_id, hd_ps.getHdmhtt_ps_id(), hd_ps.getHdmhtt_so_luong(), hd_ps.getHdmhtt_thanh_tien()));
-            gioHangDAO.update_pet_shop(hd_ps.getHdmhtt_ps_id());
-        }
-        for (Hdmh_tam_thoi hd_pk : lists_hd_pk) {
-            gioHangDAO.create_hdmh_pk(new Hoa_don_mua_hang(hd_id, hd_pk.getHdmhtt_pk_id(), hd_pk.getHdmhtt_so_luong(), hd_pk.getHdmhtt_thanh_tien()));
-            gioHangDAO.update_phu_kien(hd_pk.getHdmhtt_pk_id());
+        for (Hdmh_tam_thoi hd_tt : lists_hdmhtt) {
+            if (hd_tt.getHdmhtt_pk_id() != null){
+                gioHangDAO.create_hdmh_pk(hd_id, hd_tt.getHdmhtt_pk_id(), hd_tt.getHdmhtt_thanh_tien());
+                gioHangDAO.update_phu_kien(hd_tt.getHdmhtt_pk_id());
+            } else {
+                gioHangDAO.create_hdmh_ps(hd_id, hd_tt.getHdmhtt_ps_id(), hd_tt.getHdmhtt_thanh_tien());
+                gioHangDAO.update_pet_shop(hd_tt.getHdmhtt_ps_id());
+            }
         }
         gioHangDAO.delete_hdmhtt(kh_id);
         for (Hddv_tam_thoi hd_dv : lists_hd_dv) {
             gioHangDAO.create_hddv(new Hoa_don_dich_vu(hd_id, hd_dv.getHddvtt_ctdv_id(), hd_dv.getHddvtt_ngay_dat(), hd_dv.getHddvtt_thanh_tien()));
         }
         gioHangDAO.delete_hddvtt(kh_id);
-        lists_hd_ps = gioHangDAO.getLists_hdmhtt_ps(kh_id);
+        ArrayList<Hdmh_tam_thoi> lists_hd_ps = gioHangDAO.getLists_hdmhtt_ps(kh_id);
         request.setAttribute("lists_hd_ps", lists_hd_ps);
-        lists_hd_pk = gioHangDAO.getLists_hdmhtt_pk(kh_id);
+        ArrayList<Hdmh_tam_thoi> lists_hd_pk = gioHangDAO.getLists_hdmhtt_pk(kh_id);
         request.setAttribute("lists_hd_pk", lists_hd_pk);
         lists_hd_dv = gioHangDAO.getLists_hddvtt_dv(kh_id);
         request.setAttribute("lists_hd_dv", lists_hd_dv);
-        ArrayList<Hdmh_tam_thoi> lists_hdmhtt = gioHangDAO.getAll_hdmhtt(kh_id);
+        lists_hdmhtt = gioHangDAO.getAll_hdmhtt(kh_id);
         int thanh_tien = 0;
         for (Hdmh_tam_thoi hd : lists_hdmhtt) {
             thanh_tien += hd.getHdmhtt_thanh_tien();
@@ -114,6 +134,7 @@ public class GioHang_Servlet extends HttpServlet {
             thanh_tien += hd.getHddvtt_thanh_tien();
         }
         request.setAttribute("tong_tien", thanh_tien);
+        request.setAttribute("mess", "Cảm ơn đã sử dụng dịch vụ, hãy tới cửa hàng gần nhất để hoàn tất thanh toán !");
         request.getRequestDispatcher("shopping-cart.jsp").forward(request, response);
     }
 

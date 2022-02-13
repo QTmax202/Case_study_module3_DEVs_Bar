@@ -93,8 +93,8 @@
                                         </div>
                                     </td>
                                     <td class="cart__price">
-                                                <fmt:setLocale value = "vi_VN"/>
-                                                <fmt:formatNumber value = "${hd_ps.getHdmhtt_thanh_tien()}" type = "currency"/>
+                                        <fmt:setLocale value="vi_VN"/>
+                                        <fmt:formatNumber value="${hd_ps.getHdmhtt_thanh_tien()}" type="currency"/>
                                     </td>
                                     <td class="cart__close">
                                         <a href="<c:url value="/gio_hang?action=delete_ps_pk&hd_id=${hd_ps.getHdmhtt_id()}&hd_kh_id=${sessionScope.acc_khach_hang.getAcc_kh_id()}"/>">
@@ -137,8 +137,8 @@
                                         </div>
                                     </td>
                                     <td class="cart__price">
-                                                <fmt:setLocale value = "vi_VN"/>
-                                                <fmt:formatNumber value = "${hd_pk.getHdmhtt_thanh_tien()}" type = "currency"/>
+                                        <fmt:setLocale value="vi_VN"/>
+                                        <fmt:formatNumber value="${hd_pk.getHdmhtt_thanh_tien()}" type="currency"/>
                                     </td>
                                     <td class="cart__close">
                                         <a href="<c:url value="/gio_hang?action=delete_ps_pk&hd_id=${hd_pk.getHdmhtt_id()}&hd_kh_id=${sessionScope.acc_khach_hang.getAcc_kh_id()}"/>">
@@ -164,35 +164,35 @@
                             </thead>
                             <tbody>
                             <c:forEach items="${requestScope['lists_hd_dv']}" var="hd_dv">
-                            <tr>
-                                <td class="product__cart__item">
-                                    <div class="product__cart__item__pic">
-                                        <img src="img/shopping-cart/cart-4.jpg" alt="">
-                                    </div>
-                                    <div class="product__cart__item__text">
-                                        <h6>${hd_dv.getHddvtt_ctdv_ten()}</h6>
-                                    </div>
-                                </td>
-                                <td class="quantity__item">
-                                    <div class="quantity">
-<%--                                        <div class="pro-qty-2">--%>
-<%--                                            <input type="text" value="1">--%>
-<%--                                        </div>--%>
-                                        <div>
-                                            <h6>${hd_dv.getHddvtt_thoi_gian_dat()}</h6>
+                                <tr>
+                                    <td class="product__cart__item">
+                                        <div class="product__cart__item__pic">
+                                            <img src="img/shopping-cart/cart-4.jpg" alt="">
                                         </div>
-                                    </div>
-                                </td>
-                                <td class="cart__price">
-                                            <fmt:setLocale value = "vi_VN"/>
-                                            <fmt:formatNumber value = "${hd_dv.getHddvtt_thanh_tien()}" type = "currency"/>
-                                </td>
-                                <td class="cart__close">
-                                    <a href="<c:url value="/gio_hang?action=delete_dv&hd_id=${hd_dv.getHddvtt_id()}&hd_kh_id=${sessionScope.acc_khach_hang.getAcc_kh_id()}"/>">
-                                        <i class="fa fa-close"></i>
-                                    </a>
-                                </td>
-                            </tr>
+                                        <div class="product__cart__item__text">
+                                            <h6>${hd_dv.getHddvtt_ctdv_ten()}</h6>
+                                        </div>
+                                    </td>
+                                    <td class="quantity__item">
+                                        <div class="quantity">
+                                                <%--                                        <div class="pro-qty-2">--%>
+                                                <%--                                            <input type="text" value="1">--%>
+                                                <%--                                        </div>--%>
+                                            <div>
+                                                <h6>${hd_dv.getHddvtt_thoi_gian_dat()}</h6>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="cart__price">
+                                        <fmt:setLocale value="vi_VN"/>
+                                        <fmt:formatNumber value="${hd_dv.getHddvtt_thanh_tien()}" type="currency"/>
+                                    </td>
+                                    <td class="cart__close">
+                                        <a href="<c:url value="/gio_hang?action=delete_dv&hd_id=${hd_dv.getHddvtt_id()}&hd_kh_id=${sessionScope.acc_khach_hang.getAcc_kh_id()}"/>">
+                                            <i class="fa fa-close"></i>
+                                        </a>
+                                    </td>
+                                </tr>
                             </c:forEach>
                             </tbody>
                         </table>
@@ -222,24 +222,39 @@
                     </form>
                 </div>
                 <div class="cart__total">
-                    <h6>TỔNG TIỀN GIỎ HÀNG</h6>
-                    <ul>
-                        <li>Tổng cộng
-                            <span>
-                                <fmt:setLocale value = "vi_VN"/>
-                                    <fmt:formatNumber value = "${tong_tien + Integer.valueOf(tong_tien * 0.1)}" type = "currency"/>
+                    <c:if test="${mess == null}">
+                        <h6>TỔNG TIỀN GIỎ HÀNG</h6>
+                        <ul>
+                            <li>Tổng cộng
+                                <span>
+                                <fmt:setLocale value="vi_VN"/>
+                                    <fmt:formatNumber value="${tong_tien + Integer.valueOf(tong_tien * 0.1)}"
+                                                      type="currency"/>
                             </span>
-                        </li>
-                        <li><h5>Thành tiền
-                            <span>
-                                 <fmt:setLocale value = "vi_VN"/>
-                                <fmt:formatNumber value = "${tong_tien}" type = "currency"/>
+                            </li>
+                            <li><h5>Thành tiền
+                                <span>
+                                 <fmt:setLocale value="vi_VN"/>
+                                <fmt:formatNumber value="${tong_tien}" type="currency"/>
                             </span></h5>
+                            </li>
+                        </ul>
+                        <a href="<c:url value="/gio_hang?action=thanh_toan&hd_kh_id=${sessionScope.acc_khach_hang.getAcc_kh_id()}"/>"
+                           class="primary-btn">THANH TOÁN
+                        </a>
+                    </c:if>
+                    <c:if test="${mess != null}">
+                        <li>
+                            <h5>
+                                <c:url value="${mess}"/>
+                            </h5>
                         </li>
-                    </ul>
-                    <a href="<c:url value="/gio_hang?action=thanh_toan&hd_kh_id=${sessionScope.acc_khach_hang.getAcc_kh_id()}"/>"
-                       class="primary-btn">THANH TOÁN
-                    </a>
+                        <a href="<c:url value="/shop"/>"
+                           class="primary-btn">
+                            Tiếp tục mua sắm
+                        </a>
+                    </c:if>
+
                 </div>
             </div>
         </div>
