@@ -152,14 +152,15 @@
 </c:if>
 
 <c:if test="${requestScope['nhan_vien'] != null}">
-    <%--        Đăng kí thông tin nhân viên--%>
     <section class="checkout spad">
         <div class="container">
             <div class="checkout__form">
                 <form action="/khach-hang?action=them_acc_nhan_vien" method="post">
                     <div class="row">
                         <div class="col-lg-8 col-md-6">
-                            <h6 class="checkout__title">Đăng kí tài khoản nhân viên</h6>
+                            <h6 class="checkout__title">Đăng kí tài khoản nhân viên </h6>
+                            <p class="text-danger">Đăng kí thông tin nhân viên thành công. Nhập tài khoản đăng
+                                kí</p>
                             <div class="row">
                                 <div class="col-lg-6">
                                     <div class="checkout__input">
@@ -184,7 +185,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <input type="hidden" name="acc_kh_id" value="${nhan_vien.nv_id}">
+                            <input type="hidden" name="acc_nv_id" value="${nhan_vien.nv_id}">
                             <input type="hidden" name="acc_phan_cap" value="NV">
                             <br>
                             <button type="submit" class="site-btn">XÁC NHẬN</button>
@@ -196,7 +197,6 @@
     </section>
     <%--  Đăng kí thông tin nhân viên--%>
 </c:if>
-
 
 <jsp:include page="_Footer.jsp"></jsp:include>
 </body>
