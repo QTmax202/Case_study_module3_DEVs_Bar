@@ -67,4 +67,15 @@ public class GioHang_Service {
         }
         return lists_hd;
     }
+
+    public ArrayList<Hoa_don> getHoa_don_nv_id(String nv_id){
+        ArrayList<Hoa_don> lists_hd = getAll_hoa_don();
+        ArrayList<Hoa_don> lists_hd_nv = new ArrayList<>();
+        for(Hoa_don hd : lists_hd){
+            if(hd.getHd_nv_id().equals(nv_id)){
+                lists_hd_nv.add(hd);
+            }
+        }
+        return lists_hd_nv;
+    }
 }

@@ -61,12 +61,27 @@ public class GioHang_Servlet extends HttpServlet {
             case "quan_ly_hoa_don":
                 quan_ly_hoa_don(request, response);
                 break;
+            case "quan_ly_hd_nv":
+                quan_ly_hd_nv(request, response);
+                break;
             case "delete_hd_id":
                 delete_hd_id(request, response);
                 break;
             default:
                 display_gio_hang(request, response);
         }
+    }
+
+    private void quan_ly_hd_nv(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String nv_id = request.getParameter("nv_id");
+        ArrayList<Hoa_don> hd_nvs = gioHangService.getHoa_don_nv_id(nv_id);
+        request.setAttribute("hd_nvs", hd_nvs);
+        int doanh_thu = 0;
+        for (Hoa_don hd : hd_nvs){
+            doanh_thu += hd.getTong_tien();
+        }
+        request.setAttribute("dt_nv", doanh_thu);
+        request.getRequestDispatcher("shop-manager.jsp").forward(request, response);
     }
 
     private void delete_hd_id(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

@@ -108,9 +108,16 @@
                                     </ul>
                                 </li>
                             </c:if>
-                            <c:if test="${sessionScope.acc_admin != null || sessionScope.acc_nhan_vien != null}">
+                            <c:if test="${sessionScope.acc_admin != null}">
                                 <li>
                                     <a href="<c:url value="/gio_hang?action=quan_ly_hoa_don"/>">
+                                        Quản Lý Hóa Đơn
+                                    </a>
+                                </li>
+                            </c:if>
+                            <c:if test="${sessionScope.acc_nhan_vien != null}">
+                                <li>
+                                    <a href="<c:url value="/gio_hang?action=quan_ly_hd_nv&nv_id=${sessionScope.acc_nhan_vien.getAcc_nv_id()}"/>">
                                         Quản Lý Hóa Đơn
                                     </a>
                                 </li>
