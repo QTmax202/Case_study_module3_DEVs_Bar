@@ -81,7 +81,7 @@
                                 <div class="col-lg-10">
                                     <div class="checkout__input">
                                         <p>Họ & Tên<span>*</span></p>
-                                        <input type="text" name="nv_ten" value="${nhan_vien.nv_ten}">
+                                        <input type="text" name="nv_ten" value="${nhan_vien.nv_ten}" required>
                                     </div>
                                 </div>
                                 <div class="col-lg-2">
@@ -105,7 +105,7 @@
                                 <div class="col-lg-6">
                                     <div class="checkout__input">
                                         <p>Mật khẩu<span>*</span></p>
-                                        <input type="text" name="acc_password" value="${account.acc_password}">
+                                        <input type="password" name="acc_password" value="${account.acc_password}" required>
                                     </div>
                                 </div>
                             </div>
@@ -113,13 +113,13 @@
                                 <div class="col-lg-6">
                                     <div class="checkout__input">
                                         <p>Ngày Sinh<span>*</span></p>
-                                        <input type="date" name="nv_ngay_sinh"  value="${nhan_vien.nv_ngay_sinh}">
+                                        <input type="date" name="nv_ngay_sinh"  value="${nhan_vien.nv_ngay_sinh}" required>
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="checkout__input">
                                         <p>Số Điện Thoại<span>*</span></p>
-                                        <input type="text" name="nv_phone_number" value="${nhan_vien.nv_phone_number}">
+                                        <input type="text" name="nv_phone_number" value="${nhan_vien.nv_phone_number}" required>
                                     </div>
                                 </div>
                             </div>
@@ -127,13 +127,13 @@
                                 <div class="col-lg-6">
                                     <div class="checkout__input">
                                         <p>Email<span>*</span></p>
-                                        <input type="text" name="nv_email" value="${nhan_vien.nv_email}">
+                                        <input type="text" name="nv_email" value="${nhan_vien.nv_email}" required>
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="checkout__input">
                                         <p>Địa chỉ<span>*</span></p>
-                                        <input type="text" name="nv_dia_chi" value="${nhan_vien.nv_dia_chi}">
+                                        <input type="text" name="nv_dia_chi" value="${nhan_vien.nv_dia_chi}" required>
                                     </div>
                                 </div>
                             </div>
@@ -170,12 +170,12 @@
                     <div class="row">
                         <div class="col-lg-8 col-md-6">
                             <h6 class="checkout__title">Thay đổi thông tin khách hàng</h6>
-                            <input type="text" name="kh_id" value="${khach_hang.kh_id}">
+                            <input type="hidden" name="kh_id" value="${khach_hang.kh_id}" required>
                             <div class="row">
                                 <div class="col-lg-10">
                                     <div class="checkout__input">
                                         <p>Họ & Tên<span>*</span></p>
-                                        <input type="text" name="kh_ten" value="${khach_hang.kh_ten}">
+                                        <input type="text" name="kh_ten" value="${khach_hang.kh_ten}" required>
                                     </div>
                                 </div>
                                 <div class="col-lg-2">
@@ -199,7 +199,7 @@
                                 <div class="col-lg-6">
                                     <div class="checkout__input">
                                         <p>Mật khẩu<span>*</span></p>
-                                        <input type="text" name="acc_password" value="${account.acc_password}">
+                                        <input type="password" name="acc_password" value="${account.acc_password}" required>
                                     </div>
                                 </div>
                             </div>
@@ -207,13 +207,13 @@
                                 <div class="col-lg-6">
                                     <div class="checkout__input">
                                         <p>Số Điện Thoại<span>*</span></p>
-                                        <input type="text" name="kh_phone_number" value="${khach_hang.kh_phone_number}">
+                                        <input type="text" name="kh_phone_number" value="${khach_hang.kh_phone_number}" required>
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="checkout__input">
                                         <p>Địa chỉ<span>*</span></p>
-                                        <input type="text" name="kh_dia_chi" value="${khach_hang.kh_dia_chi}">
+                                        <input type="text" name="kh_dia_chi" value="${khach_hang.kh_dia_chi}" required>
                                     </div>
                                 </div>
                             </div>

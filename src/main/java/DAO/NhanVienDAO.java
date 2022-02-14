@@ -3,8 +3,9 @@ package DAO;
 import connection.MyConnection;
 import model.Nhan_vien;
 import java.sql.*;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import java.sql.Date;
 
 public class NhanVienDAO {
     private static final MyConnection myConnection = new MyConnection();
@@ -32,34 +33,32 @@ public class NhanVienDAO {
 //        }
 //    }
 
-//    public ArrayList<Nhan_vien> selectAllNhanViens() {
-//
-//        ArrayList<Nhan_vien> nhanViens = new ArrayList<>();
-//
-//        try (Connection connection = myConnection.getConnection();
-//
-//             PreparedStatement preparedStatement = connection.prepareStatement(SELECT_ALL_NHAN_VIEN);) {
-//            System.out.println(preparedStatement);
-//
-//            ResultSet rs = preparedStatement.executeQuery();
-//
-//            while (rs.next()) {
-//                String nv_id = rs.getString("nv_id");
-//                String nv_anh = rs.getString("nv_anh");
-//                String nv_ten = rs.getString("nv_ten");
-//                String nv_gioi_tinh = rs.getString("nv_gioi_tinh");
-//                String nv_email = rs.getString("nv_email");
-//                String nv_phone_number = rs.getString("nv_phone_number");
-//                Date nv_ngay_sinh = rs.getDate("nv_ngay_sinh");
-//                String nv_dia_chi = rs.getString("nv_dia_chi");
-//                String nv_ca_id = rs.getString("nv_ca_id");
-//                nhanViens.add(new Nhan_vien(nv_id, nv_anh, nv_ten, nv_gioi_tinh, nv_email, nv_phone_number, nv_ngay_sinh, nv_dia_chi, nv_ca_id));
-//            }
-//        } catch (SQLException e) {
-//            printSQLException(e);
-//        }
-//        return nhanViens;
-//    }
+    public ArrayList<Nhan_vien> selectAllNhanViens() {
+        ArrayList<Nhan_vien> nhanViens = new ArrayList<>();
+        try (Connection connection = myConnection.getConnection();
+
+             PreparedStatement preparedStatement = connection.prepareStatement(SELECT_ALL_NHAN_VIEN);) {
+            System.out.println(preparedStatement);
+
+            ResultSet rs = preparedStatement.executeQuery();
+
+            while (rs.next()) {
+                String nv_id = rs.getString("nv_id");
+                String nv_anh = rs.getString("nv_anh");
+                String nv_ten = rs.getString("nv_ten");
+                String nv_gioi_tinh = rs.getString("nv_gioi_tinh");
+                String nv_email = rs.getString("nv_email");
+                String nv_phone_number = rs.getString("nv_phone_number");
+                LocalDate nv_ngay_sinh = LocalDate.parse(String.valueOf(rs.getDate("nv_ngay_sinh")), DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+                String nv_dia_chi = rs.getString("nv_dia_chi");
+                String nv_ca_id = rs.getString("nv_ca_id");
+                nhanViens.add(new Nhan_vien(nv_id, nv_anh, nv_ten, nv_gioi_tinh, nv_email, nv_phone_number, nv_ngay_sinh, nv_dia_chi, nv_ca_id));
+            }
+        } catch (SQLException e) {
+            printSQLException(e);
+        }
+        return nhanViens;
+    }
 
 //    public boolean updateNhanVien(Nhan_vien nhanVien) throws SQLException {
 //        boolean rowUpdated;

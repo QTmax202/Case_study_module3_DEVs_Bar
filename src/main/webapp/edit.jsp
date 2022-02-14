@@ -96,25 +96,25 @@
                                 <div class="col-lg-9">
                                     <div class="checkout__input">
                                         <p>Nhập Tên<span>*</span></p>
-                                        <input type="text" name="ps_ten" value="${pet_shop.ps_ten}">
+                                        <input type="text" name="ps_ten" value="${pet_shop.ps_ten}" required>
                                     </div>
                                 </div>
                             </div>
                             <div class="checkout__input">
                                 <p>Nhập Đường Dẫn Ảnh<span>*</span></p>
-                                <input type="text" name="ps_anh" value="${pet_shop.ps_anh}">
+                                <input type="text" name="ps_anh" value="${pet_shop.ps_anh}" required>
                             </div>
                             <div class="row">
                                 <div class="col-lg-6">
                                     <div class="checkout__input">
                                         <p>Ngày Sinh<span>*</span></p>
-                                        <input type="date" name="ps_ngay_sinh" value="${pet_shop.ps_ngay_sinh}">
+                                        <input type="date" name="ps_ngay_sinh" value="${pet_shop.ps_ngay_sinh}" required>
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="checkout__input">
                                         <p>Đơn Giá<span>*</span></p>
-                                        <input type="text" placeholder="VND" name="ps_gia" value="${pet_shop.ps_gia}">
+                                        <input type="text" placeholder="VND" name="ps_gia" value="${pet_shop.ps_gia}" required>
                                     </div>
                                 </div>
                             </div>
@@ -131,7 +131,7 @@
                                 <div class="col-lg-9">
                                     <div class="checkout__input">
                                         <p>Mô Tả</p>
-                                        <input type="text" name="ps_mo_ta" value="${pet_shop.ps_mo_ta}">
+                                        <input type="text" name="ps_mo_ta" value="${pet_shop.ps_mo_ta}" required>
                                     </div>
                                 </div>
                             </div>
@@ -175,31 +175,31 @@
                                 <div class="col-lg-9">
                                     <div class="checkout__input">
                                         <p>Tên Phụ Kiện<span>*</span></p>
-                                        <input type="text" name="pk_ten" value="${phu_kien.pk_ten}">
+                                        <input type="text" name="pk_ten" value="${phu_kien.pk_ten}" required>
                                     </div>
                                 </div>
                             </div>
                             <div class="checkout__input">
                                 <p>Đường Dẫn Ảnh<span>*</span></p>
-                                <input type="text" name="pk_anh" value="${phu_kien.pk_anh}">
+                                <input type="text" name="pk_anh" value="${phu_kien.pk_anh}" required>
                             </div>
                             <div class="row">
                                 <div class="col-lg-6">
                                     <div class="checkout__input">
                                         <p>Số Lượng<span>*</span></p>
-                                        <input type="text" value="${phu_kien.pk_so_luong}" name="pk_so_luong">
+                                        <input type="text" value="${phu_kien.pk_so_luong}" name="pk_so_luong" required>
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="checkout__input">
                                         <p>Đơn Giá<span>*</span></p>
-                                        <input type="text" placeholder="VND" name="pk_gia" value="${phu_kien.pk_gia}">
+                                        <input type="text" placeholder="VND" name="pk_gia" value="${phu_kien.pk_gia}" required>
                                     </div>
                                 </div>
                             </div>
                             <div class="checkout__input">
                                 <p>Mô Tả</p>
-                                <input type="text" name="pk_mo_ta" value="${phu_kien.pk_mo_ta}">
+                                <input type="text" name="pk_mo_ta" value="${phu_kien.pk_mo_ta}" required>
                             </div>
                             <button type="submit" class="site-btn">XÁC NHẬN</button>
                         </div>
@@ -236,13 +236,13 @@
                                 <div class="col-lg-9">
                                     <div class="checkout__input">
                                         <p>Tên Dịch Vụ<span>*</span></p>
-                                        <input type="text" name="ctdv_ten" value="${chi_tiet_dv.ctdv_ten}">
+                                        <input type="text" name="ctdv_ten" value="${chi_tiet_dv.ctdv_ten}" required>
                                     </div>
                                 </div>
                             </div>
                             <div class="checkout__input">
                                 <p>Đường Dẫn Ảnh<span>*</span></p>
-                                <input type="text" name="ctdv_anh" value="${chi_tiet_dv.ctdv_anh}">
+                                <input type="text" name="ctdv_anh" value="${chi_tiet_dv.ctdv_anh}" required>
                             </div>
                             <div class="row">
                                 <div class="col-lg-3">
@@ -258,13 +258,13 @@
                                     <div class="checkout__input">
                                         <p>Đơn Giá<span>*</span></p>
                                         <input type="text" placeholder="VND" name="ctdv_gia"
-                                               value="${chi_tiet_dv.ctdv_gia}">
+                                               value="${chi_tiet_dv.ctdv_gia}" required>
                                     </div>
                                 </div>
                             </div>
                             <div class="checkout__input">
                                 <p>Mô Tả</p>
-                                <input type="text" name="ctdv_mo_ta" value="${chi_tiet_dv.ctdv_mo_ta}">
+                                <input type="text" name="ctdv_mo_ta" value="${chi_tiet_dv.ctdv_mo_ta}" required>
                             </div>
                             <button type="submit" class="site-btn">XÁC NHẬN</button>
                         </div>

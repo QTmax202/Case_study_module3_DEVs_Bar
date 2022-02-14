@@ -43,11 +43,11 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="breadcrumb__text">
-                    <h4>Manager</h4>
+                    <h4>Quản lý</h4>
                     <div class="breadcrumb__links">
-                        <a href="./index.jsp">Home</a>
+<%--                        <a href="./shop.jsp">Cửa hàng</a>--%>
                         <%--                        <a href="./shop.jsp">Shop</a>--%>
-                        <span>Create Product</span>
+                        <span>Thêm tài khoản</span>
                     </div>
                 </div>
             </div>

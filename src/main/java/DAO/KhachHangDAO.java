@@ -13,8 +13,8 @@ public class KhachHangDAO {
     private static final MyConnection myConnection = new MyConnection();
 
     private static final String INSERT_KHACH_HANG = "INSERT INTO khach_hang (`kh_ten`, `kh_gioi_tinh`, `kh_phone_number`, `kh_dia_chi`) VALUES (?,?,?,?);";
-    private static final String INSERT_ACC_KHACH_HANG = "INSERT INTO `casemd3`.`account` (`acc_username`, `acc_password`, `acc_phan_cap`, `acc_kh_id`) VALUES (?,?,?,?);";
-    private static final String INSERT_ACC_NHAN_VIEN = "INSERT INTO `casemd3`.`account` (`acc_username`, `acc_password`, `acc_phan_cap`, `acc_nv_id`) VALUES (?,?,?,?);";
+    private static final String INSERT_ACC_KHACH_HANG = "INSERT INTO account (`acc_username`, `acc_password`, `acc_phan_cap`, `acc_kh_id`) VALUES (?,?,?,?);";
+    private static final String INSERT_ACC_NHAN_VIEN = "INSERT INTO account (`acc_username`, `acc_password`, `acc_phan_cap`, `acc_nv_id`) VALUES (?,?,?,?);";
     private static final String SELECT_KHACH_HANG_TOP = "SELECT * FROM khach_hang WHERE kh_id = (SELECT max(kh_id) from khach_hang);";
     private static final String INSERT_NHAN_VIEN = "INSERT INTO nhan_vien (`nv_id`, `nv_ten`, `nv_gioi_tinh`, `nv_email`, `nv_phone_number`, `nv_ngay_sinh`, `nv_dia_chi`, `nv_ca_id`) VALUES (?,?,?,?,?,?,?,?);";
     private static final String SELECT_NHAN_VIEN_BY_ID = "SELECT * FROM nhan_vien WHERE nv_id LIKE ?;";

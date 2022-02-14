@@ -21,7 +21,7 @@
     </div>
     <div id="mobile-menu-wrap"></div>
     <div class="offcanvas__text">
-        <p>Dev's Bar</p>
+        <p>HỆ THỐNG BỆNH VIỆN THÚ CƯNG DEV's BAR</p>
     </div>
 </div>
 <!-- Offcanvas Menu End -->
@@ -33,7 +33,7 @@
             <div class="row">
                 <div class="col-lg-6 col-md-7">
                     <div class="header__top__left">
-                        <p>The Dev's Bar</p>
+                        <p>HỆ THỐNG BỆNH VIỆN THÚ CƯNG DEV's BAR</p>
                     </div>
                 </div>
                 <div class="col-lg-6 col-md-5">
@@ -44,10 +44,10 @@
                                     <a href="#">Xin Chào ${sessionScope.acc_admin.getAcc_username()}</a>
                                 </c:if>
                                 <c:if test="${sessionScope.acc_nhan_vien != null}">
-                                    <a href="/khach-hang?action=sua_nhan_vien_get&nv_id=${sessionScope.acc_nhan_vien.acc_nv_id}">Xin Chào NV ${sessionScope.acc_nhan_vien.getAcc_username()}</a>
+                                    <a href="/khach-hang?action=sua_nhan_vien_get&nv_id=${sessionScope.acc_nhan_vien.acc_nv_id}">Xin Chào NV.${sessionScope.acc_nhan_vien.getAcc_username()}</a>
                                 </c:if>
                                 <c:if test="${sessionScope.acc_khach_hang != null}">
-                                    <a href="/khach-hang?action=sua_khach_hang_get&kh_id=${sessionScope.acc_khach_hang.acc_kh_id}">Xin Chào KH ${sessionScope.acc_khach_hang.getAcc_username()}</a>
+                                    <a href="/khach-hang?action=sua_khach_hang_get&kh_id=${sessionScope.acc_khach_hang.acc_kh_id}">Xin Chào KH.${sessionScope.acc_khach_hang.getAcc_username()}</a>
                                 </c:if>
                                 <a href="<c:url value="/sign-in?action=logOut"/>">Đăng Xuất</a>
                             </c:if>
@@ -76,7 +76,7 @@
                 <nav class="header__menu mobile-menu">
                     <ul>
                         <c:if test="${sessionScope.acc == null}">
-                            <li class="active"><a href="<c:url value="/hospital?action=home"/>">Trang Chủ</a></li>
+                            <li><a href="<c:url value="/hospital?action=home"/>">Trang Chủ</a></li>
                             <li><a href="<c:url value="/shop"/>">Cửa Hàng</a>
                                 <ul class="dropdown">
                                     <li><a href="<c:url value="/shop?action=list-thu-cung"/>">Thú Cưng</a></li>
@@ -89,7 +89,7 @@
                         </c:if>
                         <c:if test="${sessionScope.acc != null}">
                             <c:if test="${sessionScope.acc_khach_hang != null}">
-                                <li class="active"><a href="<c:url value="/hospital?action=home"/>">Trang Chủ</a></li>
+                                <li><a href="<c:url value="/hospital?action=home"/>">Trang Chủ</a></li>
                             </c:if>
                             <li><a href="<c:url value="/shop"/>">Cửa Hàng</a>
                                 <ul class="dropdown">
@@ -108,9 +108,18 @@
                                     </ul>
                                 </li>
                             </c:if>
-                            <c:if test="${sessionScope.acc_admin != null || sessionScope.acc_nhan_vien != null}">
+                            <c:if test="${sessionScope.acc_admin != null}">
                                 <li>
-                                    <a href="#">Quản Lý Hóa Đơn</a>
+                                    <a href="<c:url value="/gio_hang?action=quan_ly_hoa_don"/>">
+                                        Quản Lý Hóa Đơn
+                                    </a>
+                                </li>
+                            </c:if>
+                            <c:if test="${sessionScope.acc_nhan_vien != null}">
+                                <li>
+                                    <a href="<c:url value="/gio_hang?action=quan_ly_hd_nv&nv_id=${sessionScope.acc_nhan_vien.getAcc_nv_id()}"/>">
+                                        Quản Lý Hóa Đơn
+                                    </a>
                                 </li>
                             </c:if>
                             <c:if test="${sessionScope.acc_admin != null }">
@@ -132,7 +141,7 @@
                         <img src="img/icon/search.png" alt="">
                     </a>
                     <c:if test="${sessionScope.acc_khach_hang != null}">
-                        <a href="shopping-cart.jsp">
+                        <a href="<c:url value="/gio_hang?action&hd_kh_id=${sessionScope.acc_khach_hang.getAcc_kh_id()}"/>">
                             <img src="img/icon/cart.png" alt="">
                         </a>
                     </c:if>

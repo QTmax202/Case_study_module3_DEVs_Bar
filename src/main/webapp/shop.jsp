@@ -37,19 +37,19 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="breadcrumb__text">
-                    <h4>Shop</h4>
+                    <h4>Cửa hàng</h4>
                     <div class="breadcrumb__links">
                         <c:if test="${sessionScope.acc == null}">
-                            <a href="<c:url value="/hospital?action=home"/>">Home</a>
-                            <span><a href="<c:url value="/shop"/>">Shop</a></span>
+                            <a href="<c:url value="/hospital?action=home"/>">Trang chủ</a>
+                            <span><a href="<c:url value="/shop"/>">Cửa hàng</a></span>
                         </c:if>
                         <c:if test="${sessionScope.acc != null}">
                             <c:if test="${sessionScope.acc_admin != null || sessionScope.acc_nhan_vien != null}">
-                                <span><a href="<c:url value="/shop"/>">Shop</a></span>
+                                <span><a href="<c:url value="/shop"/>">Cửa hàng</a></span>
                             </c:if>
                             <c:if test="${sessionScope.acc_khach_hang != null}">
-                                <a href="<c:url value="/hospital?action=home"/>">Home</a>
-                                <span><a href="<c:url value="/shop"/>">Shop</a></span>
+                                <a href="<c:url value="/hospital?action=home"/>">Trang chủ</a>
+                                <span><a href="<c:url value="/shop"/>">Cửa hàng</a></span>
                             </c:if>
                         </c:if>
                     </div>
@@ -213,7 +213,7 @@
                                         <h6>${pet_shop.ps_ten}</h6>
                                         <c:if test="${sessionScope.acc != null}">
                                             <c:if test="${sessionScope.acc_khach_hang != null}">
-                                                <a href="<c:url value="/hospital?action=addToCart&id=${pet_shop.getPs_id()}"/>"
+                                                <a href="<c:url value="/gio_hang?action=add_pet_shop&hd_ps_id=${pet_shop.getPs_id()}&hd_kh_id=${sessionScope.acc_khach_hang.getAcc_kh_id()}"/>"
                                                    class="add-cart">+ Thêm Vào Giỏ Hàng</a>
                                             </c:if>
                                             <c:if test="${sessionScope.acc_admin != null || sessionScope.acc_nhan_vien != null}">
@@ -228,16 +228,19 @@
                                         </c:if>
                                         <hr>
                                         <h5>
-                                                <fmt:setLocale value = "vi_VN"/>
-                                                <fmt:formatNumber value = "${pet_shop.ps_gia}" type = "currency"/>
+                                            <fmt:setLocale value="vi_VN"/>
+                                            <fmt:formatNumber value="${pet_shop.ps_gia}" type="currency"/>
                                         </h5>
-<%--                                        <h5>${pet_shop.ps_gia} VND</h5>--%>
+                                        <%--                                        <h5>${pet_shop.ps_gia} VND</h5>--%>
                                     </c:if>
                                     <c:if test="${pet_shop.getPs_trang_thai() == 0}">
                                         <h6>${pet_shop.ps_ten}</h6>
                                         <a class="add-cart">Hết hàng</a>
                                         <hr>
-                                        <h5>${pet_shop.ps_gia} VND</h5>
+                                        <h5>
+                                            <fmt:setLocale value="vi_VN"/>
+                                            <fmt:formatNumber value="${pet_shop.ps_gia}" type="currency"/>
+                                        </h5>
                                     </c:if>
                                 </div>
                             </div>
@@ -303,7 +306,7 @@
                                         <h6>${phu_kien_id.pk_ten}</h6>
                                         <c:if test="${sessionScope.acc != null}">
                                             <c:if test="${sessionScope.acc_khach_hang != null}">
-                                                <a href="<c:url value="/hospital?action=addToCart&id=${phu_kien_id.getPk_id()}"/>"
+                                                <a href="<c:url value="/gio_hang?action=add_phu_kien&hd_pk_id=${phu_kien_id.getPk_id()}&hd_kh_id=${sessionScope.acc_khach_hang.getAcc_kh_id()}"/>"
                                                    class="add-cart">+ Thêm Vào Giỏ Hàng</a>
                                             </c:if>
                                             <c:if test="${sessionScope.acc_admin != null || sessionScope.acc_nhan_vien != null}">
@@ -317,13 +320,19 @@
                                             <a href="#" class="add-cart">+ Hãy Đăng Nhập</a>
                                         </c:if>
                                         <hr>
-                                        <h5>${phu_kien_id.pk_gia} VND</h5>
+                                        <h5>
+                                            <fmt:setLocale value="vi_VN"/>
+                                            <fmt:formatNumber value="${phu_kien_id.pk_gia}" type="currency"/>
+                                        </h5>
                                     </c:if>
                                     <c:if test="${phu_kien_id.getPk_so_luong() == 0}">
                                         <h6>${phu_kien_id.pk_ten}</h6>
                                         <a class="add-cart">Hết hàng</a>
                                         <hr>
-                                        <h5>${phu_kien_id.pk_gia} VND</h5>
+                                        <h5>
+                                            <fmt:setLocale value="vi_VN"/>
+                                            <fmt:formatNumber value="${phu_kien_id.pk_gia}" type="currency"/>
+                                        </h5>
                                     </c:if>
                                 </div>
                             </div>
@@ -389,8 +398,9 @@
                                         <h6>${chi_tiet_dv.ctdv_ten}</h6>
                                         <c:if test="${sessionScope.acc != null}">
                                             <c:if test="${sessionScope.acc_khach_hang != null}">
-                                                <a href="<c:url value="/hospital?action=addToCart&id=${chi_tiet_dv.getCtdv_id()}"/>"
-                                                   class="add-cart">+ Thêm Vào Giỏ Hàng</a>
+                                                <a href="<c:url value="/hospital?action=search_dich_vu&dv_id=${chi_tiet_dv.getCtdv_id()}"/>"
+                                                   class="add-cart">+ Đăng ký dịch vụ
+                                                </a>
                                             </c:if>
                                             <c:if test="${sessionScope.acc_admin != null || sessionScope.acc_nhan_vien != null}">
                                                 <a href="<c:url value="/hospital?action=search_dich_vu&dv_id=${chi_tiet_dv.getCtdv_id()}"/>"
@@ -403,13 +413,19 @@
                                             <a href="#" class="add-cart">+ Hãy Đăng Nhập</a>
                                         </c:if>
                                         <hr>
-                                        <h5>${chi_tiet_dv.ctdv_gia} VND</h5>
+                                        <h5>
+                                            <fmt:setLocale value="vi_VN"/>
+                                            <fmt:formatNumber value="${chi_tiet_dv.getCtdv_gia()}" type="currency"/>
+                                        </h5>
                                     </c:if>
                                     <c:if test="${chi_tiet_dv.getCtdv_trang_thai() == 0}">
                                         <h6>${chi_tiet_dv.ctdv_ten}</h6>
                                         <a class="add-cart">Hết hàng</a>
                                         <hr>
-                                        <h5>${chi_tiet_dv.ctdv_gia} VND</h5>
+                                        <h5>
+                                            <fmt:setLocale value="vi_VN"/>
+                                            <fmt:formatNumber value="${chi_tiet_dv.getCtdv_gia()}" type="currency"/>
+                                        </h5>
                                     </c:if>
                                 </div>
                             </div>
